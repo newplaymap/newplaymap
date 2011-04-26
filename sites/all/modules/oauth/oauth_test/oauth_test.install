@@ -1,0 +1,73 @@
+<?php
+// $Id: oauth_test.install,v 1.1.2.1 2008/11/11 03:27:39 brmassa Exp $
+/**
+ * @author OAuth module Dev Team
+ * @file
+ * @file
+ *   Install, uninstall and update the module.
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function oauth_test_install() {
+  drupal_install_schema('oauth_test');
+}
+
+/**
+ * Implementation of hook_schema().
+ */
+function oauth_test_schema() {
+  $schema['oauth_test_token'] = array(
+    'description' => t('Tokens for request and services accesses.'),
+    'fields' => array(
+      'uid' => array(
+        'description' => t('User ID from {user}.uid.'),
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE
+      ),
+      'token_key' => array(
+        'description' => t('Tokens for request and services accesses.'),
+        'type'        => 'varchar',
+        'length'      => 32,
+        'not null'    => TRUE
+      ),
+      'token_secret' => array(
+        'description' => t('Token "password".'),
+        'type'        => 'varchar',
+        'length'      => 32,
+        'not null'    => TRUE
+      ),
+      'type' => array(
+        'description' => t('Type of the token: request or access.'),
+        'type'        => 'varchar',
+        'length'      => 7,
+        'not null'    => TRUE
+      ),
+    ),
+   'primary key' => array('uid'),
+   'indexes' => array(
+      'token_key_type' => array('token_key'),
+    ),
+  );
+  return $schema;
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function oauth_test_uninstall() {
+  drupal_uninstall_schema('oauth_test');
+
+  // Delete variables
+  variable_del('oauth_test_server_method');
+  variable_del('oauth_test_server_url_request');
+  variable_del('oauth_test_server_url_auth');
+  variable_del('oauth_test_server_url_access');
+  variable_del('oauth_test_server_webservice_request');
+  variable_del('oauth_test_server_webservice_access');
+  variable_del('oauth_test_server_signature');
+  variable_del('oauth_test_consumer_key');
+  variable_del('oauth_test_consumer_secret');
+}

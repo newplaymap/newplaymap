@@ -1,0 +1,4 @@
+; $Id$
+name = New Play Map Feed Helper
+description = Custom module for any feed processing needs
+core = 6.x

@@ -1,0 +1,215 @@
+<?php
+// $Id: getsatisfaction.module,v 1.8 2010/07/24 13:52:48 flevour Exp $
+
+/**
+ * @file
+ * Adds GetSatisfaction javascript code to your site.
+ */
+
+/**
+ * Implementation of hook_help().
+ */
+function getsatisfaction_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#getsatisfaction':
+      return t('<a href="@gs_url">Get Satisfaction</a> is a tool to connect people and companies. This module provides services to better integrate Drupal with Get Satisfaction.', array('@gs_url' => 'http://www.getsatisfaction.com/'));
+  }
+}
+
+/**
+ * Implementation of hook_perm().
+ */
+function getsatisfaction_perm() {
+  return array('administer get satisfaction');
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function getsatisfaction_menu() {
+  $items['admin/settings/getsatisfaction'] = array(
+    'title' => 'Get Satisfaction',
+    'description' => 'Configure the settings used to generate your Get Satisfaction code.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('getsatisfaction_admin_settings_form'),
+    'access arguments' => array('administer get satisfaction'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implementation of hook_init().
+ * 
+ * It is necessary to call drupal_add_js() at least once before hook_footer to trigger inclusion of jQuery libs. It also makes
+ * code cleaner than including GetSatisfaction original code.
+ */
+function getsatisfaction_init() {
+  $conf = array();
+  $conf['display']   = "overlay";
+  $conf['company']   = check_plain(variable_get('getsatisfaction_name', ''));
+  $conf['placement'] = check_plain(variable_get('getsatisfaction_placement', 'left'));
+  $conf['color']     = check_plain(variable_get('getsatisfaction_color', '#222'));
+  $conf['style']     = check_plain(variable_get('getsatisfaction_type', 'idea'));
+  drupal_add_js(array('getsatisfaction' => $conf), 'setting');
+}
+
+/**
+ * Implementation of hook_footer() to insert Javascript at the end of the page.
+ */
+function getsatisfaction_footer() {
+  $company = check_plain(variable_get('getsatisfaction_name', ''));
+  if (!empty($company) && _getsatisfaction_visibility_pages()) {
+    $script  = 'var is_ssl = ("https:" == document.location.protocol);';
+    $script .= 'var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";';
+    $script .= 'document.write(unescape("%3Cscript src=\'" + asset_host + "javascripts/feedback-v2.js\' type=\'text/javascript\'%3E%3C/script%3E"));';
+    drupal_add_js($script, 'inline', 'footer'); // Need to make 2 script tags in order to have the library loaded when the second is executed.
+    
+    $script  = '';
+    $script .= '$("body:not(.getsatisfaction-processed)").each(function() {';
+    $script .= '  $(this).addClass("getsatisfaction-processed");';
+    $script .= '  var feedback_widget = new GSFN.feedback_widget(Drupal.settings.getsatisfaction);';
+    $script .= '});';
+    
+    drupal_add_js($script, 'inline', 'footer');
+  }
+}
+
+/**
+ * Implementation of hook_filter().
+ */
+function getsatisfaction_filter($op, $delta = 0, $format = -1, $text = '', $cache_id = 0) {
+   switch ($op) {
+    case 'list':
+      return array(0 => t('Get Satisfaction Feedback page'));
+    case 'description':
+      return t('Provides the special tag [getsatisfaction-page] to display the Get Satisfaction Feedback page.');
+    case 'process':
+      $company = check_plain(variable_get('getsatisfaction_name', ''));
+      if (!empty($company)) {
+        $getsatisfaction_page = '<iframe id="fdbk_iframe_inline" allowTransparency="true" width="100%" height="500" scrolling="no" frameborder="0" src="http://getsatisfaction.com/'. $company .'/feedback/topics/new?display=inline&amp;style=idea"></iframe>';
+       $text = preg_replace("@\[getsatisfaction-page\]@", $getsatisfaction_page, $text);
+      }
+      return $text;
+    default:
+      return $text;
+   }
+}
+
+/**
+ * Implementation of hook_filter_tips().
+ */
+function getsatisfaction_filter_tips($delta, $format, $long = FALSE) {
+  switch ($delta) {
+    case 0:
+      return t('Use the special tag [getsatisfaction-page] to display the Get Satisfaction Feedback page.');
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_admin_settings() for configuring the module
+ */
+function getsatisfaction_admin_settings_form(&$form_state) {
+  $form['account'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('General settings'),
+    '#collapsible' => FALSE,
+  );
+
+  $form['account']['getsatisfaction_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Get Satisfaction company name'),
+    '#default_value' => variable_get('getsatisfaction_name', ''),
+    '#size' => 15,
+    '#maxlength' => 20,
+    '#required' => TRUE,
+    '#description' => t('The company name you have picked when you have created its profile at Get Satisfaction. See the list of all your companies on <a href="@url">Get Satisfaction</a> clicking the "You" menu and selecting "Your Products and Companies". You need to be logged in.', array('@url' => 'http://www.getsatisfaction.com/')),
+  );
+  
+  $form['account']['getsatisfaction_type'] = array(
+    '#type' => 'radios',
+    '#title' => t('Default type'),
+    '#default_value' => variable_get('getsatisfaction_type', 'idea'),
+    '#options' => array(
+      'idea' => t('Idea'),
+      'question' => t('Question'),
+      'problem' => t('Problem'),
+      'praise' => t('Praise'),
+    ),
+    '#attributes' => array('class' => 'container-inline')
+  );
+  
+  $form['account']['getsatisfaction_placement'] = array(
+    '#type' => 'radios',
+    '#title' => t('Placement'),
+    '#default_value' => variable_get('getsatisfaction_placement', 'left'),
+    '#options' => array(
+      'left' => t('Left'),
+      'right' => t('Right'),
+      'bottom' => t('Bottom'),
+      'hidden' => t('Hidden'),
+    ),
+    '#attributes' => array('class' => 'container-inline')
+  );
+  
+  $form['account']['getsatisfaction_color'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Tab color'),
+    '#default_value' => variable_get('getsatisfaction_color', '#222'),
+    '#size' => 8,
+    '#field_suffix' => t(' HEX or color'),
+    '#attributes' => array('class' => 'container-inline')
+  );
+  
+  $options = array(t('Add to every page except the listed pages.'), t('Add to the listed pages only.'));
+  $description = t("Enter one page per line as Drupal paths. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>'));
+  $pages = variable_get('getsatisfaction_pages', '');
+  $visibility = variable_get('getsatisfaction_visibility', 0);
+
+  $form['code_vis_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Page specific settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['code_vis_settings']['getsatisfaction_visibility'] = array(
+    '#type' => 'radios',
+    '#title' => t('Add code to specific pages'),
+    '#options' => $options,
+    '#default_value' => $visibility,
+  );
+  $form['code_vis_settings']['getsatisfaction_pages'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Pages'),
+    '#default_value' => $pages,
+    '#description' => $description,
+    '#wysiwyg' => FALSE,
+  );
+  return system_settings_form($form);
+}
+
+function _getsatisfaction_visibility_pages() {
+  $visibility = variable_get('getsatisfaction_visibility', 0);
+  $pages = variable_get('getsatisfaction_pages', '');
+
+  // Match path if necessary.
+  if (!empty($pages)) {
+    $path = drupal_get_path_alias($_GET['q']);
+    // Compare with the internal and path alias (if any).
+    $page_match = drupal_match_path($path, $pages);
+    if ($path != $_GET['q']) {
+      $page_match = $page_match || drupal_match_path($_GET['q'], $pages);
+    }
+    // When $visibility has a value of 0, the block is displayed on
+    // all pages except those listed in $pages. When set to 1, it
+    // is displayed only on those pages listed in $pages.
+    $page_match = !($visibility xor $page_match);
+  }
+  else {
+    $page_match = TRUE;
+  }
+
+  return $page_match;
+}

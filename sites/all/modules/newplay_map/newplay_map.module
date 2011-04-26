@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * Implementation of hook_gmap()
+ * @param $op
+ *  'parse_macro'
+ *  'pre_theme_map'
+ *  'macro_multiple'
+ *  'behaviors'
+ */
+function newplay_map_gmap($op, &$map) {
+
+
+  
+  switch ($op) {
+    case 'parse_macro':
+      
+    case 'pre_theme_map':
+      
+      if ($map['id'] == 'playmap') {
+        $line_array = array();
+        if ($map['markers'] != NULL) {
+          foreach ($map['markers'] as $key => $marker) {
+            $line_array[$key] = array(
+              0 => $marker['latitude'],
+              1 => $marker['longitude']
+            );
+          }
+        }
+        
+        
+        
+        $map['shapes'] = array(
+          0 => array(
+            'type' => 'line',
+            'points' => $line_array
+          )
+        );
+        
+      }
+      
+      
+    case 'macro_multiple':
+      
+    case 'behaviors':
+      
+  }
+  
+  // dsm($op);
+  // dsm($map);
+  
+}
+
+?>

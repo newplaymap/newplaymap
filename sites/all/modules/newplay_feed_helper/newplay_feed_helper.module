@@ -1,0 +1,18 @@
+<?php
+function newplay_feed_helper_nodeapi(&$node, $op) {
+  switch ($op) {
+    case 'insert':
+      if ($node->type == 'photo' || $node->type == 'blog_post' || $node->type == 'twitter_item' || $node->type == 'video') {
+        if ($feed_nid = db_result(db_query("SELECT feed_nid FROM {feeds_node_item} WHERE nid=%d", $node->nid))) {
+          $feed_node = node_load($feed_nid);
+          $node->field_related_theater[0]['nid'] = $feed_node->field_related_theater[0]['nid'];
+          $node->field_related_play[0]['nid'] = $feed_node->field_related_play[0]['nid'];
+          $node->field_artist[0]['nid'] = $feed_node->field_artist[0]['nid'];
+          node_submit($node);  // added by carlo
+          node_save($node);
+        }
+      }
+
+      break;
+  }
+}

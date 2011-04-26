@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implementation of hook_openlayers_behaviors().
+ *
+ */
+function openlayers_multilinestring_openlayers_behaviors() {
+  return array(
+    'openlayers_behavior_multilinestring' => array(
+      'title' => t('Lines between points'),
+      'description' => t('Draw a multiple segmented line between points.'),
+      'type' => 'layer',
+      'path' => drupal_get_path('module', 'openlayers_multilinestring') . '/includes/behaviors',
+      'file' => 'openlayers_behavior_multilinestring.inc',
+      'behavior' => array(
+        'class' => 'openlayers_behavior_multilinestring',
+        'parent' => 'openlayers_behavior',
+      ),
+    ),
+  );
+}

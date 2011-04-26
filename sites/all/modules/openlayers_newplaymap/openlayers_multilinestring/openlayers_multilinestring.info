@@ -1,0 +1,7 @@
+; $Id$
+name = OpenLayers Behavior: MultiLineString
+description = Provides preset behavior which adds lines between map layer points.
+core = 6.x
+package = OpenLayers
+dependencies[] = openlayers
+

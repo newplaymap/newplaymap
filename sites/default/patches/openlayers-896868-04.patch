@@ -1,0 +1,10 @@
+--- includes/layer_types/cloudmade.inc
++++ includes/layer_types/cloudmade.inc
+@@ -49,6 +49,7 @@ class openlayers_layer_type_cloudmade extends openlayers_layer_type {
+       'styleId' => array(
+         '#type' => 'textfield',
+         '#title' => t('Style ID'),
++        '#description' => t('Enter the numeric Style ID for a <a href="http://maps.cloudmade.com/editor">Map Style</a> from CloudMade. You can usually find the Style ID in the lower right hand corner of each Map Style box.'),
+         '#default_value' => isset($this->data['styleId']) ?
+           $this->data['styleId'] : ''
+       ),

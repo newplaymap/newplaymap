@@ -1,0 +1,12 @@
+; $Id: triggerunlock.info,v 1.1 2008/02/15 14:59:07 jvandyk Exp $
+name = Trigger Unlock
+description = Makes all actions available for all triggers.
+package = Actions
+core = 6.x
+
+; Information added by drupal.org packaging script on 2008-02-15
+version = "6.x-1.0"
+core = "6.x"
+project = "triggerunlock"
+datestamp = "1203088808"
+

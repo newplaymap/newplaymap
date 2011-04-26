@@ -1,0 +1,84 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_openlayers_behaviors().
+ */
+function openlayers_newplay_openlayers_behaviors() {
+  return array(
+    'openlayers_newplay_behavior_popup_interaction' => array(
+      'title' => t('New Play Map: Popup Interaction'),
+      'description' => t('Because of how OL deals with selecting features, all feature related events are in one behavior.'),
+      'behavior' => array(
+        'path' => drupal_get_path('module', 'openlayers_newplay') . '/includes/behaviors',
+        'file' => 'openlayers_newplay_behavior_popup_interaction.inc',
+        'class' => 'openlayers_newplay_behavior_popup_interaction',
+        'parent' => 'openlayers_behavior',
+      ),
+    ),
+  );
+}
+
+/** 
+ * Implementation of hook_menu().
+ */
+function openlayers_newplay_menu() {
+  $items = array();
+  $items['openlayers_newplay/load_node'] = array(
+    'title' => 'Openlayers New Play Map Node Load',
+    'page callback' => 'openlayers_newplay_load_node_callback',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;   
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+
+function openlayers_newplay_theme() {
+  return array(
+    'openlayers_newplay_node_loader' => array(
+      'arguments' => array(),
+    ),
+    'openlayers_newplay_node_loader_node' => array(
+      'arguments' => array(
+        'node' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * AJAX callback for laoding nodes
+ */
+function openlayers_newplay_load_node_callback() {
+  // Get a full path from arguments passed to function.
+  $path = arg();
+  // Remove first two elements from callback.
+  array_shift($path);
+  array_shift($path);
+  // Build a url path.
+  $path = implode('/', $path);
+  // Look up system path.
+  $path = explode('/', drupal_lookup_path('source', $path));
+  // Get the node id.
+  $nid = $path[1];
+
+  $output = '';
+
+  // Check node exists.
+  $node = node_load($nid);
+  if (is_object($node)) {
+    // Render node using ctools page manager (for panels)
+    include_once(drupal_get_path('module', 'page_manager') . '/plugins/tasks/node_view.inc'); 
+    $output = page_manager_node_view($node);
+  }
+
+  // Return the whole page.
+  // return $output;   
+
+  // Print just the node content.
+ echo $output;
+}

@@ -1,0 +1,13 @@
+diff --git a/html/sites/all/modules/features/features.drush.inc b/html/sites/all/modules/features/features.drush.inc
+index 5af64f1..82107da 100644
+--- a/html/sites/all/modules/features/features.drush.inc
++++ b/html/sites/all/modules/features/features.drush.inc
+@@ -292,7 +292,7 @@ function drush_features_revert() {
+         else {
+           $states = features_get_component_states(array($feature->name), FALSE);
+           foreach ($states[$feature->name] as $component => $state) {
+-            if (in_array($state, array(FEATURES_OVERRIDDEN, FEATURES_NEEDS_REVIEW)) && features_hook($component, 'features_revert')) {
++            if (in_array($state, array(FEATURES_OVERRIDDEN, FEATURES_NEEDS_REVIEW, FEATURES_DEFAULT)) && features_hook($component, 'features_revert')) {
+               $components[] = $component;
+             }
+           }

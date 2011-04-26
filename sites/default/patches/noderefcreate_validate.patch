@@ -1,0 +1,23 @@
+diff --git a/www/sites/all/modules/noderefcreate/noderefcreate.module b/www/sites/all/modules/noderefcreate/noderefcreate.module
+index 9871fa5..6519371 100644
+--- a/www/sites/all/modules/noderefcreate/noderefcreate.module
++++ b/www/sites/all/modules/noderefcreate/noderefcreate.module
+@@ -81,7 +81,7 @@ function noderefcreate_autocomplete_process($element, $edit, $form_state, $form)
+   if (empty($element[$field_key]['#element_validate'])) {
+     $element[$field_key]['#element_validate'] = array();
+   }
+-  array_unshift($element[$field_key]['#element_validate'], 'noderefcreate_autocomplete_validate');
++  array_push($element[$field_key]['#element_validate'], 'noderefcreate_autocomplete_validate');
+ 
+   // Used so that hook_field('validate') knows where to flag an error.
+   $element['_error_element'] = array(
+@@ -114,7 +114,8 @@ function noderefcreate_autocomplete_validate($element, &$form_state) {
+     else {
+       // No explicit nid.
+       $reference = _nodereference_potential_references($field, $value, 'equals', NULL, 1);
+-      if (empty($reference)) {
++
++      if (empty($reference) && !form_get_errors()) {
+         $newnode = NULL;
+         if (is_array($field['referenceable_types'])) {
+           foreach (array_filter($field['referenceable_types']) as $related_type) {

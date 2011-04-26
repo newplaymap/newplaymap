@@ -1,0 +1,4 @@
+; $Id$
+name = New Play Map - GMap Customizations
+description = Custom work to customize custom google map
+core = 6.x

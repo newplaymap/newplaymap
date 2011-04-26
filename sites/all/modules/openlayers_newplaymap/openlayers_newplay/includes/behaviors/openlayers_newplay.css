@@ -1,0 +1,75 @@
+/* Full Screen Map Layout */
+.openlayers_map_fullscreen {
+  position: fixed;
+  z-index: -10;
+  background-color: #fff;
+  top: 60px;
+  left: 0;
+  right: 0;
+  height: auto !important;
+  bottom: 0;
+  }
+  
+.openlayers-views-map .openlayers_map_fullscreen.homepage {
+}
+
+.openlayers_behavior_fullscreen_buttonItemInactive {
+  background: none;
+  }
+
+#panel-default-overlay,
+.popup-container {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  height: auto !important;
+  width: 33% !important;
+  bottom: 0;
+  }
+
+.popup-container .overlay {
+  height: 0;
+}
+
+.popup-inner {
+  z-index: 9010;
+  }
+#panel-default-overlay .inside,
+.overlay {
+  z-index: 9000;
+  }
+.popup-container .popup-inner .close-btn {
+  z-index: 9011;
+  }
+.popup-container .overlay .close-btn{
+  z-index: 9001;
+  }
+
+/* Temporary Styles to condense elements that interfere with clickable region of map. */
+body,
+#skip-to-nav,
+#page,
+#page-inner,
+#main {
+  }
+#content,
+.no-sidebars #content,
+#navbar{
+  display: block;
+  }
+
+/*
+#main {
+  background-color: #000000;
+  }
+*/
+#header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  }
+#content-inner div.tabs {
+  position: fixed;
+  top: 60px;
+  left: 0px;
+  }

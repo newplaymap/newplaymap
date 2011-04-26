@@ -1,0 +1,31 @@
+<?php
+// $Id: getsatisfaction.install,v 1.1 2008/12/11 11:11:02 flevour Exp $
+/**
+ * @file
+ * Installation file for Get Satisfaction module.
+ */
+
+function getsatisfaction_install() {
+  variable_set('getsatisfaction_visibility', 0);
+
+  // Remove tracking from all administrative pages, see http://drupal.org/node/34970.
+  $pages = array(
+    'admin',
+    'admin/*',
+    'user/*/*',
+    'node/add*',
+    'node/*/*',
+  );
+  variable_set('getsatisfaction_pages', implode("\n", $pages));
+  drupal_set_message(t('Get Satisfaction module is now installed. Please take a second to <a href="@url">configure it</a>.', array('@url' => url('admin/settings/getsatisfaction'))));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function getsatisfaction_uninstall() {
+  // remove module variables
+  variable_del('getsatisfaction_pages');
+  variable_del('getsatisfaction_name');
+  variable_del('getsatisfaction_visibility');
+}

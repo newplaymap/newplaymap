@@ -1,0 +1,11 @@
+; $Id:$
+name = "Newplay Admin Links"
+description = "Custom Ctools plugins"
+package = "Custom"
+core = 6.x
+dependencies[] = ctools
+dependencies[] = panels
+
+version = "6.x-dev"
+
+

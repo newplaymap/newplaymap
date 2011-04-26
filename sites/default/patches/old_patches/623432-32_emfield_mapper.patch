@@ -1,0 +1,67 @@
+Index: mappers/emfield.inc
+===================================================================
+RCS file: mappers/emfield.inc
+diff -N mappers/emfield.inc
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ mappers/emfield.inc	18 Jan 2010 22:03:18 -0000
+@@ -0,0 +1,59 @@
++<?php
++// $Id$
++
++/**
++ * @file
++ * On behalf implementation of Feeds mapping API for emfield.module (Embedded
++ * Media Field).
++ */
++
++/**
++ * Implementation of hook_feeds_node_processor_targets_alter().
++ *
++ * @see FeedsNodeProcessor::getMappingTargets().
++ */
++function emfield_feeds_node_processor_targets_alter(&$targets, $content_type) {
++  $info = content_types($content_type);
++  $fields = array();
++  if (isset($info['fields']) && count($info['fields'])) {
++    foreach ($info['fields'] as $field_name => $field) {
++      if (in_array($field['type'], array('emvideo', 'emaudio', 'emimage'))) {
++        $fields[$field_name] = isset($field['widget']['label']) ? $field['widget']['label'] : $field_name;
++      }
++    }
++  }
++  foreach ($fields as $k => $name) {
++    $targets[$k] = array(
++      'name' => $name,
++      'callback' => 'emfield_feeds_set_target',
++      'description' => t('The Embedded !name field of the node.', array('!name' => $name)),
++    );
++  }
++}
++
++/**
++ * Callback for mapping. Here is where the actual mapping happens.
++ *
++ * When the callback is invoked, $target contains the name of the field the
++ * user has decided to map to and $value contains the value of the feed item
++ * element the user has picked as a source.
++ */
++function emfield_feeds_set_target(&$node, $target, $value) {
++  $field = isset($node->$target) ? $node->$target : array();
++
++  // Handle multiple value fields.
++  if (is_array($value)) {
++    $i = 0;
++    foreach ($value as $v) {
++      if (!is_array($v) && !is_object($v)) {
++        $field[$i]['embed'] = $v;
++      }
++      $i++;
++    }
++  }
++  else {
++    $field[0]['embed'] = $value;
++  }
++
++  $node->$target = $field;
++}
+\ No newline at end of file

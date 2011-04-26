@@ -1,0 +1,524 @@
+<?php
+// $Id: oauth_test.module,v 1.1.2.1 2008/11/11 03:07:08 brmassa Exp $
+/**
+ * @author OAuth module Dev Team
+ * @file
+ * A dummy module that will serve as OAuth testing module. Developers might
+ * use it as base for building modules that integrates OAuth authentication.
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function oauth_test_menu() {
+  $items['oauth_test/request'] = array(
+    'access callback' => TRUE,
+    'page callback'   => 'drupal_get_form',
+    'page arguments'  => array('oauth_test_requestpage'),
+    'title'           => 'OAuth test 1 - Token Request'
+  );
+  $items['oauth_test/access'] = array(
+    'access callback' => TRUE,
+    'page callback'   => 'drupal_get_form',
+    'page arguments'  => array('oauth_test_accesspage'),
+    'title'           => 'OAuth test 2 - Token Access'
+  );
+  $items['oauth_test/webservice'] = array(
+    'access callback' => TRUE,
+    'page callback'   => 'drupal_get_form',
+    'page arguments'  => array('oauth_test_webservice'),
+    'title'           => 'OAuth test 3 - Web Service'
+  );
+  $items['admin/settings/oauth_test'] = array(
+    'access callback' => TRUE,
+    'page callback'   => 'drupal_get_form',
+    'page arguments'  => array('oauth_test_admin'),
+    'title'           => 'OAuth test'
+  );
+  return $items;
+}
+
+/**
+ * This page will be responsible for asking the user the basic information.
+ * Its generally the page were you put "integrate this site with SERVERNAME".
+ *
+ * @ingroup form
+ */
+function oauth_test_admin() {
+  // Server information. Note that  all this information
+  // might be hardcoded in your module, since each server has
+  // specific and constant values
+  $form['server'] = array(
+    '#description'    => t('Server information. Note that all this information might be hardcoded in your module, since each server has specific and constant values.'),
+    '#title'          => t('Server information'),
+    '#type'           => 'fieldset',
+  );
+  $form['server']['oauth_test_server_method'] = array(
+    '#description'    => t('The type of server used.'),
+    '#default_value'  => variable_get('oauth_test_server_method', 'xmlrpc'),
+    '#options'        => array(
+      'xmlrpc'  => t('XML-RPC'),
+//       'html'    => t('HTML'),
+    ),
+    '#title'          => t('Server Method'),
+    '#type'           => 'radios',
+  );
+  $form['server']['oauth_test_server_url_request'] = array(
+    '#description'    => t('The server URL for requesting Token Request.'),
+    '#default_value'  => variable_get('oauth_test_server_url_request', url('webservice/xmlrpc', array('absolute' => TRUE))),
+    '#title'          => t('Server URL: Token Request'),
+    '#type'           => 'textfield',
+  );
+  $form['server']['oauth_test_server_url_auth'] = array(
+    '#description'    => t('The server URL for requesting Token Authentication.'),
+    '#default_value'  => variable_get('oauth_test_server_url_auth', url('webservice/token_auth', array('absolute' => TRUE))),
+    '#title'          => t('Server URL: Token Authentication'),
+    '#type'           => 'textfield',
+  );
+  $form['server']['oauth_test_server_url_access'] = array(
+    '#description'    => t('The server URL for requesting Token Access.'),
+    '#default_value'  => variable_get('oauth_test_server_url_access', url('webservice/xmlrpc', array('absolute' => TRUE))),
+    '#title'          => t('Server URL: Token Access'),
+    '#type'           => 'textfield',
+  );
+  $form['server']['oauth_test_server_webservice_request'] = array(
+    '#description'    => t('Token Resquest service name. Its only needed on XML-RPC methods'),
+    '#default_value'  => variable_get('oauth_test_server_webservice_request', 'system.tokenRequest'),
+    '#title'          => t('Service: Token Request'),
+    '#type'           => 'textfield',
+  );
+  $form['server']['oauth_test_server_webservice_access'] = array(
+    '#description'    => t('Token Access service name. Its only needed on XML-RPC methods'),
+    '#default_value'  => variable_get('oauth_test_server_webservice_access', 'system.tokenAccess'),
+    '#title'          => t('Service: Token Access'),
+    '#type'           => 'textfield',
+  );
+  $form['server']['oauth_test_server_signature'] = array(
+    '#description'    => t('The way the data will be secured.'),
+    '#default_value'  => variable_get('oauth_test_server_signature', 'PLAINTEXT'),
+    '#options'        => array(
+      'PLAINTEXT'       => t('Plain text'),
+      'HMAC_SHA1'       => t('HMAC-SHA1'),
+      'RSA_SHA1'        => t('RSA-SHA1'),
+    ),
+    '#title'          => t('Signature method'),
+    '#type'           => 'radios',
+  );
+
+  $form['consumer'] = array(
+    '#collapsible'    => TRUE,
+    '#collapsed'      => (variable_get('oauth_test_consumer_key', '') and variable_get('oauth_test_consumer_secret', '')),
+    '#description'    => t('Consumer information is given from the server. Its different for each user. Consider creating a settings page on your module that records these values, so users might enter them.'),
+    '#title'          => t('Consumer information'),
+    '#type'           => 'fieldset',
+  );
+  $form['consumer']['oauth_test_consumer_key'] = array(
+    '#description'    => t('Token Resquest service name. Its only needed on XML-RPC methods'),
+    '#default_value'  => variable_get('oauth_test_consumer_key', ''),
+    '#title'          => t('Consumer key'),
+    '#type'           => 'textfield',
+  );
+  $form['consumer']['oauth_test_consumer_secret'] = array(
+    '#description'    => t('Token Resquest service name. Its only needed on XML-RPC methods'),
+    '#default_value'  => variable_get('oauth_test_consumer_secret', ''),
+    '#title'          => t('Consumer secret'),
+    '#type'           => 'textfield',
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * This page will be responsible for asking the user the basic information.
+ * Its generally the page were you put "integrate this site with SERVERNAME".
+ *
+ * @ingroup form
+ */
+function oauth_test_requestpage() {
+  $form['submit'] = array(
+    '#value'          => t('Integrate with an external service?'),
+    '#type'           => 'submit'
+  );
+  return $form;
+}
+
+/**
+ * Now we process the page, calling the server in order to get a TOKEN REQUEST.
+ * This token allow us to ask the user if we can call for a given service in his
+ * behalf, later.
+ *
+ * @ingroup form
+ */
+function oauth_test_requestpage_submit(&$form, &$form_state) {
+  // Use the libraries from OAuth integration
+  module_load_include('lib.php', 'oauth');
+
+  $values = array();
+
+  // Build the Consumer object
+  $consumer = new OAuthConsumer(
+    variable_get('oauth_test_consumer_key', ''),
+    variable_get('oauth_test_consumer_secret', '')
+  );
+
+  // Build the request data
+  $request = OAuthRequest::from_consumer_and_token(
+    $consumer,
+    NULL,
+    'POST',
+    variable_get('oauth_test_server_url_request', url('webservice/xmlrpc', array('absolute' => TRUE))),
+    $values
+  );
+
+  // Select the signature method. Again, your module doesnt need to
+  // have multiple options, because each server only uses one type.
+  switch (variable_get('oauth_test_server_signature', 'PLAINTEXT')) {
+    case 'PLAINTEXT':
+      $signature_method = new OAuthSignatureMethod_PLAINTEXT();
+      break;
+    case 'HMAC_SHA1':
+    $signature_method = new OAuthSignatureMethod_HMAC_SHA1();
+      break;
+    case 'RSA_SHA1':
+    $signature_method = new TestOAuthSignatureMethod_RSA_SHA1();
+      break;
+  }
+  $request->sign_request($signature_method, $consumer, NULL);
+
+  // You will need only copy the code from the used Method, because most
+  // server only use one.
+  switch (variable_get('oauth_test_server_method', 'xmlrpc')) {
+    case 'xmlrpc':
+      $token = xmlrpc($request->get_normalized_http_url(),
+        variable_get('oauth_test_server_webservice_request', 'system.tokenRequest'),
+        $request->get_parameter('oauth_version'),
+        (int)$request->get_parameter('oauth_timestamp'),
+        $request->get_parameter('oauth_nonce'),
+        $request->get_parameter('oauth_consumer_key'),
+        $request->get_parameter('oauth_signature_method'),
+        $request->get_parameter('oauth_signature')
+      );
+
+      // Save the tokens on DB for further use. But in case
+      // of error, show a message
+      if (xmlrpc_error()) {
+        watchdog('oauth_test', xmlrpc_error_msg(), array(), WATCHDOG_ERROR);
+        drupal_set_message(xmlrpc_error_msg(), 'error');
+        return;
+      }
+      else {
+        global $user;
+        $sql = array(
+          'uid'           => $user->uid,
+          'token_key'     => $token['key'],
+          'token_secret'  => $token['secret'],
+          'type'          => 'request'
+        );
+        drupal_write_record('oauth_test_token', $sql);
+      }
+
+      break;
+    case 'html':
+      break;
+  }
+
+  //
+  // Now go to the authentication page in order to ask the user to
+  // log on server's site and allow us to use some services it his behalf
+  //
+
+  // Build the token object
+  $token = new OAuthToken(
+    $token['key'],
+    $token['secret']
+  );
+
+  // When the user authorize this site, the server will send the user back
+  // here. we need to put the URL. Generally its the same page, but in
+  // this example its not.
+  $values = array(
+    'oauth_callback' => url('oauth_test/access', array('absolute' => TRUE))
+  );
+
+  // Build the request data
+  $request = OAuthRequest::from_consumer_and_token(
+    $consumer,
+    $token,
+    'GET',
+    variable_get('oauth_test_server_url_auth', url('webservice/token_auth', array('absolute' => TRUE))),
+    $values
+  );
+
+  $request->sign_request($signature_method, $consumer, NULL);
+
+  // Send the user to the authentication page
+  drupal_goto($request->to_url());
+}
+
+/**
+ * .
+ *
+ * @ingroup form
+ */
+function oauth_test_accesspage() {
+  // Retreive the token values
+  global $user;
+  $sql = db_query("SELECT * FROM {oauth_test_token} WHERE uid = %d AND type = 'request'", $user->uid);
+
+  // Show a message in case the is no such token saved on DB
+  if (!$token = db_fetch_array($sql)) {
+    drupal_set_message(t('There is no Token Request saved'), 'error');
+    return array();
+  }
+
+  // Just to point the token request values. Its, of course, useless on
+  // most modules
+  $form['token_request'] = array(
+    '#title'          => t('Token Request'),
+    '#type'           => 'fieldset'
+  );
+  $form['token_request']['key'] = array(
+    '#value'          => $token['token_key'],
+    '#title'          => t('Token key'),
+    '#type'           => 'item'
+  );
+  $form['token_request']['secret'] = array(
+    '#value'          => $token['token_secret'],
+    '#title'          => t('Token secret'),
+    '#type'           => 'item'
+  );
+
+  // Use the libraries from OAuth integration
+  module_load_include('lib.php', 'oauth');
+
+  $values = array();
+
+  // Build the Consumer object
+  $consumer = new OAuthConsumer(
+    variable_get('oauth_test_consumer_key', ''),
+    variable_get('oauth_test_consumer_secret', '')
+  );
+
+  // Build the token object
+  $token = new OAuthToken(
+    $token['token_key'],
+    $token['token_secret']
+  );
+
+  // Build the request data
+  $request = OAuthRequest::from_consumer_and_token(
+    $consumer,
+    $token,
+    'POST',
+    variable_get('oauth_test_server_url_access', url('webservice', array('absolute' => TRUE))),
+    $values
+  );
+
+  // Select the signature method. Again, your module doesnt need to
+  // have multiple options, because each server only uses one type.
+  switch (variable_get('oauth_test_server_signature', 'PLAINTEXT')) {
+    case 'PLAINTEXT':
+      $signature_method = new OAuthSignatureMethod_PLAINTEXT();
+      break;
+    case 'HMAC_SHA1':
+    $signature_method = new OAuthSignatureMethod_HMAC_SHA1();
+      break;
+    case 'RSA_SHA1':
+    $signature_method = new TestOAuthSignatureMethod_RSA_SHA1();
+      break;
+  }
+  $request->sign_request($signature_method, $consumer, $token);
+
+  // You will need only copy the code from the used Method, because most
+  // server only use one.
+  switch (variable_get('oauth_test_server_method', 'xmlrpc')) {
+    case 'xmlrpc':
+      $token_access = xmlrpc($request->get_normalized_http_url(),
+        variable_get('oauth_test_server_webservice_access', 'system.tokenAccess'),
+        $request->get_parameter('oauth_version'),
+        (int)$request->get_parameter('oauth_timestamp'),
+        $request->get_parameter('oauth_nonce'),
+        $request->get_parameter('oauth_consumer_key'),
+        $request->get_parameter('oauth_token'),
+        $request->get_parameter('oauth_signature_method'),
+        $request->get_parameter('oauth_signature')
+      );
+
+      // Save the tokens on DB for further use. But in case
+      // of error, show a message
+      if (xmlrpc_error()) {
+        watchdog('oauth_test', xmlrpc_error_msg(), array(), WATCHDOG_ERROR);
+        drupal_set_message(xmlrpc_error_msg(), 'error');
+        return;
+      }
+      else {
+        global $user;
+        $sql = array(
+          'uid'           => $user->uid,
+          'token_key'     => $token_access['key'],
+          'token_secret'  => $token_access['secret'],
+          'type'          => 'access'
+        );
+        drupal_write_record('oauth_test_token', $sql, array('uid'));
+
+
+        // Just to point the token request values. Its, of course,
+        // useless on most modules. Its educational purpose only
+        $form['token_access'] = array(
+          '#title'          => t('Token Access'),
+          '#type'           => 'fieldset'
+        );
+        $form['token_access']['key'] = array(
+          '#value'          => $token_access['key'],
+          '#title'          => t('Token key'),
+          '#type'           => 'item'
+        );
+        $form['token_access']['secret'] = array(
+          '#value'          => $token_access['secret'],
+          '#title'          => t('Token secret'),
+          '#type'           => 'item'
+        );
+      }
+
+      break;
+    case 'html':
+      break;
+  }
+
+  drupal_set_message(t('You are ok to call now the web service!'), 'ok');
+
+  return $form;
+}
+
+/**
+ * .
+ *
+ * @ingroup form
+ */
+function oauth_test_webservice() {
+  // Retreive the token values
+  global $user;
+  $sql = db_query("SELECT * FROM {oauth_test_token} WHERE uid = %d AND type = 'access'", $user->uid);
+
+  // Show a message in case the is no such token saved on DB
+  if (!$token = db_fetch_array($sql)) {
+    drupal_set_message(t('There is no Token Request saved'), 'error');
+    return array();
+  }
+
+  // Just to point the token request values. Its, of course, useless on
+  // most modules
+  $form['token_access'] = array(
+    '#title'          => t('Token Access'),
+    '#type'           => 'fieldset'
+  );
+  $form['token_access']['key'] = array(
+    '#value'          => $token['token_key'],
+    '#title'          => t('Token key'),
+    '#type'           => 'item'
+  );
+  $form['token_access']['secret'] = array(
+    '#value'          => $token['token_secret'],
+    '#title'          => t('Token secret'),
+    '#type'           => 'item'
+  );
+
+  // Use the libraries from OAuth integration
+  module_load_include('lib.php', 'oauth');
+
+  $values = array(
+    'uid' => $user->uid
+  );
+
+  // Build the Consumer object
+  $consumer = new OAuthConsumer(
+    variable_get('oauth_test_consumer_key', ''),
+    variable_get('oauth_test_consumer_secret', '')
+  );
+
+  // Build the token object
+  $token = new OAuthToken(
+    $token['token_key'],
+    $token['token_secret']
+  );
+
+  // Build the request data
+  $request = OAuthRequest::from_consumer_and_token(
+    $consumer,
+    $token,
+    'POST',
+    variable_get('oauth_test_server_url_access', url('webservice', array('absolute' => TRUE))),
+    $values
+  );
+
+  // Select the signature method. Again, your module doesnt need to
+  // have multiple options, because each server only uses one type.
+  switch (variable_get('oauth_test_server_signature', 'PLAINTEXT')) {
+    case 'PLAINTEXT':
+      $signature_method = new OAuthSignatureMethod_PLAINTEXT();
+      break;
+    case 'HMAC_SHA1':
+    $signature_method = new OAuthSignatureMethod_HMAC_SHA1();
+      break;
+    case 'RSA_SHA1':
+    $signature_method = new TestOAuthSignatureMethod_RSA_SHA1();
+      break;
+  }
+  $request->sign_request($signature_method, $consumer, $token);
+
+  // You will need only copy the code from the used Method, because most
+  // server only use one.
+  switch (variable_get('oauth_test_server_method', 'xmlrpc')) {
+    case 'xmlrpc':
+      $user_data = xmlrpc($request->get_normalized_http_url(),
+        variable_get('oauth_test_server_webservice', 'user.get'),
+        $request->get_parameter('oauth_version'),
+        (int)$request->get_parameter('oauth_timestamp'),
+        $request->get_parameter('oauth_nonce'),
+        $request->get_parameter('oauth_consumer_key'),
+        $request->get_parameter('oauth_token'),
+        $request->get_parameter('oauth_signature_method'),
+        $request->get_parameter('oauth_signature'),
+        (int)$values['uid']
+      );
+
+      // Save the tokens on DB for further use. But in case
+      // of error, show a message
+      if (xmlrpc_error()) {
+        watchdog('oauth_test', xmlrpc_error_msg(), array(), WATCHDOG_ERROR);
+        drupal_set_message(xmlrpc_error_msg(), 'error');
+        return;
+      }
+      else {
+        // Just to point the token request values. Its, of course,
+        // useless on most modules. Its educational purpose only
+        $form['webservice'] = array(
+          '#title'          => t('User data'),
+          '#type'           => 'fieldset'
+        );
+        $form['webservice']['name'] = array(
+          '#value'          => $user_data['name'],
+          '#title'          => t('Username'),
+          '#type'           => 'item'
+        );
+        $form['webservice']['pass'] = array(
+          '#value'          => $user_data['pass'],
+          '#title'          => t('Password'),
+          '#type'           => 'item'
+        );
+        $form['webservice']['data'] = array(
+          '#value'          => print_r($user_data, TRUE),
+          '#title'          => t('Serialized data'),
+          '#type'           => 'item'
+        );
+      }
+
+      break;
+    case 'html':
+      break;
+  }
+
+  drupal_set_message(t('Web Service working!'), 'ok');
+
+  return $form;
+}

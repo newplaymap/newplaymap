@@ -1,0 +1,6 @@
+; $Id$
+core = "6.x"
+name = "OpenLayers New Play Map Customizations"
+dependencies[] = "openlayers"
+description = "Custom OpenLayers plugins and behaviors for New Play Map."
+package = "OpenLayers"

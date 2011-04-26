@@ -1,0 +1,8 @@
+; $Id$
+name = Node Reference URL to NodeRefCreate Widget
+description = Extend the Node Reference URL module to add a fallback for the Node Reference Create module
+dependencies[] = nodereference
+dependencies[] = nodereference_url
+dependencies[] = noderefcreate
+package = CCK
+core = 6.x

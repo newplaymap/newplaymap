@@ -1,0 +1,6 @@
+core = "6.x"
+description = "Code for Universal Add Button"
+name = "Universal Add Button"
+package = "Features"
+project = "add_button"
+version = "6.x-1.0"

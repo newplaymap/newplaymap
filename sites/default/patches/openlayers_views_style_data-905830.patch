@@ -1,0 +1,10 @@
+--- modules/openlayers_views/views/openlayers_views_style_data.inc
++++ modules/openlayers_views/views/openlayers_views_style_data.inc
+@@ -313,6 +313,7 @@ class openlayers_views_style_data extends views_plugin_style {
+       foreach ($records as $id => $record) {
+         $feature = array();
+         $rendered_record = array();
++        $this->view->row_index = $id;
+         // Note that excluded fields are still rendered in case they are used
+         // as render tokens in later fields.
+         foreach ($handlers as $hid => $handler) {

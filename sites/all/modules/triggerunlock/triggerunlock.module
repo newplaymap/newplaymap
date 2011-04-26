@@ -1,0 +1,19 @@
+<?php
+// $Id: triggerunlock.module,v 1.1 2008/02/15 14:59:07 jvandyk Exp $
+
+/**
+ * @file
+ * Makes all actions available to all triggers.
+ */
+
+/**
+ * Implementation of action_info_alter().
+ */
+function triggerunlock_action_info_alter(&$info) {
+  foreach (array_keys($info) as $key) {
+    // Modify each action's hooks declaration,
+    // changing it to say that the action supports
+    // any hook.
+    $info[$key]['hooks'] = 'any';
+  }
+}

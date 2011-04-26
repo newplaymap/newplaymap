@@ -1,0 +1,20 @@
+--- a/www/sites/all/modules/fbconnect/fbconnect.module
++++ b/www/sites/all/modules/fbconnect/fbconnect.module
+@@ -251,6 +251,17 @@ function fbconnect_form_alter(&$form, $form_state, $form_id) {
+           '#id' => 'fbconnect_button',
+         );
+       }
++      case 'user_register':
++      if (@$_REQUEST['destination'] != 'fbconnect' && fbconnect_get_config()) {
++
++        $form['fbconnect_button'] = array(
++          '#type' => 'item',
++          '#description' => t('Register using Facebook'),
++          '#value' => fbconnect_render_button(),
++          '#weight' => 1,
++          '#id' => 'fbconnect_button',
++        );
++      }
+       break;
+ 
+     // Warning msg on user edit.

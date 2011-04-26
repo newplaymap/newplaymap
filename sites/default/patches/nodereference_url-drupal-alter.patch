@@ -1,0 +1,34 @@
+--- nodereference_url.module.orig	2010-04-07 00:10:25.000000000 -0700
++++ nodereference_url.module.new.orig	2010-07-19 17:20:22.000000000 -0700
+@@ -249,6 +249,10 @@ function nodereference_url_widget_settin
+           '#element_validate' => array('nodereference_url_fallback_validate'),
+           '#weight' => -3,
+         );
++        
++        // Add hook_widget_settings_fallback_alter() to allow other modules to add their own fallback options.
++        drupal_alter('widget_settings_fallback', $form);
++        
+         $form['edit_fallback'] = array(
+           '#type' => 'checkbox',
+           '#title' => t('Use fallback behavior when editing content'),
+@@ -396,6 +400,12 @@ function nodereference_url_widget(&$form
+         '#element_validate' => array('nodereference_url_autocomplete_validate'),
+       );
+     }
++    // Fallback to hook_widget_fallback_alter() to allow other modules to provide their own fallbacks.
++    else {
++      $element = array();
++      drupal_alter('widget_fallback', &$element, $field, $items, $delta);
++      
++    }
+   }
+ 
+   if (isset($referenced_nid) && (empty($element['#type']))) {
+@@ -406,7 +416,6 @@ function nodereference_url_widget(&$form
+       '#default_value' => $referenced_nid,
+     );
+   }
+-
+   return $element;
+ }
+ 

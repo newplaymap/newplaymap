@@ -1,0 +1,129 @@
+<?php
+
+/**
+ * Initialize module.
+ *
+ * Add javascript.
+ */
+function newplay_init() {
+  jquery_ui_add('ui.dialog');
+  jquery_ui_add('ui.accordion');
+
+  // Add custom newplay interaction.
+  drupal_add_js(drupal_get_path('module', 'newplay') .
+    '/js/newplay.js');
+}
+
+/**
+ * Implementation of hook_form_alter()
+ */
+function newplay_form_alter(&$form, $form_state, $form_id) {
+  $form['revision_information']['#access'] = user_access('administer nodes');
+  
+  if (isset($form['type']) && isset($form['#node']) && $form['type']['#value'] .'_node_form' == $form_id) {
+    
+    // Add organization form
+    if ($form_id == 'organization_node_form') {
+
+      // dpr($form);
+
+      $form['taxonomy']['#title'] = 'Detailed information';
+      $form['taxonomy']['#collapsible'] = 0;
+ 
+    } else {
+      // $form['#redirect'] = '';
+    }
+  }
+  
+  
+  /* Make changes to invite form */
+  if ($form_id == 'invite_form') {
+    $form['email']['#attributes'] = array(
+      'placeholder' => 'email'
+    );
+    $form['email']['#description'] = t('Enter an email address of a friend you would like to invite to the map');
+  }
+
+}
+
+
+/**
+* Implements hook_mail_alter().
+*/
+function newplay_mail_alter(&$message) {
+  $email_name = 'New Play Map';
+  $site_mail = variable_get('site_mail', '');
+  if (!empty($email_name) && $site_mail == $message['from']) {
+    $message['from'] = mime_header_encode($email_name) .' <'. $site_mail .'>';
+    $message['headers']['From'] = mime_header_encode($email_name) .' <'. $site_mail .'>';
+  }
+}
+
+
+/**
+* Implementation of hook_action_info().
+*/
+function newplay_action_info() {
+  return array(
+    'newplay_first_login_action' => array(
+      'description' => t('Display a message during first login'),
+      'type' => 'user',
+      'configurable' => FALSE,
+      'hooks' => array(
+        'user' => array('login'),
+      ),
+    ),
+    'newplay_feed_prompt_action' => array(
+      'description' => t('Sets up jQuery for prompting feed links'),
+      'type' => 'node',
+      'configurable' => FALSE,
+      'hooks' => array(
+        'user' => array('insert'),
+        ),
+      )  
+  );
+}
+
+
+/**
+* Implementation of a Drupal action.
+* 
+*/
+function newplay_first_login_action(&$object, $context = array()) {
+  // get the uid from the object
+  if (isset($object->uid)) {
+    $uid = $object->uid;
+  }
+  elseif (isset($context['uid'])) {
+    $uid = $context['uid'];
+  }
+  else {
+    global $user;
+    $uid = $user->uid;
+  }
+  
+  // check to see if this is the first time the user logged in
+  if ($object->access == 0) {
+    drupal_add_js(array('newplay' =>  array('firstLogin' => 'true')), 'setting');
+  }
+}
+
+
+/**
+* Implementation hook_nodeapi
+* 
+*/
+// function newplay_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+//   dsm($op);
+//   dsm($node->type);
+//   switch($op) {
+//     case 'insert': 
+//       
+//     break;
+//     
+//     case 'update':
+//     break;
+//   }
+// }
+
+?>

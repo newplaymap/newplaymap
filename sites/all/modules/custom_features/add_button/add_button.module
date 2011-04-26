@@ -1,0 +1,52 @@
+<?php
+
+/* 
+ * Implementation of hook_block()
+ */
+// Make block until mini panels start behaving
+function add_button_block($op = 'list', $delta = 0, $edit = array()) {
+  switch($op) {
+    // $blocks = array();
+    case 'list':
+      $blocks[0] = array(
+        'info' => t('Universal Add Button'),
+        'status' => 1,
+        'region' => 'header'
+      );
+      
+      return $blocks;
+    break;
+    
+    case 'view':
+      if ($delta == 0) {
+        $items = array();
+        $items[] = l('Add Organization', 'node/add/organization', array(
+          'attributes' => array(
+            'class' => 'add-button-option', 
+            'id' => 'add-button-org'
+          )
+        ));
+        $items[] = l('Add Play Event', 'node/add/event', array(
+          'attributes' => array(
+            'class' => 'add-button-option', 
+            'id' => 'add-button-event'
+          )
+        ));
+        
+        $items[] = l('Add Artist Profile', 'node/add/artist', array(
+          'attributes' => array(
+            'class' => 'add-button-option', 
+            'id' => 'add-button-artist'
+          )
+        ));
+        
+        $block = array(
+          'content' => theme('item_list', $items, t('Add to the Map'), 'ul', array(
+            'id' => 'add-button-list'
+          ))
+        );
+      }
+      return $block;
+    break;
+  }
+}

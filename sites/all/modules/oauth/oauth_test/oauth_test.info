@@ -1,0 +1,11 @@
+; $Id: oauth_test.info,v 1.1.2.1 2008/11/11 03:07:08 brmassa Exp $
+core            = "6.x"
+description     = "A generic client that might be used by developers that want to integrate their modules with OAuth."
+name            = "OAuth Client Test"
+
+; Information added by drupal.org packaging script on 2009-05-29
+version = "6.x-2.02"
+core = "6.x"
+project = "oauth"
+datestamp = "1243624550"
+

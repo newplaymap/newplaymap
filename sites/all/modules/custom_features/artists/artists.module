@@ -1,0 +1,16 @@
+<?php
+
+include_once('artists.features.inc');
+
+
+/**
+ * Implementation of hook_form_alter()
+ */
+function artists_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'artist_node_form') {
+    $form['field_location'][0]['#location_settings']['form']['fields']['street']['collect'] = '1';
+    $form['field_location'][0]['#location_settings']['form']['fields']['city']['collect'] = '1';
+    $form['field_location'][0]['#location_settings']['form']['fields']['province']['collect'] = '1';
+  }
+  
+}

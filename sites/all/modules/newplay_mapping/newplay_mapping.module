@@ -1,0 +1,41 @@
+<?php
+
+include_once('newplay_mapping.features.inc');
+
+function newplay_mapping_nodeapi(&$node, $op) {
+  if ($op == 'load' && arg(1) == $node->nid && arg(2) != 'edit' && $_COOKIE['has_js']) {
+    if ($node->type == 'organization' || $node->type == 'play' || $node->type == 'artist') {      
+      $alias = '/' . drupal_get_path_alias('node/' . $node->nid);
+      
+      if (base_path() == '/') {
+        // that's the only way it works
+        drupal_goto('', NULL, $alias);
+      }
+    } else if ($node->type == 'event') {
+      $play_alias = '/' . drupal_get_path_alias('node/' . $node->field_related_play[0]['nid']);
+      
+      if (base_path() == '/') {
+        // that's the only way it works
+        $query = '?event=' . $node->nid;
+        drupal_goto('', NULL, $play_alias . $query);
+      }
+    }
+  }
+}
+
+
+/**
+ * Implementation of hook_form_alter
+ */
+function newplay_mapping_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'views_exposed_form') {
+    $form['filter_reset'] = array(
+      '#type' => 'markup',
+      '#value' => l(t('Reset Filters'), '', array(
+        'attributes' => array(
+          'id' => 'filter_reset'
+        )
+      ))
+    );
+  }
+}

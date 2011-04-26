@@ -1,0 +1,10 @@
+; $Id: terms_of_use.info,v 1.1.2.3 2008/06/03 17:31:15 chill35 Exp $
+name = Terms of Use
+description = Adds terms of Use to the registration page.
+core = 6.x
+; Information added by drupal.org packaging script on 2010-05-15
+version = "6.x-1.12"
+core = "6.x"
+project = "terms_of_use"
+datestamp = "1273929007"
+

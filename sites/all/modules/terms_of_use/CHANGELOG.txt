@@ -1,0 +1,64 @@
+// $Id: CHANGELOG.txt,v 1.1.2.3 2010/05/15 13:05:40 karst Exp $
+
+May 15, 2010
+--------------------
+Releasing new version 6.x-1.12
+#797200 by nyleve101: Fixed When supplying a terms page link, we now show the entire terms on the page.
+
+May 11, 2010
+--------------------
+Releasing new version 6.x-1.11
+Adding CHANGELOG.txt
+
+May 10, 2010
+--------------------
+Minor codingstyle change.
+Changed the readme file and added some more current information and CVS tag.
+Renamed the i18nstrings wrapper and missed one occasion.
+Update to i18nstrings API
+
+May 9, 2010
+--------------------
+#299416 by Kars-T, roychri | Chill35, univac, errement, miro_dietiker: Added translations support.
+
+May 5, 2010
+--------------------
+Changed filter of the checkbox lable to filter_xss_admin so you can use basic HTML but be XSS safe.
+Changed filter of the fieldset to filter_xss so you can use basic HTML but be XSS safe.
+
+May 2, 2010
+--------------------
+#719946 by iva2k | Kars-T: Fixed TOC Checkbox when admin creates an account - feature or bug?
+Changed name of the checkbox from I_agree to terms_of_use.
+Changed the algorthm that loads the terms node.
+Some code cleanup.
+Basic simpletest coverage ready.
+Coder Module cleanup.
+#421346 by roychri | Chill35: Fixed Double encoding on @link.
+Adding spanish translation.
+Changed german language file name to de.po
+
+May 2, 2010
+--------------------
+#554322 by jennifer.chang, Kars-T: Fixed notice: Undefined index: terms_of_use_node_id() .
+
+April 29, 2010
+--------------------
+Extended simpletest.
+Fieldsetname in the warning message was not translated.
+
+April 26, 2010
+--------------------
+Working on terms_of_use_form_user_register_alter and i18n strings.
+Skeleton test.
+Directory /cvs/drupal-contrib/contributions/modules/terms_of_use/tests added to the repository
+
+April 12, 2010
+--------------------
+#719946 by iva2k | Coyote: Fixed TOC Checkbox when admin creates an account - feature or bug?
+Coder module review fixes.
+#577966 by James Andres | quadbyte: Added Integration with checkbox_validate() module.
+#551932 by ZoltÃ¡n Balogh | seabrawk: Ckeckbox Typo.
+#418960 by hefox | pban02: Fixed Unknown column 'n.language'.
+Fixed spaces after line end.
+

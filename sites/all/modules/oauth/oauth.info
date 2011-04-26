@@ -1,0 +1,11 @@
+; $Id: oauth.info,v 1.5.2.1 2008/10/08 04:26:55 brmassa Exp $
+core            = "6.x"
+description     = "Enable the world wide standard OAuth for authentication."
+name            = "OAuth"
+
+; Information added by drupal.org packaging script on 2009-05-29
+version = "6.x-2.02"
+core = "6.x"
+project = "oauth"
+datestamp = "1243624550"
+

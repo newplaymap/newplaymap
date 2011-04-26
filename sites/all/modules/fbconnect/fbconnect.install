@@ -1,0 +1,112 @@
+<?php
+// $Id: fbconnect.install,v 1.14 2010/04/02 06:36:47 vectoroc Exp $
+
+/**
+ * @file
+ * Implementation of hook_install().
+ */
+function fbconnect_install() {
+  drupal_install_schema('fbconnect'); 
+  _fbconnect_change_user_mail_field();
+}
+ 
+/** 
+ * Implementation of hook_uninstall(). 
+ */ 
+function fbconnect_uninstall() { 
+  drupal_uninstall_schema('fbconnect');
+  _fbconnect_change_user_mail_field('uninstall');
+  // Delete our module's variable from the variables table. 
+  variable_del('fbconnect_key');
+  variable_del('fbconnect_skey');  
+  variable_del('fbconnect_base_domaine');
+  variable_del('fbconnect_connect_url');
+  variable_del('fbconnect_language_code');
+  variable_del('fbconnect_debug');
+  
+  variable_del('fbconnect_fast_reg');
+  variable_del('fbconnect_reg_options');
+  variable_del('fbconnect_loginout_mode');
+  variable_del('fbconnect_invite_msg');
+  variable_del('fbconnect_invite_name');  
+  variable_del('fbconnect_invite_dest');
+  variable_del('fbconnect_button');  
+  variable_del('fbconnect_button_text');
+  variable_del('fbconnect_pic_allow');
+  variable_del('fbconnect_pic_size');
+  variable_del('fbconnect_pic_logo');
+}
+
+/** 
+ * Implementation of hook_schema(). 
+ */ 
+function fbconnect_schema() { 
+  $schema['fbconnect_users'] = array( 
+    'fields' => array( 
+      'uid'            => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0), 
+      'fbuid'          => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0, 'size' => 'big'),
+      'timestamp'      => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+    ), 
+    'primary key' => array('fbuid'), 
+  );
+    
+  return $schema; 
+}
+
+function fbconnect_update_6002() {
+//  variable_set('fbconnect_reg_feed_id', FBCONNECT_REG_FEED_BUNDLEID);
+//  variable_set('fbconnect_com_feed_id', FBCONNECT_COMMENT_FEED_BUNDLEID);
+
+  $ret = array();
+  db_drop_field($ret, 'fbconnect_users', 'import_setting');
+  db_drop_field($ret, 'fbconnect_users', 'avatar');
+  db_drop_field($ret, 'fbconnect_users', 'visibility');
+
+  return $ret;
+}
+
+/**
+ * Alter fbuid field to allow for 64-bit facebook ids
+ */
+function fbconnect_update_6003() {
+  $ret = array();
+  db_drop_primary_key($ret, 'fbconnect_users');
+  db_change_field($ret, 'fbconnect_users', 'fbuid', 'fbuid',
+    array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0, 'size' => 'big'),
+    array('primary key' => array('fbuid'))
+  );
+  return $ret;
+}
+
+function fbconnect_update_6004() {
+  return _fbconnect_change_user_mail_field();
+}
+
+
+/**
+ * delete unnesessary bundle_ids from system table
+ */
+function fbconnect_update_6005() {
+  $res = array();
+  variable_del('fbconnect_reg_feed_id');
+  variable_del('fbconnect_com_feed_id');
+  return $res;
+}
+
+/**
+ * Implementation of hook_schema_alter()
+ * @param array $schema
+ */
+function fbconnect_schema_alter(&$schema) {
+  $schema['users']['fields']['mail']['length'] = 320;
+}
+
+/**
+ * Extend maximum email length to 320 chars
+ */
+function _fbconnect_change_user_mail_field($action = 'install') {
+  $schema = array('users' => drupal_get_schema('users'));
+  if ($action == 'install') fbconnect_schema_alter($schema);
+  db_change_field($res, 'users', 'mail', 'mail', $schema['users']['fields']['mail']);	
+  return $res;
+}

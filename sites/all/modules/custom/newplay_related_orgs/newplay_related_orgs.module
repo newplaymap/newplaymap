@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Implementation of hook_ctools_plugin_directory().
+ *
+ * It simply tells panels where to find the .inc files that define various
+ * args, contexts, content_types. In this case the subdirectories of
+ * taxonomy_content/panels are used.
+ */
+function newplay_related_orgs_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' && !empty($plugin)) {
+    return "plugins/$plugin";
+  }
+}

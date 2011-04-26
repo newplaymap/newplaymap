@@ -1,0 +1,3 @@
+[submodule "openlayers_plus"]
+	path = openlayers_plus
+	url = git://github.com/developmentseed/openlayers_plus.git

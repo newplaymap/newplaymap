@@ -1,0 +1,1059 @@
+/* General styles */
+
+  body {
+    font-size: 16px;
+    line-height: 21px;
+    font-family: Candara, Verdana, sans-serif;
+    color: #231f20;
+    background: url(../images/page-bg.png) 17% 0 no-repeat;
+  }
+  
+  /* override html-reset.css:53 */
+  body, caption, th, td, input, textarea, select, option, legend, fieldset {
+    font-family: Candara, Verdana, sans-serif;
+  }
+
+  a {
+    color: #6f84c2;
+  }
+
+/* Header */
+
+
+/* Logo */
+
+  #name-and-slogan {
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+  }
+  
+  #name-and-slogan #site-name {
+    font-size: 24px;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: normal;
+    margin: 0;
+    padding: 0;
+  }
+
+  #name-and-slogan #site-name strong {
+    font-weight: normal; /* override strong tag that gets injected */
+  }
+  
+    html.cufon-active #name-and-slogan {
+      font-size: 28px;
+    }
+
+/* Top right links */
+  
+  .top-right-links-container {
+    position: absolute;
+    top: 18px;
+    right: 0;
+    text-align: right;
+  }
+  
+  .top-right-links-container .welcome,
+  .top-right-links-container .my-account {
+    padding-right: 1em;
+  }
+
+/* Header Add Buttons */
+  
+  /* Hide when javascript is available */
+  .js #block-add_button-0 {
+    display: none;
+  }
+  
+  .js #block-views--exp-organizations-panel_pane_1 {
+    display: none;
+  }
+  
+  .js #block-invite-0 {
+    display: none;
+  }
+
+  #header-blocks {
+    position: absolute;
+    width: 50%;
+    height: 42px; /* Height left over from Map */
+    margin-left: 25%;
+    text-align: center;
+    margin-top: 18px;
+  }  
+  
+    /* Header buttons */
+    /* Additional default button style in Misc styles */
+    #header-blocks a#add_button,
+    #header-blocks a#filter_button,
+    #header-blocks a#invite_button {
+      display: inline;
+      padding: 8px 24px;
+      margin: 0 4px;
+    }
+      
+      /* Universal Add Button List */
+      
+      ul#add-button-list {
+        margin: 0;
+        padding: 0;
+      }
+      
+      ul#add-button-list,
+      ul#add-button-list li {
+        list-style: none;
+      }
+      
+      ul#add-button-list li {
+        margin: 0;
+        padding: 7px 13px;
+        border-bottom: 1px dashed #CCCCCC;
+      }
+      
+      ul#add-button-list li.last {
+        border-bottom: 0;
+      }
+      
+/* Embed Badge */
+
+  #embed-badge-block {
+    clear: both;
+    margin-top: 21px;
+  }
+
+  /* Hide when javascript is available */
+  .js #embed-badge-block form {
+    display: none;
+  }
+  
+  /* Nicer styling for the form elements */
+  #embed-badge-show {
+    font-size: 0.8em;
+  }
+  
+  .js #embed-badge-block form input {
+    width: 100%;
+  }
+
+/* Invite System */
+  .js #edit-contact-email-wrapper {
+    display: none;
+  }
+  
+  table#invites {
+    width: 100%;
+  }
+  
+  form#invite-form {
+    padding: 7px 13px;
+  }
+  
+  form#invite-form .form-item .description {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  
+
+/* Newsfeed */
+  
+  /* @TODO: root out all of this feeds-wrapper stuff -- it's no longer being used on the site */
+  #feeds-wrapper {
+    display: none;
+  }
+  #feeds-wrapper .item-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+    #feeds-wrapper .item-list ul li {
+      margin: 0;
+      padding: 0.5em 3% 0.5em 0;
+      font-size: 1em;
+      line-height: 1em;
+    }
+      /* Author and created on the same line */
+      #feeds-wrapper .item-list ul li .views-field-field-feed-item-author-value,
+      #feeds-wrapper .item-list ul li .views-field-field-feed-item-author-value p,
+      #feeds-wrapper .item-list ul li .views-field-created,
+      #feeds-wrapper .item-list ul li .views-field-created p {
+        display: inline;
+      }
+      
+      /* 
+       * Prevent flash of extra content while the site is loading
+       * Stying for js degredation
+       */
+      #feeds-wrapper .item-list ul li {
+        display: none;
+      }
+      #feeds-wrapper .item-list ul li.views-row-first {
+        display: list-item;
+      }
+      
+/* Related Events */
+
+  .views-field-field-partner-org-nid {
+    font-size: 0.9em;
+  }
+
+/* Accessibility */
+
+  #skip-to-nav {
+    float: left;
+  }
+  
+  #skip-to-nav a:link,
+  #skip-to-nav a:visited {
+    color: black; /* whatever color the background is */
+  }
+  
+  #skip-to-nav a:active,
+  #skip-to-nav a:focus {
+    color: white; /* contrasting color to background */
+  }
+
+
+/* Usability */
+
+  #edit-title {
+    font-size: 2em;
+  }
+  
+  a,
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:hover,
+  a:active {
+    text-decoration: underline;
+  }
+  
+
+/* Layout */
+
+  .with-navbar #content,
+  .with-navbar #sidebar-primary,
+  .with-navbar #sidebar-secondary {
+    margin-top: 1.5em;
+  }
+  
+  #header {
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 28px;
+    right: 28px;
+    background: url(../images/header-bg.png) 78% 0 no-repeat;
+  }
+  
+  #page {
+    width: 100%;
+    margin-top: 60px;
+  }
+  
+  #main-wrapper {
+    position: static; /* Override Zen so that absolute #navigation works */
+  }
+  
+  .not-front #footer {
+    display: none;
+  }
+
+  
+  /* Full width front page */
+  
+  .front.no-sidebars #page-wrapper {
+    width: 100%;
+  }
+
+
+
+/* Utilities */
+
+  /*
+   * Markup free clearing (See: http://www.positioniseverything.net/easyclearing.html )
+   */
+  .clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+
+/* Misc styles */
+  
+  /* Nicer style on the node edit / add forms */
+  input#edit-title {
+    width: 100%;
+  }
+  
+  /* New throbber on title autocomplete fields */
+  /* Overrides system.css */
+  html.js input#edit-title.form-autocomplete {
+    background-image: url(../images/spinner-32x32-on-white.gif);
+    background-position: 100% -100px;
+  }
+  
+    html.js input#edit-title.form-autocomplete.throbbing {
+      background-position: 99% 2px;
+    }
+
+
+  /* Hide Facebook login */
+  .js #block-block-4 {
+    display: none;
+  }
+  
+  /* Discrete OpenID login */
+  .openid-link {
+    position: fixed;
+    bottom: 10px;
+    left: 30px;
+  }
+
+  /* Apply default button style */
+  /* Add new declarations here as needed */
+  .edit-button,
+  #header-blocks a#add_button,
+  #header-blocks a#filter_button,
+  #header-blocks a#invite_button,
+  .popup-container .overlay .pane-edit-link ul li a,
+  .popup-container .overlay .pane-event ul li a,
+  .popup-container .overlay #feed_button {
+    color: #FFFFFF;
+    padding: 8px 18px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    background: #6f84c2 url(../images/button-sprite.png) 0 0 no-repeat;
+  }
+  
+      /* Button :hover state */
+      .edit-button:hover,
+      #header-blocks a#add_button:hover,
+      #header-blocks a#filter_button:hover,
+      #header-blocks a#invite_button:hover, 
+      .popup-container .overlay .pane-edit-link ul li a:hover,
+      .popup-container .overlay .pane-event ul li a:hover,
+      .popup-container .overlay #feed_button:hover {
+        background-position: -217px 0;
+        text-decoration: none;
+      }
+      
+      /* Button :active state */
+      .edit-button:active,
+      #header-blocks a#add_button:active,
+      #header-blocks a#filter_button:active,
+      #header-blocks a#invite_button:active,
+      .popup-container .overlay .pane-edit-link ul li a:active,
+      .popup-container .overlay .pane-event ul li a:active,
+      .popup-container .overlay #feed_button:active {
+        background-position: -434px 0;
+        text-decoration: none;
+      }
+
+
+  /* Small button style */
+  /* Add new declarations here as needed, and also add them above */
+  .edit-button,
+  .popup-container .overlay .pane-edit-link ul li a {
+    font-size: 12px;
+    padding: 1px 8px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+  }
+  
+  /* Edit custom title autocomplete */
+  
+  /* Make the autocomplete references inline */
+  .js #edit-title-custom-autocomplete .reference-autocomplete {
+    display: inline;
+  }
+  
+  .js #edit-title-custom-autocomplete ul {
+    padding-left: 0; /* override html-reset.css */
+  }
+  
+  /* Don't need bullets when we got buttons */
+  .js #edit-title-custom-autocomplete ul,
+  .js #edit-title-custom-autocomplete ul li {
+    list-style: none;
+  }
+    
+    /* Put in some padding to give this list some breathing room */
+    .js #edit-title-custom-autocomplete ul li {
+      margin-bottom: 7px;
+    }
+
+/* Navigation */
+
+#navigation {
+  position: absolute;
+  top: 33px;
+  left: 28px;
+  right: 28px;
+}
+
+/* Zen overrides */
+#navigation {
+  float: none;
+  height: auto;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  width: auto;
+}
+
+#navigation ul.links {
+  margin: 0;
+  padding: 0;
+}
+
+#navigation ul.links li {
+  display: inline;
+  padding: 0 1em 0 0;
+  margin: 0;
+}
+
+
+#navigation #primary ul li a {
+}
+
+/* Home */
+  
+  /* Content Header */
+  .front #content {
+    width: 66%;
+  }
+  
+  .front #content .messages {
+    margin-left: 55px;
+  }
+  
+  
+  
+  /* Messages close box */
+  
+  .js .messages {
+    position: relative;
+    padding-right: 25px; /* override messages.css */
+  }
+  
+  .js a.newplay-close-box {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    height: 17px;
+    width: 17px;
+    display: block;
+    background: url(../images/ui/close-red.png) top center no-repeat;
+    text-indent: -10000em;
+  }
+  
+    /* Active state */
+    .js a.newplay-close-box:active {
+      background-image: url(../images/ui/close-red-active.png);
+    }
+    
+  /* Credit */
+  
+  .js .olControlAttribution,
+  .js .front #footer-message {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .js .olControlScaleLine {
+    bottom: 28px;
+  }
+  
+  .js .front #footer {
+    position: absolute;
+    bottom: 5px;
+    left: 8px;
+    padding: 0;
+    margin: 0;
+    z-index: -1;
+  }
+
+
+/* Module fixes */
+
+  /* Admin Menu */
+  
+  body.admin-menu {
+    background-position: 17% 21px; 
+  }
+  
+  body.admin-menu #header {
+    height: 60px;
+    position: absolute;
+    top: 21px;
+    left: 28px;
+    right: 28px;
+  }
+  
+  body.admin-menu #page {
+    margin-top: 81px;
+  }
+  
+  body.admin-menu #navigation {
+    top: 54px;
+  }
+  
+  .js body.admin-menu.front .openlayers_map_fullscreen {
+    top: 81px;
+  }
+  
+  .js body.admin-menu.front #panel-default-overlay,
+  .js body.admin-menu.front .popup-container {
+    top: 81px;
+  }
+
+  
+  
+  /* Views */
+  
+    div.view div.views-admin-links ul.links li,
+    .admin-links ul.links li,
+    div.panel-pane div.admin-links li {
+      background-color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    
+    div.view div.views-admin-links ul.links {
+      margin: 0;
+    }
+    
+    div.view {
+      position: relative;
+    }
+    
+    div.view div.views-admin-links,
+    .admin-links {
+      margin-top: 0;
+      line-height: 0.7em;
+      right: 0;
+      text-align: right;
+    }
+    
+    div.view div.views-admin-links ul.links li a {
+      padding: 5px;
+    }
+    
+    .admin-links ul.links li a,
+    div.view div.admin-links-hover a, 
+    div.view div.admin-links:hover a,
+    .views-admin-links ul.links li a,
+    div.view div.views-admin-links-hover a, 
+    div.view div.views-admin-links:hover a,
+    div.panel-pane div.admin-links li a {
+      color: white;
+    }
+
+/* Overlay */
+  /* General styles */
+  .panel-overlay {
+  }
+  
+  .panel-overlay .panel-col-top,
+  .panel-overlay .panel-col-bottom { 
+    width: 100%; 
+    clear: both;
+  }
+
+  .panel-overlay .panel-col-top .inside {
+    margin-bottom: .5em;
+  }
+
+  .panel-overlay .panel-col-first { 
+    float: left; 
+    width: 25%;
+  }
+
+  .panel-overlay .panel-col .inside { 
+    margin: 0 .5em 1em .5em;
+  }
+
+  .panel-overlay .panel-col { 
+    float: left; 
+    width: 25%; 
+  }
+
+  .panel-overlay .panel-col .inside { 
+    margin: 0 .5em 1em .5em;
+  }
+
+  .panel-overlay .panel-col-last { 
+    float: left; 
+    width: 45%; 
+  }
+
+  .panel-overlay .panel-col-last .inside { 
+    margin: 0 0 1em .5em;
+  }
+
+  .panel-overlay .panel-separator {
+    margin: 0 0 1em 0;
+  }
+  
+  /* Make Organization info labels more discernable */
+  .panel-overlay .view-organization-info label {
+    font-weight: bold;
+  }
+  
+  /* Display buttons as blocks */
+  .popup-container .overlay .pane-edit-link ul li a,
+  .popup-container .overlay .pane-event ul li a,
+  .popup-container .overlay #feed_button {
+    display: block;
+  }
+  
+  /* Main area */
+  
+    
+  /* Content Sections */
+  .js .panel-overlay .additional-info {
+    display: none; /* prevent flash on page load */
+  }
+  
+  .panel-overlay .additional-info h2.additional-info-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    background-color: #000000;
+    background-image: none;
+    color: #FFFFFF;
+  }
+  
+  .js .panel-overlay .additional-info .ui-icon {
+    float: left;
+  }
+  
+  .js .panel-overlay .additional-info {
+    
+  }
+  
+  /* Feeds */
+  
+  .js .panel-overlay #pane-feeds-video.pane-feeds-panel-pane {
+    height: 320px;
+  }
+  
+  .js .panel-overlay #pane-feeds-photo.pane-feeds-panel-pane {
+    height: 320px;
+  }
+  
+  .js .panel-overlay #pane-feeds-blog-twitter.pane-feeds-panel-pane {
+    height: 150px;
+  }
+
+
+
+  /* Ensemble flag */
+  .js .panel-overlay .views-field-field-ensemble-value {
+    font-style: italic;
+    font-size: 13px;
+    padding: 7px 0 0 0;
+  }
+  
+  /* Loading image */
+  .loading-wrapper {
+    padding: 30px;
+    text-align: center;
+  }
+  
+  
+/* Links in Overlay */
+
+.js #panel-default-overlay a {
+  color: #B4C0F0;
+}
+  
+
+/* Show Today */
+
+/* Overlay title */
+/* @TODO: move this someplace more generic after overlay titles have been refactored to be consistent */
+
+.js #panel-default-overlay h2.overlay-title {
+  margin: 0 0 15px 0;
+  font-size: 26px;
+  color: #FFFFFF;
+}
+
+
+/* hide org and artist listings at first */
+.js #panel-default-overlay #today-organizations,
+.js #panel-default-overlay #today-artists {
+  display: none;
+}
+
+/* Show Today: Chooser */
+
+.js #panel-default-overlay ul.overlay-filter-headers {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 30px 0;
+  background: transparent url(../images/showtoday-divider.png) 50% 100% no-repeat;
+}
+
+.js #panel-default-overlay ul.overlay-filter-headers li {
+  list-style: none;
+  padding-bottom: 5px;
+  cursor: pointer; 
+  font-size: 18px;
+}
+
+.js #panel-default-overlay ul.overlay-filter-headers li a {
+  display: block;
+  padding: 10px 30px 10px 48px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-position: 10px 50%; /* apply to all buttons */
+  background-repeat: no-repeat; /* apply to all buttons */
+  text-decoration: none;
+}
+  
+  /* hover state */
+  .js #panel-default-overlay ul.overlay-filter-headers li a:hover {
+    background-color: #393E56;
+    color: #FFFFFF;
+  }
+  
+  /* selected state */
+  .js #panel-default-overlay ul.overlay-filter-headers li.active a,
+  .js #panel-default-overlay ul.overlay-filter-headers li.active a:hover,
+  .js #panel-default-overlay ul.overlay-filter-headers li a:active {
+    background-color: #6f84c2;
+    color: #FFFFFF;
+  }
+  
+
+  /* events icon */
+  .js #panel-default-overlay ul.overlay-filter-headers li#today-events-title a {
+    background-image: url(../images/showtoday-menu-icon-event.png);
+  }
+
+  /* orgs icon */
+  .js #panel-default-overlay ul.overlay-filter-headers li#today-organizations-title a {
+    background-image: url(../images/showtoday-menu-icon-org.png);
+  }
+  
+  /* artists icon */
+  .js #panel-default-overlay ul.overlay-filter-headers li#today-artists-title a {
+    background-image: url(../images/showtoday-menu-icon-artist.png);
+  }
+  
+  
+  /* Show Today: General Listings */
+  
+    /* padding on all "today" listings */
+    .js #panel-default-overlay .today-listing .item-list ul li {
+      padding-left: 48px;
+      overflow: auto;
+      width: inherit;
+    }
+    
+     /* more prominent title */
+    .js #panel-default-overlay #today-events .views-field-field-related-play-nid .field-content,
+    .js #panel-default-overlay .views-field-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    /* position avatar */
+    .js #panel-default-overlay #today-organizations .views-field-field-org-logo-fid,
+    .js #panel-default-overlay #today-artists .views-field-field-artist-photo-fid {
+      float: left;
+      margin-left: -45px;
+      padding-top: 3px;
+    }
+  
+    /* Show Today: Events Listing */
+    
+      /* inject icon to the left of event listing */
+      .js #panel-default-overlay #today-events .item-list ul li {
+        background: transparent url(../images/icon-listing-event.png) 10px 5px no-repeat;
+      }
+      
+      /* byline and artist name on same line */
+      .js #panel-default-overlay #today-events .views-field-field-artist-nid label,
+      .js #panel-default-overlay #today-events .views-field-field-artist-nid .field-content {
+        display: inline;
+      }
+      
+      /* City and state on the same line */
+      .js #panel-default-overlay #today-events .views-field-city,
+      .js #panel-default-overlay #today-events .views-field-province {
+        display: inline;
+      }
+     
+      /* date styled to fade backward a bit */
+      .js #panel-default-overlay #today-events .views-field-field-event-date-value .field-content {
+        text-transform: uppercase;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        color: #999999;
+      }
+      
+    /* Show Today: Org listings */
+    
+      /* org type label on the same line as list */
+      .js #panel-default-overlay #today-organizations .views-field-field-org-type-nid div.field-content {
+        display: inline;
+      }
+
+    
+    
+
+/* Open Layers */
+.openlayers-blockswitcher .base .layers-content label {
+  display: none;
+  }
+#panel-default-overlay,
+.popup-container {
+  padding: 0px;
+  }
+.popup-container .popup-content{
+  padding: 10px;
+  color: #d0d4d3;
+  }
+#panel-default-overlay,
+.popup-container .overlay {
+  color: #d0d4d3;
+  padding: 0;
+  background: rgba(0, 0 ,0, 0.85);
+  }
+.popup-container .popup-inner {
+  background: rgba(0, 0 ,0, 0.85);
+  }
+
+#panel-default-overlay {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#panel-default-overlay ul {
+  list-style-image: none;
+  list-style-type: none;
+  padding: 0 0 0 0;
+  }
+#panel-default-overlay ul li.views-row {
+  padding: 0 0 0 0;
+  margin: 1em 0 0 0;
+  }
+/* (temporary fix) 
+ .additional-info in the map has an opaque background
+ because the accordion doesn't increase .node-content height
+ with transparency, the two competing backgrounds look funny
+*/
+.additional-info {
+  color: #FFFFFF;
+  background: rgba(0, 0 ,0, 1);
+  }
+/* emphasize date with a brighter color */
+.popup-container .date-display-start,
+.popup-container .date-display-end,
+.popup-container .date-display-single {
+  color: #FFFFFF;
+  }
+/* custom close box */
+#panel-default-overlay .close-btn,
+.popup-container .overlay .close-btn,
+.popup-container .popup-inner .close-btn {
+  background: url("../openlayers/img/close.png") no-repeat;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  margin: 10px 5px 0 0;
+  }
+.openlayers-views-map #popup .olPopupCloseBox:active {
+  background: url("../openlayers/img/close-active.png") no-repeat;
+  }
+.openlayers-views-map #popup .olPopupCloseBox:active {
+  background: url("../openlayers/img/close-active.png") no-repeat;
+  }
+div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+  width: 85%;
+  height: 50px;
+  }
+
+/* @TODO there is still some layout issues with these panels. 
+   It is possible for there to be two feeds wrappers on a page 
+   if the wrapper is loaded via ajax.
+*/
+.overlay .panel-overlay .panel-col,
+.overlay .panel-overlay .panel-col-first,
+.overlay .panel-overlay .panel-col-last{
+/*
+  float: none;
+  width: auto;
+  clear: right;
+*/
+}
+
+/* Hide panels title for organizations (temporary) */
+.pane-organizations-panel-pane-1 h2 {
+  display: none;
+  }
+.pane-organizations-panel-pane-1 .view-organizations h2  {
+  display: block;
+  }
+/* target content inside popup node. */
+#panel-default-overlay .inside,
+.popup-container .overlay .inside {
+  padding: 10px;
+  }
+  /* Organization overlay */
+  .popup-container .overlay .pane-node-title {
+    font-size: 21px;
+    color: #FFFFFF;
+    border-bottom: 1px dashed #CCCCCC;
+    padding-bottom: 7px;
+    padding-right: 85px; /* make room for Edit link */
+    margin-bottom: 7px;
+  }
+  .popup-container .overlay .pane-field-org-logo,
+  .popup-container .overlay .pane-field-artist-photo {
+    float: left;
+    padding-top: 14px;
+    padding-right: 14px;
+  }
+  .popup-container .overlay .pane-field-location {
+    padding-top: 14px;
+    float: left;
+    width: 207px;
+  }
+  /* Edit link */
+  .popup-container .overlay .pane-edit-link {
+    position: absolute;
+    top: 8px;
+    right: 35px;
+  }
+    /* remove list styling */
+    .popup-container .overlay .pane-edit-link ul,
+    .popup-container .overlay .pane-edit-link ul li,
+    .popup-container .overlay .pane-event ul,
+    .popup-container .overlay .pane-event ul li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+     /* Main overlay area layout */
+    .popup-container .overlay  .panel-overlay-main {
+    }
+    
+    .popup-container .overlay  .panel-overlay-links {
+    }
+    
+    .popup-container .overlay .pane-event,
+    .popup-container .overlay #feed_button {
+      width: 80px;
+      font-size: 13px;
+    }
+    
+    .popup-container .overlay .pane-event {
+      padding-top: 14px;
+      padding-bottom: 7px;
+    }
+    
+    .popup-container .overlay .pane-event ul li a,
+    .popup-container .overlay #feed_button {
+      padding: 4px 0;
+      text-align: center;
+    }
+    
+    .popup-container .overlay #feed_button {
+    }
+  
+  
+/* Map Filters */
+  form#views-exposed-form-organizations-panel-pane-1 {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  form#views-exposed-form-organizations-panel-pane-1 .auto-populate {
+    display: none;
+  }
+  
+    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget {
+      width: 91%;
+      clear: both;
+      padding: 7px 13px;
+      border-bottom: 1px dashed #CCCCCC;
+    }
+    
+    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget:last-child {
+      border-bottom: none;
+    }
+    
+    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget label {
+      font-size: 13px;
+    }
+    
+    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget .views-widget .form-item select {
+      width: 75%;
+    }
+    
+    /* override forms.css:21 */
+    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget .form-item #edit-date-min-wrapper label,
+    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget .form-item #edit-date-max-wrapper label {
+      font-weight: normal;
+      font-style: italic;
+    }
+    
+    .ui-datepicker {
+      z-index: 7000; /* put on top of everything else */
+    }
+    
+    .ui-datepicker table {
+      font-size: 13px; /* override datepicker.1.7.css:27 */
+    }
+    
+    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget .form-item .date-clear-block {
+      clear: none;
+      float: left;
+      width: 40%;
+    }
+    
+    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget .form-item .date-clear-block input {
+      width: 60%;
+    }
+  
+  /* Style apply filters button */
+  .js form#views-exposed-form-organizations-panel-pane-1 #filter-submit {
+    background: url(../images/filter-submit-background.png) bottom -8px no-repeat;
+    border-bottom: none;
+    padding-bottom: 30px;
+    padding-top: 10px;
+  }
+  
+    .js form#views-exposed-form-organizations-panel-pane-1 input#edit-submit-organizations {
+      margin-top: 0;
+    }
+  
+  form#views-exposed-form-organizations-panel-pane-1 #filter_reset {
+    font-size: 13px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+/* Node Forms */
+
+  /* Event form */
+    .js #edit-value-wrapper {
+      display: none;
+    }
+    

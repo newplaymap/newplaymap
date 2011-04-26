@@ -1,0 +1,15 @@
+Index: terms_of_use.module
+===================================================================
+--- terms_of_use.module	(revision 2385)
++++ terms_of_use.module	(working copy)
+@@ -158,9 +158,9 @@
+     
+   // Adding the Terms of Use to the fieldset. 
+   if ($show_terms && $node) {
+-    $terms = node_prepare($node);
++    $terms =  node_view($node, FALSE, TRUE,FALSE);
+     $form['terms_of_use']['terms_of_use_text'] = array(
+-      '#value' => theme('terms_of_use', $terms->body, $node),
++      '#value' => theme('terms_of_use', $terms, $node),
+     );
+   }

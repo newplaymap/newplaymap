@@ -1,0 +1,15 @@
+diff --git a/www/sites/all/modules/logintoboggan/logintoboggan.module b/www/sites/all/modules/logintoboggan/logintoboggan.module
+index d53135b..fd0d905 100755
+--- a/www/sites/all/modules/logintoboggan/logintoboggan.module
++++ b/www/sites/all/modules/logintoboggan/logintoboggan.module
+@@ -824,8 +824,8 @@ function logintoboggan_denied() {
+     // the user that they were denied access.
+     menu_set_active_item('user');
+     $return = menu_execute_active_handler();
+-    drupal_set_title(t('Access Denied / User Login'));
+-    drupal_set_message(t('Access denied.  You may need to login below or register to access this page.'), 'error');
++    drupal_set_title(t('Please sign in or register to continue'));
++    drupal_set_message(t('Access denied. You may need to login or create an account to access this page.'), 'error');
+   }
+   else {
+     drupal_set_title(t('Access Denied'));

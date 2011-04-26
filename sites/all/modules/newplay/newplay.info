@@ -1,0 +1,6 @@
+; $Id$
+name = New Play Map General Custom
+description = Custom module for anything
+core = 6.x
+
+dependencies[] = jquery_ui
