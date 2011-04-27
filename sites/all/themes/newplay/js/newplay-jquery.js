@@ -511,11 +511,18 @@ newPlay.overlayContentStyle  = function(context) {
 
 /*
  * Embedable Badge Block
+ * Direct link URL
  */
 // Function for showing form to include selecting text etc
 newPlay.embedToggle = function() {
   $('#embed-badge-block form').slideToggle('fast', function() {
     $('#embed-badge-block form input').select();
+  });
+}
+
+newPlay.shareLinkToggle = function() {
+  $('#share-link-block form').slideToggle('fast', function() {
+    $('#share-link-block form input').select();
   });
 }
 
@@ -544,6 +551,32 @@ newPlay.embedInteraction = function() {
         $('#embed-badge-block form input').select();
       });
   } 
+}
+
+newPlay.shareLinkInteraction = function() {
+  if ($('#share-link-show').length > 0) {
+    // return;
+  } else {
+    $('<a></a>')
+      .attr({
+        'id': 'share-link-show',
+        'href': '#'
+      })
+      .html($('#share-link-link label').remove().html())
+      .prependTo('#share-link-link')
+      .click(function(event) {
+        event.preventDefault();
+        newPlay.shareLinkToggle();
+      });
+
+      $('#share-link-image img').click(function() {
+        newPlay.shareLinkToggle();
+      }).css('cursor', 'pointer');
+
+      $('#share-link-block form input').hover(function() {
+        $('#share-link-block form input').select();
+      });
+  }
 }
 
 
@@ -723,6 +756,8 @@ Drupal.behaviors.newPlay = function(context) {
   
   /* Make sure embed code interaction works with ajax content */
   newPlay.embedInteraction();
+  newPlay.shareLinkInteraction();
+  
   
   /*
    * Styling and cycling the main page firehose
