@@ -31,8 +31,8 @@ function newplay_admin_links_share_link_content_type_render($subtype, $conf, $pa
   $output .= '<div id="share-link-block">';
     $output .= '<div id="share-link-link">';
       $output .= '<form>';
-        $output .= '<label for="share-link">Link to this content</label>';
-        $output .= '<input id="share-link" type="text" value=\'' . $current_path . '\'></input>';
+        $output .= '<label for="share-link">Copy & paste a link to this page to share it around</label>';
+        $output .= '<input id="share-link" type="text" value=\'' . $domain . base_path() . $current_path . '\'></input>';
       $output .= '</form>';
     $output .= '</div>';
   $output .= '</div>';
