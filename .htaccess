@@ -114,3 +114,11 @@ DirectoryIndex index.php
 </IfModule>
 
 # $Id: .htaccess,v 1.90.2.5 2010/02/02 07:25:22 dries Exp $
+
+
+# Detect Microsoft Internet Explorer 5-8 and serve a static page recommending upgrade
+# Added by Ben Mauer (ben@quilted.coop) 2010/04/27
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTP_USER_AGENT} (MSIE\ 5|MSIE\ 6|MSIE\ 7|MSIE\ 8)
+  RewriteRule (.*) sites/all/themes/newplaymap/msie58.html
+</IfModule>
