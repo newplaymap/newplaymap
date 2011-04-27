@@ -120,5 +120,5 @@ DirectoryIndex index.php
 # Added by Ben Mauer (ben@quilted.coop) 2010/04/27
 <IfModule mod_rewrite.c>
   RewriteCond %{HTTP_USER_AGENT} (MSIE\ 5|MSIE\ 6|MSIE\ 7|MSIE\ 8)
-  RewriteRule (.*) sites/all/themes/newplaymap/msie58.html
+  RewriteRule (.*) msie58.html
 </IfModule>
