@@ -8641,6 +8641,65 @@ Please <a href="node/add/event">Add your own!</a>');
   $handler->override_option('argument_input', array());
   $handler->override_option('link_to_view', 0);
   $handler->override_option('inherit_panels_path', 0);
+  $handler = $view->new_display('panel_pane', 'Home page loading map (Content Pane)', 'panel_pane_9');
+  $handler->override_option('relationships', array());
+  $handler->override_option('filters', array(
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'status_1' => array(
+      'operator' => '=',
+      'value' => '0',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status_1',
+      'table' => 'node',
+      'field' => 'status',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('style_plugin', 'openlayers_map');
+  $handler->override_option('style_options', array(
+    'preset' => 'new_play_map_blank',
+  ));
+  $handler->override_option('pane_title', 'Home page loading map (Content Pane)');
+  $handler->override_option('pane_description', '');
+  $handler->override_option('pane_category', array(
+    'name' => 'View panes',
+    'weight' => 0,
+  ));
+  $handler->override_option('allow', array(
+    'use_pager' => FALSE,
+    'items_per_page' => FALSE,
+    'offset' => FALSE,
+    'link_to_view' => FALSE,
+    'more_link' => FALSE,
+    'path_override' => FALSE,
+    'title_override' => FALSE,
+    'exposed_form' => FALSE,
+    'fields_override' => FALSE,
+  ));
+  $handler->override_option('argument_input', array());
+  $handler->override_option('link_to_view', 0);
+  $handler->override_option('inherit_panels_path', 0);
 
   $views[$view->name] = $view;
 
