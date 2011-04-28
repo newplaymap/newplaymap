@@ -406,6 +406,27 @@ function artists_default_page_manager_handlers() {
     $display->panels['main'][3] = 'new-15';
     $pane = new stdClass;
     $pane->pid = 'new-16';
+    $pane->panel = 'main';
+    $pane->type = 'twitter_share';
+    $pane->subtype = 'twitter_share';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_nid_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $display->content['new-16'] = $pane;
+    $display->panels['main'][4] = 'new-16';
+    $pane = new stdClass;
+    $pane->pid = 'new-17';
     $pane->panel = 'organizations';
     $pane->type = 'orgs_by_play';
     $pane->subtype = 'orgs_by_play';
@@ -423,10 +444,10 @@ function artists_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-16'] = $pane;
-    $display->panels['organizations'][0] = 'new-16';
+    $display->content['new-17'] = $pane;
+    $display->panels['organizations'][0] = 'new-17';
     $pane = new stdClass;
-    $pane->pid = 'new-17';
+    $pane->pid = 'new-18';
     $pane->panel = 'plays';
     $pane->type = 'views_panes';
     $pane->subtype = 'plays-panel_pane_1';
@@ -446,8 +467,8 @@ function artists_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-17'] = $pane;
-    $display->panels['plays'][0] = 'new-17';
+    $display->content['new-18'] = $pane;
+    $display->panels['plays'][0] = 'new-18';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
