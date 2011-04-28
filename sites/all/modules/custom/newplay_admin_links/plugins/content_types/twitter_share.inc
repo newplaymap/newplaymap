@@ -19,18 +19,20 @@ function newplay_admin_links_twitter_share_content_type_render($subtype, $conf, 
   $output = '';
   $block = new stdClass();
   
-
   // Set up some variables
   $current_node = $context->argument;
   // @TODO: figure out how to not hard code the main domain
   $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '', $_SERVER['HTTP_HOST']) : 'http://newplaymap.org';
   
-  
+  // Get the path alias for the current node
   $current_path = ($current_node) ? '#' . base_path() . drupal_get_path_alias('node/' . $current_node) : '';
+  // Add the domain and base path
   $share_link = $domain . base_path() . $current_path;
   
-  $text = '';
-  $twitter_account = ''; // @TODO: pull this from the twitter module when that's working
+  $content_name = $context->title; // Get the content title from the context
+  $content_short_name = (strlen($content_name) > 61) ? substr($content_name, 0, 60) . '…' : $content_name; // Shorten it for twitter
+  $text = "Here's the profile for $content_short_name on the #NewPlay Map";
+  $twitter_account = 'NewPlayMap'; // @TODO: pull this from the twitter module when that's working
     
   $output .= '<a href="http://twitter.com/share" '; // Url for twitter API
   $output .= 'class="twitter-share-button"'; // From twitter API
