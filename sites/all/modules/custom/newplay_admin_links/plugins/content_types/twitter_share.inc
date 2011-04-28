@@ -25,7 +25,7 @@ function newplay_admin_links_twitter_share_content_type_render($subtype, $conf, 
   $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '', $_SERVER['HTTP_HOST']) : 'http://newplaymap.org';
   
   // Get the path alias for the current node
-  $current_path = ($current_node) ? '#' . base_path() . drupal_get_path_alias('node/' . $current_node) : '';
+  $current_path = ($current_node) ? substr(base_path(), 1) . drupal_get_path_alias('node/' . $current_node) : '';
   // Add the domain and base path
   $share_link = $domain . base_path() . $current_path;
   
