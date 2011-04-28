@@ -25,8 +25,7 @@ function newplay_admin_links_facebook_like_content_type_render($subtype, $conf, 
   $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '', $_SERVER['HTTP_HOST']) : 'http://newplaymap.org';
   
   /* Template code:
-   <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-   <fb:like href="http://newplaymap/artist/aditi-brennan-kapil" send="false" layout="button_count" width="450" show_faces="false" colorscheme="dark" font=""></fb:like>
+   <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fnewplaymap%2Fartist%2Faditi-brennan-kapil&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
    */
   
   // Get the path alias for the current node
@@ -38,16 +37,21 @@ function newplay_admin_links_facebook_like_content_type_render($subtype, $conf, 
   
   $facebook_account = 'NewPlayMap'; // @TODO: pull this from the twitter module when that's working
     
-  $output .= '<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>'; // From Facebook API
-  $output .= '<fb:like '; // From FB API
-  $output .= 'href="' . $share_link . '" '; // What post should link to
-  $output .= 'send="false" '; // From FB API
-  $output .= 'layout="button_count" '; // From FB API
-  $output .= 'width="450" '; // From FB API
-  $output .= 'show_faces="false" '; // From FB API
-  $output .= 'colorscheme="dark" '; // From FB API
-  $output .= 'font="" '; // From FB API
-  $output .= '></fb:like>'; // From FB API
+  $output .= '<iframe '; // From Facebook API
+  $output .= 'src="http://www.facebook.com/plugins/like.php?'; // From FB API
+  $output .= 'href=' . $share_link . '&amp;'; // What post should link to
+  $output .= 'send=false' . '&amp;'; // From FB API
+  $output .= 'layout=standard' . '&amp;';
+  $output .= 'width=450' . '&amp;';
+  $output .= 'show_faces=false' . '&amp;';
+  $output .= 'colorscheme=light' . '&amp;';
+  $output .= 'font' . '&amp;';
+  $output .= 'height=21' . '" ';
+  $output .= 'scrolling="no" ';
+  $output .= 'frameboarder="0" ';
+  $output .= 'style="border:none; overflow:hidden; width:450px; height:21px;" ';
+  $output .= 'allowTransparency="true" ';
+  $output .= '></iframe>';
   
       
   $block->module = 'newplay_admin_links';
