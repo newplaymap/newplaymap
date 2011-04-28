@@ -109,6 +109,12 @@
 <head>
   <title><?php print $head_title; ?></title>
   <?php print $head; ?>
+  <meta property="og:title" content="New Play Map" />
+  <meta property="og:site_name" content="New Play Map" />
+  <meta property="og:url" content="http://newplaymap.org" />
+  <meta property="fb:admins" content="100000508562653" />
+  <meta property="og:type" content="activity" />
+  <meta property="og:image" content="http://newplaymap.org/sites/all/themes/newplay/images/NewPlayMap-T-Pic.PNG" />
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>
