@@ -19,6 +19,12 @@ function newplay_admin_links_twitter_share_content_type_render($subtype, $conf, 
   $output = '';
   $block = new stdClass();
   
+  /*
+   * Template
+   * <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://newplaymap.org/artist/katori-hall" data-text="Here's {artist or event or org or play name}'s profile on the #NewPlay Map" data-count="horizontal" data-via="NewPlayMap">Tweet</a>
+   * <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+   */
+  
   // Set up some variables
   $current_node = $context->argument;
   // @TODO: figure out how to not hard code the main domain
