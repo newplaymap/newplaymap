@@ -41,7 +41,7 @@ function newplay_admin_links_facebook_like_content_type_render($subtype, $conf, 
   $output .= 'href="http://www.facebook.com/sharer.php?'; // From FB API
   $output .= 'u=' . $share_link; // What post should link to
   $output .= '&t=' . $content_name; // Title
-  $output .= '" rel="external">Facebook</a>';
+  $output .= '" target="_BLANK">Facebook</a>';
   
       
   $block->module = 'newplay_admin_links';
