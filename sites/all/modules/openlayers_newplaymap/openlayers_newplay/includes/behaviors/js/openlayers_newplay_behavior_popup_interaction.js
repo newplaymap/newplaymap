@@ -509,6 +509,11 @@ Drupal.openlayers.popup.displayNode = function(data) {
   $('div.popup-container').css('height', 'auto');
   $('div.popup-container div.overlay').css('height', '100%');
   $('div.popup-container').css('overflow', 'auto');
+  
+  // Alter the meta tags for facebook
+  // console.log('Drupal.openlayers.popup.displayNode');
+  // console.log(data);
+  // $('meta[property="og:title"]').attr('content', 'new title');
   return false;
 };
 
