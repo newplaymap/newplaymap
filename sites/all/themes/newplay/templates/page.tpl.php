@@ -117,6 +117,7 @@
   <meta property="og:image" content="http://newplaymap.org/sites/all/themes/newplay/images/NewPlayMap-T-Pic.PNG" />
   <?php print $styles; ?>
   <?php print $scripts; ?>
+  <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
 </head>
 <body class="<?php print $classes; ?>">
 
