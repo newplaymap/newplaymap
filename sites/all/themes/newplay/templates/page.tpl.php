@@ -102,6 +102,9 @@
  * @see zen_preprocess()
  * @see zen_process()
  */
+ 
+$domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '', $_SERVER['HTTP_HOST']) : 'http://newplaymap.org';
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
@@ -114,7 +117,7 @@
   <meta property="og:url" content="http://newplaymap.org" />
   <meta property="fb:admins" content="100000508562653" />
   <meta property="og:type" content="activity" />
-  <meta property="og:image" content="http://newplaymap.org/sites/all/themes/newplay/images/NewPlayMap-T-Pic.PNG" />
+  <meta property="og:image" content="<?php print $domain . base_path(); ?>sites/all/themes/newplay/images/NewPlayMap-T-Pic.PNG" />
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>
