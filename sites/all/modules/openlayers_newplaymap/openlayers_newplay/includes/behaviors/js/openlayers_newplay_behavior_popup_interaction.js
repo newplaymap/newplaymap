@@ -505,6 +505,12 @@ Drupal.openlayers.popup.displayNode = function(data) {
   // Load data into correct region.
   $('div.popup-container div.overlay div.node-content').html(data);
 
+  // Set the page title based on the new content
+  var oldPageTitle = $('title').text();
+  var newPageTitle = $('<span></span>').html($(data).get(0)); // @TODO: Figure out how to get the title without using this span
+  newPageTitle = $(newPageTitle).find('.panel-overlay .pane-node-title .pane-content').html()
+  $('title').text(newPageTitle + ' | ' + oldPageTitle);
+
   // Customize layout.
   $('div.popup-container').css('height', 'auto');
   $('div.popup-container div.overlay').css('height', '100%');
