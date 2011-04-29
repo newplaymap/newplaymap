@@ -37,21 +37,11 @@ function newplay_admin_links_facebook_like_content_type_render($subtype, $conf, 
   
   $facebook_account = 'NewPlayMap'; // @TODO: pull this from the twitter module when that's working
     
-  $output .= '<iframe '; // From Facebook API
-  $output .= 'src="http://www.facebook.com/plugins/like.php?'; // From FB API
-  $output .= 'href=' . $share_link . '&amp;'; // What post should link to
-  $output .= 'send=false' . '&amp;'; // From FB API
-  $output .= 'layout=standard' . '&amp;';
-  $output .= 'width=450' . '&amp;';
-  $output .= 'show_faces=false' . '&amp;';
-  $output .= 'colorscheme=light' . '&amp;';
-  $output .= 'font' . '&amp;';
-  $output .= 'height=21' . '" ';
-  $output .= 'scrolling="no" ';
-  $output .= 'frameboarder="0" ';
-  $output .= 'style="border:none; overflow:hidden; width:450px; height:21px;" ';
-  $output .= 'allowTransparency="true" ';
-  $output .= '></iframe>';
+  $output .= '<a '; // From Facebook API
+  $output .= 'href="http://www.facebook.com/sharer.php?'; // From FB API
+  $output .= 'u=' . $share_link; // What post should link to
+  $output .= '&t=' . $content_name; // Title
+  $output .= '" rel="external">Facebook</a>';
   
       
   $block->module = 'newplay_admin_links';
