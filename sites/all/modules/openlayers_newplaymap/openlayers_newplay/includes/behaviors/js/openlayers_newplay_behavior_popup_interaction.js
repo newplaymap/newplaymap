@@ -43,7 +43,12 @@ Drupal.behaviors.openlayers_newplay_behavior_popup_interaction = function(contex
   // only want to do this once for map pages that load via ajax.
   
   // Activate close button for filter results.
-  $('div#panel-default-overlay div.close-btn').click(function(){$('div#panel-default-overlay').hide();});
+  $('div#panel-default-overlay div.close-btn').click(function(){
+    $('div#panel-default-overlay').hide();
+    
+    // Clear the page title
+     $('title').text('New Play Map');
+  });
 
   if(Drupal.openlayers.loaded == 0) {
     // Store the context for later use.
@@ -284,7 +289,13 @@ Drupal.openlayers.popup.nonLocatedFeaturePopup = function(path) {
   }
 
   // Create a close_btn click event.
-  $('div.popup-container div.close-btn').click(function(){ $('div.overlay').remove();Drupal.openlayers.popup.clearAddress()});
+  $('div.popup-container div.close-btn').click(function(){
+     $('div.overlay').remove();
+     Drupal.openlayers.popup.clearAddress()
+     
+     // Clear the page title
+     $('title').text('New Play Map');
+  });
 
   // Remove the views results.
   $('div#panel-default-overlay').remove();
@@ -572,7 +583,12 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
   // Creating new markup for popup.
   $('div.openlayers-views-map').prepend(Drupal.theme('openlayersNewPlayPopup', feature));
   // Create a close_btn click event.
-  $('div.popup-container div.close-btn').click(function(){Drupal.openlayers.popup.popupSelect.unselect(Drupal.openlayers.popup.selectedFeature);Drupal.openlayers.popup.clearAddress()});
+  $('div.popup-container div.close-btn').click(function(){
+    Drupal.openlayers.popup.popupSelect.unselect(Drupal.openlayers.popup.selectedFeature);
+    Drupal.openlayers.popup.clearAddress();
+    // Clear the page title
+     $('title').text('New Play Map');
+  });
   // Hide original popup.
   $('div#popup').hide();
   // Remove the views results.
