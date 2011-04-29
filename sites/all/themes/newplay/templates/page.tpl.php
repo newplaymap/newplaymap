@@ -112,7 +112,6 @@ $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '
 <head>
   <title><?php print $head_title; ?></title>
   <?php print $head; ?>
-  <meta property="og:title" content="New Play Map" />
   <meta property="og:site_name" content="New Play Map" />
   <meta property="og:url" content="http://newplaymap.org" />
   <meta property="fb:admins" content="100000508562653" />
