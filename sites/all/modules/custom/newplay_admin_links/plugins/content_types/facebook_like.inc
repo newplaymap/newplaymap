@@ -31,7 +31,7 @@ function newplay_admin_links_facebook_like_content_type_render($subtype, $conf, 
   // Get the path alias for the current node
   $current_path = ($current_node) ? substr(base_path(), 1) . drupal_get_path_alias('node/' . $current_node) : '';
   // Add the domain and base path
-  $share_link = $domain . base_path() . $current_path;
+  $share_link = urlencode($domain . base_path() . $current_path);
   
   $content_name = $context->title; // Get the content title from the context
   
