@@ -517,7 +517,7 @@ Drupal.openlayers.popup.displayNode = function(data) {
   $('div.popup-container div.overlay div.node-content').html(data);
 
   // Set the page title based on the new content
-  Drupal.openlayers.popup.setPageTitle();
+  Drupal.openlayers.popup.setPageTitle(data);
 
   // Customize layout.
   $('div.popup-container').css('height', 'auto');
@@ -1000,7 +1000,7 @@ Drupal.openlayers.popup.setPageTitle = function(data) {
   var newPageTitle = $('<span></span>').html($(data).get(0)); // @TODO: Figure out how to get the title without using this span
   newPageTitle = $(newPageTitle).find('.panel-overlay .pane-node-title .pane-content').html()
   
-  // $('meta[property="og:title"]').attr('content', newPageTitle + ' | ' + oldPageTitle);
+  $('meta[property="og:title"]').attr('content', newPageTitle + ' | ' + oldPageTitle);
   $('title').text(newPageTitle + ' | ' + oldPageTitle);
 }
  
@@ -1009,6 +1009,6 @@ Drupal.openlayers.popup.setPageTitle = function(data) {
  */
 Drupal.openlayers.popup.clearPageTitle = function() {
   // Clear the page title
-  // $('meta[property="og:title"]').attr('content', 'New Play Map');
+  $('meta[property="og:title"]').attr('content', 'New Play Map');
    $('title').text('New Play Map');
 }
