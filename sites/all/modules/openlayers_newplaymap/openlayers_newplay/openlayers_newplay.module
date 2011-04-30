@@ -16,6 +16,16 @@ function openlayers_newplay_openlayers_behaviors() {
         'parent' => 'openlayers_behavior',
       ),
     ),
+    'openlayers_newplay_behavior_cluster' => array(
+      'title' => t('New Play Map: Clustering'),
+      'description' => t('Clustering for New Play Map'),
+      'behavior' => array(
+        'path' => drupal_get_path('module', 'openlayers_newplay') . '/includes/behaviors',
+        'file' => 'openlayers_newplay_behavior_cluster.inc',
+        'class' => 'openlayers_newplay_behavior_cluster',
+        'parent' => 'openlayers_behavior',
+      ),
+    ),
   );
 }
 
