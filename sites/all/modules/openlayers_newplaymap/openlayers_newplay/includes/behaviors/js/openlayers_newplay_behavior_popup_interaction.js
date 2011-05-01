@@ -77,6 +77,11 @@ Drupal.behaviors.openlayers_newplay_behavior_popup_interaction = function(contex
   });
 
   if(Drupal.openlayers.loaded == 0) {
+
+
+    // Loading graphic for map.
+    Drupal.openlayers.popup.mapLoading("start");
+
     // Store the context for later use.
     Drupal.openlayers.context = context;
 
@@ -130,6 +135,7 @@ Drupal.behaviors.openlayers_newplay_behavior_popup_interaction = function(contex
     }
   }
   Drupal.openlayers.loaded++;
+  Drupal.openlayers.popup.mapLoading("stop");
 };
 Drupal.openlayers.popup.processViewsData = function() {
   var processed = Drupal.openlayers.popup.ajaxLinks('ajax-popup-panel', 'div#panel-default-overlay a');
@@ -513,10 +519,11 @@ Drupal.openlayers.popup.loadNode = function(path) {
 };
 
 /**
- * Display loading graphic.
+ * Display loading graphic for node.
  */
 Drupal.openlayers.popup.nodeLoading = function (data) {
-//console.log("nodeloading");
+
+console.log("nodeloading");
   // Remove feeds-wrapper on all pages except homepage when the node has been loaded.
   // (Tip: if we just hide it, then the accordion triggers the feeds wrapper & reopens feeds wrapper.)
   $('div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper').remove();
@@ -530,6 +537,20 @@ Drupal.openlayers.popup.nodeLoading = function (data) {
   // Swap popup backgrounds.
   $('div.popup-container div.popup-inner').html('<div class="loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
 };
+
+
+/**
+ * Display loading graphic for map.
+ */
+Drupal.openlayers.popup.mapLoading = function (data) {
+  if(data == "start") {
+    $('div#page-wrapper').append('<div class="map-loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
+  }
+  else {
+    $('div.map-loading-wrapper').remove();
+  }
+};
+
 
 /**
  * Load ajax data.
