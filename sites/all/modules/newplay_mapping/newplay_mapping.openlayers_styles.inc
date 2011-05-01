@@ -252,7 +252,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->title = 'Generative Artists Marker Dimmed';
   $openlayers_styles->description = 'Marker for Artists (Dimmed)';
   $openlayers_styles->data = array(
-    'externalGraphic' => 'sites/all/themes/newplay/pins-naked/large/pin-artist-dim.png',
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-naked/large/pin-artist-dim.png',
     'pointRadius' => 13,
     'fillColor' => '#FFFFFF',
     'strokeColor' => '#FFFFFF',

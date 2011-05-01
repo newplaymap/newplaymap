@@ -855,7 +855,6 @@ Drupal.openlayers.popup.newPlayLineStylesSetup = function(newStyle){
       data.map.layers[currentLayerID].lookup = data.openlayers.layers[layer].lookup = lookup;
       data.map.layers[currentLayerID].styleOptions = data.openlayers.layers[layer].styleOptions = styleOptions;
       data.map.layers[currentLayerID].parentLayerNumber = data.openlayers.layers[layer].parentLayerNumber = layer;
-console.log(data.map.layers[currentLayerID]);
     }
   }
   return newStyle;
