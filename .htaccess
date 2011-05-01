@@ -119,6 +119,6 @@ DirectoryIndex index.php
 # Detect Microsoft Internet Explorer 5-8 and serve a static page recommending upgrade
 # Added by Ben Mauer (ben@quilted.coop) 2010/04/27
 <IfModule mod_rewrite.c>
-  RewriteCond %{HTTP_USER_AGENT} (MSIE\ 5|MSIE\ 6|MSIE\ 7|MSIE\ 8|Chrome)
+  RewriteCond %{HTTP_USER_AGENT} (MSIE\ 5|MSIE\ 6|MSIE\ 7|MSIE\ 8)
   RewriteRule (.*) browser-not-compatible.html
 </IfModule>
