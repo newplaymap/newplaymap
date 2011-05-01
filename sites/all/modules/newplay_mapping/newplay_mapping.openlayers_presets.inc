@@ -123,8 +123,11 @@ function newplay_mapping_openlayers_presets() {
           'lineStyle_organizations_openlayers_1' => 'No Path',
           'lineStyleSelected_organizations_openlayers_1' => 'No Path',
           'featureStyleSelectedGroup_organizations_openlayers_1' => 'Organization Marker Selected',
+          'featureStyleSelectedGroupTiny_organizations_openlayers_1' => 'Organization Marker Tiny',
           'featureStyleSelectedFeature_organizations_openlayers_1' => 'Organization Marker Selected',
-          'featureStyleDimmed_organizations_openlayers_1' => 'Organization Marker Dimmed',
+          'featureStyleDimmed_organizations_openlayers_1' => 'Organization Marker Dimmed Tiny',
+          'featureStyleDimmedTiny_organizations_openlayers_1' => 'Organization Marker Dimmed Tiny',
+          'featureStyleClustered_organizations_openlayers_1' => 'Organization Clustered',
         ),
         'multiLineStringStyleGroup_organizations_openlayers_2' => array(
           'labelLayer_organizations_openlayers_2' => '',
@@ -132,8 +135,11 @@ function newplay_mapping_openlayers_presets() {
           'lineStyle_organizations_openlayers_2' => 'play_path',
           'lineStyleSelected_organizations_openlayers_2' => 'play_path_selected',
           'featureStyleSelectedGroup_organizations_openlayers_2' => 'Event Markers Selected',
+          'featureStyleSelectedGroupTiny_organizations_openlayers_2' => 'Event Markers Tiny',
           'featureStyleSelectedFeature_organizations_openlayers_2' => 'Event Markers Featured',
-          'featureStyleDimmed_organizations_openlayers_2' => 'Event Markers Dimmed',
+          'featureStyleDimmed_organizations_openlayers_2' => 'Event Markers Dimmed Tiny',
+          'featureStyleDimmedTiny_organizations_openlayers_2' => 'Event Markers Dimmed Tiny',
+          'featureStyleClustered_organizations_openlayers_2' => 'Event Markers Clustered',
         ),
         'multiLineStringStyleGroup_organizations_openlayers_3' => array(
           'labelLayer_organizations_openlayers_3' => '',
@@ -141,8 +147,11 @@ function newplay_mapping_openlayers_presets() {
           'lineStyle_organizations_openlayers_3' => 'No Path',
           'lineStyleSelected_organizations_openlayers_3' => 'No Path',
           'featureStyleSelectedGroup_organizations_openlayers_3' => 'Generative Artists Marker Selected',
+          'featureStyleSelectedGroupTiny_organizations_openlayers_3' => 'Generative Artists Marker Tiny',
           'featureStyleSelectedFeature_organizations_openlayers_3' => 'Generative Artists Marker Selected',
-          'featureStyleDimmed_organizations_openlayers_3' => 'Generative Artists Marker Dimmed',
+          'featureStyleDimmed_organizations_openlayers_3' => 'Generative Artists Marker Dimmed Tiny',
+          'featureStyleDimmedTiny_organizations_openlayers_3' => 'Generative Artists Marker Dimmed Tiny',
+          'featureStyleClustered_organizations_openlayers_3' => 'Generative Artists Clustered',
         ),
         'multiLineStringGroupZoom' => '9',
       ),
@@ -155,6 +164,15 @@ function newplay_mapping_openlayers_presets() {
         'popup_fieldset' => array(
           'popup' => 1,
         ),
+      ),
+      'openlayers_newplay_behavior_cluster' => array(
+        'clusterlayer' => array(
+          'organizations_openlayers_1' => 'organizations_openlayers_1',
+          'organizations_openlayers_2' => 'organizations_openlayers_2',
+          'organizations_openlayers_3' => 'organizations_openlayers_3',
+        ),
+        'distance' => '20',
+        'threshold' => '5',
       ),
       'openlayers_plus_behavior_blockswitcher' => array(
         'map' => array(
@@ -174,9 +192,9 @@ function newplay_mapping_openlayers_presets() {
       'organizations_openlayers_3' => 'organizations_openlayers_3',
     ),
     'layer_styles' => array(
-      'organizations_openlayers_1' => 'Organization Marker',
-      'organizations_openlayers_2' => 'Event Markers',
-      'organizations_openlayers_3' => 'Generative Artists Marker',
+      'organizations_openlayers_1' => 'Organization Marker Tiny',
+      'organizations_openlayers_2' => 'Event Markers Tiny',
+      'organizations_openlayers_3' => 'Generative Artists Marker Tiny',
     ),
     'layer_activated' => array(
       'organizations_openlayers_1' => 'organizations_openlayers_1',
