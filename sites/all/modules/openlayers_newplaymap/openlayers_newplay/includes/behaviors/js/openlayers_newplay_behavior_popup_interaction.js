@@ -763,11 +763,6 @@ Drupal.openlayers.popup.newPlayLayerStyle = function (data, feature, layer, sele
  * Features can only change zIndex if they are rebuilt, you can't just change the stylemap.
  */
 Drupal.openlayers.popup.reorderLayerFeatures = function(data, layer, layerOnTop, select) {
-  /*
-  console.log(layer);
-  console.log(layerOnTop);
-  console.log(select);
-  */
   // Don't change the layer order on unselect.
   if (select === true) {
     // @TODO This is buggy.
@@ -782,17 +777,6 @@ Drupal.openlayers.popup.reorderLayerFeatures = function(data, layer, layerOnTop,
     else {
       data.openlayers.setLayerIndex(layer, -1);
     } 
-/*
-    Option 2: Also doesn't quite work.
-    data.openlayers.setLayerIndex(layer, 0);
-    if(layerOnTop) {
-      data.openlayers.raiseLayer(layer, 1);
-    }
-*/
-
-  }
-  else {
-/*     data.openlayers.setLayerIndex(layer, -1); */
   }
   layer.redraw();
   return false;
