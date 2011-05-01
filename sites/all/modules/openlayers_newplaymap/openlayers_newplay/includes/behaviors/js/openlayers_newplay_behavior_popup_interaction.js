@@ -908,7 +908,11 @@ Drupal.openlayers.popup.newPlayLineStylesMarkers = function(newStyle){
         // Set all other layers to be dimmed.
       }
       else if ( currentLayer.features[marker]["attributes"][groupingAttribute] === undefined) {
-        currentLayer.features[marker]["attributes"]["state"] = "default"; 
+        currentLayer.features[marker]["attributes"]["state"] = "default";
+        if(currentLayer.features[marker]["cluster"]) {
+          // If marker is part of a cluster.
+         currentLayer.features[marker]["attributes"]["state"] = "clustered";
+        }
       }
       else {
         // If the current layer has groups, dim all the other features in that layer
@@ -919,10 +923,18 @@ Drupal.openlayers.popup.newPlayLineStylesMarkers = function(newStyle){
       }
       if(select === false) {
         currentLayer.features[marker]["attributes"]["state"] = "default";
+        if(currentLayer.features[marker]["cluster"]) {
+          // If marker is part of a cluster.
+         currentLayer.features[marker]["attributes"]["state"] = "clustered";
+        }
       }
     }
     if(select === true) {
       feature.attributes.state = "featured";
+      if(feature.cluster) {
+        // If marker is part of a cluster.
+        feature.attributes.state = "clustered";
+      }
     }
   }
   else {
@@ -934,6 +946,7 @@ Drupal.openlayers.popup.newPlayLineStylesMarkers = function(newStyle){
     // @TODO really, the groupingAttribute should be set on a layer by layer basis.
 
     for (var marker in currentLayer.features) {
+
       // Show current group's features at full opacity.
       if(currentLayer.features[marker]["attributes"][groupingAttribute] == group) {
         currentLayer.features[marker]["attributes"]["state"] = "dimmed";
@@ -944,7 +957,6 @@ Drupal.openlayers.popup.newPlayLineStylesMarkers = function(newStyle){
         currentLayer.features[marker]["attributes"]["state"] = "dimmed";
         // Set all other layers to be dimmed.
       }
-      // @TODO If the parent layer..???
       else {
         // If the current layer has groups, dim all the other features in that layer
         currentLayer.features[marker]["attributes"]["state"] = "dimmed";
@@ -953,10 +965,18 @@ Drupal.openlayers.popup.newPlayLineStylesMarkers = function(newStyle){
       }
       if(select === false) {
         currentLayer.features[marker]["attributes"]["state"] = "default";
+        if(currentLayer.features[marker]["cluster"]) {
+          // If marker is part of a cluster.
+         currentLayer.features[marker]["attributes"]["state"] = "clustered";
+        }
       }
     }
     if(select === true) {
       feature.attributes.state = "featured";
+      if(feature.cluster) {
+        // If marker is part of a cluster.
+        feature.attributes.state = "clustered";
+      }
     }
 
   }
