@@ -21,11 +21,11 @@ function newplay_mapping_openlayers_styles() {
     'strokeOpacity' => 1,
     'strokeLinecap' => 'round',
     'strokeDashstyle' => 'solid',
-    'graphicWidth' => 5,
-    'graphicHeight' => 5,
+    'graphicWidth' => 26,
+    'graphicHeight' => 26,
     'graphicOpacity' => 1,
-    'graphicXOffset' => 0,
-    'graphicYOffset' => 0,
+    'graphicXOffset' => -13,
+    'graphicYOffset' => -26,
     'graphicName' => 'square',
     'rotation' => '0',
     'labelAlign' => 'cm',
@@ -61,6 +61,94 @@ function newplay_mapping_openlayers_styles() {
   );
 
   $export['Event Markers Dimmed'] = $openlayers_styles;
+
+
+  $openlayers_styles = new stdClass;
+  $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
+  $openlayers_styles->api_version = 1;
+  $openlayers_styles->name = 'Event Markers Tiny';
+  $openlayers_styles->title = 'Event Markers Tiny';
+  $openlayers_styles->description = 'Markers for events (tiny)';
+  $openlayers_styles->data = array(
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-simple/event.png',
+    'pointRadius' => 13,
+    'fillColor' => '#FFFFFF',
+    'strokeColor' => '#FFFFFF',
+    'strokeWidth' => 1,
+    'fillOpacity' => 1,
+    'strokeOpacity' => 1,
+    'strokeLinecap' => 'round',
+    'strokeDashstyle' => 'solid',
+    'graphicWidth' => 7,
+    'graphicHeight' => 7,
+    'graphicOpacity' => 1,
+    'graphicXOffset' => 0,
+    'graphicYOffset' => 0,
+    'graphicName' => 'square',
+    'rotation' => '0',
+    'labelAlign' => 'cm',
+    'graphicZIndex' => 1000,
+  );
+
+  $export['Event Markers Tiny'] = $openlayers_styles;
+  $openlayers_styles = new stdClass;
+  $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
+  $openlayers_styles->api_version = 1;
+  $openlayers_styles->name = 'Event Markers Dimmed Tiny';
+  $openlayers_styles->title = 'Event Markers Dimmed Tiny';
+  $openlayers_styles->description = 'Markers for events (dimmed tiny)';
+  $openlayers_styles->data = array(
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-simple/dimmed.png',
+    'pointRadius' => 13,
+    'fillColor' => '#FFFFFF',
+    'strokeColor' => '#FFFFFF',
+    'strokeWidth' => 1,
+    'fillOpacity' => 1,
+    'strokeOpacity' => 1,
+    'strokeLinecap' => 'round',
+    'strokeDashstyle' => 'solid',
+    'graphicWidth' => 7,
+    'graphicHeight' => 7,
+    'graphicOpacity' => 1,
+    'graphicXOffset' => 0,
+    'graphicYOffset' => 0,
+    'graphicName' => 'square',
+    'rotation' => '0',
+    'labelAlign' => 'cm',
+    'graphicZIndex' => 998,
+  );
+
+  $export['Event Markers Dimmed Tiny'] = $openlayers_styles;
+
+  $openlayers_styles = new stdClass;
+  $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
+  $openlayers_styles->api_version = 1;
+  $openlayers_styles->name = 'Event Markers Clustered';
+  $openlayers_styles->title = 'Event Markers Clustered';
+  $openlayers_styles->description = 'Markers for events (clustered)';
+  $openlayers_styles->data = array(
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-simple/event-cluster.png',
+    'pointRadius' => 13,
+    'fillColor' => '#FFFFFF',
+    'strokeColor' => '#FFFFFF',
+    'strokeWidth' => 1,
+    'fillOpacity' => 1,
+    'strokeOpacity' => 1,
+    'strokeLinecap' => 'round',
+    'strokeDashstyle' => 'solid',
+    'graphicWidth' => 20,
+    'graphicHeight' => 20,
+    'graphicOpacity' => 1,
+    'graphicXOffset' => 0,
+    'graphicYOffset' => 0,
+    'graphicName' => 'square',
+    'rotation' => '0',
+    'labelAlign' => 'cm',
+    'graphicZIndex' => 998,
+  );
+
+  $export['Event Markers Clustered'] = $openlayers_styles;
+
   $openlayers_styles = new stdClass;
   $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
   $openlayers_styles->api_version = 1;
@@ -136,7 +224,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->title = 'Generative Artists Marker';
   $openlayers_styles->description = 'Marker for Artists';
   $openlayers_styles->data = array(
-    'externalGraphic' => 'sites/all/themes/newplay/images/pins-naked/medium/pin-artist.png',
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-naked/large/pin-artist.png',
     'pointRadius' => 13,
     'fillColor' => '#FFFFFF',
     'strokeColor' => '#FFFFFF',
@@ -145,11 +233,11 @@ function newplay_mapping_openlayers_styles() {
     'strokeOpacity' => 1,
     'strokeLinecap' => 'round',
     'strokeDashstyle' => 'solid',
-    'graphicWidth' => 5,
-    'graphicHeight' => 5,
+    'graphicWidth' => 26,
+    'graphicHeight' => 26,
     'graphicOpacity' => 1,
-    'graphicXOffset' => 0,
-    'graphicYOffset' => 0,
+    'graphicXOffset' => -13,
+    'graphicYOffset' => -26,
     'graphicName' => 'square',
     'rotation' => '0',
     'labelAlign' => 'cm',
@@ -164,7 +252,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->title = 'Generative Artists Marker Dimmed';
   $openlayers_styles->description = 'Marker for Artists (Dimmed)';
   $openlayers_styles->data = array(
-    'externalGraphic' => 'sites/all/themes/newplay/images/pins-naked/medium/pin-artist-dim.png',
+    'externalGraphic' => 'sites/all/themes/newplay/pins-naked/large/pin-artist-dim.png',
     'pointRadius' => 13,
     'fillColor' => '#FFFFFF',
     'strokeColor' => '#FFFFFF',
@@ -185,6 +273,95 @@ function newplay_mapping_openlayers_styles() {
   );
 
   $export['Generative Artists Marker Dimmed'] = $openlayers_styles;
+
+  $openlayers_styles = new stdClass;
+  $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
+  $openlayers_styles->api_version = 1;
+  $openlayers_styles->name = 'Generative Artists Clustered';
+  $openlayers_styles->title = 'Generative Artists Clustered';
+  $openlayers_styles->description = 'Markers for artists (clustered)';
+  $openlayers_styles->data = array(
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-simple/event-artist.png',
+    'pointRadius' => 13,
+    'fillColor' => '#FFFFFF',
+    'strokeColor' => '#FFFFFF',
+    'strokeWidth' => 1,
+    'fillOpacity' => 1,
+    'strokeOpacity' => 1,
+    'strokeLinecap' => 'round',
+    'strokeDashstyle' => 'solid',
+    'graphicWidth' => 20,
+    'graphicHeight' => 20,
+    'graphicOpacity' => 1,
+    'graphicXOffset' => 0,
+    'graphicYOffset' => 0,
+    'graphicName' => 'square',
+    'rotation' => '0',
+    'labelAlign' => 'cm',
+    'graphicZIndex' => 998,
+  );
+
+  $export['Generative Artists Clustered'] = $openlayers_styles;
+
+  $openlayers_styles = new stdClass;
+  $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
+  $openlayers_styles->api_version = 1;
+  $openlayers_styles->name = 'Generative Artists Marker Tiny';
+  $openlayers_styles->title = 'Generative Artists Marker Tiny';
+  $openlayers_styles->description = 'Marker for Artists Tiny';
+  $openlayers_styles->data = array(
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-simple/artist.png',
+    'pointRadius' => 13,
+    'fillColor' => '#FFFFFF',
+    'strokeColor' => '#FFFFFF',
+    'strokeWidth' => 1,
+    'fillOpacity' => 1,
+    'strokeOpacity' => 1,
+    'strokeLinecap' => 'round',
+    'strokeDashstyle' => 'solid',
+    'graphicWidth' => 7,
+    'graphicHeight' => 7,
+    'graphicOpacity' => 1,
+    'graphicXOffset' => 0,
+    'graphicYOffset' => 0,
+    'graphicName' => 'square',
+    'rotation' => '0',
+    'labelAlign' => 'cm',
+    'graphicZIndex' => 1000,
+  );
+
+  $export['Generative Artists Marker Tiny'] = $openlayers_styles;
+  $openlayers_styles = new stdClass;
+  $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
+  $openlayers_styles->api_version = 1;
+  $openlayers_styles->name = 'Generative Artists Marker Dimmed Tiny';
+  $openlayers_styles->title = 'Generative Artists Marker Dimmed Tiny';
+  $openlayers_styles->description = 'Marker for Artists (Dimmed Tiny)';
+  $openlayers_styles->data = array(
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-simple/dimmed.png',
+    'pointRadius' => 13,
+    'fillColor' => '#FFFFFF',
+    'strokeColor' => '#FFFFFF',
+    'strokeWidth' => 1,
+    'fillOpacity' => 1,
+    'strokeOpacity' => 1,
+    'strokeLinecap' => 'round',
+    'strokeDashstyle' => 'solid',
+    'graphicWidth' => 7,
+    'graphicHeight' => 7,
+    'graphicOpacity' => 1,
+    'graphicXOffset' => 0,
+    'graphicYOffset' => 0,
+    'graphicName' => 'square',
+    'rotation' => '0',
+    'labelAlign' => 'cm',
+    'graphicZIndex' => 998,
+  );
+
+  $export['Generative Artists Marker Dimmed Tiny'] = $openlayers_styles;
+
+
+
   $openlayers_styles = new stdClass;
   $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
   $openlayers_styles->api_version = 1;
@@ -240,7 +417,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->title = 'Organization Marker';
   $openlayers_styles->description = 'The marker for an organization.';
   $openlayers_styles->data = array(
-    'externalGraphic' => 'sites/all/themes/newplay/images/pins-naked/medium/pin-org.png',
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-naked/large/pin-org.png',
     'pointRadius' => 13,
     'fillColor' => '#FFFFFF',
     'strokeColor' => '#FFFFFF',
@@ -249,11 +426,11 @@ function newplay_mapping_openlayers_styles() {
     'strokeOpacity' => 1,
     'strokeLinecap' => 'round',
     'strokeDashstyle' => 'solid',
-    'graphicWidth' => 5,
-    'graphicHeight' => 5,
+    'graphicWidth' => 26,
+    'graphicHeight' => 26,
     'graphicOpacity' => 1,
-    'graphicXOffset' => 0,
-    'graphicYOffset' => 0,
+    'graphicXOffset' => -13,
+    'graphicYOffset' => -26,
     'graphicName' => 'square',
     'rotation' => '0',
     'labelAlign' => 'cm',
@@ -268,7 +445,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->title = 'Organization Marker Dimmed';
   $openlayers_styles->description = 'The marker for an organization, dimmed.';
   $openlayers_styles->data = array(
-    'externalGraphic' => 'sites/all/themes/newplay/images/pins-naked/medium/pin-org-dim.png',
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-naked/large/pin-org-dim.png',
     'pointRadius' => 13,
     'fillColor' => '#FFFFFF',
     'strokeColor' => '#FFFFFF',
@@ -289,6 +466,94 @@ function newplay_mapping_openlayers_styles() {
   );
 
   $export['Organization Marker Dimmed'] = $openlayers_styles;
+
+  $openlayers_styles = new stdClass;
+  $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
+  $openlayers_styles->api_version = 1;
+  $openlayers_styles->name = 'Organization Marker Tiny';
+  $openlayers_styles->title = 'Organization Marker Tiny';
+  $openlayers_styles->description = 'The marker for an organization.  Tiny';
+  $openlayers_styles->data = array(
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-simple/org.png',
+    'pointRadius' => 13,
+    'fillColor' => '#FFFFFF',
+    'strokeColor' => '#FFFFFF',
+    'strokeWidth' => 1,
+    'fillOpacity' => 1,
+    'strokeOpacity' => 1,
+    'strokeLinecap' => 'round',
+    'strokeDashstyle' => 'solid',
+    'graphicWidth' => 7,
+    'graphicHeight' => 7,
+    'graphicOpacity' => 1,
+    'graphicXOffset' => 0,
+    'graphicYOffset' => 0,
+    'graphicName' => 'square',
+    'rotation' => '0',
+    'labelAlign' => 'cm',
+    'graphicZIndex' => 1000,
+  );
+
+  $export['Organization Marker Tiny'] = $openlayers_styles;
+  $openlayers_styles = new stdClass;
+  $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
+  $openlayers_styles->api_version = 1;
+  $openlayers_styles->name = 'Organization Marker Dimmed Tiny';
+  $openlayers_styles->title = 'Organization Marker Dimmed Tiny';
+  $openlayers_styles->description = 'The marker for an organization, dimmed, tiny.';
+  $openlayers_styles->data = array(
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-simple/dimmed.png',
+    'pointRadius' => 13,
+    'fillColor' => '#FFFFFF',
+    'strokeColor' => '#FFFFFF',
+    'strokeWidth' => 1,
+    'fillOpacity' => 1,
+    'strokeOpacity' => 1,
+    'strokeLinecap' => 'round',
+    'strokeDashstyle' => 'solid',
+    'graphicWidth' => 7,
+    'graphicHeight' => 7,
+    'graphicOpacity' => 1,
+    'graphicXOffset' => 0,
+    'graphicYOffset' => 0,
+    'graphicName' => 'square',
+    'rotation' => '0',
+    'labelAlign' => 'cm',
+    'graphicZIndex' => 998,
+  );
+
+  $export['Organization Marker Dimmed Tiny'] = $openlayers_styles;
+
+
+  $openlayers_styles = new stdClass;
+  $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
+  $openlayers_styles->api_version = 1;
+  $openlayers_styles->name = 'Organization Clustered';
+  $openlayers_styles->title = 'Organization Clustered';
+  $openlayers_styles->description = 'Markers for organizations (clustered)';
+  $openlayers_styles->data = array(
+    'externalGraphic' => 'sites/all/themes/newplay/images/pins-simple/event-org.png',
+    'pointRadius' => 13,
+    'fillColor' => '#FFFFFF',
+    'strokeColor' => '#FFFFFF',
+    'strokeWidth' => 1,
+    'fillOpacity' => 1,
+    'strokeOpacity' => 1,
+    'strokeLinecap' => 'round',
+    'strokeDashstyle' => 'solid',
+    'graphicWidth' => 20,
+    'graphicHeight' => 20,
+    'graphicOpacity' => 1,
+    'graphicXOffset' => 0,
+    'graphicYOffset' => 0,
+    'graphicName' => 'square',
+    'rotation' => '0',
+    'labelAlign' => 'cm',
+    'graphicZIndex' => 998,
+  );
+
+  $export['Organization Clustered'] = $openlayers_styles;
+
   $openlayers_styles = new stdClass;
   $openlayers_styles->disabled = FALSE; /* Edit this to true to make a default openlayers_styles disabled initially */
   $openlayers_styles->api_version = 1;

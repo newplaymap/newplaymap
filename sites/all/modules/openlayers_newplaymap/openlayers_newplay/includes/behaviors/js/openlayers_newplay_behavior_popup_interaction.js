@@ -21,17 +21,43 @@ Drupal.openlayers.loaded = 0;
  *  Formatted HTML
  */
 Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
-  var output =
-    '<div class="popup-container">' + 
-      '<div class="popup-inner"><div class="close-btn"></div>' + 
-        '<div class="popup-content">' + 
-          '<div class="openlayers-popup openlayers-popup-name">' + feature.attributes.name + '</div>' +
-          '<div class="openlayers-popup openlayers-popup-description">' + feature.attributes.description + '</div>' + 
+  var output = '';
+  if(feature.cluster) {
+    output =
+      '<div class="popup-container">' + 
+        '<div class="popup-inner"><div class="close-btn"></div>';
+    var visited = []; // to keep track of already-visited items
+    for(var i = 0; i < feature.cluster.length; i++) {
+      var pf = feature.cluster[i]; // pseudo-feature
+      if ( typeof pf.drupalFID != 'undefined' ) {
+        var mapwide_id = feature.layer.drupalID + pf.drupalFID;
+        if (mapwide_id in visited) continue;
+        visited[mapwide_id] = true;
+      }
+      output += 
+          '<div class="popup-content">' + 
+            '<div class="openlayers-popup openlayers-popup-name">' + pf.attributes.name + '</div>' +
+            '<div class="openlayers-popup openlayers-popup-description">' + pf.attributes.description + '</div>' + 
+          '</div>';
+    }
+    output += '</div>' + 
+/*         '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' +  */
+      '</div>';
+    return output;
+  }
+  else {
+    output =
+      '<div class="popup-container">' + 
+        '<div class="popup-inner"><div class="close-btn"></div>' + 
+          '<div class="popup-content">' + 
+            '<div class="openlayers-popup openlayers-popup-name">' + feature.attributes.name + '</div>' +
+            '<div class="openlayers-popup openlayers-popup-description">' + feature.attributes.description + '</div>' + 
+          '</div>' + 
         '</div>' + 
-      '</div>' + 
-      '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' + 
-    '</div>';
-  return output;
+        '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' + 
+      '</div>';
+    return output;
+  }
 }
 
 /**
@@ -784,6 +810,9 @@ Drupal.openlayers.popup.newPlayLineStylesSetup = function(newStyle){
       "featuredStyle" : "default",
       "groupSelectedStyle" : "default",
       "groupDimmedStyle" : "default",
+      "featuredTinyStyle" : "default",
+      "dimTinyStyle" : "default",
+      "clusteredStyle" : "default",
       "lineStyle" : "default",
       "lineStyleSelected" : "default"
     };
@@ -800,6 +829,18 @@ Drupal.openlayers.popup.newPlayLineStylesSetup = function(newStyle){
         multilineStyles.groupDimmedStyle = styleOptions['featureStyleDimmed_' + currentLayerID];
         lookup.dimmed = currentStyleMap.styles[multilineStyles.groupDimmedStyle]['defaultStyle'];
       }
+      if(styleOptions['featureStyleSelectedGroupTiny_' + currentLayerID] !== "undefined") {
+        multilineStyles.featuredTinyStyle = styleOptions['featureStyleSelectedGroupTiny_' + currentLayerID];
+        lookup.featuredTiny = currentStyleMap.styles[multilineStyles.featuredTinyStyle]['defaultStyle'];
+      }
+      if(styleOptions['featureStyleDimmedTiny_' + currentLayerID] !== "undefined") {
+        multilineStyles.dimTinyStyle = styleOptions['featureStyleDimmedTiny_' + currentLayerID];
+        lookup.dimTiny = currentStyleMap.styles[multilineStyles.dimTinyStyle]['defaultStyle'];
+      }
+      if(styleOptions['featureStyleClustered_' + currentLayerID] !== "undefined") {
+        multilineStyles.clusteredStyle = styleOptions['featureStyleClustered_' + currentLayerID];
+        lookup.clustered = currentStyleMap.styles[multilineStyles.clusteredStyle]['defaultStyle'];
+      }
       if(styleOptions['lineStyle_' + currentLayerID] !== "undefined") {
         multilineStyles.lineStyle = styleOptions['lineStyle_' + currentLayerID];
         lookup.line = currentStyleMap.styles[multilineStyles.lineStyle]['defaultStyle'];
@@ -814,6 +855,7 @@ Drupal.openlayers.popup.newPlayLineStylesSetup = function(newStyle){
       data.map.layers[currentLayerID].lookup = data.openlayers.layers[layer].lookup = lookup;
       data.map.layers[currentLayerID].styleOptions = data.openlayers.layers[layer].styleOptions = styleOptions;
       data.map.layers[currentLayerID].parentLayerNumber = data.openlayers.layers[layer].parentLayerNumber = layer;
+console.log(data.map.layers[currentLayerID]);
     }
   }
   return newStyle;

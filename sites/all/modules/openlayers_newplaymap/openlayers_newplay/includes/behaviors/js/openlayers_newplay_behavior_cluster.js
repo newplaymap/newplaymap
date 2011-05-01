@@ -38,31 +38,3 @@ Drupal.behaviors.openlayers_newplay_behavior_cluster = function(context) {
     }
   }
 };
-
-/*
- * Override of callback used by 'popup' behaviour to support clusters
- */
-/*
-Drupal.theme.openlayersPopup = function(feature) {
-  if(feature.cluster)
-  {
-    var output = '';
-    var visited = []; // to keep track of already-visited items
-    for(var i = 0; i < feature.cluster.length; i++) {
-      var pf = feature.cluster[i]; // pseudo-feature
-      if ( typeof pf.drupalFID != 'undefined' ) {
-        var mapwide_id = feature.layer.drupalID + pf.drupalFID;
-        if (mapwide_id in visited) continue;
-        visited[mapwide_id] = true;
-      }
-      output += '<div class="openlayers-popup openlayers-popup-feature">' +
-        Drupal.theme.prototype.openlayersPopup(pf) + '</div>';
-    }
-    return output;
-  }
-  else
-  {
-    return Drupal.theme.prototype.openlayersPopup(feature);
-  }
-};
-*/

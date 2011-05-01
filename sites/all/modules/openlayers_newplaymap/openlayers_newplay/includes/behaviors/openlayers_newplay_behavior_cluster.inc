@@ -36,32 +36,34 @@ class openlayers_newplay_behavior_cluster extends openlayers_behavior {
       }
     }
 
-    $form = array();
-    $form['layers'] = array(
-      '#title' => t('Layers'),
-      '#type' => 'checkboxes',
-      '#options' => $vector_layers,
-      '#description' => t('Select layer to apply clustering to.'),
-      '#default_value' => isset($defaults['layers']) ? 
-        $defaults['layers'] : array(),
+    return array(
+      'clusterlayer' => array(
+        '#title' => t('Layers'),
+        '#type' => 'checkboxes',
+        '#options' => $vector_layers,
+        '#description' => t('Select layers to cluster.'),
+        '#default_value' => isset($defaults['clusterlayer']) ? 
+        $defaults['clusterlayer'] : array(),
+      ),
+      'distance' => array(
+        '#type' => 'textfield',
+        '#default_value' => (isset($defaults['distance'])) ?
+        $defaults['distance'] : 20,
+        '#size' => 5,
+        '#title' => t('Distance'),
+        '#description' => t('Pixel distance between features that should ' .
+        'be considered a single cluster'),
+      ),
+      'threshold' => array(
+        '#type' => 'textfield',
+        '#default_value' => (isset($defaults['threshold'])) ?
+        $defaults['threshold'] : NULL,
+        '#size' => 5,
+        '#title' => t('Threshold'),
+        '#description' => t('Optional threshold below which original ' .
+        'features will be added to the layer instead of clusters'),
+      )
     );
-    
-    // Popup
-    $form['cluster_fieldset'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Clustering'),
-      '#description' => t('Creates cluster behavior.'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-    );
-    $form['cluster_fieldset']['cluster'] = array(
-      '#title' => t('Enable Clustering'),
-      '#type' => 'checkbox',
-      '#default_value' => isset($defaults['cluster_fieldset']['cluster']) ? 
-        $defaults['cluster_fieldset']['cluster'] : FALSE,
-    );
-    
-    return $form;
   }
 
   /**

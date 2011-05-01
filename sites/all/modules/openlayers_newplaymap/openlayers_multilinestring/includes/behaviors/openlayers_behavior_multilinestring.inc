@@ -90,6 +90,13 @@ class openlayers_behavior_multilinestring extends openlayers_behavior {
             $default_layer['featureStyleSelectedGroup_' . $layer_name] : NULL,
           '#description' => 'Style for selected features in this group.',
         );
+      $form['multiLineStringStyleGroup_' . $layer_name]['featureStyleSelectedGroupTiny_' . $layer_name] = array(
+           '#type' => 'select',
+          '#options' => array( t('Default style') ) + openlayers_ui_get_style_options(),
+          '#default_value' => isset($default_layer['featureStyleSelectedGroupTiny_' . $layer_name]) ?
+            $default_layer['featureStyleSelectedGroupTiny_' . $layer_name] : NULL,
+          '#description' => 'Style for selected tiny features in this group.',
+        );
       $form['multiLineStringStyleGroup_' . $layer_name]['featureStyleSelectedFeature_' . $layer_name] = array(
            '#type' => 'select',
           '#options' => array( t('Default style') ) + openlayers_ui_get_style_options(),
@@ -103,6 +110,20 @@ class openlayers_behavior_multilinestring extends openlayers_behavior {
           '#default_value' => isset($default_layer['featureStyleDimmed_' . $layer_name]) ?
             $default_layer['featureStyleDimmed_' . $layer_name] : NULL,
           '#description' => 'Style for dimmed features not in this group.',
+        );
+      $form['multiLineStringStyleGroup_' . $layer_name]['featureStyleDimmedTiny_' . $layer_name] = array(
+          '#type' => 'select',
+          '#options' => array( t('Default style') ) + openlayers_ui_get_style_options(),
+          '#default_value' => isset($default_layer['featureStyleDimmedTiny_' . $layer_name]) ?
+            $default_layer['featureStyleDimmedTiny_' . $layer_name] : NULL,
+          '#description' => 'Style for tiny dimmed features not in this group.',
+        );
+      $form['multiLineStringStyleGroup_' . $layer_name]['featureStyleClustered_' . $layer_name] = array(
+          '#type' => 'select',
+          '#options' => array( t('Default style') ) + openlayers_ui_get_style_options(),
+          '#default_value' => isset($default_layer['featureStyleClustered_' . $layer_name]) ?
+            $default_layer['featureStyleClustered_' . $layer_name] : NULL,
+          '#description' => 'Style for clusterd features in this group.',
         );
     }
     // Zoom to group enabled
@@ -129,6 +150,9 @@ class openlayers_behavior_multilinestring extends openlayers_behavior {
         $this->options['multiLineStringStyleGroup_' . $layer]['featureStyleSelectedGroup_' . $layer],
         $this->options['multiLineStringStyleGroup_' . $layer]['featureStyleSelectedFeature_' . $layer],
         $this->options['multiLineStringStyleGroup_' . $layer]['featureStyleDimmed_' . $layer],
+        $this->options['multiLineStringStyleGroup_' . $layer]['featureStyleDimmedTiny_' . $layer],
+        $this->options['multiLineStringStyleGroup_' . $layer]['featureStyleClustered_' . $layer],
+        $this->options['multiLineStringStyleGroup_' . $layer]['featureStyleSelectedGroupTiny_' . $layer],
       );
       foreach($behavior_line_styles as $line_style) {
         // Set a default style if none are selected.
