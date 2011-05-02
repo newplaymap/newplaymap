@@ -48,13 +48,13 @@ Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
   else {
     output =
       '<div class="popup-container">' + 
-        '<div class="popup-inner"><div class="close-btn"></div>' + 
-          '<div class="popup-content">' + 
-            '<div class="openlayers-popup openlayers-popup-name">' + feature.attributes.name + '</div>' +
-            '<div class="openlayers-popup openlayers-popup-description">' + feature.attributes.description + '</div>' + 
+        '<div class="popup-inner cluster"><div class="close-btn"></div>' + 
+          '<div class="popup-content cluster">' + 
+            '<div class="openlayers-popup openlayers-popup-name cluster">' + feature.attributes.name + '</div>' +
+            '<div class="openlayers-popup openlayers-popup-description cluster">' + feature.attributes.description + '</div>' + 
           '</div>' + 
         '</div>' + 
-        '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' + 
+        '<div class="overlay cluster"><div class="close-btn"></div><div class="node-content cluster"></div></div>' + 
       '</div>';
     return output;
   }
@@ -77,8 +77,6 @@ Drupal.behaviors.openlayers_newplay_behavior_popup_interaction = function(contex
   });
 
   if(Drupal.openlayers.loaded == 0) {
-
-
     // Loading graphic for map.
     Drupal.openlayers.popup.mapLoading("start");
 
@@ -91,7 +89,7 @@ Drupal.behaviors.openlayers_newplay_behavior_popup_interaction = function(contex
       var map = data.openlayers;
       var options = data.map.behaviors['openlayers_newplay_behavior_popup_interaction'];
       var layers = new Array();
-  
+      
       // For backwards compatiability, if layers is not
       // defined, then include all vector layers
       if (typeof options.layers == 'undefined' || options.layers.length == 0) {
@@ -137,6 +135,7 @@ Drupal.behaviors.openlayers_newplay_behavior_popup_interaction = function(contex
   Drupal.openlayers.loaded++;
   Drupal.openlayers.popup.mapLoading("stop");
 };
+
 Drupal.openlayers.popup.processViewsData = function() {
   var processed = Drupal.openlayers.popup.ajaxLinks('ajax-popup-panel', 'div#panel-default-overlay a');
   if (processed == true) {
@@ -700,7 +699,7 @@ Drupal.openlayers.popup.newPlayPopupUnSelect = function(feature, context) {
  * select: Boolean
  *   This is true of the popup is selected, false if popup is unselected.
  */
-Drupal.openlayers.popup.newPlayLayerStyle = function (data, feature, layer, select) {
+Drupal.openlayers.popup.newPlayLayerStyle = function (data, feature, layer, select, context) {
   // Work with multilinestring behavior to show groups of nodes if selected.
   var currentLayer = data.openlayers.layers[layer];
   var currentLayerID = data.openlayers.layers[layer]["drupalID"];
@@ -750,7 +749,7 @@ Drupal.openlayers.popup.newPlayLayerStyle = function (data, feature, layer, sele
       else {
         layerOnTop = false;
       }
-      Drupal.openlayers.popup.reorderLayerFeatures(data, currentLayer, layerOnTop, select);
+      Drupal.openlayers.popup.reorderLayerFeatures(data, currentLayer, layerOnTop, select, context);
     }
   }
   else {
@@ -762,7 +761,7 @@ Drupal.openlayers.popup.newPlayLayerStyle = function (data, feature, layer, sele
 /**
  * Features can only change zIndex if they are rebuilt, you can't just change the stylemap.
  */
-Drupal.openlayers.popup.reorderLayerFeatures = function(data, layer, layerOnTop, select) {
+Drupal.openlayers.popup.reorderLayerFeatures = function(data, layer, layerOnTop, select, context) {
   // Don't change the layer order on unselect.
   if (select === true) {
     // @TODO This is buggy.
@@ -778,6 +777,10 @@ Drupal.openlayers.popup.reorderLayerFeatures = function(data, layer, layerOnTop,
       data.openlayers.setLayerIndex(layer, -1);
     } 
   }
+
+  // Recluster
+  Drupal.behaviors.openlayers_newplay_behavior_cluster(context);
+ console.log(layer);
   layer.redraw();
   return false;
 };
@@ -869,6 +872,7 @@ Drupal.openlayers.popup.newPlayLineStylesSetup = function(newStyle){
  * This function takes the current layers and sets up the markers.
  */
 Drupal.openlayers.popup.newPlayLineStylesMarkers = function(newStyle){
+console.log("markers");
   var data = newStyle.data;
   var currentLayer = newStyle.currentLayer;
   var currentStyleMap = newStyle.currentStyleMap;

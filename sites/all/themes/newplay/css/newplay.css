@@ -331,6 +331,9 @@
     background: #6f84c2 url(../images/button-sprite.png) 0 0 no-repeat;
   }
   
+  .popup-container .cluster {
+    overflow: auto;
+  }
       /* Button :hover state */
       .edit-button:hover,
       #header-blocks a#add_button:hover,
