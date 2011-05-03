@@ -76,11 +76,15 @@ Drupal.openlayers.popup.featureScale = function(layer) {
         pf.attributes.weight = 40 + (1.5 * count);
       }
       pf.cluster[j].attributes.count = count;
-      pf.cluster[j].attributes.state = "default";
+      pf.cluster[j].attributes.state = pf.renderIntent;
+
+      pf.attributes.state = pf.renderIntent;
+console.log("-----");
+console.log(pf);
     }
-  }
-/*   console.log("clusterdraw"); */
   layer.redraw();
+  }
+
 };
 
 /* Update map features on zoom Change. */
@@ -90,19 +94,17 @@ Drupal.openlayers.popup.clusterZoomChange = function(event) {
   if (data && data.map.behaviors.openlayers_newplay_behavior_cluster) {
     var options = data.map.behaviors.openlayers_newplay_behavior_cluster;
     var map = data.openlayers;
-    console.log(map);
     for (var i in options.clusterlayer) {
       //var selectedLayer = map.getLayersBy('drupalID', options.clusterlayer[i]);
-      for (var j in map.layers) {
-        if(map.layers[j]["drupalID"] == options.clusterlayer[i]) {
-          layer = map.layers[j];
-          console.log(layer);
+      for (var j in event.object.layers) {
+        if(event.object.layers[j]["drupalID"] == options.clusterlayer[i]) {
+          layer = event.object.layers[j];
+          layer.redraw();
         }
       }
       Drupal.openlayers.popup.featureScale(layer);
-      console.log(layer);
     }
   }
-  console.log(map);
+console.log("zoom");
 }
 

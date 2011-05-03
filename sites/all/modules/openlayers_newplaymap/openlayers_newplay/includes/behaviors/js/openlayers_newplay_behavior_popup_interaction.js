@@ -48,13 +48,13 @@ Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
   else {
     output =
       '<div class="popup-container">' + 
-        '<div class="popup-inner cluster"><div class="close-btn"></div>' + 
-          '<div class="popup-content cluster">' + 
-            '<div class="openlayers-popup openlayers-popup-name cluster">' + feature.attributes.name + '</div>' +
-            '<div class="openlayers-popup openlayers-popup-description cluster">' + feature.attributes.description + '</div>' + 
+        '<div class="popup-inner"><div class="close-btn"></div>' + 
+          '<div class="popup-content">' + 
+            '<div class="openlayers-popup openlayers-popup-name">' + feature.attributes.name + '</div>' +
+            '<div class="openlayers-popup openlayers-popup-description">' + feature.attributes.description + '</div>' + 
           '</div>' + 
         '</div>' + 
-        '<div class="overlay cluster"><div class="close-btn"></div><div class="node-content cluster"></div></div>' + 
+        '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' + 
       '</div>';
     return output;
   }
@@ -111,6 +111,10 @@ Drupal.behaviors.openlayers_newplay_behavior_popup_interaction = function(contex
         }
       );
       map.addControl(popupSelect);
+
+      // Recluster, add event Listener
+      map.events.register("zoomend", map, Drupal.openlayers.popup.clusterZoomChange);
+
       popupSelect.activate();
       Drupal.openlayers.popup.popupSelect = popupSelect;
 
@@ -118,7 +122,6 @@ Drupal.behaviors.openlayers_newplay_behavior_popup_interaction = function(contex
       // On page load, if there is a hash path (from bookmarking, load the overlay.
       var hashPath = Drupal.openlayers.popup.jqueryAddressHashPath();
       if(hashPath !== '/') {
-        // console.log("trying to load");
         //Drupal.openlayers.popup.loadMapNodePopup(hashPath);
       }
 
@@ -521,8 +524,6 @@ Drupal.openlayers.popup.loadNode = function(path) {
  * Display loading graphic for node.
  */
 Drupal.openlayers.popup.nodeLoading = function (data) {
-
-console.log("nodeloading");
   // Remove feeds-wrapper on all pages except homepage when the node has been loaded.
   // (Tip: if we just hide it, then the accordion triggers the feeds wrapper & reopens feeds wrapper.)
   $('div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper').remove();
@@ -654,7 +655,6 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
   for (var layer in data.openlayers.layers) {
     Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, true);
   }
-
   // If user is navigating map, and clicks another popup, and there is a hashPath,
   // retrigger the node load sequence.
   var hashPath = Drupal.openlayers.popup.jqueryAddressHashPath();
@@ -692,7 +692,9 @@ Drupal.openlayers.popup.newPlayPopupUnSelect = function(feature, context) {
   for (var layer in data.openlayers.layers) {
     Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, false);
   }
+
 };
+
 
 /**
  * For each layer, build interactive line style for the layer, and grouped elements in the layer.
@@ -703,18 +705,18 @@ Drupal.openlayers.popup.newPlayLayerStyle = function (data, feature, layer, sele
   // Work with multilinestring behavior to show groups of nodes if selected.
   var currentLayer = data.openlayers.layers[layer];
   var currentLayerID = data.openlayers.layers[layer]["drupalID"];
-  // Only apply styling to selected layers. If not selected, the layer will use the default Open Layers styles.
+    // Only apply styling to selected layers. If not selected, the layer will use the default Open Layers styles.
   var layerChecked = data.map.behaviors['openlayers_behavior_multilinestring']['multiLineStringLayers'][data.openlayers.layers[layer]["drupalID"]];
+  var drupalID = data.openlayers.layers[layer]["drupalID"];
 
   // Create & load styleMap options.
   var currentStyleMap = Drupal.openlayers.getStyleMap(data.map, data.map.layer_styles[currentLayerID]);
-
   // Control the styles for grouped layers.
   // Custom styles
   var multilineStyles = {};
 
   // Load line styles for each layer selected in the Behavior settings.
-  if(layerChecked == data.openlayers.layers[layer]["drupalID"] && layerChecked !== undefined) {
+  if(layerChecked == drupalID && layerChecked !== undefined) {
     var newStyle = {};
     var newStyle = {
       'data': data,
@@ -777,10 +779,6 @@ Drupal.openlayers.popup.reorderLayerFeatures = function(data, layer, layerOnTop,
       data.openlayers.setLayerIndex(layer, -1);
     } 
   }
-
-  // Recluster
-  Drupal.behaviors.openlayers_newplay_behavior_cluster(context);
- console.log(layer);
   layer.redraw();
   return false;
 };
@@ -872,7 +870,6 @@ Drupal.openlayers.popup.newPlayLineStylesSetup = function(newStyle){
  * This function takes the current layers and sets up the markers.
  */
 Drupal.openlayers.popup.newPlayLineStylesMarkers = function(newStyle){
-console.log("markers");
   var data = newStyle.data;
   var currentLayer = newStyle.currentLayer;
   var currentStyleMap = newStyle.currentStyleMap;
@@ -902,92 +899,87 @@ console.log("markers");
 
   // If we are looking at the layer NOT of a line (each line is a 'group' originally based on an attribute)
   // This is the current layer?
-  if (data.openlayers.layers[layer]["name"] == feature.layer.name) {
-    multilineStyles.defaultFeatureStyle = data.map.layer_styles[currentLayerID];
-    currentStyleMap = Drupal.openlayers.getStyleMap(data.map, multilineStyles.defaultFeatureStyle);
-    lookup["default"] = currentStyleMap.styles[multilineStyles.defaultFeatureStyle]['defaultStyle'];
-
-    // Read through features in this layer.
-    // @TODO really, the groupingAttribute should be set on a layer by layer basis.
-
+  if(feature.cluster) {
+    if (data.openlayers.layers[layer]["name"] == feature.layer.name) {
+      multilineStyles.defaultFeatureStyle = data.map.layer_styles[currentLayerID];
+      currentStyleMap = Drupal.openlayers.getStyleMap(data.map, multilineStyles.defaultFeatureStyle);
+      lookup["default"] = currentStyleMap.styles[multilineStyles.defaultFeatureStyle]['defaultStyle'];
+    }
     for (var marker in currentLayer.features) {
-      // Show current group's features at full opacity.
-      if(currentLayer.features[marker]["attributes"][groupingAttribute] == group && currentLayer.features[marker]["attributes"][groupingAttribute] !== undefined) {
-        currentLayer.features[marker]["attributes"]["state"] = "groupSelect";
-        // Set all other layers to be dimmed.
-      }
-      else if ( currentLayer.features[marker]["attributes"][groupingAttribute] === undefined) {
-        currentLayer.features[marker]["attributes"]["state"] = "default";
-        if(currentLayer.features[marker]["cluster"]) {
-          // If marker is part of a cluster.
-         currentLayer.features[marker]["attributes"]["state"] = "clustered";
-        }
-      }
-      else {
-        // If the current layer has groups, dim all the other features in that layer
-        currentLayer.features[marker]["attributes"]["state"] = "dimmed";
-
-        // as well as all the other features on the map.
-        // If the selected features doesn't have a group at all, don't do any dimming.
-      }
-      if(select === false) {
-        currentLayer.features[marker]["attributes"]["state"] = "default";
-        if(currentLayer.features[marker]["cluster"]) {
-          // If marker is part of a cluster.
-         currentLayer.features[marker]["attributes"]["state"] = "clustered";
-        }
-      }
+      currentLayer.features[marker]["attributes"]["state"] = "dimmed";
     }
     if(select === true) {
-      feature.attributes.state = "featured";
-      if(feature.cluster) {
-        // If marker is part of a cluster.
-        feature.attributes.state = "clustered";
-      }
+      feature.attributes.state = "default";
     }
   }
   else {
-    multilineStyles.defaultFeatureStyle = data.map.layer_styles[currentLayerID];
-    currentStyleMap = Drupal.openlayers.getStyleMap(data.map, multilineStyles.defaultFeatureStyle);
-    lookup["default"] = currentStyleMap.styles[multilineStyles.defaultFeatureStyle]['defaultStyle'];
-
-    // Read through features in this layer.
-    // @TODO really, the groupingAttribute should be set on a layer by layer basis.
-
-    for (var marker in currentLayer.features) {
-
-      // Show current group's features at full opacity.
-      if(currentLayer.features[marker]["attributes"][groupingAttribute] == group) {
-        currentLayer.features[marker]["attributes"]["state"] = "dimmed";
-
-        // Set all other layers to be dimmed.
-      }
-      else if(currentLayer.features[marker]["attributes"][groupingAttribute] != group) {
-        currentLayer.features[marker]["attributes"]["state"] = "dimmed";
-        // Set all other layers to be dimmed.
-      }
-      else {
-        // If the current layer has groups, dim all the other features in that layer
-        currentLayer.features[marker]["attributes"]["state"] = "dimmed";
-        // as well as all the other features on the map.
-        // If the selected features doesn't have a group at all, don't do any dimming.
-      }
-      if(select === false) {
-        currentLayer.features[marker]["attributes"]["state"] = "default";
-        if(currentLayer.features[marker]["cluster"]) {
-          // If marker is part of a cluster.
-         currentLayer.features[marker]["attributes"]["state"] = "clustered";
+    if (data.openlayers.layers[layer]["name"] == feature.layer.name) {
+      multilineStyles.defaultFeatureStyle = data.map.layer_styles[currentLayerID];
+      currentStyleMap = Drupal.openlayers.getStyleMap(data.map, multilineStyles.defaultFeatureStyle);
+      lookup["default"] = currentStyleMap.styles[multilineStyles.defaultFeatureStyle]['defaultStyle'];
+  
+      // Read through features in this layer.
+      // @TODO really, the groupingAttribute should be set on a layer by layer basis.
+  
+      for (var marker in currentLayer.features) {
+        // Show current group's features at full opacity.
+        if(currentLayer.features[marker]["attributes"][groupingAttribute] == group && currentLayer.features[marker]["attributes"][groupingAttribute] !== undefined) {
+          currentLayer.features[marker]["attributes"]["state"] = "groupSelect";
+          // Set all other layers to be dimmed.
+        }
+        else if ( currentLayer.features[marker]["attributes"][groupingAttribute] === undefined) {
+          currentLayer.features[marker]["attributes"]["state"] = "default";
+        }
+        else {
+          // If the current layer has groups, dim all the other features in that layer
+          currentLayer.features[marker]["attributes"]["state"] = "dimmed";
+  
+          // as well as all the other features on the map.
+          // If the selected features doesn't have a group at all, don't do any dimming.
+        }
+        if(select === false) {
+          currentLayer.features[marker]["attributes"]["state"] = "default";
         }
       }
-    }
-    if(select === true) {
-      feature.attributes.state = "featured";
-      if(feature.cluster) {
-        // If marker is part of a cluster.
-        feature.attributes.state = "clustered";
+      if(select === true) {
+        feature.attributes.state = "featured";
       }
     }
-
+    else {
+      multilineStyles.defaultFeatureStyle = data.map.layer_styles[currentLayerID];
+      currentStyleMap = Drupal.openlayers.getStyleMap(data.map, multilineStyles.defaultFeatureStyle);
+      lookup["default"] = currentStyleMap.styles[multilineStyles.defaultFeatureStyle]['defaultStyle'];
+  
+      // Read through features in this layer.
+      // @TODO really, the groupingAttribute should be set on a layer by layer basis.
+  
+      for (var marker in currentLayer.features) {
+  
+        // Show current group's features at full opacity.
+        if(currentLayer.features[marker]["attributes"][groupingAttribute] == group) {
+          currentLayer.features[marker]["attributes"]["state"] = "dimmed";
+  
+          // Set all other layers to be dimmed.
+        }
+        else if(currentLayer.features[marker]["attributes"][groupingAttribute] != group) {
+          currentLayer.features[marker]["attributes"]["state"] = "dimmed";
+          // Set all other layers to be dimmed.
+        }
+        else {
+          // If the current layer has groups, dim all the other features in that layer
+          currentLayer.features[marker]["attributes"]["state"] = "dimmed";
+          // as well as all the other features on the map.
+          // If the selected features doesn't have a group at all, don't do any dimming.
+        }
+        if(select === false) {
+          currentLayer.features[marker]["attributes"]["state"] = "default";
+        }
+      }
+      if(select === true) {
+        feature.attributes.state = "featured";
+      }
+  
+    }
   }
   // Create and return a newStyle object
   newStyle.newStyleMapping = new OpenLayers.StyleMap(currentStyleMap);
