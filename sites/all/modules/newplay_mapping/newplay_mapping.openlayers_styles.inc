@@ -37,8 +37,8 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->description = 'Markers for events (dimmed)';
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
-    'fillColor' => '#666666',
-    'fillOpacity' => 0.6,
+    'fillColor' => '#6F37B7',
+    'fillOpacity' => 0.2,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -82,8 +82,8 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->description = 'Markers for events (dimmed tiny)';
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
-    'fillColor' => '#666666',
-    'fillOpacity' => 0.6,
+    'fillColor' => '#6F37B7',
+    'fillOpacity' => 0.2,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -105,7 +105,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
     'fillColor' => '#6F37B7',
-    'fillOpacity' => 0.6,
+    'fillOpacity' => 1,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -127,7 +127,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
     'fillColor' => '#6F37B7',
-    'fillOpacity' => 0.6,
+    'fillOpacity' => 1,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -149,7 +149,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
     'fillColor' => '#6F37B7',
-    'fillOpacity' => 0.6,
+    'fillOpacity' => 1,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -195,8 +195,8 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->description = 'Marker for Artists (Dimmed)';
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
-    'fillColor' => '#666666',
-    'fillOpacity' => 0.6,
+    'fillColor' => '#F4A70F',
+    'fillOpacity' => 0.2,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -218,7 +218,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
     'fillColor' => '#F4A70F',
-    'fillOpacity' => 0.6,
+    'fillOpacity' => 1,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -261,8 +261,8 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->description = 'Marker for Artists (Dimmed Tiny)';
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
-    'fillColor' => '#666666',
-    'fillOpacity' => 0.6,
+    'fillColor' => '#F4A70F',
+    'fillOpacity' => 0.2,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -284,7 +284,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
     'fillColor' => '#F4A70F',
-    'fillOpacity' => 0.6,
+    'fillOpacity' => 1,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -329,8 +329,8 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->description = 'The marker for an organization, dimmed.';
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
-    'fillColor' => '#666666',
-    'fillOpacity' => 0.6,
+    'fillColor' => '#1B6070',
+    'fillOpacity' => 0.2,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -373,8 +373,8 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->description = 'The marker for an organization, dimmed, tiny.';
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
-    'fillColor' => '#666666',
-    'fillOpacity' => 0.6,
+    'fillColor' => '#1B6070',
+    'fillOpacity' => 0.2,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -396,7 +396,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
     'fillColor' => '#1B6070',
-    'fillOpacity' => 0.6,
+    'fillOpacity' => 1,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',
@@ -418,7 +418,7 @@ function newplay_mapping_openlayers_styles() {
   $openlayers_styles->data = array(
     'pointRadius' => '${weight}',
     'fillColor' => '#1B6070',
-    'fillOpacity' => 0.6,
+    'fillOpacity' => 1,
     'graphicName' => 'circle',
     'label' => '${count}',
     'labelAlign' => 'cm',

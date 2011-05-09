@@ -904,12 +904,17 @@ Drupal.openlayers.popup.newPlayLineStylesMarkers = function(newStyle){
       multilineStyles.defaultFeatureStyle = data.map.layer_styles[currentLayerID];
       currentStyleMap = Drupal.openlayers.getStyleMap(data.map, multilineStyles.defaultFeatureStyle);
       lookup["default"] = currentStyleMap.styles[multilineStyles.defaultFeatureStyle]['defaultStyle'];
-    }
-    for (var marker in currentLayer.features) {
-      currentLayer.features[marker]["attributes"]["state"] = "dimmed";
-    }
-    if(select === true) {
-      feature.attributes.state = "default";
+
+
+      for (var marker in currentLayer.features) {
+       // currentLayer.features[marker]["attributes"]["state"] = "default";
+      }
+      if(select === true) {
+        //feature.attributes.state = "default";
+      }
+      else {
+      //  feature.attributes.state = "default";
+      }
     }
   }
   else {

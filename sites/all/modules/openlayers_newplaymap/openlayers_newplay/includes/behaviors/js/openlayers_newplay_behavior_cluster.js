@@ -77,14 +77,11 @@ Drupal.openlayers.popup.featureScale = function(layer) {
       }
       pf.cluster[j].attributes.count = count;
       pf.cluster[j].attributes.state = pf.renderIntent;
-
+      pf.cluster[j].state = pf.renderIntent;
       pf.attributes.state = pf.renderIntent;
-console.log("-----");
-console.log(pf);
+      layer.redraw();
     }
-  layer.redraw();
   }
-
 };
 
 /* Update map features on zoom Change. */
@@ -99,12 +96,11 @@ Drupal.openlayers.popup.clusterZoomChange = function(event) {
       for (var j in event.object.layers) {
         if(event.object.layers[j]["drupalID"] == options.clusterlayer[i]) {
           layer = event.object.layers[j];
-          layer.redraw();
+          Drupal.openlayers.popup.featureScale(layer);
         }
       }
-      Drupal.openlayers.popup.featureScale(layer);
     }
   }
-console.log("zoom");
+/* console.log("zoom"); */
 }
 
