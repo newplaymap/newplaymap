@@ -1,0 +1,48 @@
+2d1
+< // $Id: openlayers_views_style_data.inc,v 1.1.2.24 2010/09/05 21:24:58 tmcw Exp $
+24c23
+<     $options['data_source'] = array('default' => array());
+---
+>     $options['data_source'] = array('default' => 'openlayers_wkt');
+158a158,163
+>     $form['data_source']['keep_orig_name_field'] = array(
+>         '#type' => 'checkbox',
+>         '#title' => t('Keep non-rendered title field attribute'),
+>         '#description' => t('Check to ensure the title field will still be present as an attribute in its non-rendered form'),
+>         '#default_value' => $this->options['data_source']['keep_orig_name_field']
+>     );
+166a172,177
+>     $form['data_source']['keep_orig_desc_field'] = array(
+>         '#type' => 'checkbox',
+>         '#title' => t('Keep non-rendered description field attribute'),
+>         '#description' => t('Check to ensure the description field will still be present as an attribute in its non-rendered form'),
+>         '#default_value' => $this->options['data_source']['keep_orig_desc_field']
+>     );
+215a227,234
+>     
+>     // Small fix to solve backwards compatability and bad commit
+>     // and release.  This should be in an update function.
+>     // See: http://drupal.org/node/895082
+>     $ds = $data_source['value'];       
+>     if (is_array($ds)) {
+>       $ds = array_shift(array_keys($data_source['value']));
+>     } 
+226c245,246
+<         switch($data_source['value']) {
+---
+> 
+>         switch ($ds) {
+316d335
+<         $this->view->row_index = $id;
+326c345
+<         switch ($data_source['value']) {
+---
+>         switch ($ds) {
+379a399,401
+>           if (!empty($data_source['keep_orig_name_field'])) {
+>             $feature['attributes'][$data_source['name_field']] = $record->$name_field;
+>           }
+387a410,412
+>           if (!empty($data_source['keep_orig_desc_field'])) {
+>             $feature['attributes'][$data_source['description_field']] = $record->$description_field;
+>           }
