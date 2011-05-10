@@ -517,7 +517,7 @@ Drupal.openlayers.popup.displayNode = function(data) {
   $('div.popup-container div.overlay div.node-content').html(data);
 
   // Set the page title based on the new content
-  var oldPageTitle = $('title').text();
+  var oldPageTitle = 'New Play Map';
   var newPageTitle = $('<span></span>').html($(data).get(0)); // @TODO: Figure out how to get the title without using this span
   newPageTitle = $(newPageTitle).find('.panel-overlay .pane-node-title .pane-content').html()
   $('title').text(newPageTitle + ' | ' + oldPageTitle);
