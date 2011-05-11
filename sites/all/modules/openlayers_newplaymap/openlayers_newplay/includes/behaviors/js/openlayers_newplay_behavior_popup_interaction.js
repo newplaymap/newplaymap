@@ -653,7 +653,13 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
 
   // Read through each layer to reimplement all the styles.
   for (var layer in data.openlayers.layers) {
-    Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, true);
+/*
+    if(feature.cluster) {
+    }
+    else {
+*/
+      Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, true);
+//    }
   }
   // If user is navigating map, and clicks another popup, and there is a hashPath,
   // retrigger the node load sequence.
@@ -690,7 +696,11 @@ Drupal.openlayers.popup.newPlayPopupUnSelect = function(feature, context) {
 
   // Read through each layer to reimplement all the styles.
   for (var layer in data.openlayers.layers) {
-    Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, false);
+    if(feature.cluster) {
+    }
+    else {
+      Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, false);
+    }
   }
 
 };
@@ -757,6 +767,7 @@ Drupal.openlayers.popup.newPlayLayerStyle = function (data, feature, layer, sele
   else {
     Drupal.openlayers.popup.newPlayNormalStyles(data, currentLayer, currentLayerID, select);
   }
+//Drupal.openlayers.popup.featureScale(layer);
 //Drupal.openlayers.popup.redrawLayers(data.openlayers.layers);
 };
 
@@ -779,6 +790,7 @@ Drupal.openlayers.popup.reorderLayerFeatures = function(data, layer, layerOnTop,
       data.openlayers.setLayerIndex(layer, -1);
     } 
   }
+/*   Drupal.openlayers.popup.featureScale(layer); */
   layer.redraw();
   return false;
 };
@@ -900,22 +912,32 @@ Drupal.openlayers.popup.newPlayLineStylesMarkers = function(newStyle){
   // If we are looking at the layer NOT of a line (each line is a 'group' originally based on an attribute)
   // This is the current layer?
   if(feature.cluster) {
-    if (data.openlayers.layers[layer]["name"] == feature.layer.name) {
+/*     if (data.openlayers.layers[layer]["name"] == feature.layer.name) { */
       multilineStyles.defaultFeatureStyle = data.map.layer_styles[currentLayerID];
       currentStyleMap = Drupal.openlayers.getStyleMap(data.map, multilineStyles.defaultFeatureStyle);
       lookup["default"] = currentStyleMap.styles[multilineStyles.defaultFeatureStyle]['defaultStyle'];
+//console.log(lookup);
+//console.log(feature);
 
-
-      for (var marker in currentLayer.features) {
-       // currentLayer.features[marker]["attributes"]["state"] = "default";
+      for (var i in currentLayer.features) {
+        for (var j in currentLayer.features[i]["cluster"]) {
+          var pf =  currentLayer.features[i]["cluster"][j];
+          //console.log(pf);
+          pf["attributes"]["state"] = "default";
+        }
       }
       if(select === true) {
-        //feature.attributes.state = "default";
+        feature.attributes.state = "default";
       }
       else {
-      //  feature.attributes.state = "default";
+        feature.attributes.state = "default";
       }
+
+/*
     }
+    else {
+    }
+*/
   }
   else {
     if (data.openlayers.layers[layer]["name"] == feature.layer.name) {

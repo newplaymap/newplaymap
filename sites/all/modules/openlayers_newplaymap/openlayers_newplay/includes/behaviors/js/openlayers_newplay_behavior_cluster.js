@@ -55,30 +55,33 @@ Drupal.openlayers.popup.featureScale = function(layer) {
 
     var count = pf.attributes.count;
     if (count < 10) {
-      pf.attributes.weight = 10 + (2 * count);
+      pf.attributes.weight = 10 + (1.5 * count);
     }
     else if (count <= 30 && count >= 10) {
-      pf.attributes.weight = 15 + (2 * count);
+      pf.attributes.weight = 15 + (1.5 * count);
 
     }
     else {
-      pf.attributes.weight = 40 + (1.5 * count);
+      pf.attributes.weight = 30 + (1.5 * count);
     }
 
     for (var j in pf.cluster) {
-      if (count < 5) {
-        pf.attributes.weight = 10 + (2 * count);
+      if (count < 10) {
+        pf.attributes.weight = 10 + (1.5 * count);
       }
-      else if (count <= 20 && count >= 5) {
-        pf.attributes.weight = 15 + (2 * count);
+      else if (count <= 30 && count >= 10) {
+        pf.attributes.weight = 15 + (1.5 * count);
       }
       else {
-        pf.attributes.weight = 40 + (1.5 * count);
+        pf.attributes.weight = 30 + (1.5 * count);
       }
       pf.cluster[j].attributes.count = count;
       pf.cluster[j].attributes.state = pf.renderIntent;
       pf.cluster[j].state = pf.renderIntent;
       pf.attributes.state = pf.renderIntent;
+      pf.state = pf.attributes.state;
+      //pf.state = pf.attributes.state;
+/* console.log(pf); */
       layer.redraw();
     }
   }
@@ -91,11 +94,14 @@ Drupal.openlayers.popup.clusterZoomChange = function(event) {
   if (data && data.map.behaviors.openlayers_newplay_behavior_cluster) {
     var options = data.map.behaviors.openlayers_newplay_behavior_cluster;
     var map = data.openlayers;
+//console.log(event);
+//console.log(options);
     for (var i in options.clusterlayer) {
       //var selectedLayer = map.getLayersBy('drupalID', options.clusterlayer[i]);
       for (var j in event.object.layers) {
         if(event.object.layers[j]["drupalID"] == options.clusterlayer[i]) {
-          layer = event.object.layers[j];
+          var layer = event.object.layers[j];
+/* console.log(layer); */
           Drupal.openlayers.popup.featureScale(layer);
         }
       }

@@ -171,8 +171,8 @@ function newplay_mapping_openlayers_presets() {
           'organizations_openlayers_2' => 'organizations_openlayers_2',
           'organizations_openlayers_3' => 'organizations_openlayers_3',
         ),
-        'distance' => '20',
-        'threshold' => '5',
+        'distance' => '40',
+        'threshold' => '1',
       ),
       'openlayers_plus_behavior_blockswitcher' => array(
         'map' => array(
