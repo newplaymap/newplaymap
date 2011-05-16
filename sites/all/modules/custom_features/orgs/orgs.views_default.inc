@@ -2075,7 +2075,7 @@ function orgs_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('items_per_page', 0);
+  $handler->override_option('items_per_page', 100);
   $handler->override_option('style_plugin', 'openlayers_data');
   $handler->override_option('style_options', array(
     'grouping' => '',
@@ -6590,130 +6590,6 @@ function orgs_views_default_views() {
   $handler->override_option('argument_input', array());
   $handler->override_option('link_to_view', 0);
   $handler->override_option('inherit_panels_path', 0);
-  $handler = $view->new_display('panel_pane', 'Today Event Map Content pane', 'panel_pane_5');
-  $handler->override_option('filters', array(
-    'status' => array(
-      'operator' => '=',
-      'value' => '1',
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'status',
-      'table' => 'node',
-      'field' => 'status',
-      'relationship' => 'none',
-    ),
-    'type' => array(
-      'operator' => 'in',
-      'value' => array(
-        'event' => 'event',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'type',
-      'table' => 'node',
-      'field' => 'type',
-      'relationship' => 'none',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-    ),
-    'date_filter' => array(
-      'operator' => '<=',
-      'value' => array(
-        'value' => NULL,
-        'min' => NULL,
-        'max' => NULL,
-        'default_date' => 'today',
-        'default_to_date' => '',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'date_fields' => array(
-        'node_data_field_event_date.field_event_date_value' => 'node_data_field_event_date.field_event_date_value',
-      ),
-      'date_method' => 'OR',
-      'granularity' => 'day',
-      'form_type' => 'date_select',
-      'default_date' => 'today',
-      'default_to_date' => '',
-      'year_range' => '-3:+3',
-      'id' => 'date_filter',
-      'table' => 'node',
-      'field' => 'date_filter',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
-    'date_filter_1' => array(
-      'operator' => '>=',
-      'value' => array(
-        'value' => NULL,
-        'min' => NULL,
-        'max' => NULL,
-        'default_date' => 'today',
-        'default_to_date' => '',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'date_fields' => array(
-        'node_data_field_event_date.field_event_date_value2' => 'node_data_field_event_date.field_event_date_value2',
-      ),
-      'date_method' => 'OR',
-      'granularity' => 'day',
-      'form_type' => 'date_select',
-      'default_date' => 'today',
-      'default_to_date' => '',
-      'year_range' => '-3:+3',
-      'id' => 'date_filter_1',
-      'table' => 'node',
-      'field' => 'date_filter',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('style_plugin', 'openlayers_map');
-  $handler->override_option('style_options', array(
-    'preset' => 'new_play_map_events_today',
-  ));
-  $handler->override_option('pane_title', 'Today Event Map Content pane');
-  $handler->override_option('pane_description', '');
-  $handler->override_option('pane_category', array(
-    'name' => 'View panes',
-    'weight' => 0,
-  ));
-  $handler->override_option('allow', array(
-    'use_pager' => FALSE,
-    'items_per_page' => FALSE,
-    'offset' => FALSE,
-    'link_to_view' => FALSE,
-    'more_link' => FALSE,
-    'path_override' => FALSE,
-    'title_override' => FALSE,
-    'exposed_form' => FALSE,
-    'fields_override' => FALSE,
-  ));
-  $handler->override_option('argument_input', array());
-  $handler->override_option('link_to_view', 0);
-  $handler->override_option('inherit_panels_path', 0);
   $handler = $view->new_display('openlayers', 'Today Event Data', 'openlayers_4');
   $handler->override_option('relationships', array(
     'field_location_lid' => array(
@@ -7175,9 +7051,9 @@ function orgs_views_default_views() {
         'suffix' => '',
         'target' => '',
         'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
+        'trim' => 1,
+        'max_length' => '50',
+        'word_boundary' => 0,
         'ellipsis' => 1,
         'html' => 0,
         'strip_tags' => 0,
@@ -7276,8 +7152,7 @@ function orgs_views_default_views() {
   [field_event_type_nid]<br />
   [field_related_theater_nid]<br />
   [field_event_date_value] <br />
-  [field_event_desc_value]<br />
-  ',
+  [field_event_desc_value]<br />',
         'make_link' => 0,
         'path' => '',
         'link_class' => '',
@@ -7356,9 +7231,9 @@ function orgs_views_default_views() {
     'date_filter' => array(
       'operator' => '<=',
       'value' => array(
-        'value' => NULL,
         'min' => NULL,
         'max' => NULL,
+        'value' => NULL,
         'default_date' => 'today',
         'default_to_date' => '',
       ),
@@ -7371,7 +7246,7 @@ function orgs_views_default_views() {
       'date_fields' => array(
         'node_data_field_event_date.field_event_date_value' => 'node_data_field_event_date.field_event_date_value',
       ),
-      'date_method' => 'OR',
+      'date_method' => 'AND',
       'granularity' => 'day',
       'form_type' => 'date_select',
       'default_date' => 'today',
@@ -7388,9 +7263,9 @@ function orgs_views_default_views() {
     'date_filter_1' => array(
       'operator' => '>=',
       'value' => array(
-        'value' => NULL,
         'min' => NULL,
         'max' => NULL,
+        'value' => NULL,
         'default_date' => 'today',
         'default_to_date' => '',
       ),
@@ -7403,7 +7278,7 @@ function orgs_views_default_views() {
       'date_fields' => array(
         'node_data_field_event_date.field_event_date_value2' => 'node_data_field_event_date.field_event_date_value2',
       ),
-      'date_method' => 'OR',
+      'date_method' => 'AND',
       'granularity' => 'day',
       'form_type' => 'date_select',
       'default_date' => 'today',
