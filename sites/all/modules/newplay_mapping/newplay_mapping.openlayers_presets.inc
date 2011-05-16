@@ -113,7 +113,37 @@ function newplay_mapping_openlayers_presets() {
       'openlayers_behavior_zoomtomaxextent' => array(),
       'openlayers_behavior_multilinestring' => array(
         'multiLineStringLayers' => array(
+          'organizations_openlayers_1' => 'organizations_openlayers_1',
+          'organizations_openlayers_2' => 'organizations_openlayers_2',
+          'organizations_openlayers_3' => 'organizations_openlayers_3',
           'organizations_openlayers_4' => 'organizations_openlayers_4',
+        ),
+        'multiLineStringStyleGroup_organizations_openlayers_1' => array(
+          'labelLayer_organizations_openlayers_1' => '',
+          'groupingAttribute_organizations_openlayers_1' => 'nid',
+          'lineStyle_organizations_openlayers_1' => 'play_path',
+          'lineStyleSelected_organizations_openlayers_1' => 'play_path_selected',
+          'featureStyleSelectedGroup_organizations_openlayers_1' => 'Event Markers Selected',
+          'featureStyleSelectedFeature_organizations_openlayers_1' => 'Event Markers Featured',
+          'featureStyleDimmed_organizations_openlayers_1' => 'Event Markers Dimmed',
+        ),
+        'multiLineStringStyleGroup_organizations_openlayers_2' => array(
+          'labelLayer_organizations_openlayers_2' => '',
+          'groupingAttribute_organizations_openlayers_2' => '',
+          'lineStyle_organizations_openlayers_2' => 'invisible',
+          'lineStyleSelected_organizations_openlayers_2' => 'invisible',
+          'featureStyleSelectedGroup_organizations_openlayers_2' => 'Generative Artists Marker',
+          'featureStyleSelectedFeature_organizations_openlayers_2' => 'Generative Artists Marker Selected',
+          'featureStyleDimmed_organizations_openlayers_2' => 'Generative Artists Marker Dimmed',
+        ),
+        'multiLineStringStyleGroup_organizations_openlayers_3' => array(
+          'labelLayer_organizations_openlayers_3' => '',
+          'groupingAttribute_organizations_openlayers_3' => '',
+          'lineStyle_organizations_openlayers_3' => 'invisible',
+          'lineStyleSelected_organizations_openlayers_3' => 'invisible',
+          'featureStyleSelectedGroup_organizations_openlayers_3' => 'Organization Marker',
+          'featureStyleSelectedFeature_organizations_openlayers_3' => 'Generative Artists Marker Selected',
+          'featureStyleDimmed_organizations_openlayers_3' => 'Organization Marker Dimmed',
         ),
         'multiLineStringStyleGroup_organizations_openlayers_4' => array(
           'labelLayer_organizations_openlayers_4' => '',
@@ -128,6 +158,9 @@ function newplay_mapping_openlayers_presets() {
       ),
       'openlayers_newplay_behavior_popup_interaction' => array(
         'layers' => array(
+          'organizations_openlayers_1' => 'organizations_openlayers_1',
+          'organizations_openlayers_2' => 'organizations_openlayers_2',
+          'organizations_openlayers_3' => 'organizations_openlayers_3',
           'organizations_openlayers_4' => 'organizations_openlayers_4',
         ),
         'popup_fieldset' => array(
@@ -139,6 +172,9 @@ function newplay_mapping_openlayers_presets() {
     'default_layer' => 'new_play_map',
     'layers' => array(
       'new_play_map' => 'new_play_map',
+      'organizations_openlayers_1' => 'organizations_openlayers_1',
+      'organizations_openlayers_2' => 'organizations_openlayers_2',
+      'organizations_openlayers_3' => 'organizations_openlayers_3',
       'organizations_openlayers_4' => 'organizations_openlayers_4',
     ),
     'layer_styles' => array(
