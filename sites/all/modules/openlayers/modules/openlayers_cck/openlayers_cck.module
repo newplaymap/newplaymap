@@ -1,5 +1,4 @@
 <?php
-// $Id: openlayers_cck.module,v 1.54.2.35 2010/08/27 11:50:44 zzolo Exp $
 
 /**
  * @file
@@ -248,7 +247,7 @@ function openlayers_cck_widget_settings($op, $widget) {
       );
       $form['openlayers_behaviors'] = array(
         '#type' => 'fieldset',
-        '#title' => t('Behaviors'),
+        '#title' => t('Formatter Behaviors'),
         '#description' => t('These behaviors are specifically for the 
           CCK formatter layer.'),
         '#collapsible' => TRUE,

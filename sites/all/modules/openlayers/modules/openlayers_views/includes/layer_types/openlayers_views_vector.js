@@ -1,4 +1,3 @@
-// $Id: openlayers_views_vector.js,v 1.1.2.5 2010/03/25 14:40:55 tmcw Exp $
 
 /**
  * OpenLayers Views Vector Layer Handler
@@ -7,7 +6,7 @@ Drupal.openlayers.layer.openlayers_views_vector = function(title, map, options) 
   // Note, so that we do not pass all the features along to the Layer
   // options, we use the options.options to give to Layer
   options.options.drupalID = options.drupalID;
-  options.options.rendererOptions = {zIndexing: true, yOrdering: false};
+  
   // Create projection
   options.projection = new OpenLayers.Projection('EPSG:'+options.projection);
   // Get style map
