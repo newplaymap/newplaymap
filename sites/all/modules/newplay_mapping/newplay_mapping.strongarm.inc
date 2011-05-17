@@ -494,7 +494,7 @@ function newplay_mapping_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'openlayers_source';
-  $strongarm->value = 'sites/all/libraries/openlayers-2.9.1/lib/OpenLayers.js';
+  $strongarm->value = 'http://openlayers.org/api/2.9/OpenLayers.js';
 
   $export['openlayers_source'] = $strongarm;
   return $export;
