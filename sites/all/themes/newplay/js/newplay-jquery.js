@@ -505,7 +505,7 @@ newPlay.formatLinksBubble = function(element, newId, width) {
 newPlay.overlayContentStyle  = function(context) {
   // Using jQuery UI accordion styling for now
   // active: 'FALSE' means nothing is open when the page loads
-  $('div.panel-overlay div.additional-info').show().accordion({ 
+  $('div.panel-overlay div.additional-info').show().accordion({
     active: 'FALSE',
     collapsible: true
   });
