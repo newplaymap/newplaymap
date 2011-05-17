@@ -637,6 +637,10 @@
     
   }
   
+    .js .panel-overlay .additional-info .ui-accordion-header {
+      cursor: pointer;
+    }
+
   /* Feeds */
   
   .js .panel-overlay #pane-feeds-video.pane-feeds-panel-pane {
