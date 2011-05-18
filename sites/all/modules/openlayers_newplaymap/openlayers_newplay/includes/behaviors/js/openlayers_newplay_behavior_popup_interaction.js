@@ -618,7 +618,7 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
 
   // Read through each layer to reimplement all the styles.
   for (var layer in data.openlayers.layers) {
-    Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, true);
+   // Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, true);
   }
 
   // If user is navigating map, and clicks another popup, and there is a hashPath,
@@ -656,7 +656,7 @@ Drupal.openlayers.popup.newPlayPopupUnSelect = function(feature, context) {
 
   // Read through each layer to reimplement all the styles.
   for (var layer in data.openlayers.layers) {
-    Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, false);
+    // Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, false);
   }
 };
 
