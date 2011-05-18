@@ -1278,6 +1278,11 @@ $('<a></a>').attr({
             $('#' + todayPaneId).fadeIn();
             $('#' + todayPaneId + '-title').addClass('active');
           });
+
+          // Toggle Layer on and off.
+
+
+
         })
         .appendTo(todayHeaderList);
     });
@@ -1285,6 +1290,49 @@ $('<a></a>').attr({
     $('#today-events-title').addClass('active');
     
   }
+
+
+
+
+
+
+
+
+  // Add toggle buttons for layers.
+  $('div#panel-default-overlay div.pane-today-overlay-title li.today-events-title').append('Show all');
+
+  $('div#panel-default-overlay div.pane-today-overlay-title li.today-events-title').click(function(){
+    Drupal.openlayers.layerToggleToday();
+  });
+
+  // Add toggle buttons for layers.
+  $('div#panel-default-overlay div.pane-today-overlay-title li.today-organizations-title').click(function(){
+    Drupal.openlayers.layerToggleOrganizations();
+  });
+
+  // Add toggle buttons for layers.
+  $('div#panel-default-overlay div.pane-today-overlay-title li.today-artists-title').click(function(){
+    Drupal.openlayers.layerToggleArtists();
+  });
+
+  // Show only today's events.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 // the end  
 });

@@ -32,7 +32,19 @@ Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
       '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' + 
     '</div>';
   return output;
-}
+};
+
+Drupal.openlayers.layerToggleToday = function(context) {
+  console.log("clicked today");
+};
+
+Drupal.openlayers.layerToggleOrganizations = function(context) {
+  console.log("clicked orgs");
+};
+
+Drupal.openlayers.layerToggleArtists = function(context) {
+  console.log("clicked artists");
+};
 
 /**
  * OpenLayers New Play Map: Popup Interaction
