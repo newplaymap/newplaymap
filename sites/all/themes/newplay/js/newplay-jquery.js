@@ -1309,12 +1309,12 @@ $('<a></a>').attr({
             for (var i in layers) {
               switch(todayPaneId) {
                 case 'today-events':
-                    if (layers[i]["drupalID"] === 'organizations_openlayers_1') {
+                    if (layers[i]["drupalID"] === 'organizations_openlayers_2') {
                       layers[i].setVisibility(true);
                     }
                   break;
                 case 'today-organizations':
-                    if (layers[i]["drupalID"] === 'organizations_openlayers_2') {
+                    if (layers[i]["drupalID"] === 'organizations_openlayers_1') {
                      layers[i].setVisibility(true);
                     }
                   break;

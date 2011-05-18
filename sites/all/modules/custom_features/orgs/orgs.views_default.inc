@@ -2074,10 +2074,10 @@ function orgs_views_default_views() {
   ));
   $handler->override_option('cache', array(
     'type' => 'time',
-    'results_lifespan' => '3600',
-    'output_lifespan' => '3600',
+    'results_lifespan' => '21600',
+    'output_lifespan' => '21600',
   ));
-  $handler->override_option('items_per_page', 300);
+  $handler->override_option('items_per_page', 200);
   $handler->override_option('style_plugin', 'openlayers_data');
   $handler->override_option('style_options', array(
     'grouping' => '',
