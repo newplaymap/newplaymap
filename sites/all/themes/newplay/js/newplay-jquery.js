@@ -1281,10 +1281,53 @@ $('<a></a>').attr({
 
           // Toggle Layer on and off.
 
+          // Store the context for later use.
+          var context = Drupal.openlayers.context;
 
+          // From default OpenLayers popup functionality
+          var layers, data = $(context).data('openlayers');
+          if (data) {
+            var map = data.openlayers;
+            var options = data.map.behaviors['openlayers_newplay_behavior_popup_interaction'];
+            var layers = new Array();
+        
+            // For backwards compatiability, if layers is not
+            // defined, then include all vector layers
+            if (typeof options.layers == 'undefined' || options.layers.length == 0) {
+              layers = map.getLayersByClass('OpenLayers.Layer.Vector');
+            }
+            else {
+              for (var i in options.layers) {
+                var selectedLayer = map.getLayersBy('drupalID', options.layers[i]);
+                if (typeof selectedLayer[0] != 'undefined') {
+                  layers.push(selectedLayer[0]);
+                  selectedLayer[0].setVisibility(false);
+                }
+              }
+            }
+            // If today link list has class active, show the layer.
+            for (var i in layers) {
+              switch(todayPaneId) {
+                case 'today-events':
+                    if (layers[i]["drupalID"] === 'organizations_openlayers_1') {
+                      layers[i].setVisibility(true);
+                    }
+                  break;
+                case 'today-organizations':
+                    if (layers[i]["drupalID"] === 'organizations_openlayers_2') {
+                     layers[i].setVisibility(true);
+                    }
+                  break;
+                case 'today-artists':
+                    if (layers[i]["drupalID"] === 'organizations_openlayers_3') {
+                      layers[i].setVisibility(true);
+                    }
+                  break;  
+              }
+            }
+          }
 
-        })
-        .appendTo(todayHeaderList);
+        }).appendTo(todayHeaderList);
     });
     
     $('#today-events-title').addClass('active');
