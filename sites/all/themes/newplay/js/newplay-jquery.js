@@ -1277,105 +1277,146 @@ $('<a></a>').attr({
           $('#panel-default-overlay .today-listing').not('#' + todayPaneId).fadeOut('normal', function() {
             $('#' + todayPaneId).fadeIn();
             $('#' + todayPaneId + '-title').addClass('active');
+            return false;
           });
 
-          // Toggle Layer on and off.
-
-          // Store the context for later use.
-          var context = Drupal.openlayers.context;
-
-          // From default OpenLayers popup functionality
-          var layers, data = $(context).data('openlayers');
-          if (data) {
-            var map = data.openlayers;
-            var options = data.map.behaviors['openlayers_newplay_behavior_popup_interaction'];
-            var layers = new Array();
-        
-            // For backwards compatiability, if layers is not
-            // defined, then include all vector layers
-            if (typeof options.layers == 'undefined' || options.layers.length == 0) {
-              layers = map.getLayersByClass('OpenLayers.Layer.Vector');
-            }
-            else {
-              for (var i in options.layers) {
-                var selectedLayer = map.getLayersBy('drupalID', options.layers[i]);
-                if (typeof selectedLayer[0] != 'undefined') {
-                  layers.push(selectedLayer[0]);
-                  selectedLayer[0].setVisibility(false);
-                }
-              }
-            }
-            // If today link list has class active, show the layer.
-            for (var i in layers) {
-              switch(todayPaneId) {
-                case 'today-events':
-                    if (layers[i]["drupalID"] === 'organizations_openlayers_2') {
-                      layers[i].setVisibility(true);
-                    }
-                  break;
-                case 'today-organizations':
-                    if (layers[i]["drupalID"] === 'organizations_openlayers_1') {
-                     layers[i].setVisibility(true);
-                    }
-                  break;
-                case 'today-artists':
-                    if (layers[i]["drupalID"] === 'organizations_openlayers_3') {
-                      layers[i].setVisibility(true);
-                    }
-                  break;  
-              }
-            }
-          }
+          newPlay.layerToggle(todayPaneId);
 
         }).appendTo(todayHeaderList);
     });
     
     $('#today-events-title').addClass('active');
+
+
+
+    // Add toggle buttons for layers.
+    $('#today-events-title').prepend('<div class="layer-show-all">Show all</a>');
+
+    // Make trigger for show all button.
+    $('div#panel-default-overlay div.layer-show-all').click(function(){
+console.log("clicked");
+      newPlay.layerToggle('today-events', true);
+      newPlay.layerToggle('today-organizations', true);
+      newPlay.layerToggle('today-artists', true);      
+      return false;
+    });
+
+    // For each layer, get the list of items in the panel and turn on & off features if they are present.
+    // Then connect show hide button to it.
+
+
+
+    newPlay.layerToggle('today-events', false);
+    newPlay.layerItemSelection();
     
   }
-
-
-
-
-
-
-
-
-  // Add toggle buttons for layers.
-  $('div#panel-default-overlay div.pane-today-overlay-title li.today-events-title').append('Show all');
-
-  $('div#panel-default-overlay div.pane-today-overlay-title li.today-events-title').click(function(){
-    Drupal.openlayers.layerToggleToday();
-  });
-
-  // Add toggle buttons for layers.
-  $('div#panel-default-overlay div.pane-today-overlay-title li.today-organizations-title').click(function(){
-    Drupal.openlayers.layerToggleOrganizations();
-  });
-
-  // Add toggle buttons for layers.
-  $('div#panel-default-overlay div.pane-today-overlay-title li.today-artists-title').click(function(){
-    Drupal.openlayers.layerToggleArtists();
-  });
-
-  // Show only today's events.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 // the end  
 });
+
+
+newPlay.layerToggle = function(todayPaneId, layersOn) {
+  // Toggle Layer on and off.
+
+  // Store the context for later use.
+  var context = Drupal.openlayers.context;
+
+  // From default OpenLayers popup functionality
+  var layers, data = $(context).data('openlayers');
+  if (data) {
+    var map = data.openlayers;
+    var options = data.map.behaviors['openlayers_newplay_behavior_popup_interaction'];
+    var layers = new Array();
+
+    // For backwards compatiability, if layers is not
+    // defined, then include all vector layers
+    if (typeof options.layers == 'undefined' || options.layers.length == 0) {
+      layers = map.getLayersByClass('OpenLayers.Layer.Vector');
+    }
+    else {
+      for (var i in options.layers) {
+        var selectedLayer = map.getLayersBy('drupalID', options.layers[i]);
+        if (typeof selectedLayer[0] != 'undefined') {
+          layers.push(selectedLayer[0]);
+          if(layersOn) {
+          
+          }
+          else {
+            selectedLayer[0].setVisibility(false);
+          }
+        }
+      }
+    }
+    // If today link list has class active, show the layer.
+    for (var i in layers) {
+      switch(todayPaneId) {
+        case 'today-events':
+            if (layers[i]["drupalID"] === 'organizations_openlayers_2') {
+              layers[i].setVisibility(true);
+            }
+          break;
+        case 'today-organizations':
+            if (layers[i]["drupalID"] === 'organizations_openlayers_1') {
+             layers[i].setVisibility(true);
+            }
+          break;
+        case 'today-artists':
+            if (layers[i]["drupalID"] === 'organizations_openlayers_3') {
+              layers[i].setVisibility(true);
+            }
+          break;  
+      }
+    }
+  }
+  return false;
+};
+
+newPlay.showAllFeatures = function(layer) {
+
+};
+
+newPlay.hideSelectedFeatures = function(layer, list, attribute) {
+  //  layer.features
+  for (var i in layer.features) {
+    feature = layer.features[i];
+    console.log(feature.attributes[attribute]);
+   // if( feature.attributes[attribute]) {
+//hide
+//      feature.
+   // }
+    
+  }
+};
+
+newPlay.layerItemSelection = function() {
+
+  var map = $(Drupal.openlayers.context).data('openlayers');
+  var layers = map.layers;
+  var list;
+  for (var i in layers) {
+      layer = layers[i]["drupalID"];
+      
+      switch(layer) {
+        case 'organizations_openlayers_1':
+          list = $(this).find('div.views-field-field-event-type-nid span.field-content a').value;
+          newPlay.hideSelectedFeatures(layer, list, 'field_event_type_nid_rendered');
+          
+          break;
+        case 'organizations_openlayers_2':
+          break;
+        case 'organizations_openlayers_3':
+          break;
+      }
+    }
+
+
+  $('div#panel-default-overlay div.pane-views-panes div.item-list li').each(function(){
+
+
+   // var playValue = $(this).find('div.views-field-field-related-play-nid span.field-content a').value;
+   // var artistValue = $(this).find('div.views-field-field-artist-nid span.field-content a').value;
+   // var organizationValue = $(this).find('div.views-field-field-related-theater-nid span.field-content a').value;
+
+//    console.log(list);
+
+  });
+};
