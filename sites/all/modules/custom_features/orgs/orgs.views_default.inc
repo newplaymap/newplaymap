@@ -2077,7 +2077,7 @@ function orgs_views_default_views() {
     'results_lifespan' => '21600',
     'output_lifespan' => '21600',
   ));
-  $handler->override_option('items_per_page', 200);
+  $handler->override_option('items_per_page', 300);
   $handler->override_option('style_plugin', 'openlayers_data');
   $handler->override_option('style_options', array(
     'grouping' => '',
@@ -3489,7 +3489,7 @@ function orgs_views_default_views() {
   ));
   $handler->override_option('sorts', array(
     'field_event_date_value' => array(
-      'order' => 'ASC',
+      'order' => 'DESC',
       'delta' => -1,
       'id' => 'field_event_date_value',
       'table' => 'node_data_field_event_date',

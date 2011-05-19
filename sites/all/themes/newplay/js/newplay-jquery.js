@@ -1294,7 +1294,6 @@ $('<a></a>').attr({
 
     // Make trigger for show all button.
     $('div#panel-default-overlay div.layer-show-all').click(function(){
-console.log("clicked");
       newPlay.layerToggle('today-events', true);
       newPlay.layerToggle('today-organizations', true);
       newPlay.layerToggle('today-artists', true);      
@@ -1352,6 +1351,7 @@ newPlay.layerToggle = function(todayPaneId, layersOn) {
         case 'today-events':
             if (layers[i]["drupalID"] === 'organizations_openlayers_2') {
               layers[i].setVisibility(true);
+              newPlay.hideSelectedFeaturesByAttribute(layers[i], 'name', 'href', 'div.pane-views-panes div.views-field-field-related-play-nid a');
             }
           break;
         case 'today-organizations':
@@ -1374,17 +1374,49 @@ newPlay.showAllFeatures = function(layer) {
 
 };
 
-newPlay.hideSelectedFeatures = function(layer, list, attribute) {
+newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, source) {
   //  layer.features
+  var selectedFeatures = Array();
+  var sourceValues = Array();
+// Actually switching the search around - search for items in the list
+// that would be faster than searching all the features
+
+
+  // Search source, push values in an array
+  $(source).each(function(){ 
+    if(type == 'href') {
+      sourceValue = $(this).attr('href');
+    }
+    sourceValues.push(sourceValue);
+  });
+console.log(sourceValues);
   for (var i in layer.features) {
-    feature = layer.features[i];
-    console.log(feature.attributes[attribute]);
-   // if( feature.attributes[attribute]) {
-//hide
-//      feature.
-   // }
-    
+    if (i < 300) {  // temporary limits
+      feature = layer.features[i];
+      value = feature.attributes[attribute];
+
+      if(type == 'href') {
+        value = $(value).attr('href');
+      }
+
+      // Load up the source value array and compare it to the feature.
+      for (var s in sourceValues) {
+        // See if value matches source's value.
+        if(value === sourceValues[s]) {
+          // If so, add it to an array to handle the displaying of the features.
+          selectedFeatures.push(feature);
+        }
+        else {
+          // console.log(feature);
+        }
+      }
+    }
   }
+  console.log(selectedFeatures);
+
+
+  //layer.redraw();
+  return false;
 };
 
 newPlay.layerItemSelection = function() {
