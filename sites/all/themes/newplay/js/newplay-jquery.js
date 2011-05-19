@@ -1389,7 +1389,7 @@ newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, sourc
     }
     sourceValues.push(sourceValue);
   });
-console.log(sourceValues);
+  // console.log(sourceValues);
   for (var i in layer.features) {
     if (i < 300) {  // temporary limits
       feature = layer.features[i];
@@ -1404,15 +1404,18 @@ console.log(sourceValues);
         // See if value matches source's value.
         if(value === sourceValues[s]) {
           // If so, add it to an array to handle the displaying of the features.
+          feature.renderIntent = "select";
+//console.log(feature);
           selectedFeatures.push(feature);
         }
         else {
+          feature.renderIntent = "dimmed";
           // console.log(feature);
         }
       }
     }
   }
-  console.log(selectedFeatures);
+ // console.log(selectedFeatures);
 
 
   //layer.redraw();
