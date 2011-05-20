@@ -117,22 +117,26 @@
       
 /* Embed Badge */
 
-  #embed-badge-block {
+  #embed-badge-block,
+  #share-link-block {
     clear: both;
     margin-top: 21px;
   }
 
   /* Hide when javascript is available */
-  .js #embed-badge-block form {
+  .js #embed-badge-block form,
+  .js #share-link-block form {
     display: none;
   }
   
   /* Nicer styling for the form elements */
-  #embed-badge-show {
+  #embed-badge-show,
+  #share-link-show {
     font-size: 0.8em;
   }
   
-  .js #embed-badge-block form input {
+  .js #embed-badge-block form input,
+  .js #share-link-block form input {
     width: 100%;
   }
 
