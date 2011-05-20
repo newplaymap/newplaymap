@@ -157,44 +157,6 @@
     font-size: 12px;
     line-height: 16px;
   }
-  
-
-/* Newsfeed */
-  
-  /* @TODO: root out all of this feeds-wrapper stuff -- it's no longer being used on the site */
-  #feeds-wrapper {
-    display: none;
-  }
-  #feeds-wrapper .item-list ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-    #feeds-wrapper .item-list ul li {
-      margin: 0;
-      padding: 0.5em 3% 0.5em 0;
-      font-size: 1em;
-      line-height: 1em;
-    }
-      /* Author and created on the same line */
-      #feeds-wrapper .item-list ul li .views-field-field-feed-item-author-value,
-      #feeds-wrapper .item-list ul li .views-field-field-feed-item-author-value p,
-      #feeds-wrapper .item-list ul li .views-field-created,
-      #feeds-wrapper .item-list ul li .views-field-created p {
-        display: inline;
-      }
-      
-      /* 
-       * Prevent flash of extra content while the site is loading
-       * Stying for js degredation
-       */
-      #feeds-wrapper .item-list ul li {
-        display: none;
-      }
-      #feeds-wrapper .item-list ul li.views-row-first {
-        display: list-item;
-      }
       
 /* Related Events */
 
