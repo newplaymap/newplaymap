@@ -25,8 +25,7 @@ function newplay_admin_links_share_link_content_type_render($subtype, $conf, $pa
   // TODO: figure out how to not hard code the main domain
   $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '', $_SERVER['HTTP_HOST']) : 'http://newplaymap.org';
   
-  
-  $current_path = ($current_node) ? '#' . base_path() . drupal_get_path_alias('node/' . $current_node) : '';  
+  $current_path = ($current_node) ? substr(base_path(), 1) . drupal_get_path_alias('node/' . $current_node) : '';
     
   $output .= '<div id="share-link-block">';
     $output .= '<div id="share-link-link">';
