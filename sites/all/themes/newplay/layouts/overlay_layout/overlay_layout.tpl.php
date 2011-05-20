@@ -36,7 +36,7 @@
     </div>    
   <?php endif ?>
   
-  <div class="additional-info">
+  <div class="panel-panel additional-info">
     <?php if ($content['info']): ?>
       <h2 class="additional-info-title additional-info-title-info">Info</h2>
       <div class="panel-panel panel-overlay-info panel-overlay-section">

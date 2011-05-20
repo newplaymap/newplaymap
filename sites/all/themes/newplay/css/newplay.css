@@ -525,7 +525,6 @@
 
   /* General styles */
   
-  
   .panel-overlay {
   }
   
@@ -536,7 +535,6 @@
   }
 
   .panel-overlay .panel-col-top .inside {
-    margin-bottom: .5em;
   }
   
   /* @TODO: figure out if this does anything anymore */
@@ -593,6 +591,7 @@
   /* Content Sections */
   .js .panel-overlay .additional-info {
     display: none; /* prevent flash on page load */
+    clear: both; /* make sure it clears any evil floats */
   }
   
   .panel-overlay .additional-info h2.additional-info-title {
@@ -891,26 +890,32 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   padding: 10px;
   }
   
-  /* Organization overlay */
+  /* Overlay Title */
+  
+    /* remove bottom padding and margin on overlay title inside div */
+    .popup-container .overlay .panel-overlay-title .inside {
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+    }
+    
     .popup-container .overlay .pane-node-title {
       font-size: 21px;
       color: #FFFFFF;
       border-bottom: 1px dashed #CCCCCC;
       padding-bottom: 7px;
       padding-right: 85px; /* make room for Edit link */
-      margin-bottom: 7px;
     }
     
+    /* Overlay: Avatars */
     .popup-container .overlay .pane-field-org-logo,
     .popup-container .overlay .pane-field-artist-photo {
       float: left;
       padding-top: 14px;
       padding-right: 14px;
     }
+    
+    /* Overlay: Location */
     .popup-container .overlay .pane-field-location {
-      padding-top: 14px;
-      float: left;
-      width: 207px;
     }
   
   /* Edit link */
@@ -931,19 +936,22 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 
      /* Main overlay area layout */
     .popup-container .overlay  .panel-overlay-main {
+      float: left;
+      width: 66%;
     }
     
     .popup-container .overlay  .panel-overlay-links {
+      float: left;
+      width: 32%;
+      clear: none;
     }
     
     .popup-container .overlay .pane-event,
     .popup-container .overlay #feed_button {
-      width: 80px;
       font-size: 13px;
     }
     
     .popup-container .overlay .pane-event {
-      padding-top: 14px;
       padding-bottom: 7px;
     }
     
