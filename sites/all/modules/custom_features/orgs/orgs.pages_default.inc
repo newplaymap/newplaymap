@@ -110,6 +110,7 @@ function orgs_default_page_manager_handlers() {
       'plays' => NULL,
       'links' => NULL,
       'feeds' => NULL,
+      'title' => NULL,
     ),
   );
   $display->cache = array();
@@ -455,28 +456,6 @@ function orgs_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-16';
     $pane->panel = 'main';
-    $pane->type = 'node_title';
-    $pane->subtype = 'node_title';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'link' => 0,
-      'context' => 'argument_nid_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-16'] = $pane;
-    $display->panels['main'][0] = 'new-16';
-    $pane = new stdClass;
-    $pane->pid = 'new-17';
-    $pane->panel = 'main';
     $pane->type = 'views_panes';
     $pane->subtype = 'ensemble_collective-panel_pane_1';
     $pane->shown = TRUE;
@@ -492,11 +471,11 @@ function orgs_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-17'] = $pane;
-    $display->panels['main'][1] = 'new-17';
+    $pane->position = 0;
+    $display->content['new-16'] = $pane;
+    $display->panels['main'][0] = 'new-16';
     $pane = new stdClass;
-    $pane->pid = 'new-18';
+    $pane->pid = 'new-17';
     $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_org_logo';
@@ -515,11 +494,11 @@ function orgs_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-18'] = $pane;
-    $display->panels['main'][2] = 'new-18';
+    $pane->position = 1;
+    $display->content['new-17'] = $pane;
+    $display->panels['main'][1] = 'new-17';
     $pane = new stdClass;
-    $pane->pid = 'new-19';
+    $pane->pid = 'new-18';
     $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_location';
@@ -538,11 +517,11 @@ function orgs_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 3;
-    $display->content['new-19'] = $pane;
-    $display->panels['main'][3] = 'new-19';
+    $pane->position = 2;
+    $display->content['new-18'] = $pane;
+    $display->panels['main'][2] = 'new-18';
     $pane = new stdClass;
-    $pane->pid = 'new-20';
+    $pane->pid = 'new-19';
     $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_org_website';
@@ -561,11 +540,11 @@ function orgs_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 4;
-    $display->content['new-20'] = $pane;
-    $display->panels['main'][4] = 'new-20';
+    $pane->position = 3;
+    $display->content['new-19'] = $pane;
+    $display->panels['main'][3] = 'new-19';
     $pane = new stdClass;
-    $pane->pid = 'new-21';
+    $pane->pid = 'new-20';
     $pane->panel = 'organizations';
     $pane->type = 'orgs_by_orgs';
     $pane->subtype = 'orgs_by_orgs';
@@ -583,8 +562,30 @@ function orgs_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
+    $display->content['new-20'] = $pane;
+    $display->panels['organizations'][0] = 'new-20';
+    $pane = new stdClass;
+    $pane->pid = 'new-21';
+    $pane->panel = 'title';
+    $pane->type = 'node_title';
+    $pane->subtype = 'node_title';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'link' => 0,
+      'context' => 'argument_nid_1',
+      'override_title' => 1,
+      'override_title_text' => '<none>',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
     $display->content['new-21'] = $pane;
-    $display->panels['organizations'][0] = 'new-21';
+    $display->panels['title'][0] = 'new-21';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

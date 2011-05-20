@@ -56,6 +56,7 @@ function plays_and_events_default_page_manager_handlers() {
       'plays' => NULL,
       'links' => NULL,
       'feeds' => NULL,
+      'title' => NULL,
     ),
   );
   $display->cache = array();
@@ -308,28 +309,6 @@ function plays_and_events_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-12';
     $pane->panel = 'main';
-    $pane->type = 'node_title';
-    $pane->subtype = 'node_title';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'link' => 0,
-      'context' => 'argument_nid_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-12'] = $pane;
-    $display->panels['main'][0] = 'new-12';
-    $pane = new stdClass;
-    $pane->pid = 'new-13';
-    $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_artist';
     $pane->shown = TRUE;
@@ -347,11 +326,11 @@ function plays_and_events_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-13'] = $pane;
-    $display->panels['main'][1] = 'new-13';
+    $pane->position = 0;
+    $display->content['new-12'] = $pane;
+    $display->panels['main'][0] = 'new-12';
     $pane = new stdClass;
-    $pane->pid = 'new-14';
+    $pane->pid = 'new-13';
     $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_related_theater';
@@ -370,11 +349,11 @@ function plays_and_events_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-14'] = $pane;
-    $display->panels['main'][2] = 'new-14';
+    $pane->position = 1;
+    $display->content['new-13'] = $pane;
+    $display->panels['main'][1] = 'new-13';
     $pane = new stdClass;
-    $pane->pid = 'new-15';
+    $pane->pid = 'new-14';
     $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_play_synopsis';
@@ -393,11 +372,11 @@ function plays_and_events_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 3;
-    $display->content['new-15'] = $pane;
-    $display->panels['main'][3] = 'new-15';
+    $pane->position = 2;
+    $display->content['new-14'] = $pane;
+    $display->panels['main'][2] = 'new-14';
     $pane = new stdClass;
-    $pane->pid = 'new-16';
+    $pane->pid = 'new-15';
     $pane->panel = 'organizations';
     $pane->type = 'orgs_by_play';
     $pane->subtype = 'orgs_by_play';
@@ -415,10 +394,32 @@ function plays_and_events_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
+    $display->content['new-15'] = $pane;
+    $display->panels['organizations'][0] = 'new-15';
+    $pane = new stdClass;
+    $pane->pid = 'new-16';
+    $pane->panel = 'title';
+    $pane->type = 'node_title';
+    $pane->subtype = 'node_title';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'link' => 0,
+      'context' => 'argument_nid_1',
+      'override_title' => 1,
+      'override_title_text' => '<none>',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
     $display->content['new-16'] = $pane;
-    $display->panels['organizations'][0] = 'new-16';
+    $display->panels['title'][0] = 'new-16';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-14';
+  $display->title_pane = 'new-13';
   $handler->conf['display'] = $display;
 
   $export['node_view_panel_context_3'] = $handler;

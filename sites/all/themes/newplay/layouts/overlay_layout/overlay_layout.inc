@@ -8,6 +8,7 @@ $plugin = array(
   'icon' => 'overlay_layout.png',
   'theme' => 'overlay_layout',
   'panels' => array(
+    'title' => t('Title'),
     'main' => t('Main'),
     'links' => t('Links'),
     'info' => t('Info Section'),
