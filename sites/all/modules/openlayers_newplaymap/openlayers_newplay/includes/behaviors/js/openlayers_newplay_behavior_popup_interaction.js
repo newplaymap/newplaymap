@@ -174,7 +174,9 @@ Drupal.openlayers.popup.ajaxLinks = function(className, target) {
     var path = $(this).attr('href');
     
     var cleanPath = Drupal.openlayers.popup.cleanDestination(path);
-    $(this).attr('href', cleanPath);
+    if (cleanPath) {
+      $(this).attr('href', cleanPath);
+    }
     
     if(path !== undefined) {
       if(path.substr(0,5) === '/node') {
