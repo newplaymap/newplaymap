@@ -940,29 +940,47 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       width: 66%;
     }
     
+    
     .popup-container .overlay  .panel-overlay-links {
       float: left;
       width: 32%;
       clear: none;
     }
     
-    .popup-container .overlay .pane-event,
-    .popup-container .overlay #feed_button {
-      font-size: 13px;
-    }
-    
-    .popup-container .overlay .pane-event {
-      padding-bottom: 7px;
-    }
-    
-    .popup-container .overlay .pane-event ul li a,
-    .popup-container .overlay #feed_button {
-      padding: 4px 0;
-      text-align: center;
-    }
-    
-    .popup-container .overlay #feed_button {
-    }
+    /* Links section */
+      
+      .popup-container .overlay .panel-overlay-links .pane-facebook-like a {
+        display: block;
+        background: url(../images/facebook-like.png) top left no-repeat;  
+        width: 55px;
+        height: 20px;
+        text-indent: -10000em;
+      }
+      
+      .popup-container .overlay .panel-overlay-links a#share-link-show {
+        display: block;
+        background: url(../images/icon-link.png) top left no-repeat;
+        padding-left: 20px;
+      }
+      
+      .popup-container .overlay .pane-event,
+      .popup-container .overlay #feed_button {
+        font-size: 13px;
+      }
+      
+      .popup-container .overlay .pane-event {
+        padding-bottom: 7px;
+      }
+      
+      .popup-container .overlay .pane-event ul li a,
+      .popup-container .overlay #feed_button {
+        padding: 4px 0;
+        text-align: center;
+      }
+      
+      .popup-container .overlay #feed_button {
+      }
+  
   
   
 /* Map Filters */
