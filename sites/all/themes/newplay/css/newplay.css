@@ -117,8 +117,7 @@
       
 /* Embed Badge */
 
-  #embed-badge-block,
-  #share-link-block {
+  #embed-badge-block {
     clear: both;
     margin-top: 21px;
   }
