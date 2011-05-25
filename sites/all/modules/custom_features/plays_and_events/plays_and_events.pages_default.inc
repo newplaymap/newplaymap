@@ -225,8 +225,8 @@ function plays_and_events_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-8';
     $pane->panel = 'links';
-    $pane->type = 'embed_badge';
-    $pane->subtype = 'embed_badge';
+    $pane->type = 'twitter_share';
+    $pane->subtype = 'twitter_share';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -246,8 +246,8 @@ function plays_and_events_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-9';
     $pane->panel = 'links';
-    $pane->type = 'share_link';
-    $pane->subtype = 'share_link';
+    $pane->type = 'facebook_like';
+    $pane->subtype = 'facebook_like';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -267,8 +267,8 @@ function plays_and_events_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-10';
     $pane->panel = 'links';
-    $pane->type = 'twitter_share';
-    $pane->subtype = 'twitter_share';
+    $pane->type = 'share_link';
+    $pane->subtype = 'share_link';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -287,27 +287,6 @@ function plays_and_events_default_page_manager_handlers() {
     $display->panels['links'][5] = 'new-10';
     $pane = new stdClass;
     $pane->pid = 'new-11';
-    $pane->panel = 'links';
-    $pane->type = 'facebook_like';
-    $pane->subtype = 'facebook_like';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_nid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 6;
-    $display->content['new-11'] = $pane;
-    $display->panels['links'][6] = 'new-11';
-    $pane = new stdClass;
-    $pane->pid = 'new-12';
     $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_artist';
@@ -327,10 +306,10 @@ function plays_and_events_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-12'] = $pane;
-    $display->panels['main'][0] = 'new-12';
+    $display->content['new-11'] = $pane;
+    $display->panels['main'][0] = 'new-11';
     $pane = new stdClass;
-    $pane->pid = 'new-13';
+    $pane->pid = 'new-12';
     $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_related_theater';
@@ -350,10 +329,10 @@ function plays_and_events_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-13'] = $pane;
-    $display->panels['main'][1] = 'new-13';
+    $display->content['new-12'] = $pane;
+    $display->panels['main'][1] = 'new-12';
     $pane = new stdClass;
-    $pane->pid = 'new-14';
+    $pane->pid = 'new-13';
     $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_play_synopsis';
@@ -373,8 +352,29 @@ function plays_and_events_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
+    $display->content['new-13'] = $pane;
+    $display->panels['main'][2] = 'new-13';
+    $pane = new stdClass;
+    $pane->pid = 'new-14';
+    $pane->panel = 'main';
+    $pane->type = 'embed_badge';
+    $pane->subtype = 'embed_badge';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_nid_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
     $display->content['new-14'] = $pane;
-    $display->panels['main'][2] = 'new-14';
+    $display->panels['main'][3] = 'new-14';
     $pane = new stdClass;
     $pane->pid = 'new-15';
     $pane->panel = 'organizations';
@@ -419,7 +419,7 @@ function plays_and_events_default_page_manager_handlers() {
     $display->content['new-16'] = $pane;
     $display->panels['title'][0] = 'new-16';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-13';
+  $display->title_pane = 'new-12';
   $handler->conf['display'] = $display;
 
   $export['node_view_panel_context_3'] = $handler;
