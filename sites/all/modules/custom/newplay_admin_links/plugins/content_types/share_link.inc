@@ -30,7 +30,7 @@ function newplay_admin_links_share_link_content_type_render($subtype, $conf, $pa
   $output .= '<div id="share-link-block">';
     $output .= '<div id="share-link-link">';
       $output .= '<form>';
-        $output .= '<label for="share-link">Get link</label>';
+        $output .= '<label for="share-link">Link</label>';
         $output .= '<input id="share-link" type="text" value=\'' . $domain . base_path() . $current_path . '\'></input>';
       $output .= '</form>';
     $output .= '</div>';

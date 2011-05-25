@@ -129,8 +129,7 @@
   }
   
   /* Nicer styling for the form elements */
-  #embed-badge-show,
-  #share-link-show {
+  #embed-badge-show {
     font-size: 0.8em;
   }
   
@@ -950,8 +949,9 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       
       .popup-container .overlay .panel-overlay-links a#share-link-show {
         display: block;
-        background: url(../images/icon-link.png) top left no-repeat;
+        background: url(../images/icon-link.png) 0 0 no-repeat;
         padding-left: 20px;
+        padding-top: 1px;
       }
       
       .popup-container .overlay .pane-event,
