@@ -268,19 +268,6 @@
       background-position: 99% 2px;
     }
 
-
-  /* Hide Facebook login */
-  .js #block-block-4 {
-    display: none;
-  }
-  
-  /* Discrete OpenID login */
-  .openid-link {
-    position: fixed;
-    bottom: 10px;
-    left: 30px;
-  }
-
   /* Apply default button style */
   /* Add new declarations here as needed */
   .edit-button,
