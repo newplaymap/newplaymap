@@ -776,6 +776,7 @@
 
 /* Open Layers */
 /* @TODO: Review this entire block and integrate with Overlay section above */
+/* @TODO: Consider adding .js to all of these styles */
 
 .openlayers-blockswitcher .base .layers-content label {
   display: none;
@@ -936,6 +937,10 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     
     /* Links section */
       
+      .popup-container .overlay .panel-overlay-links .panel-region-separator {
+        padding-bottom: 6px;
+      }
+      
       .popup-container .overlay .panel-overlay-links .pane-facebook-like a {
         display: block;
         background: url(../images/facebook-like.png) top left no-repeat;  
@@ -956,7 +961,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       }
       
       .popup-container .overlay .pane-event {
-        padding-bottom: 7px;
       }
       
       .popup-container .overlay .pane-event ul li a,
