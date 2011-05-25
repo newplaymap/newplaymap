@@ -41,7 +41,7 @@ function newplay_admin_links_embed_badge_content_type_render($subtype, $conf, $p
     $output .= '</div>';
     $output .= '<div id="embed-badge-link">';
       $output .= '<form>';
-        $output .= '<label for="embed-code">Embed a link to this page on your site</label>';
+        $output .= '<label for="embed-code">Embed a badge for this page on your site</label>';
         $output .= '<input id="embed-code" type="text" value=\'' . $embedded_link . '\'></input>';
       $output .= '</form>';
     $output .= '</div>';

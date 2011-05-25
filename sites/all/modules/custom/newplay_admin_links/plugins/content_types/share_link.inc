@@ -7,7 +7,7 @@ function newplay_admin_links_share_link_ctools_content_types() {
       'single' => TRUE,
       'title' => t("Share link URL"),
       'icon' => 'icon_node.png',
-      'description' => t('Embedable graphic to link to specific pages on the site'),
+      'description' => t('Link to specific pages on the site'),
       'required context' => new ctools_context_optional(t('Node'), 'node'),
       'category' => t('Custom'),
     );
@@ -30,7 +30,7 @@ function newplay_admin_links_share_link_content_type_render($subtype, $conf, $pa
   $output .= '<div id="share-link-block">';
     $output .= '<div id="share-link-link">';
       $output .= '<form>';
-        $output .= '<label for="share-link">Copy & paste a link to this page to share it around</label>';
+        $output .= '<label for="share-link">Link</label>';
         $output .= '<input id="share-link" type="text" value=\'' . $domain . base_path() . $current_path . '\'></input>';
       $output .= '</form>';
     $output .= '</div>';
