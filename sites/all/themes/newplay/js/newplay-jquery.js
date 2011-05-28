@@ -1310,3 +1310,147 @@ $('<a></a>').attr({
   
 // the end  
 });
+
+
+newPlay.layerToggle = function(todayPaneId, layersOn) {
+  // Toggle Layer on and off.
+
+  // Store the context for later use.
+  var context = Drupal.openlayers.context;
+
+  // From default OpenLayers popup functionality
+  var layers, data = $(context).data('openlayers');
+  if (data) {
+    var map = data.openlayers;
+    var options = data.map.behaviors['openlayers_newplay_behavior_popup_interaction'];
+    var layers = new Array();
+
+    // For backwards compatiability, if layers is not
+    // defined, then include all vector layers
+    if (typeof options.layers == 'undefined' || options.layers.length == 0) {
+      layers = map.getLayersByClass('OpenLayers.Layer.Vector');
+    }
+    else {
+      for (var i in options.layers) {
+        var selectedLayer = map.getLayersBy('drupalID', options.layers[i]);
+        if (typeof selectedLayer[0] != 'undefined') {
+          layers.push(selectedLayer[0]);
+          if(layersOn) {
+          
+          }
+          else {
+            selectedLayer[0].setVisibility(false);
+          }
+        }
+      }
+    }
+    // If today link list has class active, show the layer.
+    for (var i in layers) {
+      switch(todayPaneId) {
+        case 'today-events':
+            if (layers[i]["drupalID"] === 'organizations_openlayers_2') {
+              layers[i].setVisibility(true);
+              newPlay.hideSelectedFeaturesByAttribute(layers[i], 'name', 'href', 'div.pane-views-panes div.views-field-field-related-play-nid a');
+            }
+          break;
+        case 'today-organizations':
+            if (layers[i]["drupalID"] === 'organizations_openlayers_1') {
+             layers[i].setVisibility(true);
+            }
+          break;
+        case 'today-artists':
+            if (layers[i]["drupalID"] === 'organizations_openlayers_3') {
+              layers[i].setVisibility(true);
+            }
+          break;  
+      }
+    }
+  }
+  return false;
+};
+
+newPlay.showAllFeatures = function(layer) {
+
+};
+
+newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, source) {
+  //  layer.features
+  var selectedFeatures = Array();
+  var sourceValues = Array();
+// Actually switching the search around - search for items in the list
+// that would be faster than searching all the features
+
+
+  // Search source, push values in an array
+  $(source).each(function(){ 
+    if(type == 'href') {
+      sourceValue = $(this).attr('href');
+    }
+    sourceValues.push(sourceValue);
+  });
+  // console.log(sourceValues);
+  for (var i in layer.features) {
+    if (i < 300) {  // temporary limits
+      feature = layer.features[i];
+      value = feature.attributes[attribute];
+
+      if(type == 'href') {
+        value = $(value).attr('href');
+      }
+
+      // Load up the source value array and compare it to the feature.
+      for (var s in sourceValues) {
+        // See if value matches source's value.
+        if(value === sourceValues[s]) {
+          // If so, add it to an array to handle the displaying of the features.
+          feature.renderIntent = "select";
+//console.log(feature);
+          selectedFeatures.push(feature);
+        }
+        else {
+          feature.renderIntent = "dimmed";
+          // console.log(feature);
+        }
+      }
+    }
+  }
+ // console.log(selectedFeatures);
+
+
+  //layer.redraw();
+  return false;
+};
+
+newPlay.layerItemSelection = function() {
+
+  var map = $(Drupal.openlayers.context).data('openlayers');
+  var layers = map.layers;
+  var list;
+  for (var i in layers) {
+      layer = layers[i]["drupalID"];
+      
+      switch(layer) {
+        case 'organizations_openlayers_1':
+          list = $(this).find('div.views-field-field-event-type-nid span.field-content a').value;
+          newPlay.hideSelectedFeatures(layer, list, 'field_event_type_nid_rendered');
+          
+          break;
+        case 'organizations_openlayers_2':
+          break;
+        case 'organizations_openlayers_3':
+          break;
+      }
+    }
+
+
+  $('div#panel-default-overlay div.pane-views-panes div.item-list li').each(function(){
+
+
+   // var playValue = $(this).find('div.views-field-field-related-play-nid span.field-content a').value;
+   // var artistValue = $(this).find('div.views-field-field-artist-nid span.field-content a').value;
+   // var organizationValue = $(this).find('div.views-field-field-related-theater-nid span.field-content a').value;
+
+//    console.log(list);
+
+  });
+};
