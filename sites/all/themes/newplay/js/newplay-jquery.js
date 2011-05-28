@@ -1300,6 +1300,7 @@ $('<a></a>').attr({
             $('#' + todayPaneId).fadeIn();
             $('#' + todayPaneId + '-title').addClass('active');
           });
+          newPlay.layerToggle(todayPaneId, false);
         })
         .appendTo(todayHeaderList);
     });
