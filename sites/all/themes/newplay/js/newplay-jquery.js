@@ -748,7 +748,7 @@ newPlay.autocompleteEditSuggestions = function() {
 
 
 newPlay.addExploreFilters = function() {
-  var filterExists = $('div.openlayers-views-map #explore-filters');
+  var filterExists = $('div#explore-filters');
 
   if(filterExists[0] === undefined)  {
     var filterMarkup = '<div id="explore-filters">';
@@ -758,8 +758,8 @@ newPlay.addExploreFilters = function() {
     filterMarkup += '</div>';
     filterMarkup += '<div class="button">Go</div>';
     filterMarkup += '</div>';
-    $('div.openlayers-views-map').prepend(filterMarkup);
-    $('div.openlayers-views-map div#explore-filters').css({width: '200px', backgroundColor: '#000', height: '200px', padding: '20px', color: '#fff'});
+    $('div.panel-1col-with-feeds').append(filterMarkup);
+    $('div#explore-filters').css({position: 'absolute', left: 0, width: '200px', backgroundColor: '#000', height: '200px', padding: '20px', color: '#fff'});
 
   }
 };
@@ -1443,7 +1443,6 @@ newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, sourc
     }
     sourceValues.push(sourceValue);
   });
-  // console.log(sourceValues);
   for (var i in layer.features) {
     if (i < 300) {  // temporary limits
       feature = layer.features[i];
@@ -1457,13 +1456,16 @@ newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, sourc
       for (var s in sourceValues) {
         // See if value matches source's value.
         if(value === sourceValues[s]) {
+
           // If so, add it to an array to handle the displaying of the features.
-          feature.renderIntent = "select";
+/*           feature.renderIntent = "select"; */
+          feature.state = "dimmed";
+console.log(feature);
 //console.log(feature);
           selectedFeatures.push(feature);
         }
         else {
-          feature.renderIntent = "dimmed";
+/*           feature.renderIntent = "dimmed"; */
           // console.log(feature);
         }
       }
@@ -1472,7 +1474,7 @@ newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, sourc
  // console.log(selectedFeatures);
 
 
-  //layer.redraw();
+  layer.redraw();
   return false;
 };
 
