@@ -1305,11 +1305,30 @@ $('<a></a>').attr({
     });
     
     $('#today-events-title').addClass('active');
+  
+    // Add toggle buttons for layers.
+    $('#today-events-title').prepend('<div class="layer-show-all">Show all</a>');
+
+    // Make trigger for show all button.
+    $('div#panel-default-overlay div.layer-show-all').click(function(){
+      newPlay.layerToggle('today-events', true);
+      newPlay.layerToggle('today-organizations', true);
+      newPlay.layerToggle('today-artists', true);      
+      return false;
+    });
+
+    // For each layer, get the list of items in the panel and turn on & off features if they are present.
+    // Then connect show hide button to it.
+
+
+
+    newPlay.layerToggle('today-events', false);
+    newPlay.layerItemSelection();
     
   }
-  
 // the end  
 });
+
 
 
 newPlay.layerToggle = function(todayPaneId, layersOn) {
