@@ -572,6 +572,7 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
     }
   );
 
+
   // Assign popup to feature and map.
   feature.popup = popup;
   feature.layer.map.addPopup(popup);

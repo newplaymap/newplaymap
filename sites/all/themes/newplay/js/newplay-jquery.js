@@ -744,8 +744,25 @@ newPlay.autocompleteEditSuggestions = function() {
     
     
   };
-}
+};
 
+
+newPlay.addExploreFilters = function() {
+  var filterExists = $('div.openlayers-views-map #explore-filters');
+
+  if(filterExists[0] === undefined)  {
+    var filterMarkup = '<div id="explore-filters">';
+    filterMarkup += '<div class="title"><h3>Explore</h3></div>';
+    filterMarkup += '<div class="filters">';
+    filterMarkup += 'Filters Here';
+    filterMarkup += '</div>';
+    filterMarkup += '<div class="button">Go</div>';
+    filterMarkup += '</div>';
+    $('div.openlayers-views-map').prepend(filterMarkup);
+    $('div.openlayers-views-map div#explore-filters').css({width: '200px', backgroundColor: '#000', height: '200px', padding: '20px', color: '#fff'});
+
+  }
+};
 
 /** 
  * Drupal Behaviors
@@ -756,6 +773,8 @@ Drupal.behaviors.newPlay = function(context) {
  
   /* Apply accordion to additional info region */
   newPlay.overlayContentStyle();
+
+  newPlay.addExploreFilters();
   
   /* Make sure embed code interaction works with ajax content */
   newPlay.embedInteraction();
@@ -775,7 +794,7 @@ Drupal.behaviors.newPlay = function(context) {
   $('#feeds-wrapper .item-list ul').each(function() {
     $(this).cycle('pause');
   });
-}
+};
 
 
 
