@@ -46,16 +46,22 @@ Drupal.behaviors.openlayers_behavior_multilinestring = function(context) {
             }
           }
           // Remove duplicate groups.
+          // groupedFeatures is set in the openlayers preset and is an array of nids.
           groupedFeatures = multipleArray(groupedFeatures);
+
           var vectorLayer;
           var points;
           var projection;
           var groupCounter;
+          var groupCounterReversed;
+          var groupFeatureCount;
+
           // For each group, draw a line connecting 2 or more features.
 
+          // We need to count grouped Features backwards, because the View is set to descending.
 
           for (var group in groupedFeatures) {
-            groupCounter = 1;
+            groupCounter = 1;        
             // Label group name here, make it available to popup controller.
             labelLayer = Drupal.t(groupedFeatures[group]);
 
@@ -72,7 +78,6 @@ Drupal.behaviors.openlayers_behavior_multilinestring = function(context) {
             projection = layer.projection;
             for (var k in layer.features) {
               if(layer.features[k]["attributes"][groupingAttribute] == groupedFeatures[group]) {
-                layer.features[k]["attributes"]["groupCounter"] = groupCounter;
 
                 // Store information about the other items in the group.
                 groupFeatures.push(layer.features[k]);
@@ -85,15 +90,29 @@ Drupal.behaviors.openlayers_behavior_multilinestring = function(context) {
                 // Store information about the other items in the group.
                 groupFeatures.push(geometry);
 
-                groupCounter++;
+
+
               }
             }
             // Once the list of all the features in the group is built,
             // add it to each feature in the group.
             k = 0;
+/*           groupCounter = 1; */
             for (k in layer.features) {
+
               if(layer.features[k]["attributes"][groupingAttribute] == groupedFeatures[group]) {
+
+                groupFeatureCount = groupFeatures.length;
+
+/* console.log(groupFeatureCount); */
+/* console.log(groupCounter); */
+                groupCounterReversed = groupFeatureCount - groupCounter + 1;
+/* console.log("rev" + groupCounterReversed); */
+                layer.features[k]["attributes"]["groupCounter"] = groupCounterReversed;
+
+
                 layer.features[k]["attributes"]["groupFeatures"] = groupFeatures;
+                groupCounter++;
               }
             }
             // Only draw lines if there is more than one point.
