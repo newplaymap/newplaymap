@@ -1052,3 +1052,11 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     .js #edit-value-wrapper {
       display: none;
     }
+
+
+
+/* Explore Filter */
+#explore-filters .label,
+#explore-filters .form-item {
+  display: inline;
+}
