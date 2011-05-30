@@ -718,16 +718,80 @@ newPlay.addExploreFilters = function() {
   var filterExists = $('div#explore-filters');
 
   if(filterExists[0] === undefined)  {
+  
+
+
     var filterMarkup = '<div id="explore-filters">';
     filterMarkup += '<div class="title"><h3>Explore</h3></div>';
     filterMarkup += '<div class="filters">';
-    filterMarkup += 'Filters Here';
+
     filterMarkup += '</div>';
     filterMarkup += '<div class="button">Go</div>';
     filterMarkup += '</div>';
     $('div.panel-1col-with-feeds').append(filterMarkup);
-    $('div#explore-filters').css({position: 'absolute', left: 0, width: '200px', backgroundColor: '#000', height: '200px', padding: '20px', color: '#fff'});
 
+    // Grab (and adapt) markup for explore filters box.
+    // States.
+    var stateLabel = '<div class="label">State</div>';
+    var viewsState = $('div.views-exposed-widget div.views-widget div#edit-state-wrapper');
+    var stateOptions = '<select name="State"> <option value="Any" selected="selected">Select a State</option> <option value="AL">Alabama</option> <option value="AK">Alaska</option> <option value="AZ">Arizona</option> <option value="AR">Arkansas</option> <option value="CA">California</option> <option value="CO">Colorado</option> <option value="CT">Connecticut</option> <option value="DE">Delaware</option> <option value="DC">District Of Columbia</option> <option value="FL">Florida</option> <option value="GA">Georgia</option> <option value="HI">Hawaii</option> <option value="ID">Idaho</option> <option value="IL">Illinois</option> <option value="IN">Indiana</option> <option value="IA">Iowa</option> <option value="KS">Kansas</option> <option value="KY">Kentucky</option> <option value="LA">Louisiana</option> <option value="ME">Maine</option> <option value="MD">Maryland</option> <option value="MA">Massachusetts</option> <option value="MI">Michigan</option> <option value="MN">Minnesota</option> <option value="MS">Mississippi</option> <option value="MO">Missouri</option> <option value="MT">Montana</option> <option value="NE">Nebraska</option> <option value="NV">Nevada</option> <option value="NH">New Hampshire</option> <option value="NJ">New Jersey</option> <option value="NM">New Mexico</option> <option value="NY">New York</option> <option value="NC">North Carolina</option> <option value="ND">North Dakota</option> <option value="OH">Ohio</option> <option value="OK">Oklahoma</option> <option value="OR">Oregon</option> <option value="PA">Pennsylvania</option> <option value="RI">Rhode Island</option> <option value="SC">South Carolina</option> <option value="SD">South Dakota</option> <option value="TN">Tennessee</option> <option value="TX">Texas</option> <option value="UT">Utah</option> <option value="VT">Vermont</option> <option value="VA">Virginia</option> <option value="WA">Washington</option> <option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select>';
+  
+    // Plays
+    var explorePlays = '<div class="explore-plays"><h4>Explore Play Events</h4>';
+    explorePlays += '</div>';
+
+    var explorePlaySearch = $('div.views-exposed-widget div.views-widget div#edit-play-wrapper');
+    var explorePlayTypes = $('div.views-exposed-widget div.views-widget div#edit-event-type-wrapper');
+    var explorePlayDates = $('div.views-exposed-widget div.views-widget div.date-views-filter-wrapper');
+
+    // Organizations
+    var exploreOrganizations = '<div class="explore-organizations"><h4>Explore Organizations</h4>';
+    exploreOrganizations += '</div>';
+
+    var exploreOrgsSearch = $('div.views-exposed-widget div.views-widget div#edit-theater-wrapper');
+    var exploreOrgsTypes = $('div.views-exposed-widget div.views-widget div#edit-org-type-wrapper');
+    var exploreOrgsInterests = $('div.views-exposed-widget div.views-widget div#edit-interests-wrapper');
+    var exploreOrgsNetworks = $('div.views-exposed-widget div.views-widget div#edit-nat-mem-wrapper');
+    var exploreOrgsBudgets = $('div.views-exposed-widget div.views-widget div#edit-budget-wrapper');
+
+    // Generative Artists
+
+    var exploreArtists = '<div class="explore-artists"><h4>Explore Generative Artists</h4>';
+    exploreArtists += '</div>';  
+
+    var exploreArtistsSearch = $('div.views-exposed-widget div.views-widget div#edit-artist-wrapper');
+    var exploreArtistsEnsemble = $('div.views-exposed-widget div.views-widget div#edit-ensemble-wrapper');
+
+
+
+    // Shift exposed filters into filter box.
+    $('div#explore-filters div.filters').append(stateLabel);
+    $('div#explore-filters div.filters').append(viewsState);
+    $('div#explore-filters div.filters').append(explorePlays);
+    $('div#explore-filters div.filters div.explore-plays').append(explorePlaySearch);
+    $('div#explore-filters div.filters div.explore-plays').append(explorePlayTypes);
+    $('div#explore-filters div.filters div.explore-plays').append(explorePlayDates);
+
+    $('div#explore-filters div.filters').append(exploreOrganizations);
+    $('div#explore-filters div.filters div.explore-organizations').append(exploreOrgsSearch);
+    $('div#explore-filters div.filters div.explore-organizations').append(exploreOrgsTypes);
+    $('div#explore-filters div.filters div.explore-organizations').append('<div class="label">Special Interests</div>');
+    $('div#explore-filters div.filters div.explore-organizations').append(exploreOrgsInterests);
+    $('div#explore-filters div.filters div.explore-organizations').append('<div class="label">Networks/Affiliations</div>');
+    $('div#explore-filters div.filters div.explore-organizations').append(exploreOrgsNetworks);
+    $('div#explore-filters div.filters div.explore-organizations').append('<div class="label">Operating Budget</div>');
+    $('div#explore-filters div.filters div.explore-organizations').append(exploreOrgsBudgets);
+
+    $('div#explore-filters div.filters').append(exploreArtists);
+    $('div#explore-filters div.filters div.explore-organizations').append(exploreArtistsSearch);
+    $('div#explore-filters div.filters div.explore-organizations').append(exploreArtistsEnsemble);
+
+
+    // @TODO Replace autocomplete with dropdown box, or else find a way to make dropdown come from the views settings.
+
+    $('div#explore-filters').css({position: 'absolute', left: 0, width: '350px', backgroundColor: '#000', height: '100%', padding: '20px', color: '#fff'});
+    $('div#explore-filters input#edit-date-min-date').css({width: '50px'}); 
+    $('div#explore-filters input#edit-date-max-date').css({width: '50px'}); 
   }
 };
 
@@ -741,7 +805,7 @@ Drupal.behaviors.newPlay = function(context) {
   /* Apply accordion to additional info region */
   newPlay.overlayContentStyle();
 
-  // newPlay.addExploreFilters();
+  newPlay.addExploreFilters();
   
   /* Make sure embed code interaction works with ajax content */
   newPlay.embedInteraction();
@@ -1425,7 +1489,6 @@ newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, sourc
           // If so, add it to an array to handle the displaying of the features.
 /*           feature.renderIntent = "select"; */
           feature.state = "dimmed";
-console.log(feature);
 //console.log(feature);
           selectedFeatures.push(feature);
         }
