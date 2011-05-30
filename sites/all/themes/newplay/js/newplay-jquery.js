@@ -774,7 +774,7 @@ Drupal.behaviors.newPlay = function(context) {
   /* Apply accordion to additional info region */
   newPlay.overlayContentStyle();
 
-  newPlay.addExploreFilters();
+  // newPlay.addExploreFilters();
   
   /* Make sure embed code interaction works with ajax content */
   newPlay.embedInteraction();
@@ -1507,7 +1507,7 @@ newPlay.layerItemSelection = function() {
    // var artistValue = $(this).find('div.views-field-field-artist-nid span.field-content a').value;
    // var organizationValue = $(this).find('div.views-field-field-related-theater-nid span.field-content a').value;
 
-//    console.log(list);
+    //    console.log(list);
 
   });
 };
