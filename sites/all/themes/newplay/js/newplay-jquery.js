@@ -751,15 +751,12 @@ newPlay.addExploreFilters = function() {
   var filterExists = $('div#explore-filters');
 
   if(filterExists[0] === undefined)  {
-  
-
-
     var filterMarkup = '<div id="explore-filters">';
     filterMarkup += '<div class="title"><h3>Explore</h3></div>';
     filterMarkup += '<div class="filters">';
 
     filterMarkup += '</div>';
-    filterMarkup += '<div class="button">Go</div>';
+    filterMarkup += '<div class="buttons"></div>';
     filterMarkup += '</div>';
     $('div.panel-1col-with-feeds').append(filterMarkup);
 
@@ -795,6 +792,16 @@ newPlay.addExploreFilters = function() {
     var exploreArtistsSearch = $('div.views-exposed-widget div.views-widget div#edit-artist-wrapper');
     var exploreArtistsEnsemble = $('div.views-exposed-widget div.views-widget div#edit-ensemble-wrapper');
 
+    // Buttons
+/*
+    var submitButton = $('div#edit-submit-organizations');
+    var resetButton = $('div#filter_reset');
+*/
+    
+    var filtersContent = $('#block-views--exp-organizations-panel_pane_1 .content');
+    var submitButton = $(filtersContent).find('.views-exposed-widgets .views-exposed-widget:last');
+/* .prependTo($(filtersContent).find('.views-exposed-widgets')).attr('id', 'filter-submit'); */
+   
 
 
     // Shift exposed filters into filter box.
@@ -816,8 +823,12 @@ newPlay.addExploreFilters = function() {
     $('div#explore-filters div.filters div.explore-organizations').append(exploreOrgsBudgets);
 
     $('div#explore-filters div.filters').append(exploreArtists);
-    $('div#explore-filters div.filters div.explore-organizations').append(exploreArtistsSearch);
-    $('div#explore-filters div.filters div.explore-organizations').append(exploreArtistsEnsemble);
+    $('div#explore-filters div.filters div.explore-artists').append(exploreArtistsSearch);
+    $('div#explore-filters div.filters div.explore-artists').append(exploreArtistsEnsemble);
+    $('div#explore-filters div.filters div.explore-organizations').append('<div class="label">Ensemble Collective</div>');
+
+    $('div#explore-filters div.filters').append(submitButton);
+/*     $('div#explore-filters div.filters').append(resetButton); */
 
 
     // @TODO Replace autocomplete with dropdown box, or else find a way to make dropdown come from the views settings.
@@ -825,6 +836,8 @@ newPlay.addExploreFilters = function() {
     $('div#explore-filters').css({position: 'absolute', left: 0, width: '350px', backgroundColor: '#000', height: '100%', padding: '20px', color: '#fff'});
     $('div#explore-filters input#edit-date-min-date').css({width: '50px'}); 
     $('div#explore-filters input#edit-date-max-date').css({width: '50px'}); 
+
+    $('a#filter_button').hide();
   }
 };
 
@@ -889,9 +902,11 @@ $('<a></a>').attr({
      .appendTo(filtersContent);
 */
     
+/*
     $(filtersContent).find('.views-exposed-widgets .views-exposed-widget:last').prependTo($(filtersContent).find('.views-exposed-widgets')).attr('id', 'filter-submit');
-    
-   newPlay.formatLinksBubble($('#block-views--exp-organizations-panel_pane_1'), 'filter_button', width);
+   
+*/ 
+/*    newPlay.formatLinksBubble($('#block-views--exp-organizations-panel_pane_1'), 'filter_button', width); */
    
    newPlay.formatLinksBubble($('#block-invite-0'), 'invite_button');
     
