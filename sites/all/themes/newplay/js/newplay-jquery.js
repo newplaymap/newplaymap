@@ -718,25 +718,29 @@ newPlay.addExploreFilters = function() {
   var filterExists = $('div#explore-filters');
 
   if(filterExists[0] === undefined)  {
-    var filterMarkup = '<div id="explore-filters-tab"><h3>Explore the Map</h3></div><div id="explore-filters"><div class="close-btn"></div>';
+    var filterMarkup = '<div id="explore-filters-tab"><h3>Explore the Map</h3><p><a class="layer-show">Show</a></p></div><div id="explore-filters"><div class="close-btn"></div>';
     filterMarkup += '<div class="title"><h3>Explore</h3></div>';
     filterMarkup += '</div>';
     $('div.panel-1col-with-feeds').append(filterMarkup);
 
     // Grab (and adapt) markup for explore filters box.
-/*     $('div#explore-filters').css({position: 'absolute', left: 0, width: '350px', backgroundColor: '#000', height: '100%', padding: '0px', color: '#fff'}); */
-
     $('div#explore-filters').append($('form#views-exposed-form-organizations-panel-pane-1'));
 
     $('div#explore-filters div.close-btn').click(function(){
       $('div#explore-filters').hide(); 
       $('div#explore-filters-tab').show(); 
+      return false;
     });
 
-    $('div#explore-filters-tab').click(function(){
+    // Make trigger for show all button.
+    $('a.layer-show').click(function(){
       $('div#explore-filters').show(); 
       $('div#explore-filters-tab').hide(); 
-    });   
+      newPlay.layerToggle('today-events', true);
+      newPlay.layerToggle('today-organizations', true);
+      newPlay.layerToggle('today-artists', true);      
+      return false;
+    });
     
     $('div#explore-filters').hide(); 
  
@@ -1321,25 +1325,11 @@ $('<a></a>').attr({
     
     $('#today-events-title').addClass('active');
   
-    // Add toggle buttons for layers.
-    $('#today-events-title').prepend('<div class="layer-show-all">Show all</a>');
-
-    // Make trigger for show all button.
-    $('div#panel-default-overlay div.layer-show-all').click(function(){
-      newPlay.layerToggle('today-events', true);
-      newPlay.layerToggle('today-organizations', true);
-      newPlay.layerToggle('today-artists', true);      
-      return false;
-    });
-
     // For each layer, get the list of items in the panel and turn on & off features if they are present.
     // Then connect show hide button to it.
 
-
-
     newPlay.layerToggle('today-events', false);
     newPlay.layerItemSelection();
-    
   }
 // the end  
 });
@@ -1439,7 +1429,6 @@ newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, sourc
           // If so, add it to an array to handle the displaying of the features.
 /*           feature.renderIntent = "select"; */
           feature.state = "dimmed";
-//console.log(feature);
           selectedFeatures.push(feature);
         }
         else {
