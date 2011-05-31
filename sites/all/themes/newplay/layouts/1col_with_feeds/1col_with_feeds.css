@@ -4,6 +4,7 @@
 /*  overflow: hidden;  */
 }
 
+
 .panel-1col-with-feeds .panel-col-top,
 .panel-1col-with-feeds .panel-col-bottom { 
   width: 100%; 
@@ -44,3 +45,4 @@
 .panel-1col-with-feeds .panel-separator {
   margin: 0 0 1em 0;
 }
+

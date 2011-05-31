@@ -18,6 +18,12 @@
 ?>
 <div class="panel-display panel-overlay clear-block" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
   
+  <?php if ($content['title']): ?>
+    <div class="panel-panel panel-col-top panel-overlay-title">
+      <div class="inside"><?php print $content['title']; ?></div>
+    </div>    
+  <?php endif ?>
+  
   <?php if ($content['main']): ?>
     <div class="panel-panel panel-col-top panel-overlay-main">
       <div class="inside"><?php print $content['main']; ?></div>
@@ -30,7 +36,7 @@
     </div>    
   <?php endif ?>
   
-  <div class="additional-info">
+  <div class="panel-panel additional-info">
     <?php if ($content['info']): ?>
       <h2 class="additional-info-title additional-info-title-info">Info</h2>
       <div class="panel-panel panel-overlay-info panel-overlay-section">

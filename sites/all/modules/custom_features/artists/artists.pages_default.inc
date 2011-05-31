@@ -57,6 +57,7 @@ function artists_default_page_manager_handlers() {
       'plays' => NULL,
       'links' => NULL,
       'feeds' => NULL,
+      'title' => NULL,
     ),
   );
   $display->cache = array();
@@ -297,8 +298,8 @@ function artists_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-11';
     $pane->panel = 'links';
-    $pane->type = 'embed_badge';
-    $pane->subtype = 'embed_badge';
+    $pane->type = 'twitter_share';
+    $pane->subtype = 'twitter_share';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -317,16 +318,15 @@ function artists_default_page_manager_handlers() {
     $display->panels['links'][2] = 'new-11';
     $pane = new stdClass;
     $pane->pid = 'new-12';
-    $pane->panel = 'main';
-    $pane->type = 'node_title';
-    $pane->subtype = 'node_title';
+    $pane->panel = 'links';
+    $pane->type = 'facebook_like';
+    $pane->subtype = 'facebook_like';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'link' => 0,
       'context' => 'argument_nid_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -334,11 +334,32 @@ function artists_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 3;
     $display->content['new-12'] = $pane;
-    $display->panels['main'][0] = 'new-12';
+    $display->panels['links'][3] = 'new-12';
     $pane = new stdClass;
     $pane->pid = 'new-13';
+    $pane->panel = 'links';
+    $pane->type = 'share_link';
+    $pane->subtype = 'share_link';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_nid_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $display->content['new-13'] = $pane;
+    $display->panels['links'][4] = 'new-13';
+    $pane = new stdClass;
+    $pane->pid = 'new-14';
     $pane->panel = 'main';
     $pane->type = 'views_panes';
     $pane->subtype = 'ensemble_collective-panel_pane_1';
@@ -355,11 +376,11 @@ function artists_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-13'] = $pane;
-    $display->panels['main'][1] = 'new-13';
+    $pane->position = 0;
+    $display->content['new-14'] = $pane;
+    $display->panels['main'][0] = 'new-14';
     $pane = new stdClass;
-    $pane->pid = 'new-14';
+    $pane->pid = 'new-15';
     $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_artist_photo';
@@ -378,11 +399,11 @@ function artists_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-14'] = $pane;
-    $display->panels['main'][2] = 'new-14';
+    $pane->position = 1;
+    $display->content['new-15'] = $pane;
+    $display->panels['main'][1] = 'new-15';
     $pane = new stdClass;
-    $pane->pid = 'new-15';
+    $pane->pid = 'new-16';
     $pane->panel = 'main';
     $pane->type = 'content_field';
     $pane->subtype = 'field_location';
@@ -401,11 +422,32 @@ function artists_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 3;
-    $display->content['new-15'] = $pane;
-    $display->panels['main'][3] = 'new-15';
+    $pane->position = 2;
+    $display->content['new-16'] = $pane;
+    $display->panels['main'][2] = 'new-16';
     $pane = new stdClass;
-    $pane->pid = 'new-16';
+    $pane->pid = 'new-17';
+    $pane->panel = 'main';
+    $pane->type = 'embed_badge';
+    $pane->subtype = 'embed_badge';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_nid_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $display->content['new-17'] = $pane;
+    $display->panels['main'][3] = 'new-17';
+    $pane = new stdClass;
+    $pane->pid = 'new-18';
     $pane->panel = 'organizations';
     $pane->type = 'orgs_by_play';
     $pane->subtype = 'orgs_by_play';
@@ -423,10 +465,10 @@ function artists_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-16'] = $pane;
-    $display->panels['organizations'][0] = 'new-16';
+    $display->content['new-18'] = $pane;
+    $display->panels['organizations'][0] = 'new-18';
     $pane = new stdClass;
-    $pane->pid = 'new-17';
+    $pane->pid = 'new-19';
     $pane->panel = 'plays';
     $pane->type = 'views_panes';
     $pane->subtype = 'plays-panel_pane_1';
@@ -446,8 +488,30 @@ function artists_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-17'] = $pane;
-    $display->panels['plays'][0] = 'new-17';
+    $display->content['new-19'] = $pane;
+    $display->panels['plays'][0] = 'new-19';
+    $pane = new stdClass;
+    $pane->pid = 'new-20';
+    $pane->panel = 'title';
+    $pane->type = 'node_title';
+    $pane->subtype = 'node_title';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'link' => 0,
+      'context' => 'argument_nid_1',
+      'override_title' => 1,
+      'override_title_text' => '<none>',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-20'] = $pane;
+    $display->panels['title'][0] = 'new-20';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

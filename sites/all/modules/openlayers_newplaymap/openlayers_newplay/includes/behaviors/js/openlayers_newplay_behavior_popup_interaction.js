@@ -47,7 +47,7 @@ Drupal.behaviors.openlayers_newplay_behavior_popup_interaction = function(contex
     $('div#panel-default-overlay').hide();
     
     // Clear the page title
-     $('title').text('New Play Map');
+     Drupal.openlayers.popup.clearPageTitle()
   });
 
   if(Drupal.openlayers.loaded == 0) {
@@ -174,7 +174,9 @@ Drupal.openlayers.popup.ajaxLinks = function(className, target) {
     var path = $(this).attr('href');
     
     var cleanPath = Drupal.openlayers.popup.cleanDestination(path);
-    $(this).attr('href', cleanPath);
+    if (cleanPath) {
+      $(this).attr('href', cleanPath);
+    }
     
     if(path !== undefined) {
       if(path.substr(0,5) === '/node') {
@@ -294,7 +296,7 @@ Drupal.openlayers.popup.nonLocatedFeaturePopup = function(path) {
      Drupal.openlayers.popup.clearAddress()
      
      // Clear the page title
-     $('title').text('New Play Map');
+     Drupal.openlayers.popup.clearPageTitle()
   });
 
   // Remove the views results.
@@ -517,10 +519,7 @@ Drupal.openlayers.popup.displayNode = function(data) {
   $('div.popup-container div.overlay div.node-content').html(data);
 
   // Set the page title based on the new content
-  var oldPageTitle = 'New Play Map';
-  var newPageTitle = $('<span></span>').html($(data).get(0)); // @TODO: Figure out how to get the title without using this span
-  newPageTitle = $(newPageTitle).find('.panel-overlay .pane-node-title .pane-content').html()
-  $('title').text(newPageTitle + ' | ' + oldPageTitle);
+  Drupal.openlayers.popup.setPageTitle(data);
 
   // Customize layout.
   $('div.popup-container').css('height', 'auto');
@@ -586,8 +585,9 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
   $('div.popup-container div.close-btn').click(function(){
     Drupal.openlayers.popup.popupSelect.unselect(Drupal.openlayers.popup.selectedFeature);
     Drupal.openlayers.popup.clearAddress();
+    
     // Clear the page title
-     $('title').text('New Play Map');
+    Drupal.openlayers.popup.clearPageTitle()
   });
   // Hide original popup.
   $('div#popup').hide();
@@ -990,3 +990,27 @@ Drupal.openlayers.popup.newPlayNormalStyles = function(data, currentLayer, curre
   currentLayer.styleMap = newStyleMap;
   currentLayer.redraw();
 };
+
+/**
+ * Helper function for setting the page title when content is loaded
+ *
+ * @param data
+ *  string of html from ajax loaded content
+ */
+Drupal.openlayers.popup.setPageTitle = function(data) {
+  var oldPageTitle = $('title').text();
+  var newPageTitle = $('<span></span>').html($(data).get(0)); // @TODO: Figure out how to get the title without using this span
+  newPageTitle = $(newPageTitle).find('.panel-overlay .pane-node-title .pane-content').html()
+  
+  $('meta[property="og:title"]').attr('content', newPageTitle + ' | ' + oldPageTitle);
+  $('title').text(newPageTitle + ' | ' + oldPageTitle);
+}
+ 
+/**
+ * Helper function to clear page title when popup is closed
+ */
+Drupal.openlayers.popup.clearPageTitle = function() {
+  // Clear the page title
+  $('meta[property="og:title"]').attr('content', 'New Play Map');
+   $('title').text('New Play Map');
+}

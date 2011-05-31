@@ -119,11 +119,12 @@
 
   #embed-badge-block {
     clear: both;
-    margin-top: 21px;
+    padding-top: 21px;
   }
 
   /* Hide when javascript is available */
-  .js #embed-badge-block form {
+  .js #embed-badge-block form,
+  .js #share-link-block form {
     display: none;
   }
   
@@ -132,7 +133,8 @@
     font-size: 0.8em;
   }
   
-  .js #embed-badge-block form input {
+  .js #embed-badge-block form input,
+  .js #share-link-block form input {
     width: 100%;
   }
 
@@ -153,44 +155,6 @@
     font-size: 12px;
     line-height: 16px;
   }
-  
-
-/* Newsfeed */
-  
-  /* @TODO: root out all of this feeds-wrapper stuff -- it's no longer being used on the site */
-  #feeds-wrapper {
-    display: none;
-  }
-  #feeds-wrapper .item-list ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-    #feeds-wrapper .item-list ul li {
-      margin: 0;
-      padding: 0.5em 3% 0.5em 0;
-      font-size: 1em;
-      line-height: 1em;
-    }
-      /* Author and created on the same line */
-      #feeds-wrapper .item-list ul li .views-field-field-feed-item-author-value,
-      #feeds-wrapper .item-list ul li .views-field-field-feed-item-author-value p,
-      #feeds-wrapper .item-list ul li .views-field-created,
-      #feeds-wrapper .item-list ul li .views-field-created p {
-        display: inline;
-      }
-      
-      /* 
-       * Prevent flash of extra content while the site is loading
-       * Stying for js degredation
-       */
-      #feeds-wrapper .item-list ul li {
-        display: none;
-      }
-      #feeds-wrapper .item-list ul li.views-row-first {
-        display: list-item;
-      }
       
 /* Related Events */
 
@@ -301,19 +265,6 @@
     html.js input#edit-title.form-autocomplete.throbbing {
       background-position: 99% 2px;
     }
-
-
-  /* Hide Facebook login */
-  .js #block-block-4 {
-    display: none;
-  }
-  
-  /* Discrete OpenID login */
-  .openid-link {
-    position: fixed;
-    bottom: 10px;
-    left: 30px;
-  }
 
   /* Apply default button style */
   /* Add new declarations here as needed */
@@ -556,7 +507,9 @@
     }
 
 /* Overlay */
+
   /* General styles */
+  
   .panel-overlay {
   }
   
@@ -567,18 +520,20 @@
   }
 
   .panel-overlay .panel-col-top .inside {
-    margin-bottom: .5em;
   }
-
+  
+  /* @TODO: figure out if this does anything anymore */
   .panel-overlay .panel-col-first { 
     float: left; 
     width: 25%;
   }
 
+  /* @TODO: figure out if this does anything anymore */
   .panel-overlay .panel-col .inside { 
     margin: 0 .5em 1em .5em;
   }
 
+  /* @TODO: figure out if this does anything anymore */
   .panel-overlay .panel-col { 
     float: left; 
     width: 25%; 
@@ -587,16 +542,18 @@
   .panel-overlay .panel-col .inside { 
     margin: 0 .5em 1em .5em;
   }
-
+  
+  /* @TODO: figure out if this does anything anymore */
   .panel-overlay .panel-col-last { 
     float: left; 
     width: 45%; 
   }
-
+  
+  /* @TODO: figure out if this does anything anymore */
   .panel-overlay .panel-col-last .inside { 
     margin: 0 0 1em .5em;
   }
-
+  
   .panel-overlay .panel-separator {
     margin: 0 0 1em 0;
   }
@@ -619,6 +576,7 @@
   /* Content Sections */
   .js .panel-overlay .additional-info {
     display: none; /* prevent flash on page load */
+    clear: both; /* make sure it clears any evil floats */
   }
   
   .panel-overlay .additional-info h2.additional-info-title {
@@ -796,7 +754,7 @@
         display: inline;
       }
      
-      /* date styled to fade backward a bit */
+      /* Date styled to fade backward a bit */
       .js #panel-default-overlay #today-events .views-field-field-event-date-value .field-content {
         text-transform: uppercase;
         font-size: 10px;
@@ -815,13 +773,18 @@
     
 
 /* Open Layers */
+/* @TODO: Review this entire block and integrate with Overlay section above */
+/* @TODO: Consider adding .js to all of these styles */
+
 .openlayers-blockswitcher .base .layers-content label {
   display: none;
   }
+
 #panel-default-overlay,
 .popup-container {
   padding: 0px;
   }
+
 .popup-container .popup-content{
   padding: 10px;
   color: #d0d4d3;
@@ -832,6 +795,7 @@
   padding: 0;
   background: rgba(0, 0 ,0, 0.85);
   }
+
 .popup-container .popup-inner {
   background: rgba(0, 0 ,0, 0.85);
   }
@@ -846,10 +810,12 @@
   list-style-type: none;
   padding: 0 0 0 0;
   }
+
 #panel-default-overlay ul li.views-row {
   padding: 0 0 0 0;
   margin: 1em 0 0 0;
   }
+
 /* (temporary fix) 
  .additional-info in the map has an opaque background
  because the accordion doesn't increase .node-content height
@@ -859,12 +825,14 @@
   color: #FFFFFF;
   background: rgba(0, 0 ,0, 1);
   }
+
 /* emphasize date with a brighter color */
 .popup-container .date-display-start,
 .popup-container .date-display-end,
 .popup-container .date-display-single {
   color: #FFFFFF;
   }
+
 /* custom close box */
 #panel-default-overlay .close-btn,
 .popup-container .overlay .close-btn,
@@ -877,12 +845,15 @@
   right: 0;
   margin: 10px 5px 0 0;
   }
+  
 .openlayers-views-map #popup .olPopupCloseBox:active {
   background: url("../openlayers/img/close-active.png") no-repeat;
   }
 .openlayers-views-map #popup .olPopupCloseBox:active {
   background: url("../openlayers/img/close-active.png") no-repeat;
   }
+
+/* @TODO: See if this relates to feeds anymore and if not, remove */
 div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   position: fixed;
   bottom: 5px;
@@ -891,20 +862,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   height: 50px;
   }
 
-/* @TODO there is still some layout issues with these panels. 
-   It is possible for there to be two feeds wrappers on a page 
-   if the wrapper is loaded via ajax.
-*/
-.overlay .panel-overlay .panel-col,
-.overlay .panel-overlay .panel-col-first,
-.overlay .panel-overlay .panel-col-last{
-/*
-  float: none;
-  width: auto;
-  clear: right;
-*/
-}
-
 /* Hide panels title for organizations (temporary) */
 .pane-organizations-panel-pane-1 h2 {
   display: none;
@@ -912,31 +869,41 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 .pane-organizations-panel-pane-1 .view-organizations h2  {
   display: block;
   }
-/* target content inside popup node. */
+
+/* Content inside popup node. */
 #panel-default-overlay .inside,
 .popup-container .overlay .inside {
   padding: 10px;
   }
-  /* Organization overlay */
-  .popup-container .overlay .pane-node-title {
-    font-size: 21px;
-    color: #FFFFFF;
-    border-bottom: 1px dashed #CCCCCC;
-    padding-bottom: 7px;
-    padding-right: 85px; /* make room for Edit link */
-    margin-bottom: 7px;
-  }
-  .popup-container .overlay .pane-field-org-logo,
-  .popup-container .overlay .pane-field-artist-photo {
-    float: left;
-    padding-top: 14px;
-    padding-right: 14px;
-  }
-  .popup-container .overlay .pane-field-location {
-    padding-top: 14px;
-    float: left;
-    width: 207px;
-  }
+  
+  /* Overlay Title */
+  
+    /* remove bottom padding and margin on overlay title inside div */
+    .popup-container .overlay .panel-overlay-title .inside {
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+    }
+    
+    .popup-container .overlay .pane-node-title {
+      font-size: 21px;
+      color: #FFFFFF;
+      border-bottom: 1px dashed #CCCCCC;
+      padding-bottom: 7px;
+      padding-right: 85px; /* make room for Edit link */
+    }
+    
+    /* Overlay: Avatars */
+    .popup-container .overlay .pane-field-org-logo,
+    .popup-container .overlay .pane-field-artist-photo {
+      float: left;
+      padding-top: 14px;
+      padding-right: 14px;
+    }
+    
+    /* Overlay: Location */
+    .popup-container .overlay .pane-field-location {
+    }
+  
   /* Edit link */
   .popup-container .overlay .pane-edit-link {
     position: absolute;
@@ -955,30 +922,55 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 
      /* Main overlay area layout */
     .popup-container .overlay  .panel-overlay-main {
+      float: left;
+      width: 66%;
     }
+    
     
     .popup-container .overlay  .panel-overlay-links {
+      float: left;
+      width: 32%;
+      clear: none;
     }
     
-    .popup-container .overlay .pane-event,
-    .popup-container .overlay #feed_button {
-      width: 80px;
-      font-size: 13px;
-    }
-    
-    .popup-container .overlay .pane-event {
-      padding-top: 14px;
-      padding-bottom: 7px;
-    }
-    
-    .popup-container .overlay .pane-event ul li a,
-    .popup-container .overlay #feed_button {
-      padding: 4px 0;
-      text-align: center;
-    }
-    
-    .popup-container .overlay #feed_button {
-    }
+    /* Links section */
+      
+      .popup-container .overlay .panel-overlay-links .panel-region-separator {
+        padding-bottom: 6px;
+      }
+      
+      .popup-container .overlay .panel-overlay-links .pane-facebook-like a {
+        display: block;
+        background: url(../images/facebook-like.png) top left no-repeat;  
+        width: 55px;
+        height: 20px;
+        text-indent: -10000em;
+      }
+      
+      .popup-container .overlay .panel-overlay-links a#share-link-show {
+        display: block;
+        background: url(../images/icon-link.png) 0 0 no-repeat;
+        padding-left: 20px;
+        padding-top: 1px;
+      }
+      
+      .popup-container .overlay .pane-event,
+      .popup-container .overlay #feed_button {
+        font-size: 13px;
+      }
+      
+      .popup-container .overlay .pane-event {
+      }
+      
+      .popup-container .overlay .pane-event ul li a,
+      .popup-container .overlay #feed_button {
+        padding: 4px 0;
+        text-align: center;
+      }
+      
+      .popup-container .overlay #feed_button {
+      }
+  
   
   
 /* Map Filters */
