@@ -1083,6 +1083,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   position: absolute;
   left: 0;  
   width: 200px;
-  height: 50px;
+  height: auto;
   display: block;
 }
