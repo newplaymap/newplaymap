@@ -3,8 +3,12 @@
 include_once('newplay_mapping.features.inc');
 
 function newplay_mapping_nodeapi(&$node, $op) {
+  drupal_set_message('newplay_mapping_nodeapi');
   if ($op == 'load' && arg(1) == $node->nid && arg(2) != 'edit' && $_COOKIE['has_js']) {
-    if ($node->type == 'organization' || $node->type == 'play' || $node->type == 'artist') {      
+    drupal_set_message('if load, arg nid, etc.');
+    if ($node->type == 'organization' || $node->type == 'play' || $node->type == 'artist') {  
+      drupal_set_message('org');
+      drupal_set_message('base path ' . base_path());
       $alias = '/' . drupal_get_path_alias('node/' . $node->nid);
       
       if (base_path() == '/') {
@@ -12,6 +16,7 @@ function newplay_mapping_nodeapi(&$node, $op) {
         drupal_goto('', NULL, $alias);
       }
     } else if ($node->type == 'event') {
+      drupal_set_message('event');
       $play_alias = '/' . drupal_get_path_alias('node/' . $node->field_related_play[0]['nid']);
       
       if (base_path() == '/') {
