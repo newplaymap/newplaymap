@@ -1,4 +1,5 @@
 core = "6.x"
+dependencies[] = "better_exposed_filters"
 dependencies[] = "ctools"
 dependencies[] = "date"
 dependencies[] = "features"

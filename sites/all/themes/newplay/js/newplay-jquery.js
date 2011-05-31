@@ -753,10 +753,6 @@ newPlay.addExploreFilters = function() {
   if(filterExists[0] === undefined)  {
     var filterMarkup = '<div id="explore-filters-tab"><h3>Explore the Map</h3></div><div id="explore-filters"><div class="close-btn"></div>';
     filterMarkup += '<div class="title"><h3>Explore</h3></div>';
-    filterMarkup += '<div class="filters">';
-
-    filterMarkup += '</div>';
-    filterMarkup += '<div class="buttons"></div>';
     filterMarkup += '</div>';
     $('div.panel-1col-with-feeds').append(filterMarkup);
 
