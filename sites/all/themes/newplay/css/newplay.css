@@ -835,7 +835,6 @@
 .popup-container .popup-inner {
   background: rgba(0, 0 ,0, 0.85);
   }
-
 #panel-default-overlay {
   height: 100%;
   overflow-y: auto;
@@ -868,7 +867,8 @@
 /* custom close box */
 #panel-default-overlay .close-btn,
 .popup-container .overlay .close-btn,
-.popup-container .popup-inner .close-btn {
+.popup-container .popup-inner .close-btn,
+#explore-filters .close-btn {
   background: url("../openlayers/img/close.png") no-repeat;
   cursor: pointer;
   width: 20px;
@@ -1064,7 +1064,33 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 
 
 /* Explore Filter */
-#explore-filters .label,
-#explore-filters .form-item {
-  display: inline;
+#explore-filters {
+  color: #d0d4d3;
+  padding: 0;
+  background: rgba(0, 0 ,0, 0.85);
+  height: 100%;
+  overflow-y: auto;
+  position: absolute;
+  left: 0;  
+  width: 350px;
+}
+#explore-filters .close-btn {
+  background: url("../openlayers/img/close.png") no-repeat;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  margin: 10px 5px 0 0;
+  }
+#explore-filters-tab {
+  color: #d0d4d3;
+  padding: 0;
+  background: rgba(0, 0 ,0, 0.85);
+  overflow-y: hidden;
+  position: absolute;
+  left: 0;  
+  width: 200px;
+  height: 50px;
+  display: block;
 }

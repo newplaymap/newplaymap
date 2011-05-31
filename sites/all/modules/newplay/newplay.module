@@ -44,6 +44,8 @@ function newplay_form_alter(&$form, $form_state, $form_id) {
     $form['email']['#description'] = t('Enter an email address of a friend you would like to invite to the map');
   }
 
+/*   dsm($form_id); */
+
 }
 
 
