@@ -242,7 +242,7 @@ function home_default_page_manager_pages() {
       'settings' => NULL,
     );
     $pane->css = array(
-      'css_id' => 'today-events',
+      'css_id' => 'filter-results-events',
       'css_class' => 'today-listing filter-results-listing',
     );
     $pane->extras = array();
@@ -273,7 +273,7 @@ function home_default_page_manager_pages() {
       'settings' => NULL,
     );
     $pane->css = array(
-      'css_id' => 'today-organizations',
+      'css_id' => 'filter-results-organizations',
       'css_class' => 'today-listing filter-results-listing',
     );
     $pane->extras = array();
@@ -304,7 +304,7 @@ function home_default_page_manager_pages() {
       'settings' => NULL,
     );
     $pane->css = array(
-      'css_id' => 'today-artists',
+      'css_id' => 'filter-results-artists',
       'css_class' => 'today-listing filter-results-listing',
     );
     $pane->extras = array();
