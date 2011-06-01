@@ -1290,7 +1290,8 @@ $('<a></a>').attr({
   /**
    * Format the home page overlay listings
    */
-  if ($('#today-events').length > 0) {
+  // if ($('#today-events').length > 0) {
+  if (1 == 1) {
 
     var todayHeaderList = $('<ul></ul>').addClass('overlay-filter-headers').insertAfter('#panel-default-overlay .overlay-title');
     
@@ -1321,6 +1322,7 @@ $('<a></a>').attr({
     });
     
     $('#today-events-title').addClass('active');
+    $('#filter-results-events-title').addClass('active');
     
   }
   
