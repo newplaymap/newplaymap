@@ -1290,24 +1290,28 @@ $('<a></a>').attr({
   /**
    * Format the home page overlay listings
    */
-  if ($('#filter-results-events').length > 0) {
+  if ($('.filter-results-listing').length > 0) {
 
     var todayHeaderList = $('<ul></ul>').addClass('overlay-filter-headers').insertAfter('#panel-default-overlay .overlay-title');
     
     
     $('#panel-default-overlay .filter-results-listing').each(function() {
       // If there are items in the list, count them, otherwise return empty string
-      var itemCountObject = $(this).find('.item-list li').not(':empty');
-      var itemCountText = itemCountObject ? '<strong>' + itemCountObject.length + '</strong> ' : '';
-      
+      var itemCount = $(this).find('.item-list li').not(':empty').length;
+      var itemCountText = itemCount > 0 ? '<strong>' + itemCount + '</strong> ' : '';
       var todayPaneId = $(this).attr('id'); // Grab the id for this list to use later
+      var itemHeaderTitle = $(this).children('h2.pane-title').remove().html();
+
+      if ((itemCount <= 1) && (itemHeaderTitle.substr(itemHeaderTitle.length-1, 1) == 's')) {
+        itemHeaderTitle = itemHeaderTitle.substr(0, itemHeaderTitle.length-1);
+      }
 
       // Create a list item for each Results section
       $('<li></li>')
         .attr({
           'id': todayPaneId + '-title'
         })
-        .html('<a>' + itemCountText + $(this).children('h2.pane-title').remove().html() + '</a>') // Grab the title of each list and remove it from original location
+        .html('<a>' + itemCountText + itemHeaderTitle + '</a>') // Grab the title of each list and remove it from original location
         .click(function() {
           // Hide and show different What's on Today listings
           // and set active classes
@@ -1320,8 +1324,8 @@ $('<a></a>').attr({
         .appendTo(todayHeaderList);
     });
     
-    $('#filter-results-events-title').addClass('active');
-    $('#filter-results-events').fadeIn();
+    $('.filter-results-listing:first').fadeIn();
+    $('.overlay-filter-headers li:first').addClass('active');
     
   }
   
