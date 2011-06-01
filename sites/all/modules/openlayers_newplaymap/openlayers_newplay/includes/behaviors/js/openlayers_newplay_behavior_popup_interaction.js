@@ -650,6 +650,53 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
 
 };
 
+/**
+ * This function is not quite right.
+ */
+Drupal.openlayers.popup.newPlayRedrawLayer = function(layer, layerOrder) {
+
+  // Store the context for later use.
+  var context = Drupal.openlayers.context;  
+  var data = $(context).data('openlayers');
+  
+  // Read through each layer to reimplement all the styles.
+
+  // Create & load styleMap options.
+  var currentLayerID = layer["drupalID"];
+  var currentStyleMap = Drupal.openlayers.getStyleMap(data.map, data.map.layer_styles[currentLayerID]);
+
+  var newStyle = {};
+  var newStyle = {
+    'data': data,
+    'currentLayer': layer,
+    'currentStyleMap': currentStyleMap,
+    'feature': feature,
+    'currentLayerID': currentLayerID,
+    'layer': layerOrder,
+    'select': false
+  };
+
+
+  newStyle = Drupal.openlayers.popup.newPlayLineStylesSetup(newStyle);
+  console.log(newStyle);
+  
+  if(newStyle.newStyleMapping !== undefined) {
+    // http://dev.openlayers.org/releases/OpenLayers-2.6/doc/devdocs/files/OpenLayers/StyleMap-js.html
+    newStyle["newStyleMapping"].addUniqueValueRules("default", "state", newStyle["lookup"]);
+    newStyle["newStyleMapping"].addUniqueValueRules("select", "state", newStyle["lookup"]);
+    layer.styleMap = newStyle["newStyleMapping"];
+  }
+    
+
+  var multilineStyles = {};          
+  multilineStyles.defaultFeatureStyle = data.map.layer_styles[currentLayerID];
+  currentStyleMap = Drupal.openlayers.getStyleMap(data.map, multilineStyles.defaultFeatureStyle);
+  var newStyleMap = new OpenLayers.StyleMap(currentStyleMap);
+  // http://dev.openlayers.org/releases/OpenLayers-2.6/doc/devdocs/files/OpenLayers/StyleMap-js.html
+  layer.styleMap = newStyleMap;
+  layer.redraw();
+};
+
 Drupal.openlayers.popup.newPlayPopupUnSelect = function(feature, context) {
   //console.log("unselect");
   var layers, data = $(context).data('openlayers');
