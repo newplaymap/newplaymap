@@ -738,6 +738,11 @@
       margin-left: -45px;
       padding-top: 3px;
     }
+    
+    /* hide listings by default */
+    .js #panel-default-overlay .filter-results-listing {
+      display: none;
+    }
   
     /* Show Today: Events Listing */
     

@@ -1290,8 +1290,7 @@ $('<a></a>').attr({
   /**
    * Format the home page overlay listings
    */
-  // if ($('#today-events').length > 0) {
-  if (1 == 1) {
+  if ($('#filter-results-events').length > 0) {
 
     var todayHeaderList = $('<ul></ul>').addClass('overlay-filter-headers').insertAfter('#panel-default-overlay .overlay-title');
     
@@ -1303,7 +1302,7 @@ $('<a></a>').attr({
       
       var todayPaneId = $(this).attr('id'); // Grab the id for this list to use later
 
-      // Create a list item for each What's on Today listing
+      // Create a list item for each Results section
       $('<li></li>')
         .attr({
           'id': todayPaneId + '-title'
@@ -1321,8 +1320,8 @@ $('<a></a>').attr({
         .appendTo(todayHeaderList);
     });
     
-    $('#today-events-title').addClass('active');
     $('#filter-results-events-title').addClass('active');
+    $('#filter-results-events').fadeIn();
     
   }
   
