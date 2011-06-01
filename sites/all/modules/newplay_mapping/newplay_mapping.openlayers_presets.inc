@@ -116,6 +116,7 @@ function newplay_mapping_openlayers_presets() {
           'organizations_openlayers_1' => 'organizations_openlayers_1',
           'organizations_openlayers_2' => 'organizations_openlayers_2',
           'organizations_openlayers_3' => 'organizations_openlayers_3',
+          'organizations_openlayers_4' => 'organizations_openlayers_4',
         ),
         'multiLineStringStyleGroup_organizations_openlayers_1' => array(
           'labelLayer_organizations_openlayers_1' => '',
@@ -144,6 +145,15 @@ function newplay_mapping_openlayers_presets() {
           'featureStyleSelectedFeature_organizations_openlayers_3' => 'Generative Artists Marker Selected',
           'featureStyleDimmed_organizations_openlayers_3' => 'Generative Artists Marker Dimmed',
         ),
+        'multiLineStringStyleGroup_organizations_openlayers_4' => array(
+          'labelLayer_organizations_openlayers_4' => '',
+          'groupingAttribute_organizations_openlayers_4' => '',
+          'lineStyle_organizations_openlayers_4' => 'No Path',
+          'lineStyleSelected_organizations_openlayers_4' => 'No Path',
+          'featureStyleSelectedGroup_organizations_openlayers_4' => 'Event Markers Selected',
+          'featureStyleSelectedFeature_organizations_openlayers_4' => 'Event Markers Featured',
+          'featureStyleDimmed_organizations_openlayers_4' => 'Event Markers Dimmed',
+        ),
         'multiLineStringGroupZoom' => '9',
       ),
       'openlayers_newplay_behavior_popup_interaction' => array(
@@ -151,6 +161,7 @@ function newplay_mapping_openlayers_presets() {
           'organizations_openlayers_1' => 'organizations_openlayers_1',
           'organizations_openlayers_2' => 'organizations_openlayers_2',
           'organizations_openlayers_3' => 'organizations_openlayers_3',
+          'organizations_openlayers_4' => 'organizations_openlayers_4',
         ),
         'popup_fieldset' => array(
           'popup' => 1,
@@ -164,6 +175,7 @@ function newplay_mapping_openlayers_presets() {
       'organizations_openlayers_1' => 'organizations_openlayers_1',
       'organizations_openlayers_2' => 'organizations_openlayers_2',
       'organizations_openlayers_3' => 'organizations_openlayers_3',
+      'organizations_openlayers_4' => 'organizations_openlayers_4',
     ),
     'layer_styles' => array(
       'organizations_openlayers_1' => 'Organization Marker',
@@ -175,11 +187,13 @@ function newplay_mapping_openlayers_presets() {
       'organizations_openlayers_1' => 'organizations_openlayers_1',
       'organizations_openlayers_2' => 'organizations_openlayers_2',
       'organizations_openlayers_3' => 'organizations_openlayers_3',
+      'organizations_openlayers_4' => 'organizations_openlayers_4',
     ),
     'layer_switcher' => array(
       'organizations_openlayers_1' => 'organizations_openlayers_1',
       'organizations_openlayers_2' => 'organizations_openlayers_2',
       'organizations_openlayers_3' => 'organizations_openlayers_3',
+      'organizations_openlayers_4' => 'organizations_openlayers_4',
     ),
     'projection' => '900913',
     'displayProjection' => '4326',

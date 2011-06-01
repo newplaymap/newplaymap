@@ -2027,11 +2027,9 @@ function orgs_views_default_views() {
     'type' => 'none',
   ));
   $handler->override_option('cache', array(
-    'type' => 'time',
-    'results_lifespan' => '3600',
-    'output_lifespan' => '3600',
+    'type' => 'none',
   ));
-  $handler->override_option('items_per_page', 250);
+  $handler->override_option('items_per_page', 200);
   $handler->override_option('style_plugin', 'openlayers_data');
   $handler->override_option('style_options', array(
     'grouping' => '',

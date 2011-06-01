@@ -769,7 +769,7 @@ newPlay.addExploreFilters = function() {
     $('a.layer-show').click(function(){
       $('div#explore-filters').show(); 
       $('div#explore-filters-tab').hide(); 
-      newPlay.layerToggle('today-events', true);
+      newPlay.layerToggle('all-events', true);
       newPlay.layerToggle('today-organizations', true);
       newPlay.layerToggle('today-artists', true);      
       return false;
@@ -1364,7 +1364,7 @@ $('<a></a>').attr({
     // Then connect show hide button to it.
 
     newPlay.layerToggle('today-events', false);
-    newPlay.layerItemSelection();
+/*     newPlay.layerItemSelection(); */
   }
 // the end  
 });
@@ -1406,33 +1406,49 @@ newPlay.layerToggle = function(todayPaneId, layersOn) {
     // If today link list has class active, show the layer.
     for (var i in layers) {
       switch(todayPaneId) {
-        case 'today-events':
+        case 'all-events':
             if (layers[i]["drupalID"] === 'organizations_openlayers_2') {
               layers[i].setVisibility(true);
-              newPlay.hideSelectedFeaturesByAttribute(layers[i], 'name', 'href', 'div.pane-views-panes div.views-field-field-related-play-nid a');
+            }
+            if (layers[i]["drupalID"] === 'organizations_openlayers_4') {
+              layers[i].setVisibility(false);
+            }
+          break;
+        case 'today-events':
+            if (layers[i]["drupalID"] === 'organizations_openlayers_4') {
+              layers[i].setVisibility(true);
+/*               newPlay.hideSelectedFeaturesByAttribute(layers[i], i, 'name', 'href', 'div.pane-views-panes div.views-field-field-related-play-nid a'); */
+            }
+            if (layers[i]["drupalID"] === 'organizations_openlayers_2') {
+              layers[i].setVisibility(false);
             }
           break;
         case 'today-organizations':
             if (layers[i]["drupalID"] === 'organizations_openlayers_1') {
              layers[i].setVisibility(true);
             }
+            if (layers[i]["drupalID"] === 'organizations_openlayers_4') {
+              layers[i].setVisibility(false);
+            }
           break;
         case 'today-artists':
             if (layers[i]["drupalID"] === 'organizations_openlayers_3') {
               layers[i].setVisibility(true);
             }
-          break;  
+            if (layers[i]["drupalID"] === 'organizations_openlayers_4') {
+              layers[i].setVisibility(false);
+            }
+          break;
       }
     }
   }
   return false;
 };
 
-newPlay.showAllFeatures = function(layer) {
-
-};
-
-newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, source) {
+/**
+ * This function still under construction 6/1/2011 - chach
+ */
+newPlay.hideSelectedFeaturesByAttribute = function(layer, layerOrder, attribute, type, source) {
   //  layer.features
   var selectedFeatures = Array();
   var sourceValues = Array();
@@ -1448,7 +1464,7 @@ newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, sourc
     sourceValues.push(sourceValue);
   });
   for (var i in layer.features) {
-    if (i < 300) {  // temporary limits
+    if (i < 30) {  // temporary limits
       feature = layer.features[i];
       value = feature.attributes[attribute];
 
@@ -1460,23 +1476,23 @@ newPlay.hideSelectedFeaturesByAttribute = function(layer, attribute, type, sourc
       for (var s in sourceValues) {
         // See if value matches source's value.
         if(value === sourceValues[s]) {
-
           // If so, add it to an array to handle the displaying of the features.
-/*           feature.renderIntent = "select"; */
+          feature.renderIntent = "dimmed";
           feature.state = "dimmed";
+          feature.attributes.state = "dimmed";
           selectedFeatures.push(feature);
         }
         else {
-/*           feature.renderIntent = "dimmed"; */
-          // console.log(feature);
+          feature.renderIntent = "dimmed";
+          feature.state = "dimmed";
+          feature.attributes.state = "dimmed";
+
         }
       }
     }
   }
- // console.log(selectedFeatures);
 
-
-  layer.redraw();
+/*   Drupal.openlayers.popup.newPlayRedrawLayer(layer, layerOrder); */
   return false;
 };
 
@@ -1487,29 +1503,26 @@ newPlay.layerItemSelection = function() {
   var list;
   for (var i in layers) {
       layer = layers[i]["drupalID"];
-      
       switch(layer) {
         case 'organizations_openlayers_1':
           list = $(this).find('div.views-field-field-event-type-nid span.field-content a').value;
           newPlay.hideSelectedFeatures(layer, list, 'field_event_type_nid_rendered');
-          
           break;
         case 'organizations_openlayers_2':
           break;
         case 'organizations_openlayers_3':
           break;
+        case 'organizations_openlayers_4':
+          break;
       }
     }
 
 
+/*
   $('div#panel-default-overlay div.pane-views-panes div.item-list li').each(function(){
-
-
    // var playValue = $(this).find('div.views-field-field-related-play-nid span.field-content a').value;
    // var artistValue = $(this).find('div.views-field-field-artist-nid span.field-content a').value;
    // var organizationValue = $(this).find('div.views-field-field-related-theater-nid span.field-content a').value;
-
-    //    console.log(list);
-
   });
+*/
 };
