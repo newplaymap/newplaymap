@@ -629,12 +629,36 @@
   }
   
   
-/* Links in Overlay */
+/* Links in Overlay & Bubble */
 
-.js #panel-default-overlay a {
+.js #panel-default-overlay a,
+.js .popup-bubble-container a {
   color: #B4C0F0;
 }
-  
+
+/* Bubble */
+
+.js .popup-bubble-container {
+  color: #D0D4D3;
+}
+
+  /* title more prominent */
+  .js .popup-bubble-container .openlayers-popup-name {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.2em;
+  }
+    
+  /* date styled to fade backward a bit */
+  .js .popup-bubble-container .date-display-start,
+  .js .popup-bubble-container .date-display-separator,
+  .js .popup-bubble-container .date-display-end {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: #999999;
+  }  
+
 
 /* Show Today */
 
@@ -791,7 +815,7 @@
   }
 #panel-default-overlay,
 .popup-container .overlay {
-  color: #d0d4d3;
+  color: #D0D4D3;
   padding: 0;
   background: rgba(0, 0 ,0, 0.85);
   }
