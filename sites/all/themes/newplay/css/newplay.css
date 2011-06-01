@@ -714,7 +714,8 @@
   /* Show Today: General Listings */
   
     /* padding on all "today" listings */
-    .js #panel-default-overlay .today-listing .item-list ul li {
+    .js #panel-default-overlay .today-listing .item-list ul li,
+    .js #panel-default-overlay .filter-results-listing .item-list ul li {
       padding-left: 48px;
       overflow: auto;
       width: inherit;
@@ -722,6 +723,7 @@
     
      /* more prominent title */
     .js #panel-default-overlay #today-events .views-field-field-related-play-nid .field-content,
+    .js #panel-default-overlay #filter-results-events .views-field-field-related-play-nid .field-content,
     .js #panel-default-overlay .views-field-title {
       font-size: 18px;
       font-weight: bold;
@@ -729,7 +731,9 @@
     
     /* position avatar */
     .js #panel-default-overlay #today-organizations .views-field-field-org-logo-fid,
-    .js #panel-default-overlay #today-artists .views-field-field-artist-photo-fid {
+    .js #panel-default-overlay #filter-results-organizations .views-field-field-org-logo-fid,
+    .js #panel-default-overlay #today-artists .views-field-field-artist-photo-fid,
+    .js #panel-default-overlay #filter-results-artists .views-field-field-artist-photo-fid {
       float: left;
       margin-left: -45px;
       padding-top: 3px;
@@ -738,24 +742,30 @@
     /* Show Today: Events Listing */
     
       /* inject icon to the left of event listing */
-      .js #panel-default-overlay #today-events .item-list ul li {
+      .js #panel-default-overlay #today-events .item-list ul li,
+      .js #panel-default-overlay #filter-results-events .item-list ul li {
         background: transparent url(../images/icon-listing-event.png) 10px 5px no-repeat;
       }
       
       /* byline and artist name on same line */
       .js #panel-default-overlay #today-events .views-field-field-artist-nid label,
-      .js #panel-default-overlay #today-events .views-field-field-artist-nid .field-content {
+      .js #panel-default-overlay #filter-results-events .views-field-field-artist-nid label,
+      .js #panel-default-overlay #today-events .views-field-field-artist-nid .field-content,
+      .js #panel-default-overlay #filter-results-events .views-field-field-artist-nid .field-content {
         display: inline;
       }
       
       /* City and state on the same line */
       .js #panel-default-overlay #today-events .views-field-city,
-      .js #panel-default-overlay #today-events .views-field-province {
+      .js #panel-default-overlay #today-events .views-field-province,
+      .js #panel-default-overlay #filter-results-events .views-field-city,
+      .js #panel-default-overlay #filter-results-events .views-field-province, {
         display: inline;
       }
      
       /* Date styled to fade backward a bit */
-      .js #panel-default-overlay #today-events .views-field-field-event-date-value .field-content {
+      .js #panel-default-overlay #today-events .views-field-field-event-date-value .field-content,
+      .js #panel-default-overlay #filter-results-events .views-field-field-event-date-value .field-content {
         text-transform: uppercase;
         font-size: 10px;
         letter-spacing: 0.1em;
@@ -765,7 +775,8 @@
     /* Show Today: Org listings */
     
       /* org type label on the same line as list */
-      .js #panel-default-overlay #today-organizations .views-field-field-org-type-nid div.field-content {
+      .js #panel-default-overlay #today-organizations .views-field-field-org-type-nid div.field-content,
+      .js #panel-default-overlay #filter-results-organizations .views-field-field-org-type-nid div.field-content {
         display: inline;
       }
 

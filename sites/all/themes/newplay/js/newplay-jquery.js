@@ -1295,7 +1295,7 @@ $('<a></a>').attr({
     var todayHeaderList = $('<ul></ul>').addClass('overlay-filter-headers').insertAfter('#panel-default-overlay .overlay-title');
     
     
-    $('#panel-default-overlay .today-listing').each(function() {
+    $('#panel-default-overlay .filter-results-listing').each(function() {
       // If there are items in the list, count them, otherwise return empty string
       var itemCountObject = $(this).find('.item-list li').not(':empty');
       var itemCountText = itemCountObject ? '<strong>' + itemCountObject.length + '</strong> ' : '';
@@ -1312,7 +1312,7 @@ $('<a></a>').attr({
           // Hide and show different What's on Today listings
           // and set active classes
           $('.overlay-filter-headers li').not('#' + todayPaneId + '-title').removeClass('active');
-          $('#panel-default-overlay .today-listing').not('#' + todayPaneId).fadeOut('normal', function() {
+          $('#panel-default-overlay .filter-results-listing').not('#' + todayPaneId).fadeOut('normal', function() {
             $('#' + todayPaneId).fadeIn();
             $('#' + todayPaneId + '-title').addClass('active');
           });
