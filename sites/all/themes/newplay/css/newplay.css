@@ -759,7 +759,7 @@
       .js #panel-default-overlay #today-events .views-field-city,
       .js #panel-default-overlay #today-events .views-field-province,
       .js #panel-default-overlay #filter-results-events .views-field-city,
-      .js #panel-default-overlay #filter-results-events .views-field-province, {
+      .js #panel-default-overlay #filter-results-events .views-field-province {
         display: inline;
       }
      
