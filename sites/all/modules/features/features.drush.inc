@@ -396,18 +396,27 @@ function drush_features_diff() {
   $formatter->trailing_context_lines = 2;
   $formatter->show_header = FALSE;
 
+  if (drush_get_context('DRUSH_NOCOLOR')) {
+    $red = $green = "%s";
+  }
+  else {
+    $red = "\033[31;40m\033[1m%s\033[0m";
+    $green = "\033[0;32;40m\033[1m%s\033[0m";
+  }
+
+  // Print key for colors
+  drush_print('/**');
+  drush_print(' * ' . sprintf($green, 'Database. drush features-update if you want to keep'));
+  drush_print(' * ' . sprintf($red, 'Code. drush features-revert if you want to keep'));
+  drush_print(' **/');
+  drush_print();
+
   foreach ($overrides as $component => $items) {
     $diff = new Diff(explode("\n", $items['default']), explode("\n", $items['normal']));
     drush_print();
     drush_print(dt("Component: !component", array('!component' => $component)));
     $rows = explode("\n", $formatter->format($diff));
-    if (drush_get_context('DRUSH_NOCOLOR')) {
-      $red = $green = "%s";
-    }
-    else {
-      $red = "\033[31;40m\033[1m%s\033[0m";
-      $green = "\033[0;32;40m\033[1m%s\033[0m";
-    }
+    
     foreach ($rows as $row) {
       if (strpos($row, '>') === 0) {
         drush_print(sprintf($green, $row));
