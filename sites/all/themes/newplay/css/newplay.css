@@ -1060,7 +1060,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   }
   
     #explore-filters form .views-exposed-widget {
-      width: 91%;
+      width: 92%;
       clear: both;
       padding: 7px 13px;
       overflow: hidden; /* clearfix */
@@ -1075,7 +1075,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     }
     
     #explore-filters form .views-exposed-widget .views-widget .form-item select {
-      width: 75%;
+      width: 95%;
     }
     
     /* override forms.css:21 */
