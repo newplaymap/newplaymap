@@ -1925,7 +1925,7 @@ function orgs_views_default_views() {
         'use_operator' => 0,
         'operator' => 'field_artist_nid_op',
         'identifier' => 'artist',
-        'label' => 'Generative Artist',
+        'label' => 'Explore Generative Artists',
         'optional' => 1,
         'single' => 1,
         'remember' => 0,
