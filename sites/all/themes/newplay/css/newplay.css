@@ -1062,7 +1062,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #explore-filters form .views-exposed-widget {
       width: 92%;
       clear: both;
-      padding: 7px 13px;
+      padding: 0 13px 7px 13px;
       overflow: hidden; /* clearfix */
     }
     
