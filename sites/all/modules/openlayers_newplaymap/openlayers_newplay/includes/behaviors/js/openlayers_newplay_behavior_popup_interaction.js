@@ -20,7 +20,6 @@ Drupal.openlayers.loaded = 0;
  * @return
  *  Formatted HTML
  */
-/*
 Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
   var output =
     '<div class="popup-container">' + 
@@ -34,9 +33,9 @@ Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
     '</div>';
   return output;
 }
-*/
 
 // Redoing the popup
+/*
 Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
   var output =
     '<div class="popup-bubble-container">' + 
@@ -53,6 +52,7 @@ Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
 
   return output;
 }
+*/
 
 
 
@@ -283,14 +283,15 @@ Drupal.openlayers.popup.nonLocatedFeaturePopup = function(path) {
   Drupal.openlayers.popup.popupSelect.unselectAll();
 
   var output =
-    '<div class="popup-bubble-container popup-container-no-location">' + 
+    '<div class="popup-container popup-container-no-location">' + 
+      '<div class="popup-inner"><div class="close-btn"></div>' + 
+        '<div class="popup-content">' + 
           '<div class="openlayers-popup openlayers-popup-name"></div>' +
           '<div class="openlayers-popup openlayers-popup-description"></div>' + 
-    '</div>' +
-    '<div class="popup-container"><div class="popup-inner">' + 
-    '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div></div>' +
+        '</div>' + 
+      '</div>' + 
+      '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' + 
     '</div>';
-// @TODO TEST THIS
 
   if ($('div.popup-container').length < 1) {
     $('div.openlayers-views-map').append(output);
@@ -300,7 +301,7 @@ Drupal.openlayers.popup.nonLocatedFeaturePopup = function(path) {
   
   
   // Swap popup backgrounds.
-  $('div.popup-container div.node-content').show().html('<div class="loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
+  $('div.popup-container div.popup-inner').show().html('<div class="loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
 
   var processed = Drupal.openlayers.popup.ajaxLinks('ajax-overlay', 'div.popup-container div.overlay a');
   if (processed === true) {
@@ -400,6 +401,7 @@ Drupal.openlayers.popup.triggerPopup  = function(path) {
   featureState = Drupal.openlayers.popup.getFeatureState(featureState, popupSelection);
   return featureState;
 };
+
 
 /**
  * Given a selection, return an array of data about a feature.
@@ -524,7 +526,7 @@ Drupal.openlayers.popup.nodeLoading = function (data) {
   $('div.openlayers_map_fullscreen').removeClass('homepage');
 
   // Swap popup backgrounds.
-  $('div.popup-container div.node-content').html('<div class="loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
+  $('div.popup-container div.popup-inner').html('<div class="loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
 };
 
 /**
@@ -532,7 +534,7 @@ Drupal.openlayers.popup.nodeLoading = function (data) {
  */
 Drupal.openlayers.popup.displayNode = function(data) {
   // Control which part of the popup appears.
-/*   $('div.popup-container div.popup-inner').hide(); */
+  $('div.popup-container div.popup-inner').hide();
   $('div.popup-container div.overlay').show();
 
   // Load data into correct region.
@@ -604,24 +606,24 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
 
   // We have moved away from the normal OpenLayers popups to the point that it doesn't make sense to use them.
   // Creating new markup for popup.
-/*   $('div.openlayers-views-map').prepend(Drupal.theme('openlayersNewPlayPopup', feature)); */
+  $('div.openlayers-views-map').prepend(Drupal.theme('openlayersNewPlayPopup', feature));
   // Create a close_btn click event.
-  $('div.popup-bubble-container div.close-btn').click(function(){
+  $('div.popup-container div.close-btn').click(function(){
     Drupal.openlayers.popup.popupSelect.unselect(Drupal.openlayers.popup.selectedFeature);
     Drupal.openlayers.popup.clearAddress();
     // Clear the page title
      $('title').text('New Play Map');
   });
   // Hide original popup.
-/*   $('div#popup').hide(); */
+  $('div#popup').hide();
   // Remove the views results.
-/*   $('div#panel-default-overlay').remove(); */
+  $('div#panel-default-overlay').remove();
   // Process node content and add clickable ajax links.
   // Drupal.openlayers.popup.ajaxLinks('ajax-popup', 'div.popup-container div.popup-content a');
-  var processed = Drupal.openlayers.popup.ajaxLinks('ajax-popup', 'div.popup-bubble-container a');
+  var processed = Drupal.openlayers.popup.ajaxLinks('ajax-popup', 'div.popup-container div.popup-content a');
   if (processed == true) {
     // Whenever the popup is selected, read through all the links and load a new page.
-    $('div.popup-bubble-container a.ajax-popup').click(function() {
+    $('div.popup-container a.ajax-popup').click(function() {
       Drupal.openlayers.popup.loadNewAddress($(this));
       return false;
     });
@@ -635,7 +637,7 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
   // If user is navigating map, and clicks another popup, and there is a hashPath,
   // retrigger the node load sequence.
   var hashPath = Drupal.openlayers.popup.jqueryAddressHashPath();
-/*   $('div.popup-container div.popup-content').show(); */
+  $('div.popup-container div.popup-content').show();
   $('div.popup-container div.overlay').hide();
   $('div.popup-container').show();
 
@@ -710,13 +712,14 @@ Drupal.openlayers.popup.newPlayPopupUnSelect = function(feature, context) {
   $('div.openlayers-views-map div.popup-container-no-location').remove();
 
   // Remove any content from the popup.
-/*   $('div.popup-container').remove(); */
+  $('div.popup-container').remove();
 
   // Read through each layer to reimplement all the styles.
   for (var layer in data.openlayers.layers) {
     Drupal.openlayers.popup.newPlayLayerStyle(data, feature, layer, false);
   }
 };
+
 
 /**
  * For each layer, build interactive line style for the layer, and grouped elements in the layer.
