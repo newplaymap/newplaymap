@@ -47,8 +47,8 @@ Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
       feature.attributes.description +
       '</div>' + 
     '</div>' +
-    '<div class="popup-container">' + 
-      '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' 
+    '<div class="popup-container"><div class="popup-inner">' + 
+      '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div></div>' 
     '</div>';
 
   return output;
@@ -287,8 +287,8 @@ Drupal.openlayers.popup.nonLocatedFeaturePopup = function(path) {
           '<div class="openlayers-popup openlayers-popup-name"></div>' +
           '<div class="openlayers-popup openlayers-popup-description"></div>' + 
     '</div>' +
-    '<div class="popup-container">' + 
-    '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' +
+    '<div class="popup-container"><div class="popup-inner">' + 
+    '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div></div>' +
     '</div>';
 // @TODO TEST THIS
 
@@ -300,7 +300,7 @@ Drupal.openlayers.popup.nonLocatedFeaturePopup = function(path) {
   
   
   // Swap popup backgrounds.
-  $('div.popup-container div.popup-inner').show().html('<div class="loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
+  $('div.popup-container div.node-content').show().html('<div class="loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
 
   var processed = Drupal.openlayers.popup.ajaxLinks('ajax-overlay', 'div.popup-container div.overlay a');
   if (processed === true) {
@@ -524,7 +524,7 @@ Drupal.openlayers.popup.nodeLoading = function (data) {
   $('div.openlayers_map_fullscreen').removeClass('homepage');
 
   // Swap popup backgrounds.
-  $('div.popup-container div.popup-inner').html('<div class="loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
+  $('div.popup-container div.node-content').html('<div class="loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
 };
 
 /**
