@@ -1003,80 +1003,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     
     .popup-container .overlay #feed_button {
     }
-  
-  
-/* Map Filters */
-  form#views-exposed-form-organizations-panel-pane-1 {
-    height: 300px;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  
-  form#views-exposed-form-organizations-panel-pane-1 .auto-populate {
-    display: none;
-  }
-  
-    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget {
-      width: 91%;
-      clear: both;
-      padding: 7px 13px;
-      border-bottom: 1px dashed #CCCCCC;
-    }
-    
-    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget:last-child {
-      border-bottom: none;
-    }
-    
-    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget label {
-      font-size: 13px;
-    }
-    
-    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget .views-widget .form-item select {
-      width: 75%;
-    }
-    
-    /* override forms.css:21 */
-    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget .form-item #edit-date-min-wrapper label,
-    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget .form-item #edit-date-max-wrapper label {
-      font-weight: normal;
-      font-style: italic;
-    }
-    
-    .ui-datepicker {
-      z-index: 7000; /* put on top of everything else */
-    }
-    
-    .ui-datepicker table {
-      font-size: 13px; /* override datepicker.1.7.css:27 */
-    }
-    
-    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget .form-item .date-clear-block {
-      clear: none;
-      float: left;
-      width: 40%;
-    }
-    
-    form#views-exposed-form-organizations-panel-pane-1 .views-exposed-widget .form-item .date-clear-block input {
-      width: 60%;
-    }
-  
-  /* Style apply filters button */
-  .js form#views-exposed-form-organizations-panel-pane-1 #filter-submit {
-    background: url(../images/filter-submit-background.png) bottom -8px no-repeat;
-    border-bottom: none;
-    padding-bottom: 30px;
-    padding-top: 10px;
-  }
-  
-    .js form#views-exposed-form-organizations-panel-pane-1 input#edit-submit-organizations {
-      margin-top: 0;
-    }
-  
-  form#views-exposed-form-organizations-panel-pane-1 #filter_reset {
-    font-size: 13px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
+
 
 /* Node Forms */
 
@@ -1098,6 +1025,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   left: 0;  
   width: 350px;
 }
+
 #explore-filters .close-btn {
   background: url("../openlayers/img/close.png") no-repeat;
   cursor: pointer;
@@ -1106,7 +1034,8 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   position: absolute;
   right: 0;
   margin: 10px 5px 0 0;
-  }
+}
+  
 #explore-filters-tab {
   color: #d0d4d3;
   padding: 0;
@@ -1118,3 +1047,145 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   height: auto;
   display: block;
 }
+
+  #explore-filters form {
+/*
+    overflow-y: auto;
+    overflow-x: hidden;
+*/
+  }
+  
+  #explore-filters form .auto-populate {
+    display: none;
+  }
+  
+    #explore-filters form .views-exposed-widget {
+      width: 91%;
+      clear: both;
+      padding: 7px 13px;
+      overflow: hidden; /* clearfix */
+    }
+    
+    #explore-filters form .views-exposed-widget:last-child {
+      border-bottom: none;
+    }
+    
+    #explore-filters form .views-exposed-widget label {
+      font-size: 13px;
+    }
+    
+    #explore-filters form .views-exposed-widget .views-widget .form-item select {
+      width: 75%;
+    }
+    
+    /* override forms.css:21 */
+    #explore-filters form .views-exposed-widget .form-item #edit-date-min-wrapper label,
+    #explore-filters form .views-exposed-widget .form-item #edit-date-max-wrapper label {
+      font-weight: normal;
+      font-style: italic;
+    }
+    
+    .ui-datepicker {
+      z-index: 7000; /* put on top of everything else */
+    }
+    
+    .ui-datepicker table {
+      font-size: 13px; /* override datepicker.1.7.css:27 */
+    }
+    
+    #explore-filters form .views-exposed-widget .form-item .date-clear-block {
+      clear: none;
+      float: left;
+      width: 40%;
+    }
+    
+    #explore-filters form .views-exposed-widget .form-item .date-clear-block input {
+      width: 60%;
+    }
+  
+  /* Style apply filters button */
+  .js #explore-filters form #filter-submit {
+    background: url(../images/filter-submit-background.png) bottom -8px no-repeat;
+    border-bottom: none;
+    padding-bottom: 30px;
+    padding-top: 10px;
+  }
+  
+    .js #explore-filters form input#edit-submit-organizations {
+      margin-top: 0;
+    }
+  
+  #explore-filters form #filter_reset {
+    font-size: 13px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  /* override betterselect.css:7 */
+  #explore-filters form .views-exposed-widget .better-select div.form-checkboxes {
+    border: 0;
+    padding: 0;
+  }
+  
+  #explore-filters form .views-exposed-widget .better-select div.form-checkboxes .form-item label {
+    float: left;
+    width: 50%;
+    font-size: 12px;
+  }
+
+/* Explore: State */
+
+#explore-filters form .views-exposed-widget label[for="edit-state"],
+#explore-filters form .views-exposed-widget label[for="edit-state"]+.views-widget {
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+#explore-filters form .views-exposed-widget label[for="edit-state"] {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+
+/* Explore: Event */
+
+  #explore-filters form .views-exposed-widget label[for="edit-play"] {
+    font-size: 18px;
+    font-weight: normal;
+    padding: 10px 30px 10px 35px;
+    background-position: 0 50%;
+    background-image: url(../images/showtoday-menu-icon-event.png);
+    background-repeat: no-repeat;
+  }
+  
+  #explore-filters form .views-exposed-widget label[for="edit-event-type"] {
+    display: none;
+  }
+  
+/* Explore: Organization */
+
+  #explore-filters form .views-exposed-widget label[for="edit-theater"] {
+    font-size: 18px;
+    font-weight: normal;
+    padding: 10px 30px 10px 35px;
+    background-position: 0 50%;
+    background-image: url(../images/showtoday-menu-icon-org.png);
+    background-repeat: no-repeat;
+  }
+  
+   #explore-filters form .views-exposed-widget label[for="edit-org-type"] {
+    display: none;
+  }
+  
+  /* layout with label on the left */
+  #explore-filters form .views-exposed-widget label[for="edit-budget"],
+  #explore-filters form .views-exposed-widget label[for="edit-budget"]+.views-widget,
+  #explore-filters form .views-exposed-widget label[for="edit-nat-mem"],
+  #explore-filters form .views-exposed-widget label[for="edit-nat-mem"]+.views-widget,
+  #explore-filters form .views-exposed-widget label[for="edit-interests"],
+  #explore-filters form .views-exposed-widget label[for="edit-interests"]+.views-widget {
+    display: block;
+    float: left;
+    width: 50%;
+  }
