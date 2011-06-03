@@ -321,7 +321,7 @@ Drupal.openlayers.popup.nonLocatedFeaturePopup = function(path) {
   });
 
   // Remove the views results.
-  $('div#panel-default-overlay').remove();
+  $('div#panel-default-overlay').hide();
 
 
   // If user is navigating map, and clicks another popup, and there is a hashPath,
@@ -520,7 +520,7 @@ Drupal.openlayers.popup.nodeLoading = function (data) {
   $('div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper').remove();
 
   // Remove the views results.
-  $('div#panel-default-overlay').remove();
+  $('div#panel-default-overlay').hide();
 
   // Set fullscreen back to 80% height.
   $('div.openlayers_map_fullscreen').removeClass('homepage');
@@ -617,7 +617,7 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
   // Hide original popup.
   $('div#popup').hide();
   // Remove the views results.
-  $('div#panel-default-overlay').remove();
+  $('div#panel-default-overlay').hide();
   // Process node content and add clickable ajax links.
   // Drupal.openlayers.popup.ajaxLinks('ajax-popup', 'div.popup-container div.popup-content a');
   var processed = Drupal.openlayers.popup.ajaxLinks('ajax-popup', 'div.popup-container div.popup-content a');
