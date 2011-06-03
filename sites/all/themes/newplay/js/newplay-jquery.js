@@ -767,11 +767,14 @@ newPlay.addExploreFilters = function() {
 
     // Make trigger for show all button.
     $('a.layer-show').click(function(){
-      $('div#explore-filters').show(); 
+      $('div#explore-filters').show();
       $('div#explore-filters-tab').hide(); 
       newPlay.layerToggle('all-events', true);
       newPlay.layerToggle('today-organizations', true);
-      newPlay.layerToggle('today-artists', true);      
+      newPlay.layerToggle('today-artists', true);
+      $('div#panel-default-overlay').show();
+      // Remove any content from the popup.
+      $('div.popup-container').remove();
       return false;
     });
     
