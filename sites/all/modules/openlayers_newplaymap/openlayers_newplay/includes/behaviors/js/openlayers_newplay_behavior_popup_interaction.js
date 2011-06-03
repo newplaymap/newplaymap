@@ -22,11 +22,17 @@ Drupal.openlayers.loaded = 0;
  */
 Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
   var output =
-    '<div class="popup-container">' + 
+    '<div class="popup-container-bubble">' + 
       '<div class="popup-inner"><div class="close-btn"></div>' + 
         '<div class="popup-content">' + 
           '<div class="openlayers-popup openlayers-popup-name">' + feature.attributes.name + '</div>' +
           '<div class="openlayers-popup openlayers-popup-description">' + feature.attributes.description + '</div>' + 
+        '</div>' + 
+      '</div>' + 
+    '</div>' +  
+    '<div class="popup-container">' + 
+      '<div class="popup-inner"><div class="close-btn"></div>' + 
+        '<div class="popup-content">' + 
         '</div>' + 
       '</div>' + 
       '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' + 
@@ -605,7 +611,7 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
 
   // We have moved away from the normal OpenLayers popups to the point that it doesn't make sense to use them.
   // Creating new markup for popup.
-  $('div.openlayers-views-map').prepend(Drupal.theme('openlayersNewPlayPopup', feature));
+/*   $('div.openlayers-views-map').prepend(Drupal.theme('openlayersNewPlayPopup', feature)); */
   // Create a close_btn click event.
   $('div.popup-container div.close-btn').click(function(){
     Drupal.openlayers.popup.popupSelect.unselect(Drupal.openlayers.popup.selectedFeature);
@@ -615,15 +621,18 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
     Drupal.openlayers.popup.clearPageTitle()
   });
   // Hide original popup.
-  $('div#popup').hide();
+/*   $('div#popup').hide(); */
+  
   // Remove the views results.
   $('div#panel-default-overlay').hide();
+  
+  $('div.popup-container div.popup-inner').hide();
   // Process node content and add clickable ajax links.
   // Drupal.openlayers.popup.ajaxLinks('ajax-popup', 'div.popup-container div.popup-content a');
-  var processed = Drupal.openlayers.popup.ajaxLinks('ajax-popup', 'div.popup-container div.popup-content a');
+  var processed = Drupal.openlayers.popup.ajaxLinks('ajax-popup', 'div.popup-container-bubble div.popup-content a');
   if (processed == true) {
     // Whenever the popup is selected, read through all the links and load a new page.
-    $('div.popup-container a.ajax-popup').click(function() {
+    $('div.popup-container-bubble a.ajax-popup').click(function() {
       Drupal.openlayers.popup.loadNewAddress($(this));
       return false;
     });
@@ -713,6 +722,7 @@ Drupal.openlayers.popup.newPlayPopupUnSelect = function(feature, context) {
 
   // Remove any content from the popup.
   $('div.popup-container').remove();
+  $('div.popup-container-bubble').remove();
 
   // Read through each layer to reimplement all the styles.
   for (var layer in data.openlayers.layers) {
