@@ -529,7 +529,7 @@ Drupal.openlayers.popup.nodeLoading = function (data) {
 
   // Remove the views results.
   $('div#panel-default-overlay').hide();
-
+  $('div.popup-container div.popup-inner').show();
   // Set fullscreen back to 80% height.
   $('div.openlayers_map_fullscreen').removeClass('homepage');
 
