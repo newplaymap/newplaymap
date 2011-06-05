@@ -29,7 +29,22 @@ Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
           '<div class="openlayers-popup openlayers-popup-description">' + feature.attributes.description + '</div>' + 
         '</div>' + 
       '</div>' + 
-    '</div>' +  
+    '</div>';
+  return output;
+}
+
+/**
+ * Javascript Drupal Theming function for Overlay content
+ *
+ * To override
+ *
+ * @param feature
+ *  OpenLayers feature object
+ * @return
+ *  Formatted HTML
+ */
+Drupal.theme.prototype.openlayersNewPlayContentOverlay = function(feature) {
+  var output =
     '<div class="popup-container">' + 
       '<div class="popup-inner"><div class="close-btn"></div>' + 
         '<div class="popup-content">' + 
@@ -336,7 +351,7 @@ Drupal.openlayers.popup.nonLocatedFeaturePopup = function(path) {
   // retrigger the node load sequence.
   var hashPath = Drupal.openlayers.popup.jqueryAddressHashPath();
   $('div.popup-container div.popup-content').show();
-  $('div.popup-container div.overlay').hide();
+  // $('div.popup-container div.overlay').hide();
   $('div.popup-container').show();
 
   // Only clear the address if we are not loading a new node & if it is not in a group
@@ -602,6 +617,9 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
     }
   );
 
+  var overlayContainer = Drupal.theme('openlayersNewPlayContentOverlay');
+  $('#content').append(overlayContainer);
+
 
   // Assign popup to feature and map.
   feature.popup = popup;
@@ -647,7 +665,7 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
   // retrigger the node load sequence.
   var hashPath = Drupal.openlayers.popup.jqueryAddressHashPath();
   $('div.popup-container div.popup-content').show();
-  $('div.popup-container div.overlay').hide();
+  // $('div.popup-container div.overlay').hide();
   $('div.popup-container').show();
 
   // Only clear the address if we are not loading a new node & if it is not in a group
@@ -721,7 +739,7 @@ Drupal.openlayers.popup.newPlayPopupUnSelect = function(feature, context) {
   $('div.openlayers-views-map div.popup-container-no-location').remove();
 
   // Remove any content from the popup.
-  $('div.popup-container').remove();
+  // $('div.popup-container').remove();
   $('div.popup-container-bubble').remove();
 
   // Read through each layer to reimplement all the styles.
