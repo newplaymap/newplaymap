@@ -957,6 +957,41 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       clear: none;
     }
     
+    /* Links section */
+    
+    .popup-container .overlay .panel-overlay-links .panel-region-separator {
+      padding-bottom: 6px;
+    }
+    
+    .popup-container .overlay .panel-overlay-links .pane-facebook-like a {
+      display: block;
+      background: url(../images/facebook-like.png) top left no-repeat;  
+      width: 55px;
+      height: 20px;
+      text-indent: -10000em;
+    }
+    
+    .popup-container .overlay .panel-overlay-links a#share-link-show {
+      display: block;
+      background: url(../images/icon-link.png) 0 0 no-repeat;
+      padding-left: 20px;
+      padding-top: 1px;
+    }
+    
+    .popup-container .overlay .pane-event,
+    .popup-container .overlay #feed_button {
+      font-size: 13px;
+    }
+    
+    .popup-container .overlay .pane-event {
+    }
+    
+    .popup-container .overlay .pane-event ul li a,
+    .popup-container .overlay #feed_button {
+      padding: 4px 0;
+      text-align: center;
+    }
+    
     .popup-container .overlay #feed_button {
     }
 
