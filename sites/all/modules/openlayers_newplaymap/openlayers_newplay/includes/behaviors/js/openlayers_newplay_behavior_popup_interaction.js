@@ -619,7 +619,9 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
   );
 
   var overlayContainer = Drupal.theme('openlayersNewPlayContentOverlay');
-  $('#content').append(overlayContainer);
+  if ($('#content .popup-container').length === 0) {
+    $('#content').append(overlayContainer);
+  }
 
 
   // Assign popup to feature and map.
