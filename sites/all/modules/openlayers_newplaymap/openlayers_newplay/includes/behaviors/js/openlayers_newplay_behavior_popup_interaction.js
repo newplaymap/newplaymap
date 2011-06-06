@@ -341,10 +341,6 @@ Drupal.openlayers.popup.nonLocatedFeaturePopup = function(path) {
      $('title').text('New Play Map');
   });
 
-  // Remove the views results.
-  $('div#panel-default-overlay').hide();
-
-
   // If user is navigating map, and clicks another popup, and there is a hashPath,
   // retrigger the node load sequence.
   var hashPath = Drupal.openlayers.popup.jqueryAddressHashPath();
@@ -546,6 +542,9 @@ Drupal.openlayers.popup.nodeLoading = function (data) {
   // Set fullscreen back to 80% height.
   $('div.openlayers_map_fullscreen').removeClass('homepage');
 
+  // Hide the node content if it exists while the loading happens
+  $('div.popup-container div.overlay').hide();
+
   // Swap popup backgrounds.
   $('div.popup-container div.popup-inner').html('<div class="loading-wrapper"><img src="/sites/all/themes/newplay/images/spinner-72x72.gif" alt="' + Drupal.t("Loading") + '"/></div>');
 };
@@ -642,10 +641,7 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
   });
   // Hide original popup.
 /*   $('div#popup').hide(); */
-  
-  // Remove the views results.
-  $('div#panel-default-overlay').hide();
-  
+
   $('div.popup-container div.popup-inner').hide();
   // Process node content and add clickable ajax links.
   // Drupal.openlayers.popup.ajaxLinks('ajax-popup', 'div.popup-container div.popup-content a');
