@@ -1062,7 +1062,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #explore-filters form .views-exposed-widget {
       width: 92%;
       clear: both;
-      padding: 0 13px 7px 13px;
+      padding: 0 13px 4px 13px;
       overflow: hidden; /* clearfix */
     }
     
@@ -1133,6 +1133,32 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     font-size: 12px;
   }
 
+/* Explore: Section titles */
+
+  #explore-filters form .views-exposed-widget label[for="edit-play"],
+  #explore-filters form .views-exposed-widget label[for="edit-theater"],
+  #explore-filters form .views-exposed-widget label[for="edit-artist"] {
+    display: block;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 10px 30px 10px 35px;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+  }
+  
+  #explore-filters form .views-exposed-widget label[for="edit-theater"] {
+    background-image: url(../images/showtoday-menu-icon-org.png);
+  }
+  
+  #explore-filters form .views-exposed-widget label[for="edit-play"] {
+    background-image: url(../images/showtoday-menu-icon-event.png);
+  }
+  
+  #explore-filters form .views-exposed-widget label[for="edit-artist"] {
+    background-image: url(../images/showtoday-menu-icon-artist.png);
+  }
+  
+
 /* Explore: State */
 
 #explore-filters form .views-exposed-widget label[for="edit-state"],
@@ -1149,36 +1175,18 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 
 
 /* Explore: Event */
-
-  #explore-filters form .views-exposed-widget label[for="edit-play"] {
-    font-size: 18px;
-    font-weight: normal;
-    padding: 10px 30px 10px 35px;
-    background-position: 0 50%;
-    background-image: url(../images/showtoday-menu-icon-event.png);
-    background-repeat: no-repeat;
-  }
   
   #explore-filters form .views-exposed-widget label[for="edit-event-type"] {
     display: none;
   }
   
 /* Explore: Organization */
-
-  #explore-filters form .views-exposed-widget label[for="edit-theater"] {
-    font-size: 18px;
-    font-weight: normal;
-    padding: 10px 30px 10px 35px;
-    background-position: 0 50%;
-    background-image: url(../images/showtoday-menu-icon-org.png);
-    background-repeat: no-repeat;
-  }
   
    #explore-filters form .views-exposed-widget label[for="edit-org-type"] {
     display: none;
   }
   
-  /* layout with label on the left */
+  /* layout with label on the left for pulldowns */
   #explore-filters form .views-exposed-widget label[for="edit-budget"],
   #explore-filters form .views-exposed-widget label[for="edit-budget"]+.views-widget,
   #explore-filters form .views-exposed-widget label[for="edit-nat-mem"],
@@ -1188,4 +1196,10 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     display: block;
     float: left;
     width: 50%;
+  }
+  
+/* Explore: Artists */
+
+  #explore-filters form .views-exposed-widget label[for="edit-ensemble"] {
+    font-weight: normal;
   }
