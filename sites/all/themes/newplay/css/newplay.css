@@ -652,7 +652,8 @@
   /* date styled to fade backward a bit */
   .js .popup-container-bubble .date-display-start,
   .js .popup-container-bubble .date-display-separator,
-  .js .popup-container-bubble .date-display-end {
+  .js .popup-container-bubble .date-display-end,
+  .js .popup-container-bubble .date-display-single {
     text-transform: uppercase;
     font-size: 10px;
     letter-spacing: 0.1em;
@@ -847,13 +848,6 @@
 .additional-info {
   color: #FFFFFF;
   background: rgba(0, 0 ,0, 1);
-  }
-
-/* emphasize date with a brighter color */
-.popup-container .date-display-start,
-.popup-container .date-display-end,
-.popup-container .date-display-single {
-  color: #FFFFFF;
   }
 
 /* custom close box */
