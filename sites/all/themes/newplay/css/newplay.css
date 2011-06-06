@@ -632,27 +632,27 @@
 /* Links in Overlay & Bubble */
 
 .js #panel-default-overlay a,
-.js .popup-bubble-container a {
+.js .popup-container-bubble a {
   color: #B4C0F0;
 }
 
 /* Bubble */
 
-.js .popup-bubble-container {
+.js .popup-container-bubble {
   color: #D0D4D3;
 }
 
   /* title more prominent */
-  .js .popup-bubble-container .openlayers-popup-name {
+  .js .popup-container-bubble .openlayers-popup-name {
     font-size: 16px;
     font-weight: bold;
     line-height: 1.2em;
   }
     
   /* date styled to fade backward a bit */
-  .js .popup-bubble-container .date-display-start,
-  .js .popup-bubble-container .date-display-separator,
-  .js .popup-bubble-container .date-display-end {
+  .js .popup-container-bubble .date-display-start,
+  .js .popup-container-bubble .date-display-separator,
+  .js .popup-container-bubble .date-display-end {
     text-transform: uppercase;
     font-size: 10px;
     letter-spacing: 0.1em;
