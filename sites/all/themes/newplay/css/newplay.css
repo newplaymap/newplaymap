@@ -873,11 +873,7 @@
 
 /* @TODO: See if this relates to feeds anymore and if not, remove */
 div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
-  position: fixed;
-  bottom: 5px;
-  left: 5px;
-  width: 85%;
-  height: 50px;
+  display: none;
   }
 
 /* Hide panels title for organizations (temporary) */
