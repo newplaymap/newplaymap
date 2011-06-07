@@ -751,7 +751,7 @@ newPlay.addExploreFilters = function() {
   var filterExists = $('div#explore-filters');
 
   if(filterExists[0] === undefined)  {
-    var filterMarkup = '<div id="explore-filters-tab"><h3>Explore the Map</h3><p><a class="layer-show">Show</a></p></div><div id="explore-filters"><div class="close-btn"></div>';
+    var filterMarkup = '<div id="explore-filters-tab"><h3>Explore the Map</h3><p><a class="layer-show">Show</a><a href="' + document.URL + '?play=All&theater=All&partner_org=All&budget=All&interests=All&artist=All" class="show-all">Show all</a></p></div><div id="explore-filters"><div class="close-btn"></div>';
     filterMarkup += '<div class="title"><h3>Explore</h3></div>';
     filterMarkup += '</div>';
     $('div.panel-1col-with-feeds').append(filterMarkup);
