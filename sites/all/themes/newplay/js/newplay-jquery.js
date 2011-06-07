@@ -1331,6 +1331,8 @@ $('<a></a>').attr({
    * Format the home page overlay listings
    */
   if ($('.filter-results-listing').length > 0) {
+    var url = document.URL;
+    newPlay.queryString = url.split('?');
 
     var todayHeaderList = $('<ul></ul>').addClass('overlay-filter-headers').insertAfter('#panel-default-overlay .overlay-title');
     
@@ -1360,7 +1362,16 @@ $('<a></a>').attr({
             $('#' + listingPaneId).fadeIn();
             $('#' + listingPaneId + '-title').addClass('active');
           });
-          newPlay.layerToggle(listingPaneId, false);
+
+          // If this is the events list and the user has filtered the map
+          if (listingPaneId == 'filter-results-events' && newPlay.queryString.length > 1) {
+            // show all the events that the filter returned
+            newPlay.layerToggle('all-events', false);
+          } else {
+            // otherwise show what's on today events
+            newPlay.layerToggle(listingPaneId, false);
+          }
+
         })
         .appendTo(todayHeaderList);
     });
@@ -1370,17 +1381,20 @@ $('<a></a>').attr({
     
     // For each layer, get the list of items in the panel and turn on & off features if they are present.
     // Then connect show hide button to it.
-    newPlay.layerToggle('filter-results-events', false);
-/*     newPlay.layerItemSelection(); */
 
     // Check if the filters have been used
 
-    // If so turn on all the layers
-      // newPlay.layerToggle('all-events', true);
-      // newPlay.layerToggle('filter-results-organizations', true);
-      // newPlay.layerToggle('filter-results-artists', true);
+    if (newPlay.queryString.length > 1) {
+      // If so turn on all the layers
+      newPlay.layerToggle('all-events', true);
+      newPlay.layerToggle('filter-results-organizations', true);
+      newPlay.layerToggle('filter-results-artists', true);
+      
+    } else {
+      // otherwise show events.
+      newPlay.layerToggle('filter-results-events', false);
+    }
 
-    // otherwise show something
   }
 
 // the end  
