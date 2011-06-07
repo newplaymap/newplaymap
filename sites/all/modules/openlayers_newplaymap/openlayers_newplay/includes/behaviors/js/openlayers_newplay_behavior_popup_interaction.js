@@ -537,6 +537,12 @@ Drupal.openlayers.popup.nodeLoading = function (data) {
   // Remove feeds-wrapper on all pages except homepage when the node has been loaded.
   // (Tip: if we just hide it, then the accordion triggers the feeds wrapper & reopens feeds wrapper.)
   $('div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper').remove();
+  
+  // Create the popup container if necessary
+  if ($('#content .popup-container').length === 0) {
+    var overlayContainer = Drupal.theme('openlayersNewPlayContentOverlay');
+    $('#content').append(overlayContainer);
+  }
 
   // Remove the views results.
   $('div#panel-default-overlay').hide();
@@ -615,11 +621,6 @@ Drupal.openlayers.popup.newPlayPopupSelect = function(feature, context) {
       );
     }
   );
-
-  var overlayContainer = Drupal.theme('openlayersNewPlayContentOverlay');
-  if ($('#content .popup-container').length === 0) {
-    $('#content').append(overlayContainer);
-  }
 
 
   // Assign popup to feature and map.
