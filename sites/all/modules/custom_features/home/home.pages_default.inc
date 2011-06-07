@@ -66,7 +66,7 @@ function home_default_page_manager_pages() {
           'name' => 'php',
           'settings' => array(
             'description' => 'Check if map has been filtered',
-            'php' => 'if (!empty($_REQUEST[\'event_type\'])) { return TRUE; }',
+            'php' => 'if (!empty($_REQUEST[\'play\'])) { return TRUE; }',
           ),
           'not' => FALSE,
         ),
@@ -103,7 +103,7 @@ function home_default_page_manager_pages() {
           'name' => 'php',
           'settings' => array(
             'description' => 'Check if map has been filtered',
-            'php' => 'if (!empty($_REQUEST[\'event_type\'])) { return TRUE; }',
+            'php' => 'if (!empty($_REQUEST[\'play\'])) { return TRUE; }',
           ),
           'not' => FALSE,
         ),
@@ -134,7 +134,7 @@ function home_default_page_manager_pages() {
           'name' => 'php',
           'settings' => array(
             'description' => 'Check if map has been filtered',
-            'php' => 'if (!empty($_REQUEST[\'event_type\'])) { return TRUE; }',
+            'php' => 'if (!empty($_REQUEST[\'play\'])) { return TRUE; }',
           ),
           'not' => FALSE,
         ),
@@ -165,7 +165,7 @@ function home_default_page_manager_pages() {
           'name' => 'php',
           'settings' => array(
             'description' => 'Check if map has been filtered',
-            'php' => 'if (!empty($_REQUEST[\'event_type\'])) { return TRUE; }',
+            'php' => 'if (!empty($_REQUEST[\'play\'])) { return TRUE; }',
           ),
           'not' => FALSE,
         ),
@@ -196,7 +196,7 @@ function home_default_page_manager_pages() {
           'name' => 'php',
           'settings' => array(
             'description' => 'Show when page has not been filtered',
-            'php' => 'if (empty($_REQUEST[\'event_type\'])) { return TRUE; }',
+            'php' => 'if (empty($_REQUEST[\'play\'])) { return TRUE; }',
           ),
           'not' => FALSE,
         ),
@@ -230,7 +230,7 @@ function home_default_page_manager_pages() {
           'name' => 'php',
           'settings' => array(
             'description' => 'Show if view has not been filtered',
-            'php' => 'if (empty($_REQUEST[\'event_type\'])) { return TRUE; }',
+            'php' => 'if (empty($_REQUEST[\'play\'])) { return TRUE; }',
           ),
           'not' => FALSE,
         ),
@@ -261,7 +261,7 @@ function home_default_page_manager_pages() {
           'name' => 'php',
           'settings' => array(
             'description' => 'Show only if no filters have been selected',
-            'php' => 'if (empty($_REQUEST[\'event_type\'])) { return TRUE; }',
+            'php' => 'if (empty($_REQUEST[\'play\'])) { return TRUE; }',
           ),
           'not' => FALSE,
         ),
@@ -292,7 +292,7 @@ function home_default_page_manager_pages() {
           'name' => 'php',
           'settings' => array(
             'description' => 'Show only if no filters have been selected',
-            'php' => 'if (empty($_REQUEST[\'event_type\'])) { return TRUE; }',
+            'php' => 'if (empty($_REQUEST[\'play\'])) { return TRUE; }',
           ),
           'not' => FALSE,
         ),
