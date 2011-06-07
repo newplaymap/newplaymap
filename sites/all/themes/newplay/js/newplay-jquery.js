@@ -770,8 +770,8 @@ newPlay.addExploreFilters = function() {
       $('div#explore-filters').show();
       $('div#explore-filters-tab').hide(); 
       newPlay.layerToggle('all-events', true);
-      newPlay.layerToggle('today-organizations', true);
-      newPlay.layerToggle('today-artists', true);
+      newPlay.layerToggle('filter-results-organizations', true);
+      newPlay.layerToggle('filter-results-artists', true);
       $('div#panel-default-overlay').show();
       // Remove any content from the popup.
       $('div.popup-container').remove();
@@ -1339,7 +1339,7 @@ $('<a></a>').attr({
       // If there are items in the list, count them, otherwise return empty string
       var itemCount = $(this).find('.item-list li').not(':empty').length;
       var itemCountText = itemCount > 0 ? '<strong>' + itemCount + '</strong> ' : '';
-      var todayPaneId = $(this).attr('id'); // Grab the id for this list to use later
+      var listingPaneId = $(this).attr('id'); // Grab the id for this list to use later
       var itemHeaderTitle = $(this).children('h2.pane-title').remove().html();
 
       if ((itemCount <= 1) && (itemHeaderTitle.substr(itemHeaderTitle.length-1, 1) == 's')) {
@@ -1349,18 +1349,18 @@ $('<a></a>').attr({
       // Create a list item for each Results section
       $('<li></li>')
         .attr({
-          'id': todayPaneId + '-title'
+          'id': listingPaneId + '-title'
         })
         .html('<a>' + itemCountText + itemHeaderTitle + '</a>') // Grab the title of each list and remove it from original location
         .click(function() {
           // Hide and show different What's on Today listings
           // and set active classes
-          $('.overlay-filter-headers li').not('#' + todayPaneId + '-title').removeClass('active');
-          $('#panel-default-overlay .filter-results-listing').not('#' + todayPaneId).fadeOut('normal', function() {
-            $('#' + todayPaneId).fadeIn();
-            $('#' + todayPaneId + '-title').addClass('active');
+          $('.overlay-filter-headers li').not('#' + listingPaneId + '-title').removeClass('active');
+          $('#panel-default-overlay .filter-results-listing').not('#' + listingPaneId).fadeOut('normal', function() {
+            $('#' + listingPaneId).fadeIn();
+            $('#' + listingPaneId + '-title').addClass('active');
           });
-          newPlay.layerToggle(todayPaneId, false);
+          newPlay.layerToggle(listingPaneId, false);
         })
         .appendTo(todayHeaderList);
     });
@@ -1370,15 +1370,25 @@ $('<a></a>').attr({
     
     // For each layer, get the list of items in the panel and turn on & off features if they are present.
     // Then connect show hide button to it.
-    newPlay.layerToggle('today-events', false);
+    newPlay.layerToggle('filter-results-events', false);
 /*     newPlay.layerItemSelection(); */
+
+    // Check if the filters have been used
+
+    // If so turn on all the layers
+      // newPlay.layerToggle('all-events', true);
+      // newPlay.layerToggle('filter-results-organizations', true);
+      // newPlay.layerToggle('filter-results-artists', true);
+
+    // otherwise show something
   }
+
 // the end  
 });
 
 
 
-newPlay.layerToggle = function(todayPaneId, layersOn) {
+newPlay.layerToggle = function(listingPaneId, layersOn) {
   // Toggle Layer on and off.
 
   // Store the context for later use.
@@ -1412,7 +1422,7 @@ newPlay.layerToggle = function(todayPaneId, layersOn) {
     }
     // If today link list has class active, show the layer.
     for (var i in layers) {
-      switch(todayPaneId) {
+      switch(listingPaneId) {
         case 'all-events':
             if (layers[i]["drupalID"] === 'organizations_openlayers_2') {
               layers[i].setVisibility(true);
@@ -1421,7 +1431,7 @@ newPlay.layerToggle = function(todayPaneId, layersOn) {
               layers[i].setVisibility(false);
             }
           break;
-        case 'today-events':
+        case 'filter-results-events':
             if (layers[i]["drupalID"] === 'organizations_openlayers_4') {
               layers[i].setVisibility(true);
 /*               newPlay.hideSelectedFeaturesByAttribute(layers[i], i, 'name', 'href', 'div.pane-views-panes div.views-field-field-related-play-nid a'); */
@@ -1430,7 +1440,7 @@ newPlay.layerToggle = function(todayPaneId, layersOn) {
               layers[i].setVisibility(false);
             }
           break;
-        case 'today-organizations':
+        case 'filter-results-organizations':
             if (layers[i]["drupalID"] === 'organizations_openlayers_1') {
              layers[i].setVisibility(true);
             }
@@ -1438,7 +1448,7 @@ newPlay.layerToggle = function(todayPaneId, layersOn) {
               layers[i].setVisibility(false);
             }
           break;
-        case 'today-artists':
+        case 'filter-results-artists':
             if (layers[i]["drupalID"] === 'organizations_openlayers_3') {
               layers[i].setVisibility(true);
             }
