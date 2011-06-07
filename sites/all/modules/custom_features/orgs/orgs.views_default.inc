@@ -4999,6 +4999,7 @@ function orgs_views_default_views() {
     ),
   ));
   $handler->override_option('title', 'Organizations');
+  $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'list');
   $handler->override_option('style_options', array(
     'grouping' => '',
@@ -5989,6 +5990,7 @@ function orgs_views_default_views() {
     ),
   ));
   $handler->override_option('title', 'Events');
+  $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'list');
   $handler->override_option('style_options', array(
     'grouping' => '',
@@ -6517,6 +6519,7 @@ function orgs_views_default_views() {
     ),
   ));
   $handler->override_option('title', 'Generative Artists');
+  $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'list');
   $handler->override_option('style_options', array(
     'grouping' => '',
