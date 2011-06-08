@@ -3,14 +3,14 @@
   body {
     font-size: 16px;
     line-height: 21px;
-    font-family: Candara, Verdana, sans-serif;
+    font-family: Candara, Arial, sans-serif;
     color: #231f20;
     background: url(../images/page-bg.png) 17% 0 no-repeat;
   }
   
   /* override html-reset.css:53 */
   body, caption, th, td, input, textarea, select, option, legend, fieldset {
-    font-family: Candara, Verdana, sans-serif;
+    font-family: Candara, Arial, sans-serif;
   }
 
   a {
