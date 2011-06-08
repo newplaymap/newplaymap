@@ -317,8 +317,8 @@ div.olControlSaveFeaturesItemInactive {
 }
 
 .olFramedCloudPopupContent {
-    padding: 5px;
-    overflow: auto;
+    padding: 0 5px 5px 5px;
+/*     overflow: auto; this was causing scrollbars to appear on small bubbles */
 }
 
 .olControlNoSelect {
