@@ -754,15 +754,15 @@ newPlay.addExploreFilters = function() {
     var url = document.URL.split('?');
     var baseUrl = url[0];
     
-    var filterMarkup = '<div id="explore-filters-tab"><h3>Explore the Map</h3><p><a class="layer-show">Show</a><a href="' + baseUrl + '?play=All&theater=All&partner_org=All&budget=All&interests=All&artist=All" class="show-all">Show all</a></p></div><div id="explore-filters"><div class="close-btn"></div>';
-    filterMarkup += '<div class="title"><h3>Explore</h3></div>';
+    var filterMarkup = '<div id="explore-filters-tab"><h3><a class="layer-show" title="Show all pins and map filters">&#0171;</a></h3><!--<div class="label">Explore map</div>--></div><div id="explore-filters"><div class="hide-btn">&#0187;</div>';
+    filterMarkup += '<div class="title"><h2 class="overlay-title">Explore</h2></div>';
     filterMarkup += '</div>';
     $('div.panel-1col-with-feeds').append(filterMarkup);
 
     // Grab (and adapt) markup for explore filters box.
     $('div#explore-filters').append($('form#views-exposed-form-organizations-panel-pane-1'));
 
-    $('div#explore-filters div.close-btn').click(function(){
+    $('div#explore-filters div.hide-btn').click(function(){
       $('div#explore-filters').hide(); 
       $('div#explore-filters-tab').show(); 
       return false;

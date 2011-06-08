@@ -3,14 +3,14 @@
   body {
     font-size: 16px;
     line-height: 21px;
-    font-family: Candara, Verdana, sans-serif;
+    font-family: Candara, Arial, sans-serif;
     color: #231f20;
     background: url(../images/page-bg.png) 17% 0 no-repeat;
   }
   
   /* override html-reset.css:53 */
   body, caption, th, td, input, textarea, select, option, legend, fieldset {
-    font-family: Candara, Verdana, sans-serif;
+    font-family: Candara, Arial, sans-serif;
   }
 
   a {
@@ -215,7 +215,7 @@
   
   #page {
     width: 100%;
-    margin-top: 60px;
+    margin-top: 60px
   }
   
   #main-wrapper {
@@ -455,9 +455,18 @@
     top: 54px;
   }
   
+  /* @TODO: find the module where this layout code should go and put this there */
   .js body.admin-menu.front .openlayers_map_fullscreen {
     top: 81px;
   }
+  
+  /* @TODO: find the module where this layout code should go and put this there */
+  .js body .openlayers_map_fullscreen {
+    border-top: 1px solid #DFE2F5;
+  }
+  
+      
+
   
   .js body.admin-menu.front #panel-default-overlay,
   .js body.admin-menu.front .popup-container {
@@ -510,7 +519,16 @@
 
   /* General styles */
   
+  .js .overlay {
+    height: auto !important;
+  }
+  
   .panel-overlay {
+    overflow: hidden;
+  }
+  
+  .panel-overlay.clear-block::after {
+    display: none;
   }
   
   .panel-overlay .panel-col-top,
@@ -640,6 +658,7 @@
 
 .js .popup-container-bubble {
   color: #D0D4D3;
+  padding-right: 12px;
 }
 
   /* title more prominent */
@@ -666,7 +685,7 @@
 /* Overlay title */
 /* @TODO: move this someplace more generic after overlay titles have been refactored to be consistent */
 
-.js #panel-default-overlay h2.overlay-title {
+.js h2.overlay-title {
   margin: 0 0 15px 0;
   font-size: 26px;
   color: #FFFFFF;
@@ -831,15 +850,17 @@
   color: #d0d4d3;
   }
 #panel-default-overlay,
-.popup-container .overlay {
+.popup-container {
   color: #D0D4D3;
   padding: 0;
   background: rgba(0, 0 ,0, 0.85);
   }
 
+/*
 .popup-container .popup-inner {
   background: rgba(0, 0 ,0, 0.85);
   }
+*/
 #panel-default-overlay {
   height: 100%;
   overflow-y: auto;
@@ -889,11 +910,7 @@
 
 /* @TODO: See if this relates to feeds anymore and if not, remove */
 div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
-  position: fixed;
-  bottom: 5px;
-  left: 5px;
-  width: 85%;
-  height: 50px;
+  display: none;
   }
 
 /* Hide panels title for organizations (temporary) */
@@ -907,7 +924,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 /* Content inside popup node. */
 #panel-default-overlay .inside,
 .popup-container .overlay .inside {
-  padding: 10px;
+  padding: 8px 10px 10px 10px;
   }
   
   /* Overlay Title */
@@ -1016,44 +1033,95 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 
 
 /* Explore Filter */
-#explore-filters {
+
+#explore-filters-tab a {
   color: #d0d4d3;
-  padding: 0;
-  background: rgba(0, 0 ,0, 0.85);
-  height: 100%;
-  overflow-y: auto;
+  padding: 7px;
+  background: rgba(33, 33 ,33, 0.85);
+  overflow-y: hidden;
   position: absolute;
-  left: 0;  
-  width: 350px;
+  cursor: pointer;
+  right: 33%;
+  top: 75px;
+  bottom: 15px;  
+  width: auto;
+  display: block;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
 
-#explore-filters .close-btn {
-  background: url("../openlayers/img/close.png") no-repeat;
+  #explore-filters-tab a:hover {
+    background: rgba(55, 55, 55, 0.85);
+    text-decoration: none;
+  }
+
+  /* push down for admin menu */
+  body.admin-menu #explore-filters-tab {
+    top: 96px;
+  }
+
+  #explore-filters-tab h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1em;
+  }
+  
+  
+  #explore-filters-tab h3 a {
+/*     padding-right: 30px; */
+/*     background: url("../images/explore-eye.png") 100% 60% no-repeat; */
+    color: #FFFFFF;
+  }
+  
+  #explore-filters-tab .label {
+    font-size: 11px;
+  }
+
+  
+
+
+#explore-filters {
+  position: fixed;
+  color: #d0d4d3;
+  padding: 0;
+  background: rgba(50, 50, 50, .95);
+  top: 75px;
+  bottom: 15px;
+  right: 33%;  
+  width: 27%;
+  overflow-y: auto;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+  body.admin-menu #explore-filters {
+    top: 96px;
+  }
+  
+  #explore-filters h2.overlay-title {
+    padding: 5px 10px 0 10px;
+    font-size: 22px;
+  }
+
+#explore-filters .hide-btn {
   cursor: pointer;
   width: 20px;
   height: 20px;
   position: absolute;
+  font-size: 18px;
+  font-weight: normal;
   right: 0;
-  margin: 10px 5px 0 0;
+  margin: 7px 0 0 0;
 }
   
-#explore-filters-tab {
-  color: #d0d4d3;
-  padding: 0;
-  background: rgba(0, 0 ,0, 0.85);
-  overflow-y: hidden;
-  position: absolute;
-  left: 0;  
-  width: 200px;
-  height: auto;
-  display: block;
-}
 
   #explore-filters form {
-/*
-    overflow-y: auto;
+
+    overflow-y: hidden;
     overflow-x: hidden;
-*/
+
   }
   
   #explore-filters form .auto-populate {
@@ -1075,6 +1143,13 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       font-size: 13px;
     }
     
+    #explore-filters form .views-exposed-widget label,
+    #explore-filters form .views-exposed-widget label+.views-widget {
+      display: block;
+      float: left;
+      width: 50%;
+    }
+    
     #explore-filters form .views-exposed-widget .views-widget .form-item select {
       width: 95%;
     }
@@ -1084,6 +1159,8 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #explore-filters form .views-exposed-widget .form-item #edit-date-max-wrapper label {
       font-weight: normal;
       font-style: italic;
+      font-size: 11px;
+      white-space: nowrap;
     }
     
     .ui-datepicker {
@@ -1097,7 +1174,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #explore-filters form .views-exposed-widget .form-item .date-clear-block {
       clear: none;
       float: left;
-      width: 40%;
+      width: 33%;
     }
     
     #explore-filters form .views-exposed-widget .form-item .date-clear-block input {
@@ -1145,6 +1222,13 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     padding: 10px 30px 10px 35px;
     background-position: 0 50%;
     background-repeat: no-repeat;
+    width: 100%;
+  }
+  
+  #explore-filters form .views-exposed-widget label[for="edit-play"]+.views-widget,
+  #explore-filters form .views-exposed-widget label[for="edit-theater"]+.views-widget,
+  #explore-filters form .views-exposed-widget label[for="edit-artist"]+.views-widget {
+    width: 100%;
   }
   
   #explore-filters form .views-exposed-widget label[for="edit-theater"] {
@@ -1177,14 +1261,24 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 
 /* Explore: Event */
   
+  
+  
   #explore-filters form .views-exposed-widget label[for="edit-event-type"] {
     display: none;
+  }
+  
+  #explore-filters form .views-exposed-widget label[for="edit-event-type"]+.views-widget {
+    width: 100%;
   }
   
 /* Explore: Organization */
   
    #explore-filters form .views-exposed-widget label[for="edit-org-type"] {
     display: none;
+  }
+  
+  #explore-filters form .views-exposed-widget label[for="edit-org-type"]+.views-widget {
+    width: 100%;
   }
   
   /* layout with label on the left for pulldowns */

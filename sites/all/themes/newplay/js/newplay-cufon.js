@@ -1,5 +1,6 @@
 Cufon.replace('#site-name', { fontFamily: 'Feltpen' });
 Cufon.replace('#content-header .title', { fontFamily: 'Feltpen' });
+Cufon.replace('#explore-filters h2.overlay-title', { fontFamily: 'Feltpen' });
 
 /**
  * Cufon declarations to be called whenever new content is added to the page
