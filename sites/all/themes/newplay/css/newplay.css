@@ -834,15 +834,17 @@
   color: #d0d4d3;
   }
 #panel-default-overlay,
-.popup-container .overlay {
+.popup-container {
   color: #D0D4D3;
   padding: 0;
   background: rgba(0, 0 ,0, 0.85);
   }
 
+/*
 .popup-container .popup-inner {
   background: rgba(0, 0 ,0, 0.85);
   }
+*/
 #panel-default-overlay {
   height: 100%;
   overflow-y: auto;
