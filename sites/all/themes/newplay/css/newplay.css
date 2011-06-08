@@ -771,6 +771,7 @@
     .js #panel-default-overlay .views-field-title {
       font-size: 18px;
       font-weight: bold;
+      overflow: hidden;
     }
     
     /* position avatar */
