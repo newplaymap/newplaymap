@@ -519,7 +519,16 @@
 
   /* General styles */
   
+  .js .overlay {
+    height: auto !important;
+  }
+  
   .panel-overlay {
+    overflow: hidden;
+  }
+  
+  .panel-overlay.clear-block::after {
+    display: none;
   }
   
   .panel-overlay .panel-col-top,
