@@ -1199,16 +1199,25 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     margin-right: 10px;
   }
 
-  /* override betterselect.css:7 */
-  #explore-filters form .views-exposed-widget .better-select div.form-checkboxes {
+  /* override betterselect.css */
+  #explore-filters form .views-exposed-widget .form-radios {
     border: 0;
     padding: 0;
+    margin: 0;
+    overflow: hidden; /* clearfix */
   }
   
-  #explore-filters form .views-exposed-widget .better-select div.form-checkboxes .form-item label {
+  /* override betterselect.css */
+  #explore-filters form .views-exposed-widget .form-radios .form-item {
+    margin: 0;
+  }
+  
+  #explore-filters form .views-exposed-widget .form-radios .form-item label.option {
+/*
     float: left;
     width: 50%;
-    font-size: 12px;
+*/
+    font-size: 11px;
   }
 
 /* Explore: Section titles */
