@@ -680,7 +680,7 @@
   }  
 
 
-/* Show Today */
+/* Results */
 
 /* Overlay title */
 /* @TODO: move this someplace more generic after overlay titles have been refactored to be consistent */
@@ -698,7 +698,7 @@
   display: none;
 }
 
-/* Show Today: Chooser */
+/* Chooser */
 
 .js #panel-default-overlay ul.overlay-filter-headers {
   list-style: none;
@@ -740,17 +740,17 @@
   
 
   /* events icon */
-  .js #panel-default-overlay ul.overlay-filter-headers li#today-events-title a {
+  .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-events-title a {
     background-image: url(../images/showtoday-menu-icon-event.png);
   }
 
   /* orgs icon */
-  .js #panel-default-overlay ul.overlay-filter-headers li#today-organizations-title a {
+  .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-organizations-title a {
     background-image: url(../images/showtoday-menu-icon-org.png);
   }
   
   /* artists icon */
-  .js #panel-default-overlay ul.overlay-filter-headers li#today-artists-title a {
+  .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-artists-title a {
     background-image: url(../images/showtoday-menu-icon-artist.png);
   }
   
