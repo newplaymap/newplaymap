@@ -1127,6 +1127,13 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       font-size: 13px;
     }
     
+    #explore-filters form .views-exposed-widget label,
+    #explore-filters form .views-exposed-widget label+.views-widget {
+      display: block;
+      float: left;
+      width: 50%;
+    }
+    
     #explore-filters form .views-exposed-widget .views-widget .form-item select {
       width: 95%;
     }
@@ -1136,6 +1143,8 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #explore-filters form .views-exposed-widget .form-item #edit-date-max-wrapper label {
       font-weight: normal;
       font-style: italic;
+      font-size: 11px;
+      white-space: nowrap;
     }
     
     .ui-datepicker {
@@ -1149,7 +1158,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #explore-filters form .views-exposed-widget .form-item .date-clear-block {
       clear: none;
       float: left;
-      width: 40%;
+      width: 33%;
     }
     
     #explore-filters form .views-exposed-widget .form-item .date-clear-block input {
@@ -1197,6 +1206,13 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     padding: 10px 30px 10px 35px;
     background-position: 0 50%;
     background-repeat: no-repeat;
+    width: 100%;
+  }
+  
+  #explore-filters form .views-exposed-widget label[for="edit-play"]+.views-widget,
+  #explore-filters form .views-exposed-widget label[for="edit-theater"]+.views-widget,
+  #explore-filters form .views-exposed-widget label[for="edit-artist"]+.views-widget {
+    width: 100%;
   }
   
   #explore-filters form .views-exposed-widget label[for="edit-theater"] {
@@ -1229,14 +1245,24 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 
 /* Explore: Event */
   
+  
+  
   #explore-filters form .views-exposed-widget label[for="edit-event-type"] {
     display: none;
+  }
+  
+  #explore-filters form .views-exposed-widget label[for="edit-event-type"]+.views-widget {
+    width: 100%;
   }
   
 /* Explore: Organization */
   
    #explore-filters form .views-exposed-widget label[for="edit-org-type"] {
     display: none;
+  }
+  
+  #explore-filters form .views-exposed-widget label[for="edit-org-type"]+.views-widget {
+    width: 100%;
   }
   
   /* layout with label on the left for pulldowns */
