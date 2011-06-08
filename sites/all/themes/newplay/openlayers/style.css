@@ -398,6 +398,10 @@ div.olControlSaveFeaturesItemInactive {
 }
 
 /* @group Override OpenLayers CSS */
+
+.olControlPanZoomBar {
+}
+
 /*
 .olControlAttribution {
   bottom: 0px;
