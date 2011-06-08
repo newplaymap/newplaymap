@@ -685,7 +685,7 @@
 /* Overlay title */
 /* @TODO: move this someplace more generic after overlay titles have been refactored to be consistent */
 
-.js #panel-default-overlay h2.overlay-title {
+.js h2.overlay-title {
   margin: 0 0 15px 0;
   font-size: 26px;
   color: #FFFFFF;
