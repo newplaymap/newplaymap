@@ -1056,7 +1056,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   }
 
   /* push down for admin menu */
-  body.admin-menu #explore-filters-tab {
+  body.admin-menu #explore-filters-tab a {
     top: 96px;
   }
 
