@@ -215,7 +215,7 @@
   
   #page {
     width: 100%;
-    margin-top: 60px;
+    margin-top: 60px
   }
   
   #main-wrapper {
@@ -455,9 +455,18 @@
     top: 54px;
   }
   
+  /* @TODO: find the module where this layout code should go and put this there */
   .js body.admin-menu.front .openlayers_map_fullscreen {
     top: 81px;
   }
+  
+  /* @TODO: find the module where this layout code should go and put this there */
+  .js body .openlayers_map_fullscreen {
+    border-top: 1px solid #DFE2F5;
+  }
+  
+      
+
   
   .js body.admin-menu.front #panel-default-overlay,
   .js body.admin-menu.front .popup-container {
