@@ -750,10 +750,7 @@ newPlay.autocompleteEditSuggestions = function() {
 newPlay.addExploreFilters = function() {
   var filterExists = $('div#explore-filters');
 
-  if(filterExists[0] === undefined)  {
-    var url = document.URL.split('?');
-    var baseUrl = url[0];
-    
+  if(filterExists[0] === undefined) {
     var filterMarkup = '<div id="explore-filters-tab"><h3><a class="layer-show" title="Show all pins and map filters">&#0171;</a></h3><!--<div class="label">Explore map</div>--></div><div id="explore-filters"><div class="hide-btn">&#0187;</div>';
     filterMarkup += '<div class="title"><h2 class="overlay-title">Explore</h2></div>';
     filterMarkup += '</div>';
@@ -763,9 +760,7 @@ newPlay.addExploreFilters = function() {
     $('div#explore-filters').append($('form#views-exposed-form-organizations-panel-pane-1'));
 
     $('div#explore-filters div.hide-btn').click(function(){
-      $('div#explore-filters').hide(); 
-      $('div#explore-filters-tab').show(); 
-      return false;
+      newPlay.closeExploreFilters();
     });
     
     // Put an explore button back in the header. Give it the same class as the show all button
@@ -777,26 +772,51 @@ newPlay.addExploreFilters = function() {
 
     // Make trigger for show all button.
     $('a.layer-show').click(function(){
-      $('div#explore-filters').show();
-      $('div#explore-filters-tab').hide(); 
-      newPlay.layerToggle('all-events', true);
-      newPlay.layerToggle('filter-results-organizations', true);
-      newPlay.layerToggle('filter-results-artists', true);
-      $('div#panel-default-overlay').show();
-      // Remove any content from the popup.
-      $('div.popup-container').remove();
-      return false;
+      newPlay.openExploreFilters();
     });
     
     $('div#explore-filters').hide();
  
   }
+
+  // Show the filters if the user previously had it open
+  if ($.cookie('explore-filters') == 'true') {
+    newPlay.openExploreFilters();
+  }
 };
+
+
+newPlay.openExploreFilters = function() {
+  $('div#explore-filters').show();
+  $('div#explore-filters-tab').hide();
+  newPlay.layerToggle('all-events', true);
+  newPlay.layerToggle('filter-results-organizations', true);
+  newPlay.layerToggle('filter-results-artists', true);
+  $('div#panel-default-overlay').show();
+  // Remove any content from the popup.
+  $('div.popup-container').remove();
+  // Set cookie
+  $.cookie('explore-filters', true, {expires: 365, domain: newPlay.queryString[0].replace('http://', '').replace('/', ''), path: '/'});
+  return false;
+};
+
+
+newPlay.closeExploreFilters = function() {
+  $('div#explore-filters').hide();
+  $('div#explore-filters-tab').show();
+  $.cookie('explore-filters', false, {expires: 365, domain: newPlay.queryString[0].replace('http://', '').replace('/', ''), path: '/'});
+  return false;
+};
+
 
 /** 
  * Drupal Behaviors
  */
 Drupal.behaviors.newPlay = function(context) {
+  // Set up variables to use elsewhere
+  var url = document.URL;
+  newPlay.queryString = url.split('?');
+
    /* Bubble popup for sidebar of nodes */
    newPlay.formatLinksBubble($('#feed_links'), 'feed_button');
  
@@ -831,7 +851,7 @@ Drupal.behaviors.newPlay = function(context) {
  * Main Document Ready
  */
 $(document).ready(function() {
-  
+  // Allow rel=external to avoid non-semantic target values
   $('[rel=external]').attr('target', '_blank');
   
   
@@ -1341,8 +1361,6 @@ $('<a></a>').attr({
    * Format the home page overlay listings
    */
   if ($('.filter-results-listing').length > 0) {
-    var url = document.URL;
-    newPlay.queryString = url.split('?');
 
     var todayHeaderList = $('<ul></ul>').addClass('overlay-filter-headers').insertAfter('#panel-default-overlay .overlay-title');
     
