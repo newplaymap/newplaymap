@@ -782,6 +782,9 @@ newPlay.addExploreFilters = function() {
     });
     
     $('div#explore-filters').hide(); 
+
+    // Put an explore button back in the header
+    $('<a></a>').attr('id', 'explore-filters-button').html('Explore').insertBefore('div#block-views--exp-organizations-panel_pane_1');
  
   }
 };
