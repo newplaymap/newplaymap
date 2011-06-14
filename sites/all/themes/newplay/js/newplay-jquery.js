@@ -767,7 +767,16 @@ newPlay.addExploreFilters = function() {
     $('<a></a>')
       .attr('id', 'explore-filters-button')
       .html('Explore')
-      .addClass('layer-show')
+      .click(function() {
+        if ($('div#explore-filters').is(':visible') === true) {
+          // close filters
+          newPlay.closeExploreFilters();
+        } else {
+          // open filters
+          newPlay.openExploreFilters();
+        }
+      })
+      // .addClass('layer-show')
       .insertBefore('div#block-views--exp-organizations-panel_pane_1');
 
     // Make trigger for show all button.
@@ -796,7 +805,7 @@ newPlay.openExploreFilters = function() {
   // Remove any content from the popup.
   $('div.popup-container').remove();
   // Set cookie
-  $.cookie('explore-filters', true, {expires: 365, domain: newPlay.queryString[0].replace('http://', '').replace('/', ''), path: '/'});
+  $.cookie('explore-filters', true, {expires: 7, domain: newPlay.queryString[0].replace('http://', '').replace('/', ''), path: '/'});
   return false;
 };
 
@@ -804,7 +813,7 @@ newPlay.openExploreFilters = function() {
 newPlay.closeExploreFilters = function() {
   $('div#explore-filters').hide();
   $('div#explore-filters-tab').show();
-  $.cookie('explore-filters', false, {expires: 365, domain: newPlay.queryString[0].replace('http://', '').replace('/', ''), path: '/'});
+  $.cookie('explore-filters', false, {expires: 7, domain: newPlay.queryString[0].replace('http://', '').replace('/', ''), path: '/'});
   return false;
 };
 
