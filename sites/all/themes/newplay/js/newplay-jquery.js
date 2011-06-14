@@ -801,9 +801,6 @@ newPlay.openExploreFilters = function() {
   newPlay.layerToggle('all-events', true);
   newPlay.layerToggle('filter-results-organizations', true);
   newPlay.layerToggle('filter-results-artists', true);
-  $('div#panel-default-overlay').show();
-  // Remove any content from the popup.
-  $('div.popup-container').remove();
   // Set cookie
   $.cookie('explore-filters', true, {expires: 7, domain: newPlay.queryString[0].replace('http://', '').replace('/', ''), path: '/'});
   return false;
