@@ -767,6 +767,13 @@ newPlay.addExploreFilters = function() {
       $('div#explore-filters-tab').show(); 
       return false;
     });
+    
+    // Put an explore button back in the header. Give it the same class as the show all button
+    $('<a></a>')
+      .attr('id', 'explore-filters-button')
+      .html('Explore')
+      .addClass('layer-show')
+      .insertBefore('div#block-views--exp-organizations-panel_pane_1');
 
     // Make trigger for show all button.
     $('a.layer-show').click(function(){
@@ -781,10 +788,7 @@ newPlay.addExploreFilters = function() {
       return false;
     });
     
-    $('div#explore-filters').hide(); 
-
-    // Put an explore button back in the header
-    $('<a></a>').attr('id', 'explore-filters-button').html('Explore').insertBefore('div#block-views--exp-organizations-panel_pane_1');
+    $('div#explore-filters').hide();
  
   }
 };
