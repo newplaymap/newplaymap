@@ -1089,21 +1089,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   body.admin-menu #explore-filters-tab a {
     top: 96px;
   }
-
-  #explore-filters-tab h3 {
-    margin: 0;
-    padding: 0;
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 1em;
-  }
-  
-  
-  #explore-filters-tab h3 a {
-/*     padding-right: 30px; */
-/*     background: url("../images/explore-eye.png") 100% 60% no-repeat; */
-    color: #FFFFFF;
-  }
   
   #explore-filters-tab .label {
     font-size: 11px;
@@ -1192,14 +1177,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       white-space: nowrap;
     }
     
-    .ui-datepicker {
-      z-index: 7000; /* put on top of everything else */
-    }
-    
-    .ui-datepicker table {
-      font-size: 13px; /* override datepicker.1.7.css:27 */
-    }
-    
     #explore-filters form .views-exposed-widget .form-item .date-clear-block {
       clear: none;
       float: left;
@@ -1230,36 +1207,19 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     margin-right: 10px;
   }
 
-  /* override betterselect.css */
-  #explore-filters form .views-exposed-widget .form-radios {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    overflow: hidden; /* clearfix */
-  }
-  
-  /* override betterselect.css */
-  #explore-filters form .views-exposed-widget .form-radios .form-item {
-    margin: 0;
-  }
-  
-  #explore-filters form .views-exposed-widget .form-radios .form-item label.option {
-/*
-    float: left;
-    width: 50%;
-*/
-    font-size: 11px;
-  }
-
 /* Explore: Section titles */
-
+  
+  #explore-filters form .views-exposed-widget label[for="edit-state"] {
+    color: #FFFFFF;
+  }
+  
   #explore-filters form .views-exposed-widget label[for="edit-play"],
   #explore-filters form .views-exposed-widget label[for="edit-theater"],
   #explore-filters form .views-exposed-widget label[for="edit-artist"] {
     display: block;
     font-size: 18px;
     font-weight: normal;
-    padding: 8px 30px 8px 30px;
+    padding: 10px 30px 8px 30px;
     background-position: 0 50%;
     background-repeat: no-repeat;
     width: 100%;
