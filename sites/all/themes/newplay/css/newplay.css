@@ -1189,15 +1189,17 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #explore-filters form .views-exposed-widget .form-item .date-clear-block input {
       width: 60%;
     }
-  
-  /* Style apply filters button */
-  .js #explore-filters form #filter-submit {
-    background: url(../images/filter-submit-background.png) bottom -8px no-repeat;
-    border-bottom: none;
-    padding-bottom: 30px;
-    padding-top: 10px;
-  }
-  
+    
+    /* Position the apply filters area */
+    #explore-filters form .views-exposed-widget:last-child {
+      position: fixed;
+      bottom: 15px;
+      right: 400px;
+      width: 330px;
+      margin: 0;
+      padding: 0 10px 8px 10px;
+    }
+    
     .js #explore-filters form input#edit-submit-organizations {
       margin-top: 0;
     }
