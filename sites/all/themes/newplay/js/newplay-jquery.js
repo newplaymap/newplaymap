@@ -1349,7 +1349,7 @@ $('<a></a>').attr({
     $(this).find('#edit-play-title').val(play);
     
     // Use new checkbox field to populate text field
-    var ensembleChecked = ($('.qtip-wrapper #edit-ensemble-checkbox').attr('checked')) ? '1' : '';
+    var ensembleChecked = ($('#edit-ensemble-checkbox').attr('checked')) ? '1' : '';
     $(this).find('#edit-ensemble').val(ensembleChecked);
     
   });
