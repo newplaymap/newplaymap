@@ -1049,7 +1049,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   overflow-y: hidden;
   position: absolute;
   cursor: pointer;
-  right: 33%;
+  right: 400px;
   top: 75px;
   bottom: 15px;  
   width: auto;
@@ -1097,8 +1097,8 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   background: rgba(50, 50, 50, .95);
   top: 75px;
   bottom: 15px;
-  right: 33%;  
-  width: 27%;
+  right: 400px;  
+  width: 350px;
   overflow-y: auto;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
