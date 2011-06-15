@@ -90,19 +90,20 @@
     #header-blocks a#invite_button,
     #header-blocks a#explore-filters-button {
       display: inline;
-      padding: 8px 24px;
+      padding: 8px 20px 8px 14px !important;
       margin: 0 4px;
     }
     
     #header-blocks a#add_button span,
     #header-blocks a#invite_button span,
     #header-blocks a#explore-filters-button span {
-      padding-left: 23px;
+      padding-left: 24px;
       background-position: 0 50%;
       background-repeat: no-repeat;
     }
     
-    #header-blocks a#add_button span {
+    #header-blocks a#add_button span { 
+      padding-left: 20px;
       background-image: url(../images/header-icon-add.png);
     }
     
@@ -111,6 +112,7 @@
     }
     
     #header-blocks a#explore-filters-button span {
+      padding-left: 26px;
       background-image: url(../images/header-icon-explore.png);
     }
     
