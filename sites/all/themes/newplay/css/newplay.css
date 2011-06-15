@@ -745,17 +745,22 @@
 
   /* events icon */
   .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-events-title a {
-    background-image: url(../images/showtoday-menu-icon-event.png);
+    background-image: url(../images/explore-icon-event.png);
   }
 
   /* orgs icon */
   .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-organizations-title a {
-    background-image: url(../images/showtoday-menu-icon-org.png);
+    background-image: url(../images/explore-icon-org.png);
   }
   
   /* artists icon */
   .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-artists-title a {
-    background-image: url(../images/showtoday-menu-icon-artist.png);
+    background-image: url(../images/explore-icon-artist.png);
+  }
+  
+  /* play icon */
+  .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-plays-title a {
+    background-image: url(../images/explore-icon-play.png);
   }
   
   
@@ -1087,8 +1092,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     font-size: 11px;
   }
 
-  
-
 
 #explore-filters {
   position: fixed;
@@ -1249,15 +1252,15 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   }
   
   #explore-filters form .views-exposed-widget label[for="edit-theater"] {
-    background-image: url(../images/showtoday-menu-icon-org.png);
+    background-image: url(../images/explore-icon-org.png);
   }
   
   #explore-filters form .views-exposed-widget label[for="edit-play"] {
-    background-image: url(../images/showtoday-menu-icon-event.png);
+    background-image: url(../images/explore-icon-event.png);
   }
   
   #explore-filters form .views-exposed-widget label[for="edit-artist"] {
-    background-image: url(../images/showtoday-menu-icon-artist.png);
+    background-image: url(../images/explore-icon-artist.png);
   }
   
 
