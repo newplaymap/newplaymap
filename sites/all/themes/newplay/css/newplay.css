@@ -723,7 +723,7 @@
   padding: 10px 30px 10px 48px;
   border-radius: 5px;
   -moz-border-radius: 5px;
-  background-position: 10px 50%; /* apply to all buttons */
+  background-position: 13px 50%; /* apply to all buttons */
   background-repeat: no-repeat; /* apply to all buttons */
   text-decoration: none;
 }
@@ -842,6 +842,14 @@
         display: inline;
       }
 
+    /* Show Today: Play listings */
+      
+      /* inject icon to the left of play listing */
+      .js #panel-default-overlay #today-plays .item-list ul li,
+      .js #panel-default-overlay #filter-results-plays .item-list ul li {
+        background: transparent url(../images/icon-listing-play.png) 10px 2px no-repeat;
+      }
+      
     
     
 
@@ -1242,10 +1250,11 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     display: block;
     font-size: 18px;
     font-weight: normal;
-    padding: 10px 30px 10px 35px;
+    padding: 8px 30px 8px 30px;
     background-position: 0 50%;
     background-repeat: no-repeat;
     width: 100%;
+    color: #FFFFFF;
   }
   
   #explore-filters form .views-exposed-widget label[for="edit-play"]+.views-widget,
