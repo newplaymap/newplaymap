@@ -5235,7 +5235,7 @@ function orgs_views_default_views() {
       'relationship' => 'none',
     ),
     'field_artist_nid' => array(
-      'label' => 'By',
+      'label' => 'by',
       'alter' => array(
         'alter_text' => 0,
         'text' => 'By [field_artist_nid]',
@@ -5258,7 +5258,7 @@ function orgs_views_default_views() {
       'hide_empty' => 1,
       'empty_zero' => 0,
       'link_to_node' => 0,
-      'label_type' => 'widget',
+      'label_type' => 'custom',
       'format' => 'default',
       'multiple' => array(
         'group' => 1,
@@ -9096,7 +9096,7 @@ Please <a href="node/add/event">Add your own!</a>');
       'expose' => array(
         'use_operator' => 0,
         'operator' => 'nid_op',
-        'identifier' => 'play',
+        'identifier' => 'play_title',
         'label' => 'Play',
         'optional' => 1,
         'remember' => 0,
@@ -9110,7 +9110,7 @@ Please <a href="node/add/event">Add your own!</a>');
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('title', 'Events');
+  $handler->override_option('title', 'Plays');
   $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'list');
   $handler->override_option('style_options', array(
