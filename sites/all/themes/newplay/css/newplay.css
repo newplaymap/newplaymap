@@ -1268,28 +1268,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   font-weight: normal;
 }
 
-
-/* Explore: Event */
-  
-  
-  
-  #explore-filters form .views-exposed-widget label[for="edit-event-type"] {
-    display: none;
-  }
-  
-  #explore-filters form .views-exposed-widget label[for="edit-event-type"]+.views-widget {
-    width: 100%;
-  }
-  
-/* Explore: Organization */
-  
-   #explore-filters form .views-exposed-widget label[for="edit-org-type"] {
-    display: none;
-  }
-  
-  #explore-filters form .views-exposed-widget label[for="edit-org-type"]+.views-widget {
-    width: 100%;
-  }
   
   /* layout with label on the left for pulldowns */
   #explore-filters form .views-exposed-widget label[for="edit-budget"],
