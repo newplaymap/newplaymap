@@ -2022,6 +2022,28 @@ function orgs_views_default_views() {
       'field' => 'nid',
       'relationship' => 'none',
     ),
+    'nid_2' => array(
+      'operator' => '=',
+      'value' => array(
+        'value' => '',
+        'min' => '',
+        'max' => '',
+      ),
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'nid_2_op',
+        'identifier' => 'play_title',
+        'label' => 'Play',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'id' => 'nid_2',
+      'table' => 'node',
+      'field' => 'nid',
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('access', array(
     'type' => 'none',
@@ -2839,6 +2861,31 @@ function orgs_views_default_views() {
       'id' => 'field_ensemble_value',
       'table' => 'node_data_field_ensemble',
       'field' => 'field_ensemble_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'nid_1' => array(
+      'operator' => '=',
+      'value' => array(
+        'value' => '',
+        'min' => '',
+        'max' => '',
+      ),
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'nid_1_op',
+        'identifier' => 'play_title',
+        'label' => 'Plays',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'id' => 'nid_1',
+      'table' => 'node',
+      'field' => 'nid',
       'override' => array(
         'button' => 'Use default',
       ),
@@ -4473,6 +4520,31 @@ function orgs_views_default_views() {
       ),
       'relationship' => 'none',
     ),
+    'nid_1' => array(
+      'operator' => '=',
+      'value' => array(
+        'value' => '',
+        'min' => '',
+        'max' => '',
+      ),
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'nid_1_op',
+        'identifier' => 'play_title',
+        'label' => 'Play',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'id' => 'nid_1',
+      'table' => 'node',
+      'field' => 'nid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('title', 'Generative Artists');
   $handler->override_option('row_plugin', '');
@@ -4992,6 +5064,31 @@ function orgs_views_default_views() {
       'id' => 'field_ensemble_value',
       'table' => 'node_data_field_ensemble',
       'field' => 'field_ensemble_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'nid_1' => array(
+      'operator' => '=',
+      'value' => array(
+        'value' => '',
+        'min' => '',
+        'max' => '',
+      ),
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'nid_1_op',
+        'identifier' => 'play_title',
+        'label' => 'Play',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'id' => 'nid_1',
+      'table' => 'node',
+      'field' => 'nid',
       'override' => array(
         'button' => 'Use default',
       ),
@@ -6512,6 +6609,31 @@ function orgs_views_default_views() {
       'id' => 'field_ensemble_value',
       'table' => 'node_data_field_ensemble',
       'field' => 'field_ensemble_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'nid_1' => array(
+      'operator' => '=',
+      'value' => array(
+        'value' => '',
+        'min' => '',
+        'max' => '',
+      ),
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'nid_1_op',
+        'identifier' => 'play_title',
+        'label' => 'Play',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'id' => 'nid_1',
+      'table' => 'node',
+      'field' => 'nid',
       'override' => array(
         'button' => 'Use default',
       ),
