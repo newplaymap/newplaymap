@@ -785,16 +785,12 @@ newPlay.addExploreFilters = function() {
     });
     
     $('div#explore-filters').hide();
+
+    // Show the filters if the user previously had it open
+    if ($.cookie('explore-filters') == 'true') {
+      newPlay.openExploreFilters();
+    }
  
-  }
-
-  $('a#filter_reset').click(function() {
-    $.cookie('filters-reset', true, {expires: 7, domain: newPlay.queryString[0].replace('http://', '').replace('/', ''), path: '/'});
-  });
-
-  // Show all pins if the user selected reset filters
-  if ($.cookie('filters-reset') == 'true') {
-    newPlay.openExploreFilters();
   }
 };
 
@@ -1421,7 +1417,7 @@ $('<a></a>').attr({
 
     // Check if the filters have been used
 
-    if (newPlay.queryString.length > 1 || $.cookie('filters-reset') == 'true') {
+    if (newPlay.queryString.length > 1) {
       // If so turn on all the layers
       newPlay.layerToggle('all-events', true);
       newPlay.layerToggle('filter-results-organizations', true);
@@ -1434,8 +1430,6 @@ $('<a></a>').attr({
 
   }
 
-  // Reset filters link interaction. Don't reset until the page has totally loaded
-  // $.cookie('filters-reset', false, {expires: 7, domain: newPlay.queryString[0].replace('http://', '').replace('/', ''), path: '/'});
 
 // the end  
 });

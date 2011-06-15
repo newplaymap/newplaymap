@@ -34,6 +34,19 @@ function newplay_mapping_form_alter(&$form, $form_state, $form_id) {
       '#value' => l(t('Reset Filters'), '', array(
         'attributes' => array(
           'id' => 'filter_reset'
+        ),
+        // Add all the required query strings
+        // This triggers various things such as showing results and showing all pins
+        'query' => array(
+          'play' => 'All',
+          'event_type' => 'All',
+          'theater' => 'All',
+          'partner_org' => 'All',
+          'org_type' => 'All',
+          'budget' => 'All',
+          'nat_mem' => 'All',
+          'interests' => 'All',
+          'artist' => 'All'
         )
       ))
     );
