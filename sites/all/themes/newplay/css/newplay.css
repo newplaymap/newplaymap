@@ -87,7 +87,8 @@
     /* Additional default button style in Misc styles */
     #header-blocks a#add_button,
     #header-blocks a#filter_button,
-    #header-blocks a#invite_button {
+    #header-blocks a#invite_button,
+    #header-blocks a#explore-filters-button {
       display: inline;
       padding: 8px 24px;
       margin: 0 4px;
@@ -272,6 +273,7 @@
   #header-blocks a#add_button,
   #header-blocks a#filter_button,
   #header-blocks a#invite_button,
+  #header-blocks a#explore-filters-button,
   .popup-container .overlay .pane-edit-link ul li a,
   .popup-container .overlay .pane-event ul li a,
   .popup-container .overlay #feed_button {
@@ -286,7 +288,8 @@
       .edit-button:hover,
       #header-blocks a#add_button:hover,
       #header-blocks a#filter_button:hover,
-      #header-blocks a#invite_button:hover, 
+      #header-blocks a#invite_button:hover,
+      #header-blocks a#explore-filters-button:hover,
       .popup-container .overlay .pane-edit-link ul li a:hover,
       .popup-container .overlay .pane-event ul li a:hover,
       .popup-container .overlay #feed_button:hover {
@@ -299,6 +302,7 @@
       #header-blocks a#add_button:active,
       #header-blocks a#filter_button:active,
       #header-blocks a#invite_button:active,
+      #header-blocks a#explore-filters-button:active,
       .popup-container .overlay .pane-edit-link ul li a:active,
       .popup-container .overlay .pane-event ul li a:active,
       .popup-container .overlay #feed_button:active {
