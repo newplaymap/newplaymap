@@ -2027,9 +2027,7 @@ function orgs_views_default_views() {
     'type' => 'none',
   ));
   $handler->override_option('cache', array(
-    'type' => 'time',
-    'results_lifespan' => '3600',
-    'output_lifespan' => '3600',
+    'type' => 'none',
   ));
   $handler->override_option('items_per_page', 200);
   $handler->override_option('style_plugin', 'openlayers_data');
@@ -5000,9 +4998,6 @@ function orgs_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('cache', array(
-    'type' => 'none',
-  ));
   $handler->override_option('title', 'Organizations');
   $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'list');
@@ -5994,9 +5989,6 @@ function orgs_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('cache', array(
-    'type' => 'none',
-  ));
   $handler->override_option('title', 'Events');
   $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'list');
@@ -6525,9 +6517,6 @@ function orgs_views_default_views() {
       ),
       'relationship' => 'none',
     ),
-  ));
-  $handler->override_option('cache', array(
-    'type' => 'none',
   ));
   $handler->override_option('title', 'Generative Artists');
   $handler->override_option('items_per_page', 0);
