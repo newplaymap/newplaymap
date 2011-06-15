@@ -93,6 +93,14 @@
       padding: 8px 24px;
       margin: 0 4px;
     }
+    
+    #header-blocks a#add_button span,
+    #header-blocks a#invite_button span,
+    #header-blocks a#explore-filters-button span {
+      padding-left: 30px;
+    }
+    
+    
       
       /* Universal Add Button List */
       
