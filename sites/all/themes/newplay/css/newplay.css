@@ -1109,7 +1109,8 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   }
   
   #explore-filters h2.overlay-title {
-    padding: 5px 10px 0 10px;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 0;
     font-size: 22px;
   }
 
@@ -1139,7 +1140,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #explore-filters form .views-exposed-widget {
       width: 92%;
       clear: both;
-      padding: 0 13px 4px 13px;
+      padding: 0 13px 2px 13px;
       overflow: hidden; /* clearfix */
     }
     
@@ -1159,7 +1160,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     }
     
     #explore-filters form .views-exposed-widget .views-widget .form-item select {
-      width: 95%;
+      width: 100%;
     }
     
     /* override forms.css:21 */
