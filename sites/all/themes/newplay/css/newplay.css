@@ -768,6 +768,7 @@
      /* more prominent title */
     .js #panel-default-overlay #today-events .views-field-field-related-play-nid .field-content,
     .js #panel-default-overlay #filter-results-events .views-field-field-related-play-nid .field-content,
+    .js #panel-default-overlay #filter-results-plays .views-field-field-related-play-nid .field-content,
     .js #panel-default-overlay .views-field-title {
       font-size: 18px;
       font-weight: bold;
@@ -800,8 +801,10 @@
       /* byline and artist name on same line */
       .js #panel-default-overlay #today-events .views-field-field-artist-nid label,
       .js #panel-default-overlay #filter-results-events .views-field-field-artist-nid label,
+      .js #panel-default-overlay #filter-results-plays .views-field-field-artist-nid label,
       .js #panel-default-overlay #today-events .views-field-field-artist-nid .field-content,
-      .js #panel-default-overlay #filter-results-events .views-field-field-artist-nid .field-content {
+      .js #panel-default-overlay #filter-results-events .views-field-field-artist-nid .field-content,
+      .js #panel-default-overlay #filter-results-plays .views-field-field-artist-nid .field-content {
         display: inline;
       }
       
