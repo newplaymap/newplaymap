@@ -1310,7 +1310,7 @@ $('<a></a>').attr({
   /**
    * Automating selection of some exposed filter elements
    */
-  $('form#views-exposed-form-organizations-panel-pane-1').find('#edit-partner-org-wrapper, #edit-org-id, #edit-artist-id').parents('.views-exposed-widget').addClass('auto-populate');
+  $('form#views-exposed-form-organizations-panel-pane-1').find('#edit-partner-org-wrapper, #edit-org-id, #edit-artist-id, #edit-play-title-wrapper').parents('.views-exposed-widget').addClass('auto-populate');
   
   // Turn Ensemble text field into a checkbox
   var ensemble = $('#edit-ensemble').hide();
