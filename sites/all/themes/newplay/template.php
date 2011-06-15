@@ -418,11 +418,11 @@ function newplay_preprocess_comment(&$vars, $hook) {
  * @param $hook
  *   The name of the template being rendered ("block" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function newplay_preprocess_block(&$vars, $hook) {
-  $vars['sample_variable'] = t('Lorem ipsum.');
+  if ($vars['block']->module == 'invite') {
+    $vars['block']->subject = '<span>' . $vars['block']->subject . '</span>';
+  }
 }
-// */
 
 
 /**
