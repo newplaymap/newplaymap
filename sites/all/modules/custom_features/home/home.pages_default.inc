@@ -95,37 +95,6 @@ function home_default_page_manager_pages() {
     $pane->pid = 'new-2';
     $pane->panel = 'bottom';
     $pane->type = 'views_panes';
-    $pane->subtype = 'organizations-panel_pane_5';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'php',
-          'settings' => array(
-            'description' => 'Check if map has been filtered',
-            'php' => 'if (!empty($_REQUEST[\'play\'])) { return TRUE; }',
-          ),
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array();
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => 'filter-results-plays',
-      'css_class' => 'filter-results-listing',
-    );
-    $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-2'] = $pane;
-    $display->panels['bottom'][1] = 'new-2';
-    $pane = new stdClass;
-    $pane->pid = 'new-3';
-    $pane->panel = 'bottom';
-    $pane->type = 'views_panes';
     $pane->subtype = 'organizations-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array(
@@ -147,6 +116,37 @@ function home_default_page_manager_pages() {
     );
     $pane->css = array(
       'css_id' => 'filter-results-events',
+      'css_class' => 'filter-results-listing',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-2'] = $pane;
+    $display->panels['bottom'][1] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
+    $pane->panel = 'bottom';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'organizations-panel_pane_5';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'php',
+          'settings' => array(
+            'description' => 'Check if map has been filtered',
+            'php' => 'if (!empty($_REQUEST[\'play\'])) { return TRUE; }',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => 'filter-results-plays',
       'css_class' => 'filter-results-listing',
     );
     $pane->extras = array();
@@ -253,37 +253,6 @@ function home_default_page_manager_pages() {
     $pane->pid = 'new-7';
     $pane->panel = 'bottom';
     $pane->type = 'views_panes';
-    $pane->subtype = 'organizations-panel_pane_9';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'php',
-          'settings' => array(
-            'description' => 'Check if map has not been filtered',
-            'php' => 'if (empty($_REQUEST[\'play\'])) { return TRUE; }',
-          ),
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array();
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => 'filter-results-plays',
-      'css_class' => 'filter-results-listing',
-    );
-    $pane->extras = array();
-    $pane->position = 6;
-    $display->content['new-7'] = $pane;
-    $display->panels['bottom'][6] = 'new-7';
-    $pane = new stdClass;
-    $pane->pid = 'new-8';
-    $pane->panel = 'bottom';
-    $pane->type = 'views_panes';
     $pane->subtype = 'organizations-panel_pane_6';
     $pane->shown = TRUE;
     $pane->access = array(
@@ -306,6 +275,37 @@ function home_default_page_manager_pages() {
     $pane->css = array(
       'css_id' => 'filter-results-events',
       'css_class' => 'today-listing filter-results-listing',
+    );
+    $pane->extras = array();
+    $pane->position = 6;
+    $display->content['new-7'] = $pane;
+    $display->panels['bottom'][6] = 'new-7';
+    $pane = new stdClass;
+    $pane->pid = 'new-8';
+    $pane->panel = 'bottom';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'organizations-panel_pane_9';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'php',
+          'settings' => array(
+            'description' => 'Check if map has not been filtered',
+            'php' => 'if (empty($_REQUEST[\'play\'])) { return TRUE; }',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => 'filter-results-plays',
+      'css_class' => 'filter-results-listing',
     );
     $pane->extras = array();
     $pane->position = 7;

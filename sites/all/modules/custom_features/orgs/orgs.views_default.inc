@@ -9577,7 +9577,7 @@ Please <a href="node/add/event">Add your own!</a>');
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('title', 'Plays Today');
+  $handler->override_option('title', 'Related Plays');
   $handler->override_option('empty', 'There are currently no events on the map that are happening today.
 
 Please <a href="node/add/event">Add your own!</a>');
