@@ -1340,6 +1340,13 @@ $('<a></a>').attr({
     
     // Set the Artist NID based on the related artist field
     $(this).find('#edit-artist-id').val(artist);
+
+    // Set up play variable
+    var play = $(this).find('#edit-play').attr('value');
+    play = (play != 'All') ? play : '';
+
+    // Set the Play NID based on the related artist field
+    $(this).find('#edit-play-title').val(play);
     
     // Use new checkbox field to populate text field
     var ensembleChecked = ($('.qtip-wrapper #edit-ensemble-checkbox').attr('checked')) ? '1' : '';
@@ -1396,14 +1403,14 @@ $('<a></a>').attr({
             $('#' + listingPaneId + '-title').addClass('active');
           });
 
-          // If this is the events list and the user has filtered the map
+          /* // If this is the events list and the user has filtered the map
           if (listingPaneId == 'filter-results-events' && newPlay.queryString.length > 1) {
             // show all the events that the filter returned
             newPlay.layerToggle('all-events', false);
           } else {
             // otherwise show what's on today events
             newPlay.layerToggle(listingPaneId, false);
-          }
+          } */
 
         })
         .appendTo(todayHeaderList);
