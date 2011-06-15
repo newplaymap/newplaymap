@@ -31,7 +31,7 @@ function newplay_mapping_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'views_exposed_form') {
     $form['filter_reset'] = array(
       '#type' => 'markup',
-      '#value' => l(t('Reset Filters'), '', array(
+      '#value' => l(t('Show All Results'), '', array(
         'attributes' => array(
           'id' => 'filter_reset'
         ),
