@@ -766,7 +766,7 @@ newPlay.addExploreFilters = function() {
     // Put an explore button back in the header. Give it the same class as the show all button
     $('<a></a>')
       .attr('id', 'explore-filters-button')
-      .html('Explore')
+      .html('<span>Explore</span>')
       .click(function() {
         if ($('div#explore-filters').is(':visible') === true) {
           // close filters
