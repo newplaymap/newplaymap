@@ -659,10 +659,11 @@
   }
   
   
-/* Links in Overlay & Bubble */
+/* Links in Overlays & Bubble */
 
 .js #panel-default-overlay a,
-.js .popup-container-bubble a {
+.js .popup-container-bubble a,
+.js #explore-filters a {
   color: #B4C0F0;
 }
 
