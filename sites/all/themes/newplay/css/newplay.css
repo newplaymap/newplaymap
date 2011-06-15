@@ -1054,7 +1054,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   overflow-y: hidden;
   position: absolute;
   cursor: pointer;
-  right: 33%;
+  right: 400px;
   top: 75px;
   bottom: 15px;  
   width: auto;
@@ -1100,8 +1100,8 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   background: rgba(50, 50, 50, .95);
   top: 75px;
   bottom: 15px;
-  right: 33%;  
-  width: 27%;
+  right: 400px;  
+  width: 350px;
   overflow-y: auto;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
@@ -1112,7 +1112,8 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   }
   
   #explore-filters h2.overlay-title {
-    padding: 5px 10px 0 10px;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 0;
     font-size: 22px;
   }
 
@@ -1142,7 +1143,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #explore-filters form .views-exposed-widget {
       width: 92%;
       clear: both;
-      padding: 0 13px 4px 13px;
+      padding: 0 13px 2px 13px;
       overflow: hidden; /* clearfix */
     }
     
@@ -1162,7 +1163,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     }
     
     #explore-filters form .views-exposed-widget .views-widget .form-item select {
-      width: 95%;
+      width: 100%;
     }
     
     /* override forms.css:21 */
@@ -1191,15 +1192,17 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #explore-filters form .views-exposed-widget .form-item .date-clear-block input {
       width: 60%;
     }
-  
-  /* Style apply filters button */
-  .js #explore-filters form #filter-submit {
-    background: url(../images/filter-submit-background.png) bottom -8px no-repeat;
-    border-bottom: none;
-    padding-bottom: 30px;
-    padding-top: 10px;
-  }
-  
+    
+    /* Position the apply filters area */
+    #explore-filters form .views-exposed-widget:last-child {
+      position: fixed;
+      bottom: 15px;
+      right: 400px;
+      width: 330px;
+      margin: 0;
+      padding: 0 10px 8px 10px;
+    }
+    
     .js #explore-filters form input#edit-submit-organizations {
       margin-top: 0;
     }
