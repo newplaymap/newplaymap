@@ -46,11 +46,11 @@ Drupal.theme.prototype.openlayersNewPlayPopup = function(feature) {
 Drupal.theme.prototype.openlayersNewPlayContentOverlay = function(feature) {
   var output =
     '<div class="popup-container">' + 
-      '<div class="popup-inner"><div class="close-btn"></div>' + 
+      '<div class="popup-inner">' + 
         '<div class="popup-content">' + 
         '</div>' + 
       '</div>' + 
-      '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' + 
+      '<div class="overlay"><div class="node-content"></div></div>' + 
     '</div>';
   return output;
 }
@@ -85,14 +85,6 @@ Drupal.behaviors.openlayers_newplay_behavior_popup_interaction = function(contex
   // Only run this code on the first time the page loads.
   // Important because we trigger Drupal behaviors for the accordion, but
   // only want to do this once for map pages that load via ajax.
-  
-  // Activate close button for filter results.
-  $('div#panel-default-overlay div.close-btn').click(function(){
-    $('div#panel-default-overlay').hide();
-    
-    // Clear the page title
-     Drupal.openlayers.popup.clearPageTitle()
-  });
 
   if(Drupal.openlayers.loaded == 0) {
     // Store the context for later use.
@@ -313,7 +305,7 @@ Drupal.openlayers.popup.nonLocatedFeaturePopup = function(path) {
           '<div class="openlayers-popup openlayers-popup-description"></div>' + 
         '</div>' + 
       '</div>' + 
-      '<div class="overlay"><div class="close-btn"></div><div class="node-content"></div></div>' + 
+      '<div class="overlay"><div class="node-content"></div></div>' + 
     '</div>';
 
   if ($('div.popup-container').length < 1) {

@@ -43,7 +43,7 @@
   </div>
 
   <?php if ($content['bottom']): ?>
-    <div id="panel-default-overlay" class="panel-panel panel-col-bottom"><div class="close-btn"></div>
+    <div id="panel-default-overlay" class="panel-panel panel-col-bottom">
       <div class="inside"><?php print $content['bottom']; ?></div>
     </div>    
   <?php endif ?>
