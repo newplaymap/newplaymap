@@ -419,7 +419,7 @@ function newplay_preprocess_comment(&$vars, $hook) {
  *   The name of the template being rendered ("block" in this case.)
  */
 function newplay_preprocess_block(&$vars, $hook) {
-  if ($vars['block']->module == 'invite' || $vars['block']->module == 'add_button') {
+  if ($vars['block']->module == 'invite') {
     $vars['block']->subject = '<span>' . $vars['block']->subject . '</span>';
   }
 }

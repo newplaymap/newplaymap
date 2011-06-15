@@ -41,7 +41,7 @@ function add_button_block($op = 'list', $delta = 0, $edit = array()) {
         ));
         
         $block = array(
-          'content' => theme('item_list', $items, t('Add to the Map'), 'ul', array(
+          'content' => theme('item_list', $items, '<span>' . t('Add to the Map') . '</span>', 'ul', array(
             'id' => 'add-button-list'
           ))
         );
