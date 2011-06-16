@@ -218,6 +218,37 @@ function home_default_page_manager_pages() {
     $pane = new stdClass;
     $pane->pid = 'new-6';
     $pane->panel = 'bottom';
+    $pane->type = 'events_rss';
+    $pane->subtype = 'events_rss';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'php',
+          'settings' => array(
+            'description' => 'Show when page has not been filtered',
+            'php' => 'if (empty($_REQUEST[\'play\'])) { return TRUE; }',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '<none>',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $display->content['new-6'] = $pane;
+    $display->panels['bottom'][5] = 'new-6';
+    $pane = new stdClass;
+    $pane->pid = 'new-7';
+    $pane->panel = 'bottom';
     $pane->type = 'today_overlay_title';
     $pane->subtype = 'today_overlay_title';
     $pane->shown = TRUE;
@@ -246,11 +277,11 @@ function home_default_page_manager_pages() {
       'css_class' => 'pane-node-title',
     );
     $pane->extras = array();
-    $pane->position = 5;
-    $display->content['new-6'] = $pane;
-    $display->panels['bottom'][5] = 'new-6';
+    $pane->position = 6;
+    $display->content['new-7'] = $pane;
+    $display->panels['bottom'][6] = 'new-7';
     $pane = new stdClass;
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-8';
     $pane->panel = 'bottom';
     $pane->type = 'views_panes';
     $pane->subtype = 'organizations-panel_pane_6';
@@ -277,11 +308,11 @@ function home_default_page_manager_pages() {
       'css_class' => 'today-listing filter-results-listing',
     );
     $pane->extras = array();
-    $pane->position = 6;
-    $display->content['new-7'] = $pane;
-    $display->panels['bottom'][6] = 'new-7';
+    $pane->position = 7;
+    $display->content['new-8'] = $pane;
+    $display->panels['bottom'][7] = 'new-8';
     $pane = new stdClass;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-9';
     $pane->panel = 'bottom';
     $pane->type = 'views_panes';
     $pane->subtype = 'organizations-panel_pane_9';
@@ -308,11 +339,11 @@ function home_default_page_manager_pages() {
       'css_class' => 'filter-results-listing',
     );
     $pane->extras = array();
-    $pane->position = 7;
-    $display->content['new-8'] = $pane;
-    $display->panels['bottom'][7] = 'new-8';
+    $pane->position = 8;
+    $display->content['new-9'] = $pane;
+    $display->panels['bottom'][8] = 'new-9';
     $pane = new stdClass;
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-10';
     $pane->panel = 'bottom';
     $pane->type = 'views_panes';
     $pane->subtype = 'organizations-panel_pane_7';
@@ -339,11 +370,11 @@ function home_default_page_manager_pages() {
       'css_class' => 'today-listing filter-results-listing',
     );
     $pane->extras = array();
-    $pane->position = 8;
-    $display->content['new-9'] = $pane;
-    $display->panels['bottom'][8] = 'new-9';
+    $pane->position = 9;
+    $display->content['new-10'] = $pane;
+    $display->panels['bottom'][9] = 'new-10';
     $pane = new stdClass;
-    $pane->pid = 'new-10';
+    $pane->pid = 'new-11';
     $pane->panel = 'bottom';
     $pane->type = 'views_panes';
     $pane->subtype = 'organizations-panel_pane_8';
@@ -370,11 +401,11 @@ function home_default_page_manager_pages() {
       'css_class' => 'today-listing filter-results-listing',
     );
     $pane->extras = array();
-    $pane->position = 9;
-    $display->content['new-10'] = $pane;
-    $display->panels['bottom'][9] = 'new-10';
+    $pane->position = 10;
+    $display->content['new-11'] = $pane;
+    $display->panels['bottom'][10] = 'new-11';
     $pane = new stdClass;
-    $pane->pid = 'new-11';
+    $pane->pid = 'new-12';
     $pane->panel = 'feed_left';
     $pane->type = 'views_panes';
     $pane->subtype = 'feeds-panel_pane_5';
@@ -388,10 +419,10 @@ function home_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-11'] = $pane;
-    $display->panels['feed_left'][0] = 'new-11';
+    $display->content['new-12'] = $pane;
+    $display->panels['feed_left'][0] = 'new-12';
     $pane = new stdClass;
-    $pane->pid = 'new-12';
+    $pane->pid = 'new-13';
     $pane->panel = 'feed_middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'feeds-panel_pane_6';
@@ -405,10 +436,10 @@ function home_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-12'] = $pane;
-    $display->panels['feed_middle'][0] = 'new-12';
+    $display->content['new-13'] = $pane;
+    $display->panels['feed_middle'][0] = 'new-13';
     $pane = new stdClass;
-    $pane->pid = 'new-13';
+    $pane->pid = 'new-14';
     $pane->panel = 'feed_right';
     $pane->type = 'views_panes';
     $pane->subtype = 'feeds-panel_pane_4';
@@ -422,10 +453,10 @@ function home_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-13'] = $pane;
-    $display->panels['feed_right'][0] = 'new-13';
+    $display->content['new-14'] = $pane;
+    $display->panels['feed_right'][0] = 'new-14';
     $pane = new stdClass;
-    $pane->pid = 'new-14';
+    $pane->pid = 'new-15';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'organizations-panel_pane_1';
@@ -439,10 +470,10 @@ function home_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-14'] = $pane;
-    $display->panels['middle'][0] = 'new-14';
+    $display->content['new-15'] = $pane;
+    $display->panels['middle'][0] = 'new-15';
     $pane = new stdClass;
-    $pane->pid = 'new-15';
+    $pane->pid = 'new-16';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'organizations-panel_pane_5';
@@ -456,10 +487,10 @@ function home_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-15'] = $pane;
-    $display->panels['middle'][1] = 'new-15';
+    $display->content['new-16'] = $pane;
+    $display->panels['middle'][1] = 'new-16';
     $pane = new stdClass;
-    $pane->pid = 'new-16';
+    $pane->pid = 'new-17';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'feeds-panel_pane_1';
@@ -476,10 +507,10 @@ function home_default_page_manager_pages() {
     );
     $pane->extras = array();
     $pane->position = 2;
-    $display->content['new-16'] = $pane;
-    $display->panels['middle'][2] = 'new-16';
+    $display->content['new-17'] = $pane;
+    $display->panels['middle'][2] = 'new-17';
     $pane = new stdClass;
-    $pane->pid = 'new-17';
+    $pane->pid = 'new-18';
     $pane->panel = 'top';
     $pane->type = 'block';
     $pane->subtype = 'views--exp-organizations-panel_pane_1';
@@ -496,10 +527,10 @@ function home_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-17'] = $pane;
-    $display->panels['top'][0] = 'new-17';
+    $display->content['new-18'] = $pane;
+    $display->panels['top'][0] = 'new-18';
     $pane = new stdClass;
-    $pane->pid = 'new-18';
+    $pane->pid = 'new-19';
     $pane->panel = 'top';
     $pane->type = 'block';
     $pane->subtype = 'openlayers_plus-blockswitcher';
@@ -516,10 +547,10 @@ function home_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-18'] = $pane;
-    $display->panels['top'][1] = 'new-18';
+    $display->content['new-19'] = $pane;
+    $display->panels['top'][1] = 'new-19';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-14';
+  $display->title_pane = 'new-15';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['home'] = $page;

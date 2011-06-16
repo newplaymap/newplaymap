@@ -11,6 +11,12 @@ function plays_and_events_content_default_fields() {
     'field_name' => 'field_event_date',
     'type_name' => 'event',
     'display_settings' => array(
+      'weight' => '-1',
+      'parent' => 'group_event_info',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'above',
         'exclude' => 0,
@@ -20,10 +26,6 @@ function plays_and_events_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -81,6 +83,12 @@ function plays_and_events_content_default_fields() {
     'field_name' => 'field_event_desc',
     'type_name' => 'event',
     'display_settings' => array(
+      'weight' => '3',
+      'parent' => 'group_event_info',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'above',
         'exclude' => 0,
@@ -90,10 +98,6 @@ function plays_and_events_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -144,6 +148,12 @@ function plays_and_events_content_default_fields() {
     'field_name' => 'field_event_type',
     'type_name' => 'event',
     'display_settings' => array(
+      'weight' => '-2',
+      'parent' => 'group_event_info',
+      '4' => array(
+        'format' => 'plain',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'above',
         'exclude' => 0,
@@ -153,10 +163,6 @@ function plays_and_events_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -223,8 +229,12 @@ function plays_and_events_content_default_fields() {
     'field_name' => 'field_location',
     'type_name' => 'event',
     'display_settings' => array(
-      'weight' => '-3',
-      'parent' => '',
+      'weight' => '2',
+      'parent' => 'group_event_info',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'above',
       ),
@@ -233,10 +243,6 @@ function plays_and_events_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -673,6 +679,12 @@ function plays_and_events_content_default_fields() {
     'field_name' => 'field_partner_org',
     'type_name' => 'event',
     'display_settings' => array(
+      'weight' => '1',
+      'parent' => 'group_event_info',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'above',
         'exclude' => 0,
@@ -682,10 +694,6 @@ function plays_and_events_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -755,6 +763,12 @@ function plays_and_events_content_default_fields() {
     'field_name' => 'field_related_play',
     'type_name' => 'event',
     'display_settings' => array(
+      'weight' => '-4',
+      'parent' => '',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'above',
         'exclude' => 0,
@@ -764,10 +778,6 @@ function plays_and_events_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -844,6 +854,12 @@ function plays_and_events_content_default_fields() {
     'field_name' => 'field_related_theater',
     'type_name' => 'event',
     'display_settings' => array(
+      'weight' => 0,
+      'parent' => 'group_event_info',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'above',
         'exclude' => 0,
@@ -853,10 +869,6 @@ function plays_and_events_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),

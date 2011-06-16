@@ -92,6 +92,7 @@
       display: inline;
       padding: 8px 20px 8px 14px !important;
       margin: 0 4px;
+      cursor: pointer;
     }
     
     #header-blocks a#add_button span,
@@ -798,6 +799,11 @@
   
   
   /* Show Today: General Listings */
+    
+    /* RSS feed icon */
+    .js #panel-default-overlay .feed-icon {
+      float: right;
+    }
   
     /* padding on all "today" listings */
     .js #panel-default-overlay .today-listing .item-list ul li,
