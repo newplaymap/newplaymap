@@ -299,11 +299,15 @@
   #header-blocks a#explore-filters-button,
   .popup-container .overlay .pane-edit-link ul li a,
   .popup-container .overlay .pane-event ul li a,
-  .popup-container .overlay #feed_button {
+  .popup-container .overlay #feed_button,
+  .js #explore-filters form input#edit-submit-organizations,
+  .js #explore-filters form a#filter_reset {
     color: #FFFFFF;
     padding: 8px 18px;
     border-radius: 5px;
     -moz-border-radius: 5px;
+    border: 0;
+    font-family: Candara, Arial, sans-serif;
     background: #6f84c2 url(../images/button-sprite.png) 0 0 no-repeat;
   }
   
@@ -315,7 +319,9 @@
       #header-blocks a#explore-filters-button:hover,
       .popup-container .overlay .pane-edit-link ul li a:hover,
       .popup-container .overlay .pane-event ul li a:hover,
-      .popup-container .overlay #feed_button:hover {
+      .popup-container .overlay #feed_button:hover,
+      .js #explore-filters form input#edit-submit-organizations:hover,
+      .js #explore-filters form a#filter_reset:hover {
         background-position: -217px 0;
         text-decoration: none;
       }
@@ -328,7 +334,9 @@
       #header-blocks a#explore-filters-button:active,
       .popup-container .overlay .pane-edit-link ul li a:active,
       .popup-container .overlay .pane-event ul li a:active,
-      .popup-container .overlay #feed_button:active {
+      .popup-container .overlay #feed_button:active,
+      .js #explore-filters form input#edit-submit-organizations:active
+      .js #explore-filters form a#filter_reset:active {
         background-position: -434px 0;
         text-decoration: none;
       }
