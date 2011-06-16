@@ -18,16 +18,17 @@ function plays_and_events_fieldgroup_default_groups() {
         'description' => '',
       ),
       'display' => array(
+        'weight' => '-3',
+        '4' => array(
+          'format' => 'no_style',
+          'exclude' => 0,
+        ),
         'description' => '',
         'teaser' => array(
           'format' => 'fieldset',
           'exclude' => 0,
         ),
         'full' => array(
-          'format' => 'fieldset',
-          'exclude' => 0,
-        ),
-        '4' => array(
           'format' => 'fieldset',
           'exclude' => 0,
         ),
