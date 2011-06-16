@@ -219,6 +219,8 @@ Drupal.openlayers.popup.ajaxLinks = function(className, target) {
       }
       else if(path.substr(0,4) === 'node') {
       }
+      else if(path.substr(-4,4) === 'feed') {
+      }
       else if(path.substr(0,7) === '/admin/') {
       }
       else if((path.substr(0,4) === 'http') || (path.substr(0,5) === '/http')) {
