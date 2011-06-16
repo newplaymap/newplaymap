@@ -1222,17 +1222,16 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     }
     
     /* Position the apply filters area */
+
     #explore-filters form .views-exposed-widget:last-child {
-      position: fixed;
-      bottom: 15px;
-      right: 400px;
-      width: 330px;
-      margin: 0;
-      padding: 0 10px 10px 10px;
+      padding-top: 8px;
     }
+
     
     .js #explore-filters form input#edit-submit-organizations {
       margin-top: 0;
+      font-size: 14px;
+      font-weight: bold;
     }
   
   #explore-filters form #filter_reset {
