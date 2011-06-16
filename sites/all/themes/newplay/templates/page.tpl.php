@@ -209,10 +209,6 @@ $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '
 
         <?php print $content_bottom; ?>
 
-        <?php if ($feed_icons): ?>
-          <div class="feed-icons"><?php print $feed_icons; ?></div>
-        <?php endif; ?>
-
       </div></div> <!-- /.section, /#content -->
 
       <?php if ($primary_links || $secondary_links || $navbar): ?>
