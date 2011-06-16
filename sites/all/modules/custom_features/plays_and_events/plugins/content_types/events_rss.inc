@@ -18,10 +18,18 @@ function plays_and_events_events_rss_content_type_render($subtype, $conf, $panel
   $output = '';
   $block = new stdClass();
 
-  $output .= l('<img src="' . drupal_get_path('theme', 'newplay') . '/images/rss.png" alt="' . t('RSS Feed') . '" />', 'events-today/feed', array(
-    'attribute' => array(
-      'class' => 'rss-icon'
-    )
+  $feed_url = 'events-today/feed';
+
+  drupal_add_feed($feed_url);
+
+  $output .= l(
+    '<img src="' . drupal_get_path('theme', 'newplay') . '/images/feed.png" alt="' . t('RSS Feed') . '" />', 
+    $feed_url, 
+    array(
+    'attributes' => array(
+      'class' => 'feed-icon'
+    ),
+    'html' => TRUE
   ));
       
   $block->module = 'plays_and_events';
