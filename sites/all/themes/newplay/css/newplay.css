@@ -725,6 +725,7 @@
   margin: 0 0 15px 0;
   font-size: 26px;
   color: #FFFFFF;
+  font-weight: normal;
 }
 
 
@@ -1201,6 +1202,13 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       font-weight: normal;
       font-style: italic;
       font-size: 11px;
+      white-space: nowrap;
+      width: 100%;
+      padding: 0;
+    }
+    
+    #explore-filters form .views-exposed-widget .form-item #edit-date-min-wrapper .description,
+    #explore-filters form .views-exposed-widget .form-item #edit-date-max-wrapper .description {
       white-space: nowrap;
     }
     
