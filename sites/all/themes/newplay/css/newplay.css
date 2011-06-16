@@ -1156,10 +1156,9 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   
 
   #explore-filters form {
-
     overflow-y: hidden;
     overflow-x: hidden;
-
+    margin-right: 13px;
   }
   
   #explore-filters form .auto-populate {
