@@ -789,6 +789,11 @@
   
   
   /* Show Today: General Listings */
+    
+    /* RSS feed icon */
+    .js #panel-default-overlay .feed-icon {
+      float: right;
+    }
   
     /* padding on all "today" listings */
     .js #panel-default-overlay .today-listing .item-list ul li,
