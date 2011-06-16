@@ -10119,6 +10119,7 @@ Please <a href="node/add/event">Add your own!</a>');
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('title', 'What\'s Happening on the New Play Map');
   $handler->override_option('link_display', 'feed_1');
   $handler->override_option('style_plugin', 'rss');
   $handler->override_option('style_options', array(
@@ -10158,7 +10159,7 @@ Please <a href="node/add/event">Add your own!</a>');
     'panel_pane_5' => 0,
     'panel_pane_9' => 0,
   ));
-  $handler->override_option('sitename_title', FALSE);
+  $handler->override_option('sitename_title', 0);
 
   $views[$view->name] = $view;
 
