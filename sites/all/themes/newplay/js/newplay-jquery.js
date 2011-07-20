@@ -408,10 +408,10 @@ newPlay.autocomplete.org = function (node) {
         }
       },
       complete: function() {
-        $('#edit-field-location-0-street').removeClass('form-autocomplete throbbing');
-        $('#edit-field-location-0-city').removeClass('form-autocomplete throbbing');
-        $('#edit-field-location-0-province').removeClass('throbbing');
-        $('#edit-field-location-0-postal-code').removeClass('form-autocomplete throbbing');
+        $('#edit-field-location-0-street').removeClass('form-autocomplete throbbing error');
+        $('#edit-field-location-0-city').removeClass('form-autocomplete throbbing error');
+        $('#edit-field-location-0-province').removeClass('throbbing error');
+        $('#edit-field-location-0-postal-code').removeClass('form-autocomplete throbbing error');
       }
     });
     
