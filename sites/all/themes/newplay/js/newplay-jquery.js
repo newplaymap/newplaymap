@@ -786,7 +786,7 @@ newPlay.addExploreFilters = function() {
     $('div#explore-filters').hide();
 
     // Show the filters if the user previously had it open
-    if ($.cookie('explore-filters') == 'true') {
+    if ($.cookie('explore-filters') == 'true' && $('body.front').length > 0) {
       newPlay.openExploreFilters();
     }
  
