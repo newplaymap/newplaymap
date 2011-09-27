@@ -1423,7 +1423,7 @@ $('<a></a>').attr({
 
     // Check if the filters have been used
 
-    if (newPlay.queryString.length > 1) {
+    if (newPlay.queryString.length > 1 || Drupal.openlayers.popup.jqueryAddressHashPath() != false) {
       // If so turn on all the layers
       newPlay.layerToggle('all-events', true);
       newPlay.layerToggle('filter-results-organizations', true);
