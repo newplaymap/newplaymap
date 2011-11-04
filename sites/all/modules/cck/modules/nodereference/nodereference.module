@@ -253,7 +253,8 @@ function nodereference_field($op, &$node, $field, &$items, $teaser, $page) {
       if ($ids) {
         // Load information about nids that we haven't already loaded during
         // this page request.
-        $missing_ids = array_diff($ids, array_keys($sanitized_nodes));
+        // $missing_ids = array_diff($ids, array_keys($sanitized_nodes));
+        $missing_ids = $ids;
         if (!empty($missing_ids)) {
           $where = array('n.nid in ('. db_placeholders($missing_ids) . ')');
           if (!user_access('administer nodes')) {
