@@ -1,0 +1,3 @@
+<?php
+
+include_once('npm_datasource.features.inc');
