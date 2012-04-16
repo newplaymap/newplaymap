@@ -434,7 +434,7 @@ function npm_datasource_views_default_views() {
   $handler->override_option('relationships', array(
     'field_location_lid' => array(
       'label' => 'Location',
-      'required' => 0,
+      'required' => 1,
       'id' => 'field_location_lid',
       'table' => 'node_data_field_location',
       'field' => 'field_location_lid',
@@ -1008,6 +1008,39 @@ function npm_datasource_views_default_views() {
       'field' => 'field_play_synopsis_value',
       'relationship' => 'field_related_play_nid',
     ),
+    'path' => array(
+      'label' => 'Path',
+      'alter' => array(
+        'alter_text' => 1,
+        'text' => '[path]?event=[nid]',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'absolute' => 0,
+      'exclude' => 0,
+      'id' => 'path',
+      'table' => 'node',
+      'field' => 'path',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'field_related_play_nid',
+    ),
   ));
   $handler->override_option('sorts', array(
     'field_event_date_value' => array(
@@ -1222,6 +1255,7 @@ function npm_datasource_views_default_views() {
       'validate_argument_php' => '',
     ),
   ));
+  $handler->override_option('items_per_page', 0);
   $handler->override_option('path', 'data/events/play');
   $handler->override_option('menu', array(
     'type' => 'none',
