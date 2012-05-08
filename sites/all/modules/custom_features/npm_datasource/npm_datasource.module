@@ -1,3 +1,66 @@
 <?php
 
 include_once('npm_datasource.features.inc');
+
+
+/**
+* Implementation of hook_action_info().
+*/
+function npm_datasource_action_info() {
+  return array(
+    'npm_datasource_update_mongo_action' => array(
+      'description' => t('Updates the Mongo database with current drupal content'),
+      'type' => 'node',
+      'configurable' => FALSE,
+      'hooks' => array('any' => TRUE),
+      ),
+  );
+}
+
+/**
+* Implementation of a Drupal action.
+* Updates the Mongo database with current drupal content
+*/
+function npm_datasource_update_mongo_action(&$object, $context = array()) {
+  npm_datasource_update_mongo($context);
+  // dsm('load');
+  //   $batch = array(
+  //     'title' => t('Updating Map'),
+  //     'operations' => array(
+  //       array('npm_datasource_update_mongo', array()),
+  //     ),
+  //     'finished' => 'npm_datasource_update_mongo_complete',
+  //     'init_message' => t('Starting update of organizations.'),
+  //     'progress_message' => t('Processed @current out of @total.'),
+  //     'error_message' => t('Example Batch has encountered an error.'),
+  //     'file' => '../api/loaddata.php',
+  //   );
+  //   batch_set($batch);
+  //   // Only needed if not inside a form _submit handler.
+  //   // Setting redirect in batch_process.
+  //   dsm(&$object);
+  //   dsm($context);
+  //   batch_process('node/' . $object->nid);
+}
+
+function npm_datasource_update_mongo(&$context) {
+  dsm('npm_datasource_update_mongo');
+  
+  include('../api/loaddata.php');
+  
+  loadOrganizations($m);
+  loadArtists($m);
+  loadEvents($m);
+  loadPlays($m);
+  
+}
+
+function npm_datasource_update_mongo_complete($success, $results, $operations) {
+  if ($success) {
+    $message = format_plural(count($results), 'One post processed.', '@count posts processed.');
+  }
+  else {
+    $message = t('Finished with an error.');
+  }
+  drupal_set_message($message);
+}

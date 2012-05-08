@@ -437,7 +437,7 @@ function npm_datasource_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('items_per_page', 300);
+  $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'views_json');
   $handler->override_option('style_options', array(
     'root_object' => 'nodes',
@@ -449,8 +449,8 @@ function npm_datasource_views_default_views() {
     'content_type' => 'text/json',
     'using_views_api_mode' => 0,
   ));
-  $handler = $view->new_display('page', 'Artists 300 Page', 'page_1');
-  $handler->override_option('path', 'data/artists-300');
+  $handler = $view->new_display('page', 'Artists All Page', 'page_1');
+  $handler->override_option('path', 'data/artists-all');
   $handler->override_option('menu', array(
     'type' => 'none',
     'title' => '',
@@ -1106,6 +1106,65 @@ function npm_datasource_views_default_views() {
       ),
       'relationship' => 'field_related_play_nid',
     ),
+    'city' => array(
+      'label' => 'City',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 0,
+      'id' => 'city',
+      'table' => 'location',
+      'field' => 'city',
+      'relationship' => 'field_location_lid',
+    ),
+    'province' => array(
+      'label' => 'State',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'style' => 'code',
+      'exclude' => 0,
+      'id' => 'province',
+      'table' => 'location',
+      'field' => 'province',
+      'relationship' => 'field_location_lid',
+    ),
   ));
   $handler->override_option('sorts', array(
     'field_event_date_value' => array(
@@ -1196,7 +1255,7 @@ function npm_datasource_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('items_per_page', 300);
+  $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'views_json');
   $handler->override_option('style_options', array(
     'root_object' => 'nodes',
@@ -1208,8 +1267,8 @@ function npm_datasource_views_default_views() {
     'content_type' => 'default',
     'using_views_api_mode' => 0,
   ));
-  $handler = $view->new_display('page', 'Events 300 Page', 'page_1');
-  $handler->override_option('path', 'data/events-300');
+  $handler = $view->new_display('page', 'Events All Page', 'page_1');
+  $handler->override_option('path', 'data/events-all');
   $handler->override_option('menu', array(
     'type' => 'none',
     'title' => '',
@@ -1320,7 +1379,6 @@ function npm_datasource_views_default_views() {
       'validate_argument_php' => '',
     ),
   ));
-  $handler->override_option('items_per_page', 0);
   $handler->override_option('path', 'data/events/play');
   $handler->override_option('menu', array(
     'type' => 'none',
@@ -2080,7 +2138,7 @@ function npm_datasource_views_default_views() {
     'plaintext_output' => 1,
     'format' => 'simple',
     'jsonp_prefix' => '',
-    'content_type' => 'text/json',
+    'content_type' => 'default',
     'using_views_api_mode' => 0,
   ));
   $handler = $view->new_display('page', 'Orgs 300 Page', 'page_1');
