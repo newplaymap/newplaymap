@@ -6,20 +6,14 @@ function newplay_mapping_nodeapi(&$node, $op) {
   if ($op == 'load' && arg(1) == $node->nid && arg(2) != 'edit' && $_COOKIE['has_js']) {
     if ($node->type == 'organization' || $node->type == 'play' || $node->type == 'artist') {      
       $alias = '/' . drupal_get_path_alias('node/' . $node->nid);
-      
-      // if (base_path() == '/') {
-        // that's the only way it works
-        drupal_goto('', NULL, $alias);
-      // }
+
+      // drupal_goto('', NULL, $alias);
     } else if ($node->type == 'event') {
       $play_alias = '/' . drupal_get_path_alias('node/' . $node->field_related_play[0]['nid']);
-      
-      // if (base_path() == '/') {
-        // that's the only way it works
-        $query = '?event=' . $node->nid;
-        drupal_goto('', NULL, $play_alias . $query);
-        // drupal_goto('http://localhost:8888/Quilted/NewPlayMap/newplaymap_private/www', NULL, $play_alias . $query);
-      // }
+
+      $query = '?event=' . $node->nid;
+      // drupal_goto('', NULL, $play_alias . $query);
+      // drupal_goto('http://localhost:8888/Quilted/NewPlayMap/newplaymap_private/www', NULL, $play_alias . $query);
     }
   }
 }
