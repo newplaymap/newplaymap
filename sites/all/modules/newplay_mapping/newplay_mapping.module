@@ -4,17 +4,24 @@ include_once('newplay_mapping.features.inc');
 
 function newplay_mapping_nodeapi(&$node, $op) {
   if ($op == 'load' && arg(1) == $node->nid && arg(2) != 'edit' && $_COOKIE['has_js']) {
+    $alias = '';
+    $query = '';
+    $server = $_SERVER['HTTP_HOST'];
+    $drupal_base_path = base_path();
+    $map_base_path = str_replace('participate/', '', $drupal_base_path);
+    
     if ($node->type == 'organization' || $node->type == 'play' || $node->type == 'artist') {      
-      $alias = '/' . drupal_get_path_alias('node/' . $node->nid);
+      $alias = drupal_get_path_alias('node/' . $node->nid);
 
       // drupal_goto('', NULL, $alias);
     } else if ($node->type == 'event') {
-      $play_alias = '/' . drupal_get_path_alias('node/' . $node->field_related_play[0]['nid']);
+      $alias = drupal_get_path_alias('node/' . $node->field_related_play[0]['nid']);
 
       $query = '?event=' . $node->nid;
       // drupal_goto('', NULL, $play_alias . $query);
-      // drupal_goto('http://localhost:8888/Quilted/NewPlayMap/newplaymap_private/www', NULL, $play_alias . $query);
     }
+
+    drupal_goto('http://' . $server . $map_base_path, NULL, $alias . $query);
   }
 }
 
