@@ -44,14 +44,17 @@ function npm_datasource_update_mongo_action(&$object, $context = array()) {
 }
 
 function npm_datasource_update_mongo(&$context) {
-  dsm('npm_datasource_update_mongo');
+  // dsm('npm_datasource_update_mongo');
   
   include('../api/loaddata.php');
   
-  loadOrganizations($m);
-  loadArtists($m);
-  loadEvents($m);
-  loadPlays($m);
+  $domain = $_SERVER['HTTP_HOST'];
+  $drupal_base_path = str_replace('api/loaddata.php', 'participate/', $_SERVER['REQUEST_URI']);
+
+  loadOrganizations($m, $domain, $drupal_base_path);
+  loadArtists($m, $domain, $drupal_base_path);
+  loadEvents($m, $domain, $drupal_base_path);
+  loadPlays($m, $domain, $drupal_base_path);
   
 }
 
