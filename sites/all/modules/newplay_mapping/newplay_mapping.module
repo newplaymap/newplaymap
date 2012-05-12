@@ -21,7 +21,7 @@ function newplay_mapping_nodeapi(&$node, $op) {
       // drupal_goto('', NULL, $play_alias . $query);
     }
 
-    drupal_goto('http://' . $server . $map_base_path, NULL, $alias . $query);
+    drupal_goto('http://' . $server . $map_base_path, NULL, '/' . $alias . $query);
   }
 }
 
