@@ -531,13 +531,8 @@ function newplay_reference_widget_fallback_alter($element, $field, $items, $delt
  */
 function newplay_reference_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
   switch ($op) {
-    case 'insert':
-      drupal_set_message("It may take a few minutes for you changes to be available on the map.");
-      break;
-      
     case 'update':
       _newplay_reference_identify_contact($node);
-      drupal_set_message("It may take a few minutes for you changes to be available on the map.");
       break;
   }
 }

@@ -1,0 +1,7 @@
+<?php
+/**
+ * Add a module weight to make newplay_mapping module run after pathauto.
+ */
+function newplay_mapping_update_6001() {
+  update_sql("UPDATE {system} SET weight = '5' WHERE name = 'newplay_mapping'");
+}
