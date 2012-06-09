@@ -856,6 +856,11 @@ Drupal.behaviors.newPlay = function(context) {
  * Main Document Ready
  */
 $(document).ready(function() {
+  if ($('.redirect-path').length > 0) {
+    var path = $('.redirect-path').attr('href');
+    newPlay.redirectToMapInit(path);
+  }
+  
   // Allow rel=external to avoid non-semantic target values
   $('[rel=external]').attr('target', '_blank');
   
@@ -1597,3 +1602,26 @@ newPlay.layerItemSelection = function() {
   });
 */
 };
+
+
+newPlay.redirectToMapInit = function(path) {
+  setTimeout('newPlay.redirectToMap("' + path + '")', 10000);
+  var count = parseFloat($('.redirect-countdown').text());
+  newPlay.redirectToMapCountdown(count, path);
+}
+
+newPlay.redirectToMapCountdown = function(count, path) {
+  console.log(count);
+  if (count <= 0) {
+    newPlay.redirectToMap(path);
+   }
+   else {
+    count--;
+    $('.redirect-countdown').text(count);
+    setTimeout('newPlay.redirectToMapCountdown(' + count + ')', 1000);
+   }
+}
+
+newPlay.redirectToMap = function(path) {
+  window.location = path;
+}

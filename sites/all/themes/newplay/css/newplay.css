@@ -274,6 +274,12 @@
   }
 
 /* Misc styles */
+
+  /* General message styles */
+  div.messages.ok {
+    background-color: #DAEBCF;
+    border-color: #C6D9B7;
+  }
   
   /* Nicer style on the node edit / add forms */
   input#edit-title {

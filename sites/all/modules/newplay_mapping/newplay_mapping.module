@@ -18,7 +18,7 @@ function newplay_mapping_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
     case 'view':
       if ($node->type == 'artist' || $node->type == 'event' || $node->type == 'organization' || $node->type == 'play') {
         if ($a4 == 1) {
-          drupal_set_message('You will be redirected in <span class="redirect-countdown">10<span> seconds. Or you may click <a href="' . $path_to_map . '#/' . $content_path . '" class="redirect-path">here</a> to proceed directly to the map.', 'ok');
+          drupal_set_message('You will be redirected in <span class="redirect-countdown">10</span> seconds. Or you may click <a href="' . $path_to_map . '#/' . $content_path . '" class="redirect-path">here</a> to proceed directly to the map.', 'ok');
         }
       }
     break;
