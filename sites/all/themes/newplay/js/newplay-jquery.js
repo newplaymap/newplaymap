@@ -1616,9 +1616,9 @@ newPlay.redirectToMapCountdown = function(count, path) {
     newPlay.redirectToMap(path);
    }
    else {
-    count--;
     $('.redirect-countdown').text(count);
     setTimeout('newPlay.redirectToMapCountdown(' + count + ')', 1000);
+    count--;
    }
 }
 
