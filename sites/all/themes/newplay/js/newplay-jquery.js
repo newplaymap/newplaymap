@@ -1611,7 +1611,6 @@ newPlay.redirectToMapInit = function(path) {
 }
 
 newPlay.redirectToMapCountdown = function(count, path) {
-  console.log(count);
   if (count <= 0) {
     newPlay.redirectToMap(path);
    }
