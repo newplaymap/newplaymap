@@ -1605,7 +1605,6 @@ newPlay.layerItemSelection = function() {
 
 
 newPlay.redirectToMapInit = function(path) {
-  setTimeout('newPlay.redirectToMap("' + path + '")', 10000);
   var count = parseFloat($('.redirect-countdown').text());
   newPlay.redirectToMapCountdown(count, path);
 }
@@ -1616,8 +1615,8 @@ newPlay.redirectToMapCountdown = function(count, path) {
    }
    else {
     $('.redirect-countdown').text(count);
-    setTimeout('newPlay.redirectToMapCountdown(' + count + ')', 1000);
     count--;
+    setTimeout('newPlay.redirectToMapCountdown(' + count + ', "' + path + '")', 1000);
    }
 }
 
