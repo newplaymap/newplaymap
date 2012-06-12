@@ -22,48 +22,36 @@ function npm_datasource_action_info() {
 * Updates the Mongo database with current drupal content
 */
 function npm_datasource_update_mongo_action(&$object, $context = array()) {
-  npm_datasource_update_mongo($context);
-  // dsm('load');
-  //   $batch = array(
-  //     'title' => t('Updating Map'),
-  //     'operations' => array(
-  //       array('npm_datasource_update_mongo', array()),
-  //     ),
-  //     'finished' => 'npm_datasource_update_mongo_complete',
-  //     'init_message' => t('Starting update of organizations.'),
-  //     'progress_message' => t('Processed @current out of @total.'),
-  //     'error_message' => t('Example Batch has encountered an error.'),
-  //     'file' => '../api/loaddata.php',
-  //   );
-  //   batch_set($batch);
-  //   // Only needed if not inside a form _submit handler.
-  //   // Setting redirect in batch_process.
-  //   dsm(&$object);
-  //   dsm($context);
-  //   batch_process('node/' . $object->nid);
+  npm_datasource_update_mongo($object, $context);
 }
 
-function npm_datasource_update_mongo(&$context) {
-  // dsm('npm_datasource_update_mongo');
+function npm_datasource_update_mongo(&$object, $context) {
+  // dsm($object);
   
-  include('../api/loaddata.php');
+  include('../api/loaddata_functions.inc');
+  include('../../../authentication/newplaymap_authentication.php');
+  connectMongo(false);
   
   $domain = $_SERVER['HTTP_HOST'];
-  $drupal_base_path = str_replace('api/loaddata.php', 'participate/', $_SERVER['REQUEST_URI']);
-
-  loadOrganizations($m, $domain, $drupal_base_path);
-  loadArtists($m, $domain, $drupal_base_path);
-  loadEvents($m, $domain, $drupal_base_path);
-  loadPlays($m, $domain, $drupal_base_path);
+  $drupal_base_path = base_path();
+  $id = $object->nid;
   
-}
-
-function npm_datasource_update_mongo_complete($success, $results, $operations) {
-  if ($success) {
-    $message = format_plural(count($results), 'One post processed.', '@count posts processed.');
+  // Update a specific piece of content
+  switch ($object->type) {
+    case 'artist':
+      loadArtists($m, $domain, $drupal_base_path, $id);
+    break;
+    case 'event':
+      loadEvents($m, $domain, $drupal_base_path, $id);
+    break;
+    case 'organization':
+      loadOrganizations($m, $domain, $drupal_base_path, $id);
+    break;
+    case 'play':
+      loadPlays($m, $domain, $drupal_base_path, $id);
+      // Load all events for this play also
+      loadEvents($m, $domain, $drupal_base_path, 'all/' . $id);
+    break;
   }
-  else {
-    $message = t('Finished with an error.');
-  }
-  drupal_set_message($message);
+  
 }
