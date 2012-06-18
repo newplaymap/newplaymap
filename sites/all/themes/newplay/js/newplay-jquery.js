@@ -1294,6 +1294,15 @@ $('<a></a>').attr({
           return true;
         } else {
           // console.log('false');
+          // Revalidate Org field
+          var orgField = $('#edit-field-related-theater-nid-nid');
+          // Only try to validate when there is text in the field
+          if ($(orgField).val().length > 0) {
+            newPlay.validateContactOrg($(orgField).parent(), $(orgField).siblings('.contact-wrapper').find('.contact-name-field').val(), $(orgField).siblings('.contact-wrapper').find('.contact-email-field').val(), $(orgField).val(), false);
+          }
+
+          // @TODO: Revalidate Play field also.
+
           $('#node-form').find('#edit-submit').removeAttr('disabled').attr('value', 'Submit');
           return false;
         }
