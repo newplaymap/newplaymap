@@ -18,7 +18,8 @@ function orgs_fieldgroup_default_groups() {
         'description' => '',
       ),
       'display' => array(
-        'description' => '',
+        'weight' => '-4',
+        'label' => 'above',
         'teaser' => array(
           'format' => 'fieldset',
           'exclude' => 0,
@@ -27,6 +28,7 @@ function orgs_fieldgroup_default_groups() {
           'format' => 'fieldset',
           'exclude' => 0,
         ),
+        'description' => '',
         '4' => array(
           'format' => 'fieldset',
           'exclude' => 0,
@@ -43,7 +45,6 @@ function orgs_fieldgroup_default_groups() {
           'format' => 'fieldset',
           'exclude' => 0,
         ),
-        'label' => 'above',
       ),
     ),
     'weight' => '-4',
@@ -73,7 +74,8 @@ function orgs_fieldgroup_default_groups() {
         'description' => '\'New work\' is how you define it.',
       ),
       'display' => array(
-        'description' => '',
+        'weight' => '6',
+        'label' => 'above',
         'teaser' => array(
           'format' => 'simple',
           'exclude' => 0,
@@ -82,6 +84,7 @@ function orgs_fieldgroup_default_groups() {
           'format' => 'fieldset',
           'exclude' => 0,
         ),
+        'description' => '',
         '4' => array(
           'format' => 'fieldset',
           'exclude' => 0,
@@ -98,7 +101,6 @@ function orgs_fieldgroup_default_groups() {
           'format' => 'fieldset',
           'exclude' => 0,
         ),
-        'label' => 'above',
       ),
     ),
     'weight' => '6',

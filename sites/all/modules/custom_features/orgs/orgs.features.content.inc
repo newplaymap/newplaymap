@@ -11,9 +11,10 @@ function orgs_content_default_fields() {
     'field_name' => 'field_ensemble',
     'type_name' => 'organization',
     'display_settings' => array(
+      'weight' => '2',
+      'parent' => 'group_org_info',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -71,8 +72,8 @@ function orgs_content_default_fields() {
     'field_name' => 'field_location',
     'type_name' => 'organization',
     'display_settings' => array(
-      'weight' => '-1',
-      'parent' => '',
+      'weight' => '3',
+      'parent' => 'group_org_info',
       'label' => array(
         'format' => 'above',
       ),
@@ -434,8 +435,8 @@ function orgs_content_default_fields() {
     'field_name' => 'field_org_art_leaders',
     'type_name' => 'organization',
     'display_settings' => array(
-      'weight' => '1',
-      'parent' => '',
+      'weight' => '5',
+      'parent' => 'group_org_info',
       'label' => array(
         'format' => 'above',
       ),
@@ -552,8 +553,8 @@ function orgs_content_default_fields() {
     'field_name' => 'field_org_description',
     'type_name' => 'organization',
     'display_settings' => array(
-      'weight' => 0,
-      'parent' => '',
+      'weight' => '-1',
+      'parent' => 'group_org_info',
       'label' => array(
         'format' => 'above',
       ),
@@ -675,7 +676,7 @@ function orgs_content_default_fields() {
     'field_name' => 'field_org_event_referrers',
     'type_name' => 'organization',
     'display_settings' => array(
-      'weight' => '8',
+      'weight' => '9',
       'parent' => '',
       'label' => array(
         'format' => 'hidden',
@@ -750,8 +751,8 @@ function orgs_content_default_fields() {
     'field_name' => 'field_org_fouding_date',
     'type_name' => 'organization',
     'display_settings' => array(
-      'weight' => '6',
-      'parent' => '',
+      'weight' => 0,
+      'parent' => 'group_org_info',
       'label' => array(
         'format' => 'above',
       ),
@@ -819,8 +820,8 @@ function orgs_content_default_fields() {
     'field_name' => 'field_org_logo',
     'type_name' => 'organization',
     'display_settings' => array(
-      'weight' => '-4',
-      'parent' => '',
+      'weight' => '-2',
+      'parent' => 'group_org_info',
       'label' => array(
         'format' => 'above',
       ),
@@ -829,7 +830,7 @@ function orgs_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'image_plain',
+        'format' => 'org_standard_default',
         'exclude' => 0,
       ),
       '4' => array(
@@ -971,8 +972,8 @@ function orgs_content_default_fields() {
     'field_name' => 'field_org_season',
     'type_name' => 'organization',
     'display_settings' => array(
-      'weight' => '5',
-      'parent' => '',
+      'weight' => '7',
+      'parent' => 'group_org_info',
       'label' => array(
         'format' => 'above',
       ),
@@ -1030,9 +1031,10 @@ Other',
     'field_name' => 'field_org_type',
     'type_name' => 'organization',
     'display_settings' => array(
+      'weight' => '1',
+      'parent' => 'group_org_info',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -1111,8 +1113,8 @@ Other',
     'field_name' => 'field_org_website',
     'type_name' => 'organization',
     'display_settings' => array(
-      'weight' => '-2',
-      'parent' => '',
+      'weight' => '4',
+      'parent' => 'group_org_info',
       'label' => array(
         'format' => 'above',
       ),
@@ -1181,8 +1183,8 @@ Other',
     'field_name' => 'field_user_contact',
     'type_name' => 'organization',
     'display_settings' => array(
-      'weight' => '26',
-      'parent' => '',
+      'weight' => '6',
+      'parent' => 'group_org_info',
       'label' => array(
         'format' => 'above',
       ),
