@@ -44,20 +44,6 @@
     font-size: 28px;
   }
 
-/* Top right links */
-  
-  .top-right-links-container {
-  position: absolute;
-  top: 18px;
-  right: 0;
-  text-align: right;
-  }
-  
-  .top-right-links-container .welcome,
-  .top-right-links-container .my-account {
-  padding-right: 1em;
-  }
-
 /* Header Add Buttons */
   
   /* Hide when javascript is available */
@@ -1349,6 +1335,11 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 #header-register {
   font-size: 13px;
   margin: 0;
+}
+
+#header-register .welcome,
+#header-register .my-account {
+  padding-right: 1em;
 }
 
 #header-register a {

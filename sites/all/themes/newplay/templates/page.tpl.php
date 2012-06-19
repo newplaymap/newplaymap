@@ -131,7 +131,11 @@ $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '
               <li><a href="<?php print base_path(); ?>feedback">Feedback</a></li>
             </ul>
           </div>
-          <p id="header-register" class="navbar-text pull-right"><span class="welcome">Welcome!</span> <span class="login"><a href="participate/user">Sign in</a> or <a href="participate/user/register">Create Account</a></p>
+          <?php if ($top_right_links): ?>
+            <p id="header-register" class="navbar-text pull-right">
+              <?php print $top_right_links; ?>
+            </p>
+          <?php endif; ?> <!-- /#top-right-links -->
         </div><!--/.nav-collapse -->
       </div>
     </div>
