@@ -117,13 +117,27 @@ $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '
 </head>
 <body class="<?php print $classes; ?>">
 
-  <?php if ($primary_links): ?>
-    <div id="skip-to-nav"><a href="#main-menu"><?php print t('Jump to Navigation'); ?></a></div>
-  <?php endif; ?>
+  <div id="skip-to-nav"><a href="#header-links"><?php print t('Jump to Navigation'); ?></a></div>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <div id="header-bar" class="nav-collapse">
+          <div id="header-links">
+            <a class="map-logo reset-map" href="<?php print str_replace('participate/', '', base_path()); ?>">Home</a>
+            <a class="brand reset-map" href="<?php print str_replace('participate/', '', base_path()); ?>">New Play Map</a>
+            <ul class="nav">
+              <li class="active"><a href="<?php print str_replace('participate/', '', base_path()); ?>" class="reset-map">Home</a></li>
+              <li><a href="<?php print base_path(); ?>about">About the map</a></li>
+              <li><a href="<?php print base_path(); ?>feedback">Feedback</a></li>
+            </ul>
+          </div>
+          <p id="header-register" class="navbar-text pull-right"><span class="welcome">Welcome!</span> <span class="login"><a href="participate/user">Sign in</a> or <a href="participate/user/register">Create Account</a></p>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
 
   <div id="page-wrapper"><div id="page">
-
-    <div id="main-wrapper"><div id="main" class="clearfix<?php if ($primary_links || $secondary_links || $navbar) { print ' with-navbar'; } ?>">
 
       <div id="content" class="column"><div class="section">
 
@@ -162,28 +176,6 @@ $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '
         <?php print $content_bottom; ?>
 
       </div></div> <!-- /.section, /#content -->
-
-      <?php if ($primary_links || $secondary_links || $navbar): ?>
-        <div id="navigation"><div class="clearfix section region region-navbar">
-
-          <a name="navigation" id="navigation"></a>
-
-          <?php if ($primary_links): ?>
-            <div id="primary">
-              <?php print theme('links', $primary_links); ?>
-            </div> <!-- /#primary -->
-          <?php endif; ?>
-
-          <?php if ($secondary_links): ?>
-            <div id="secondary">
-              <?php print theme('links', $secondary_links); ?>
-            </div> <!-- /#secondary -->
-          <?php endif; ?>
-
-          <?php print $navbar; ?>
-
-        </div></div> <!-- /.section, /#navigation -->
-      <?php endif; ?>
 
       <?php if ($left): ?>
         <div id="sidebar-primary"><div id="sidebar-primary-inner" class="region region-left">
