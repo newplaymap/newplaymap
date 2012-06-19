@@ -114,6 +114,7 @@ $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '
   <?php print $head; ?>
   <?php print $styles; ?>
   <?php print $scripts; ?>
+  <script type="text/javascript" src="http://fast.fonts.com/jsapi/73e67b03-0b3a-4405-ae50-0ba968fd953e.js"></script>
 </head>
 <body class="<?php print $classes; ?>">
 
