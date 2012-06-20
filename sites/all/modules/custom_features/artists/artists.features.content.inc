@@ -11,9 +11,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_artist_affiliations',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '6',
+      'parent' => 'group_artist_detailed',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -94,9 +95,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_artist_agent',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '5',
+      'parent' => 'group_artist_detailed',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -176,9 +178,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_artist_alt_name',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '7',
+      'parent' => 'group_artist_detailed',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -238,9 +241,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_artist_bio',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => 0,
+      'parent' => 'group_artist_info',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -300,9 +304,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_artist_email',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '3',
+      'parent' => 'group_artist_detailed',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -356,9 +361,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_artist_facebook',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '7',
+      'parent' => 'group_artist_find_on',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -425,9 +431,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_artist_phone',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '4',
+      'parent' => 'group_artist_detailed',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -487,16 +494,17 @@ function artists_content_default_fields() {
     'field_name' => 'field_artist_photo',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '-1',
+      'parent' => 'group_artist_info',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
-        'format' => 'image_plain',
+        'format' => 'org_standard_default',
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'image_plain',
+        'format' => 'org_standard_default',
         'exclude' => 0,
       ),
       '4' => array(
@@ -578,9 +586,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_artist_twitter',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '8',
+      'parent' => 'group_artist_find_on',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -647,9 +656,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_artist_website',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '6',
+      'parent' => 'group_artist_find_on',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -716,9 +726,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_ensemble',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '-2',
+      'parent' => 'group_artist_info',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -776,8 +787,8 @@ function artists_content_default_fields() {
     'field_name' => 'field_location',
     'type_name' => 'artist',
     'display_settings' => array(
-      'weight' => '-1',
-      'parent' => '',
+      'weight' => '1',
+      'parent' => 'group_artist_info',
       'label' => array(
         'format' => 'above',
       ),
@@ -1313,9 +1324,10 @@ function artists_content_default_fields() {
     'field_name' => 'field_user_contact',
     'type_name' => 'artist',
     'display_settings' => array(
+      'weight' => '2',
+      'parent' => 'group_artist_info',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
