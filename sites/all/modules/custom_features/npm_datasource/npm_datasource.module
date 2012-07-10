@@ -29,7 +29,7 @@ function npm_datasource_update_mongo(&$object, $context) {
   // dsm($object);
   
   include('../api/loaddata_functions.inc');
-  include('../../../authentication/newplaymap_authentication.php');
+  include('../../authentication/newplaymap_authentication.php');
   connectMongo(false);
   
   $domain = $_SERVER['HTTP_HOST'];
