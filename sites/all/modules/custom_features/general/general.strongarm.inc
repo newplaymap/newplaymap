@@ -596,7 +596,7 @@ The New Play Map is a cooperative knowledge and information management project o
     'logo_path' => '',
     'logo_upload' => '',
     'default_favicon' => 0,
-    'favicon_path' => '',
+    'favicon_path' => 'sites/default/files/newplay_favicon.ico',
     'favicon_upload' => '',
   );
 
