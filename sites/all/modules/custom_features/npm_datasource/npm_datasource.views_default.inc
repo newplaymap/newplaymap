@@ -2780,6 +2780,14 @@ function npm_datasource_views_default_views() {
       'field' => 'field_artist_nid',
       'relationship' => 'none',
     ),
+    'field_location_lid' => array(
+      'label' => 'Location',
+      'required' => 0,
+      'id' => 'field_location_lid',
+      'table' => 'node_data_field_location',
+      'field' => 'field_location_lid',
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('fields', array(
     'title' => array(
@@ -3076,6 +3084,36 @@ function npm_datasource_views_default_views() {
       'table' => 'node_data_field_play_alt_titles',
       'field' => 'field_play_alt_titles_value',
       'relationship' => 'none',
+    ),
+    'coordinates' => array(
+      'label' => 'Generative artist coordinates',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'style' => 'dd',
+      'exclude' => 0,
+      'id' => 'coordinates',
+      'table' => 'location',
+      'field' => 'coordinates',
+      'relationship' => 'field_artist_nid',
     ),
   ));
   $handler->override_option('sorts', array(
