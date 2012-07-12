@@ -496,7 +496,7 @@ The New Play Map is a cooperative knowledge and information management project o
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_footer';
-  $strongarm->value = 'Developed through <a href="http://arenastage.org/new-play-institute" title="The American Voices New Play Institute at Arena Stage" target="_blank">The American Voices New Play Institute at Arena Stage</a>.';
+  $strongarm->value = '';
 
   $export['site_footer'] = $strongarm;
   $strongarm = new stdClass;
