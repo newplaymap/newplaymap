@@ -81,7 +81,11 @@ function general_views_default_views() {
     ),
   ));
   $handler->override_option('access', array(
-    'type' => 'none',
+    'type' => 'role',
+    'role' => array(
+      '4' => 4,
+      '3' => 3,
+    ),
   ));
   $handler->override_option('cache', array(
     'type' => 'none',
