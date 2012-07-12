@@ -1665,38 +1665,6 @@ function npm_datasource_views_default_views() {
       ),
       'relationship' => 'none',
     ),
-    'field_event_date_value' => array(
-      'operator' => '<=',
-      'value' => array(
-        'value' => NULL,
-        'min' => NULL,
-        'max' => NULL,
-        'default_date' => 'now',
-        'default_to_date' => '',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'date_fields' => array(
-        'node_data_field_event_date.field_event_date_value' => 'node_data_field_event_date.field_event_date_value',
-      ),
-      'date_method' => 'OR',
-      'granularity' => 'second',
-      'form_type' => 'date_select',
-      'default_date' => 'now',
-      'default_to_date' => '',
-      'year_range' => '-3:+3',
-      'id' => 'field_event_date_value',
-      'table' => 'node_data_field_event_date',
-      'field' => 'field_event_date_value',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
-    ),
   ));
   $handler->override_option('access', array(
     'type' => 'none',
