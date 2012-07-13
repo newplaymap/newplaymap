@@ -700,7 +700,7 @@ newPlay.autocompleteEditSuggestions = function() {
       for (key in matches) {
 
         var extraHelpItem = document.createElement('li');
-        var extraHelpItemPath = '/node/' + key.replace(/.*nid:/, '').replace(']', '') + '/edit';
+        var extraHelpItemPath = Drupal.settings.basePath + 'node/' + key.replace(/.*nid:/, '').replace(']', '') + '/edit';
         $(extraHelpItem).html('<a class="edit-button" href="' + extraHelpItemPath + '">Edit</a> ' + matches[key]);
         extraHelpItem.autocompleteValue = key;
         $(extraHelpList).find('ul').append(extraHelpItem);
