@@ -43,6 +43,7 @@ function npm_datasource_update_mongo(&$object, $context) {
     break;
     case 'event':
       loadEvents($m, $domain, $drupal_base_path, $id);
+      loadPlays($m, $domain, $drupal_base_path, $object->field_related_play[0]['nid']);
     break;
     case 'organization':
       loadOrganizations($m, $domain, $drupal_base_path, $id);
