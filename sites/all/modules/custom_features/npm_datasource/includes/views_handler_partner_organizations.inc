@@ -18,6 +18,7 @@ class views_handler_partner_organizations extends views_handler_field {
     $output = '';
 
     if (!empty($node->field_partner_org[0]['nid'])) {
+      // @TODO: Maybe the whole thing should be json_encoded instead of manually wrapped in brackets?
       $output .= "[";
       $i = 0;
       foreach ($node->field_partner_org as $partner) {
@@ -29,7 +30,7 @@ class views_handler_partner_organizations extends views_handler_field {
 
         $output .= json_encode(array(
           "name" => $partner_node->title,
-          "path" => drupal_lookup_path('alias', 'node/' . $partner_node->nid),
+          "path" => '/' . drupal_lookup_path('alias', 'node/' . $partner_node->nid),
         ));
     
         $i++;
