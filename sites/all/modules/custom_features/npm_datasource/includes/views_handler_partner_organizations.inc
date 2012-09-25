@@ -27,10 +27,12 @@ class views_handler_partner_organizations extends views_handler_field {
         }
 
         $partner_node = node_load($partner['nid']);
+        $partner_has_location = ($partner_node->field_location[0]['lid'] != 0) ? TRUE : FALSE;
 
         $output .= json_encode(array(
           "name" => $partner_node->title,
           "path" => '/' . drupal_lookup_path('alias', 'node/' . $partner_node->nid),
+          "has_location" => $partner_has_location,
         ));
     
         $i++;
