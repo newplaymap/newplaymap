@@ -4,6 +4,24 @@ include_once('npm_datasource.features.inc');
 
 
 /**
+ * Implements hook_views_data().
+ *
+ * Indicates custom field handlers for views.
+ */
+// function npm_datasource_views_data_alter(&$data) {
+//   // dsm('npm_datasource_views_data_alter');
+//   // dsm($data);
+//   $data['npm_datasource']['field_partner_organizations'] = array(
+//     'field' => array(
+//       'title' => t('Partner Organizations'),
+//       'help' => t('Display names and paths to partner organizations.'),
+//       'handler' => 'views_handler_field_partner_organizations',
+//     ),
+//   );
+// }
+
+
+/**
 * Implementation of hook_action_info().
 */
 function npm_datasource_action_info() {
