@@ -1977,11 +1977,14 @@ function npm_datasource_views_default_views() {
   $handler->override_option('relationships', array(
     'field_location_lid' => array(
       'label' => 'Location',
-      'required' => 1,
+      'required' => 0,
       'id' => 'field_location_lid',
       'table' => 'node_data_field_location',
       'field' => 'field_location_lid',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
   ));
   $handler->override_option('fields', array(
