@@ -152,12 +152,6 @@ $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '
         
         <?php print $highlight; ?>
 
-        <?php if ($content_top): ?>
-          <div id="content-top" class="region region-content_top">
-            <?php print $content_top; ?>
-          </div> <!-- /#content-top -->
-        <?php endif; ?>
-
         <?php if ($breadcrumb || $title || $tabs || $help || $messages): ?>
           <div id="content-header">
             <?php print $breadcrumb; ?>
@@ -172,7 +166,11 @@ $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '
           </div> <!-- /#content-header -->
         <?php endif; ?>
 
-        <?php print $content_top; ?>
+        <?php if ($content_top): ?>
+          <div id="content-top" class="region region-content_top">
+            <?php print $content_top; ?>
+          </div> <!-- /#content-top -->
+        <?php endif; ?>
 
         <div id="content-area">
           <?php print $content; ?>
