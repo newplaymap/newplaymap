@@ -129,7 +129,7 @@ $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '
             <ul class="nav">
               <li class="active"><a href="<?php print str_replace('participate/', '', base_path()); ?>" class="reset-map">Home</a></li>
               <li><a href="<?php print base_path(); ?>about">About the map</a></li>
-              <li><a href="<?php print base_path(); ?>feedback">Feedback</a></li>
+              <li><a href="<?php print base_path(); ?>contact">Help</a></li>
             </ul>
           </div>
           <?php if ($top_right_links): ?>
