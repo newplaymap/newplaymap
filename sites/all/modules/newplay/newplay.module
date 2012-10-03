@@ -44,26 +44,12 @@ function newplay_form_alter(&$form, $form_state, $form_id) {
     $form['email']['#description'] = t('Enter an email address of a friend you would like to invite to the map');
   }
 
-  if($form_id == 'views_exposed_form') {
-/*
-print "<pre>";
-print_r ($form);
-print "</pre>";
+  if($form_id == 'contact_mail_page') {
+   	drupal_set_title('Help');
 
-$form['state']
-$form['play']
-
-$firm['artist']
-*/
-
-/* $form['event_type']['#type'] = 'checkboxes'; */
-
-/*
-
-print "<pre>";
-print_r($form['event_type']);
-print "</pre>";
-*/
+    $form['#redirect'] = array(
+      'http://' . $_SERVER['HTTP_HOST'] . str_replace('/participate/', '', base_path())
+    );
   }
 }
 
