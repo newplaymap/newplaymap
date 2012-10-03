@@ -47,6 +47,8 @@ function newplay_form_alter(&$form, $form_state, $form_id) {
   if($form_id == 'contact_mail_page') {
    	drupal_set_title('Help');
 
+    // Redirect to the map
+    // -- Commented out because it won't handle set messages properly and give you a message next time you edit something.
     $form['#redirect'] = array(
       'http://' . $_SERVER['HTTP_HOST'] . str_replace('/participate/', '', base_path())
     );
