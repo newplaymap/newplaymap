@@ -36,6 +36,20 @@ function general_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'content_extra_weights_delete_request';
+  $strongarm->value = array(
+    'title' => '-5',
+    'revision_information' => '-1',
+    'author' => '0',
+    'options' => '1',
+    'menu' => '-2',
+    'path' => '2',
+  );
+
+  $export['content_extra_weights_delete_request'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'dev_mem';
   $strongarm->value = 0;
 
@@ -392,6 +406,15 @@ The New Play Map is a cooperative knowledge and information management project o
   $strongarm->value = '<front>';
 
   $export['logintoboggan_redirect_on_register'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_delete_request';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+
+  $export['node_options_delete_request'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;

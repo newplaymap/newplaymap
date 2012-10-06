@@ -23,5 +23,40 @@ function general_user_default_permissions() {
     ),
   );
 
+  // Exported permission: create delete_request content
+  $permissions['create delete_request content'] = array(
+    'name' => 'create delete_request content',
+    'roles' => array(
+      '0' => 'authenticated user',
+    ),
+  );
+
+  // Exported permission: delete any delete_request content
+  $permissions['delete any delete_request content'] = array(
+    'name' => 'delete any delete_request content',
+    'roles' => array(
+      '0' => 'site admin',
+      '1' => 'website developer',
+    ),
+  );
+
+  // Exported permission: delete own delete_request content
+  $permissions['delete own delete_request content'] = array(
+    'name' => 'delete own delete_request content',
+    'roles' => array(),
+  );
+
+  // Exported permission: edit any delete_request content
+  $permissions['edit any delete_request content'] = array(
+    'name' => 'edit any delete_request content',
+    'roles' => array(),
+  );
+
+  // Exported permission: edit own delete_request content
+  $permissions['edit own delete_request content'] = array(
+    'name' => 'edit own delete_request content',
+    'roles' => array(),
+  );
+
   return $permissions;
 }

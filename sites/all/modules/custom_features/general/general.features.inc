@@ -15,6 +15,17 @@ function general_ctools_plugin_api() {
  */
 function general_node_info() {
   $items = array(
+    'delete_request' => array(
+      'name' => t('Delete Request'),
+      'module' => 'features',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'has_body' => '0',
+      'body_label' => '',
+      'min_word_count' => '0',
+      'help' => t('Please let us know if you need assistance with adding or removing content on the map. Please fill out the form below and feel free to call us at +1 617-800-9627.'),
+    ),
     'page' => array(
       'name' => t('Page'),
       'module' => 'features',
