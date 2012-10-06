@@ -23,11 +23,11 @@ function newplay_mapping_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
       }
     break;
     case 'insert':
-      drupal_set_message("It may take a few minutes for your changes to be available on the map.");
+      // drupal_set_message("It may take a few minutes for your changes to be available on the map.");
       break;
       
     case 'update':
-      drupal_set_message("It may take a few minutes for your changes to be available on the map.");
+      // drupal_set_message("It may take a few minutes for your changes to be available on the map.");
       break;
   }
 }
