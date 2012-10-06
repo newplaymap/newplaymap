@@ -14,6 +14,15 @@ function general_user_default_permissions() {
     ),
   );
 
+  // Exported permission: administer ctools access ruleset
+  $permissions['administer ctools access ruleset'] = array(
+    'name' => 'administer ctools access ruleset',
+    'roles' => array(
+      '0' => 'site admin',
+      '1' => 'website developer',
+    ),
+  );
+
   // Exported permission: administer site-wide contact form
   $permissions['administer site-wide contact form'] = array(
     'name' => 'administer site-wide contact form',
@@ -56,6 +65,14 @@ function general_user_default_permissions() {
   $permissions['edit own delete_request content'] = array(
     'name' => 'edit own delete_request content',
     'roles' => array(),
+  );
+
+  // Exported permission: use PHP for title patterns
+  $permissions['use PHP for title patterns'] = array(
+    'name' => 'use PHP for title patterns',
+    'roles' => array(
+      '0' => 'website developer',
+    ),
   );
 
   return $permissions;
