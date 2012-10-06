@@ -1,5 +1,4 @@
 <?php
-// $Id: node.rules.inc,v 1.1.2.40 2010/03/26 13:56:01 fago Exp $
 
 /**
  * @file rules integration for the node module

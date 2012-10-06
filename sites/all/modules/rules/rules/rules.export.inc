@@ -1,5 +1,4 @@
 <?php
-// $Id: rules.export.inc,v 1.1.2.8 2010/03/26 13:56:10 fago Exp $
 
 /**
  * @file
@@ -41,8 +40,7 @@ function rules_item_rule_set_export($set_name, &$rule_set, &$export, $module = N
 
 
 /**
- * Prefix exported rules with the module name (if given) and change the status to default.
- * If used through the features integration the module name is given.
+ * Change the status of the rules to default.
  */
 function rules_item_rule_export($rule_name, &$rule, &$export, $module = NULL) {
   static $counter = 0;
@@ -55,32 +53,11 @@ function rules_item_rule_export($rule_name, &$rule, &$export, $module = NULL) {
     // Change #status to 'default'.
     $rule['#status'] = 'default';
     // Add the module name as category.
-    $rule += array('#categories' => array());
-    $rule['#categories'][$module] = $module;
-
-    // We increase the counter in any case. As already renamed rules are passed
-    // in first, this makes sure to not overwrite the names of those even if
-    // they aren't saved yet.
-    $counter++;
-
-    if (strpos($rule_name, $module) !== 0) {
-      // Make sure the name isn't already taken.
-      $rules = rules_get_items('rules');
-      while (isset($rules[$module .'_'. $counter])) {
-        $counter++;
-      }
-
-      // Rename the rule.
-      $export['rules'][$module .'_'. $counter] = $rule;
-      // Unset the non-prefixed item.
-      unset($export['rules'][$rule_name]);
+    if (empty($rule['#categories']) || !in_array($module, $rule['#categories'])) {
+      $rule['#categories'][$module] = $module;
     }
   }
 }
-
-
-
-
 
 /**
  * Implementation of hook_features_export_options() for tags.
@@ -93,7 +70,7 @@ function rules_categories_features_export_options() {
 /**
  * Implementation of hook_features_export_render() for categories.
  */
-function rules_categories_features_export_render($module = 'foo', $data, $features_export) {
+function rules_categories_features_export_render($module = 'foo', $data) {
   $code = array();
   $code[] = '  $rules = array();';
   $code[] = '';
@@ -101,9 +78,6 @@ function rules_categories_features_export_render($module = 'foo', $data, $featur
   // Build the usual rules $export structure for sets and categories.
   $rules_export = array();
   $items = rules_get_configured_items('rule_sets');
-  if (isset($features_export['features']['rules_sets'])) {
-    $rules_export['rule_sets'] = array_intersect_key($items, $features_export['features']['rules_sets']);
-  }
   rules_include('rules_admin');
   module_load_include('inc', 'rules_admin', 'rules_admin.export');
   rules_admin_export_by_category($rules_export, $data);
