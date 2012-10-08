@@ -2,25 +2,6 @@
 
 include_once('npm_datasource.features.inc');
 
-
-/**
- * Implements hook_views_data().
- *
- * Indicates custom field handlers for views.
- */
-// function npm_datasource_views_data_alter(&$data) {
-//   // dsm('npm_datasource_views_data_alter');
-//   // dsm($data);
-//   $data['npm_datasource']['field_partner_organizations'] = array(
-//     'field' => array(
-//       'title' => t('Partner Organizations'),
-//       'help' => t('Display names and paths to partner organizations.'),
-//       'handler' => 'views_handler_field_partner_organizations',
-//     ),
-//   );
-// }
-
-
 /**
 * Implementation of hook_action_info().
 */
@@ -28,6 +9,12 @@ function npm_datasource_action_info() {
   return array(
     'npm_datasource_update_mongo_action' => array(
       'description' => t('Updates the Mongo database with current drupal content'),
+      'type' => 'node',
+      'configurable' => FALSE,
+      'hooks' => array('any' => TRUE),
+      ),
+    'npm_datasource_delete_mongo_action' => array(
+      'description' => t('Deletes records from the Mongo database'),
       'type' => 'node',
       'configurable' => FALSE,
       'hooks' => array('any' => TRUE),
@@ -88,6 +75,59 @@ function npm_datasource_update_mongo(&$object, $context) {
       loadPlays($m, $mongo_database, $domain, $drupal_base_path, FALSE, TRUE);
       loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, FALSE, TRUE);
     break;
-  }
+  } 
+}
+
+/**
+* Implementation of a Drupal action.
+* Deletes records from the Mongo database
+*/
+function npm_datasource_delete_mongo_action(&$object, $context = array()) {
+  npm_datasource_delete_mongo($object, $context);
+}
+
+function npm_datasource_delete_mongo(&$object, $context) {
+  include_once('../api/loaddata_functions.inc');
+  include_once('../../authentication/newplaymap_authentication.php');
+  connectMongo(false);
   
+  $id = $object->nid;
+  
+  switch ($context['hook']) {
+    // Update a specific piece of content
+    case 'nodeapi':
+      switch ($object->type) {
+        case 'artist':
+          // Delete the artist record
+          // deleteArtists($m, $mongo_database, $id);
+          
+          // @TODO: Figure out what other content to update
+        break;
+        case 'event':
+          // Delete the event record
+          deleteEvents($m, $mongo_database, $id);
+          
+          // @TODO: Figure out what other content to update
+        break;
+        case 'organization':
+          // Delete the organization record
+          // deleteOrganizations($m, $mongo_database, $id);
+          
+          // @TODO: Figure out what other content to update
+        break;
+        case 'play':
+          // Delete the play record
+          // deletePlays($m, $mongo_database, $id);
+          
+          // @TODO: Figure out what other content to update
+        break;
+      }
+
+      // Redirect to the map
+      $domain = $_SERVER['HTTP_HOST'];
+      $drupal_base_path = base_path();
+      $path_to_map = str_replace("/participate/", "", $drupal_base_path);
+      drupal_goto('http://' . $domain . $path_to_map);
+    break;
+  } 
 }
