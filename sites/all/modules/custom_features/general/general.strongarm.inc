@@ -22,6 +22,27 @@ function general_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'ant_delete_request';
+  $strongarm->value = '1';
+
+  $export['ant_delete_request'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ant_pattern_delete_request';
+  $strongarm->value = 'Delete Request for [field_delete_request_reference-title]';
+
+  $export['ant_pattern_delete_request'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ant_php_delete_request';
+  $strongarm->value = 0;
+
+  $export['ant_php_delete_request'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'block_cache';
   $strongarm->value = '0';
 
@@ -33,6 +54,20 @@ function general_strongarm() {
   $strongarm->value = 0;
 
   $export['comment_page'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'content_extra_weights_delete_request';
+  $strongarm->value = array(
+    'title' => '-5',
+    'revision_information' => '-1',
+    'author' => '0',
+    'options' => '1',
+    'menu' => '-2',
+    'path' => '2',
+  );
+
+  $export['content_extra_weights_delete_request'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -117,6 +152,13 @@ function general_strongarm() {
   $strongarm->value = '1';
 
   $export['devel_store_random'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'enable_revisions_page_delete_request';
+  $strongarm->value = 0;
+
+  $export['enable_revisions_page_delete_request'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -392,6 +434,15 @@ The New Play Map is a cooperative knowledge and information management project o
   $strongarm->value = '<front>';
 
   $export['logintoboggan_redirect_on_register'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_delete_request';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+
+  $export['node_options_delete_request'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;

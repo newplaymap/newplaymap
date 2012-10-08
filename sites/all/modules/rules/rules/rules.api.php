@@ -1,5 +1,4 @@
 <?php
-// $Id: rules.api.php,v 1.1.2.10 2010/03/08 18:22:24 fago Exp $
 
 /**
  * @file
