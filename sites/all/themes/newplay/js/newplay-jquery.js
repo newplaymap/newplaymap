@@ -1050,54 +1050,6 @@ $('<a></a>').attr({
      */
     if (newPlay.formId == 'play') {
       $('#node-form').validate();
-      
-      // @TODO: Refactor to merge with line 412 above (the org and artist version of this same function)
-
-      $('#edit-field-artist-nid-nid').blur(function() {
-        if ($(this).val().length > 0) {
-          // $(this).parent() is edit-field-artist-nid-nid-wrapper
-          newPlay.validateContactPlay('artist', $(this).parent(), $(this).siblings('.contact-wrapper').find('.contact-name-field').val(), $(this).siblings('.contact-wrapper').find('.contact-email-field').val(), $(this).val(), false);
-        }
-      });
-
-      $('#node-form').submit(function() {
-        // Disable to submit button to prevent dupes
-        $('#node-form').find('#edit-submit').attr({
-          'disabled': 'disabled',
-          'value': 'Processing...'
-          });
-        
-        var submit = false;
-
-        // If the form is valid, doing our server validation and create the user
-        // Otherwise just do the normal validation without creating the user
-        var valid = ($('#node-form').valid()) ? true : false;
-
-        var name = $('#edit-field-artist-nid-nid').siblings('.contact-wrapper').find('.contact-name-field').val();
-
-        var email = $('#edit-field-artist-nid-nid').siblings('.contact-wrapper').find('.contact-email-field').val() || 'undefined';
-
-        var nodeId = $('#edit-field-artist-nid-nid').val().replace(/.*nid:/, '').replace(']', '');
-      
-        $.ajax({
-          url: Drupal.settings.basePath + 'newplay_reference/node/' + 'artist' + '/' + name + '/' + email + '/' + nodeId + '/' + valid,
-          dataType: 'json',
-          async: false,
-          success: function(data) {
-            newPlay.validateContact.data = data;
-            // do stuff with the data
-            if (newPlay.validateContact.data.ready_to_submit == true) {
-              submit = true;
-            } else {
-              submit = false;
-              $('#node-form').find('#edit-submit').removeAttr('disabled').attr('value', 'Submit');
-            }
-          }
-        });
-        
-        return submit;        
-      });
-
     }
     
     
