@@ -203,6 +203,7 @@ newPlay.validateContactPlayEvent = function(element, nodeRef, submit) {
     url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + nodeId + '/' + artist + '/' + submit,
     dataType: 'json',
     async: false,
+    beforeSend: newPlay.loadingFeedback,
     success: function(data) {
       // do stuff with the data
       newPlay.validateContact.data = data;
@@ -222,6 +223,8 @@ newPlay.validateContactPlayEvent = function(element, nodeRef, submit) {
           newPlay.insertContactFields($(element).children('#edit-field-related-play-nid-nid'), 'artist');
         }        
       }
+      
+      newPlay.loadingCompleteFeedback();
     }
   });
 }
@@ -1062,10 +1065,7 @@ $('<a></a>').attr({
 
       $('#node-form').submit(function() {
         // Disable to submit button to prevent dupes
-        $('#node-form').find('#edit-submit').attr({
-          'disabled': 'disabled',
-          'value': 'Processing...'
-          });
+        newPlay.loadingFeedback();
         
         var submit = false;
         var playDefault = ($('#edit-field-related-play-nid-nid').length > 0) ? false : true;
@@ -1113,7 +1113,7 @@ $('<a></a>').attr({
         if (newPlay.playSubmit === true && valid == true) {
           return true;
         } else {
-          $('#node-form').find('#edit-submit').removeAttr('disabled').attr('value', 'Submit');
+          newPlay.loadingCompleteFeedback();
           return false;
         }
         // return submit;
@@ -1440,4 +1440,26 @@ newPlay.redirectToMapCountdown = function(count, path) {
 
 newPlay.redirectToMap = function(path) {
   window.location = path;
+}
+
+/*
+ * Function to give users feedback that filter results are loading
+ */
+newPlay.loadingFeedback = function() {
+  if ($('#loading-feedback').length > 0) {
+    $('#loading-feedback').show()
+  } 
+  else {
+    $('<div></div>')
+      .attr('id', 'loading-feedback')
+      .appendTo('body');
+  }
+}
+
+/*
+ * Function to give users feedback that filter results are done loading
+ */
+newPlay.loadingCompleteFeedback = function() {
+  // Hide overlay
+  $('#loading-feedback').hide()
 }
