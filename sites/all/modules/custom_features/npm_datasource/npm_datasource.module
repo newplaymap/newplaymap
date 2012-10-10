@@ -50,11 +50,25 @@ function npm_datasource_update_mongo(&$object, $context) {
           loadArtists($m, $mongo_database, $domain, $drupal_base_path, $id);
         break;
         case 'event':
+          // Update this event
           loadEvents($m, $mongo_database, $domain, $drupal_base_path, $id);
+
+          // Update the play in case a play was created using the add event form
           loadPlays($m, $mongo_database, $domain, $drupal_base_path, $object->field_related_play[0]['nid']);
-          loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $object->field_related_theater[0]['nid']);
-          // @TODO: Add artist - get $id from a node load on play?
-          // loadArtists($m, $mongo_database, $domain, $drupal_base_path, $id);
+
+          // Update the organization in case a play was created using the add event form
+          // Update the partner organizations to help with related lists
+          $all_organization_nids = $object->field_related_theater[0]['nid'];
+          foreach ($object->field_partner_org as $partner_organization) {
+            if (!empty($partner_organization['nid'])) {
+              $all_organization_nids .= '+' . $partner_organization['nid'];
+            }
+          }
+          loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $all_organization_nids);
+
+          // Add related artist from play
+          $play = node_load($object->field_related_play[0]['nid']);
+          loadArtists($m, $mongo_database, $domain, $drupal_base_path, $play->field_artist[0]['nid']);
         break;
         case 'organization':
           loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $id);
