@@ -290,6 +290,7 @@ function newplay_reference_play_contact_callback($type, $name = NULL, $email = N
  * Helper function to create node.
  */
 function newplay_reference_create_node($type, $title, $author) {
+  global $user;
 	// Make the referenced node
   $new_node = (object) NULL;
   $new_node->type = $type;
@@ -300,7 +301,8 @@ function newplay_reference_create_node($type, $title, $author) {
   $new_node->moderate = 0;
   $new_node->sticky = 0;
   // Set author
-  $new_node->name = $author;
+  // $new_node->name = $author;
+  $new_node->uid = $user->uid;
   
   node_save($new_node);
 
