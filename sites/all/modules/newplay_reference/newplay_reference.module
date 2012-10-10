@@ -195,7 +195,7 @@ function newplay_reference_noderef_contact_callback($type, $name = NULL, $email 
  *   If the play exists, this will be the play's nid.
  *   If the play doesn't yet exist, this will be the play's name.
  */
-function newplay_reference_play_contact_callback($type, $name = NULL, $email = NULL, $play, $artist, $submit = 'false') {
+function newplay_reference_play_contact_callback($type, $play, $artist, $submit = 'false') {
   
   // What does this need to do?
     // If the play doesn't exist show a generative artist field (maybe this could happen in the autocomplete similar to the location)
@@ -209,8 +209,6 @@ function newplay_reference_play_contact_callback($type, $name = NULL, $email = N
 	$current_user_name = $user->name;
   
   // Clear out the bs
-  $name = ($name == 'undefined') ? NULL : $name;
-  $email = ($email == 'undefined') ? NULL : $email;
   $artist = ($artist == 'undefined') ? NULL : $artist;
 	
 	$play = check_plain($play);
@@ -264,7 +262,7 @@ function newplay_reference_play_contact_callback($type, $name = NULL, $email = N
 	// Create the Generative Artist node if necessary
 	// If $gen_artist_node is empty, then $artist is the title of the gen artist to be created
 	if ($node_data['ready_to_submit'] === true && empty($gen_artist_node) && !empty($artist)) {
-		$gen_artist_node = newplay_reference_create_node('artist', $artist, $name);		
+		$gen_artist_node = newplay_reference_create_node('artist', $artist);		
 		$artist_nid = $gen_artist_node->nid;
 	}
 
@@ -272,7 +270,7 @@ function newplay_reference_play_contact_callback($type, $name = NULL, $email = N
   // If the node is ready to submit and we don't already have an node referenced
   if ($node_data['ready_to_submit'] === true && empty($play_node) && !empty($gen_artist_node) && !empty($artist_nid)) { 
 		// This requires $gen_artist and $gen_artist_node to exist.
-		$play_node = newplay_reference_create_node($type, $play, $current_user_name);
+		$play_node = newplay_reference_create_node($type, $play);
 		$play_node->field_artist[0]['nid'] = $artist_nid;
 		node_save($play_node);
 		if ($play_node->field_artist[0]['nid'] == $artist_nid) {
@@ -289,7 +287,7 @@ function newplay_reference_play_contact_callback($type, $name = NULL, $email = N
 /**
  * Helper function to create node.
  */
-function newplay_reference_create_node($type, $title, $author) {
+function newplay_reference_create_node($type, $title) {
   global $user;
 	// Make the referenced node
   $new_node = (object) NULL;
@@ -301,7 +299,6 @@ function newplay_reference_create_node($type, $title, $author) {
   $new_node->moderate = 0;
   $new_node->sticky = 0;
   // Set author
-  // $new_node->name = $author;
   $new_node->uid = $user->uid;
   
   node_save($new_node);

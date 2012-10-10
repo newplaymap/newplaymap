@@ -190,7 +190,7 @@ newPlay.validateContactOrg = function(element, name, email, nodeRef, submit) {
  * Copy of newPlay.validateContactOrg()
  * @TODO: Merge with newPlay.validateContactPlay()
  */
-newPlay.validateContactPlayEvent = function(element, name, email, nodeRef, submit) {
+newPlay.validateContactPlayEvent = function(element, nodeRef, submit) {
   var nodeId = nodeRef.replace(/.*:/, '').replace(']', '') || 'undefined';
   
   
@@ -198,9 +198,9 @@ newPlay.validateContactPlayEvent = function(element, name, email, nodeRef, submi
   var email = email || 'undefined';
   var submit = submit || false;
   var artist = artist || 'undefined';
-  
+
   $.ajax({
-    url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + name + '/' + email + '/' + nodeId + '/' + artist + '/' + submit,
+    url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + nodeId + '/' + artist + '/' + submit,
     dataType: 'json',
     async: false,
     success: function(data) {
@@ -292,7 +292,7 @@ newPlay.insertContactFields = function(element, type, existingNameField) {
 
     $('#edit-value')
     .addClass('contact-artist-field')
-    .blur(function() {
+    .keyup(function() {
       if ($(this).val().length > 0) {
         $(this).removeClass('error');
       } else {
@@ -1051,10 +1051,12 @@ $('<a></a>').attr({
      */
     if (newPlay.formId == 'event') {
       newPlay.enableReturnKey($('#edit-field-related-play-nid-nid'));
+      newPlay.enableReturnKey($('.contact-artist-field'));
+      newPlay.enableReturnKey($('#edit-field-related-theater-nid-nid'));
     
       $('#edit-field-related-play-nid-nid').blur(function() {
         if ($(this).val().length > 0) {
-          newPlay.validateContactPlayEvent($(this).parent(), $(this).siblings('.contact-wrapper').find('.contact-name-field').val(), $(this).siblings('.contact-wrapper').find('.contact-email-field').val(), $(this).val(), false);
+          newPlay.validateContactPlayEvent($(this).parent(), $(this).val(), false);
         }
       });
 
@@ -1072,14 +1074,16 @@ $('<a></a>').attr({
                 
         newPlay.validatePlayContact = newPlay.validatePlayContact || {};
         
-        // To prevent multiple submits
-        if (newPlay.playSubmit === true) {
-          return false;
-        }
-
         // Custom validation function
         // It sets the errors and returns true if valid
         var valid = newPlay.formValidation($('#node-form'));
+        
+        // To prevent multiple submits
+        if (newPlay.playSubmit === true && valid == false) {
+          newPlay.formValidation($('#node-form'));
+          $('#node-form').find('#edit-submit').removeAttr('disabled').attr('value', 'Submit');
+          return false;
+        }
         
         if ($('#edit-field-related-play-nid-nid').length > 0) {
           var playContactName = $('#edit-field-related-play-nid-nid').siblings('.contact-wrapper').find('.contact-name-field').val() || 'undefined';
@@ -1091,7 +1095,7 @@ $('<a></a>').attr({
           var artist = $('#edit-value').val().replace(/.*nid:/, '').replace(']', '') || 'undefined';
 
           $.ajax({
-            url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + playContactName + '/' + playEmail + '/' + playNodeId + '/' + artist + '/' + valid,
+            url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + playNodeId + '/' + artist + '/' + valid,
             dataType: 'json',
             async: false,
             success: function(data) {
@@ -1106,7 +1110,7 @@ $('<a></a>').attr({
           });
         }
 
-        if (newPlay.playSubmit === true) {
+        if (newPlay.playSubmit === true && valid == true) {
           return true;
         } else {
           $('#node-form').find('#edit-submit').removeAttr('disabled').attr('value', 'Submit');
