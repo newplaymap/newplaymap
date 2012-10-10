@@ -1108,13 +1108,12 @@ $('<a></a>').attr({
 
         if (newPlay.playSubmit === true) {
           return true;
-        }
+        } else {
           $('#node-form').find('#edit-submit').removeAttr('disabled').attr('value', 'Submit');
           return false;
         }
         // return submit;
-      });  
-      
+      });
     }
     
     
