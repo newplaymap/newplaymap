@@ -987,15 +987,6 @@ $('<a></a>').attr({
    * Universal Add Button
    */
   newPlay.formatLinksBubble($('#block-add_button-0'), 'add_button');
-    
-
-	/*
-	 * Display of Contact info field on forms
-	 */
-	if ($('#edit-field-related-theater-nid-nid').hasClass('error')) {
-		$('#edit-field-related-theater-nid-nid').removeClass('error');
-		$('#edit-add-org-contact-wrapper').show().find('#edit-add-org-contact').addClass('error');
-	} 
   
   
   /*
@@ -1059,36 +1050,13 @@ $('<a></a>').attr({
      * Event page
      */
     if (newPlay.formId == 'event') {
-      // @TODO: Refactor to merge with similar code for the other pages
-
-      $('#edit-field-related-theater-nid-nid').blur(function() {
-        // Only try to validate when there is text in the field
-        if ($(this).val().length > 0) {
-          newPlay.validateContactOrg($(this).parent(), $(this).siblings('.contact-wrapper').find('.contact-name-field').val(), $(this).siblings('.contact-wrapper').find('.contact-email-field').val(), $(this).val(), false);
-        }
-      });
-      
-      // There is a problem with hitting return and the validation plugin
-      // snagging focus before submit gets called
-      // This should probably be done some other way but I couldn't
-      // get a key listening setup working
-      $('#edit-field-related-theater-nid-nid').focus(function() {
-        $('#edit-field-related-play-nid-nid-wrapper input:visible:last').trigger('blur');
-      });
-      
       newPlay.enableReturnKey($('#edit-field-related-play-nid-nid'));
-      newPlay.enableReturnKey($('#edit-value'));
-      
-      newPlay.enableReturnKey($('#edit-field-related-theater-nid-nid'));
-      
-      
+    
       $('#edit-field-related-play-nid-nid').blur(function() {
         if ($(this).val().length > 0) {
           newPlay.validateContactPlayEvent($(this).parent(), $(this).siblings('.contact-wrapper').find('.contact-name-field').val(), $(this).siblings('.contact-wrapper').find('.contact-email-field').val(), $(this).val(), false);
         }
       });
-      
-
 
       $('#node-form').submit(function() {
         // Disable to submit button to prevent dupes
@@ -1098,45 +1066,20 @@ $('<a></a>').attr({
           });
         
         var submit = false;
-        var orgDefault = ($('#edit-field-related-theater-nid-nid').length > 0) ? false : true;
         var playDefault = ($('#edit-field-related-play-nid-nid').length > 0) ? false : true;
         
-        newPlay.orgSubmit = newPlay.orgSubmit || orgDefault;
         newPlay.playSubmit = newPlay.playSubmit || playDefault;
                 
         newPlay.validatePlayContact = newPlay.validatePlayContact || {};
-        newPlay.validateOrgContact = newPlay.validateOrgContact || {};
         
         // To prevent multiple submits
-        if (newPlay.orgSubmit === true && newPlay.playSubmit === true) {
+        if (newPlay.playSubmit === true) {
           return false;
         }
 
         // Custom validation function
         // It sets the errors and returns true if valid
         var valid = newPlay.formValidation($('#node-form'));
-        
-        if ($('#edit-field-related-theater-nid-nid').length > 0) {
-          var orgName = $('#edit-field-related-theater-nid-nid').siblings('.contact-wrapper').find('.contact-name-field').val();
-
-          var orgEmail = $('#edit-field-related-theater-nid-nid').siblings('.contact-wrapper').find('.contact-email-field').val() || 'undefined';
-
-          var orgNodeId = $('#edit-field-related-theater-nid-nid').val().replace(/.*nid:/, '').replace(']', '');
-          $.ajax({
-            url: Drupal.settings.basePath + 'newplay_reference/node/' + 'organization' + '/' + orgName + '/' + orgEmail + '/' + orgNodeId + '/' + valid,
-            dataType: 'json',
-            async: false,
-            success: function(data) {
-              newPlay.validateOrgContact.data = data;
-              // do stuff with the data
-              if (newPlay.validateOrgContact.data.ready_to_submit === true) {
-                newPlay.orgSubmit = true;
-              } else {
-                newPlay.orgSubmit = false;
-              }
-            }
-          });
-        }
         
         if ($('#edit-field-related-play-nid-nid').length > 0) {
           var playContactName = $('#edit-field-related-play-nid-nid').siblings('.contact-wrapper').find('.contact-name-field').val() || 'undefined';
@@ -1162,24 +1105,10 @@ $('<a></a>').attr({
             }
           });
         }
-        
-        
-        // console.log('after ajax - newPlay.orgSubmit: ' + newPlay.orgSubmit);
-        // console.log('after ajax - newPlay.playSubmit: ' + newPlay.playSubmit);
-        if (newPlay.orgSubmit === true && newPlay.playSubmit === true) {
-          // console.log('true');
+
+        if (newPlay.playSubmit === true) {
           return true;
-        } else {
-          // console.log('false');
-          // Revalidate Org field
-          var orgField = $('#edit-field-related-theater-nid-nid');
-          // Only try to validate when there is text in the field
-          if ($(orgField).val().length > 0) {
-            newPlay.validateContactOrg($(orgField).parent(), $(orgField).siblings('.contact-wrapper').find('.contact-name-field').val(), $(orgField).siblings('.contact-wrapper').find('.contact-email-field').val(), $(orgField).val(), false);
-          }
-
-          // @TODO: Revalidate Play field also.
-
+        }
           $('#node-form').find('#edit-submit').removeAttr('disabled').attr('value', 'Submit');
           return false;
         }
