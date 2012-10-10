@@ -248,49 +248,22 @@ function newplay_reference_play_contact_callback($type, $name = NULL, $email = N
 	}
   $gen_artist_node = node_load($artist_nid);
   
-  // Find the user that we're talking about: either the contact field on the node, or looking it up from the name
-  $user_id = NULL;
-  $user_by_name = user_load(array('name' => $name));
-  $user_from_node = $gen_artist_node->field_user_contact[0]['uid'];
-  
-  if ($user_from_node) {
-    $user_id = $user_from_node;
-  } elseif ($user_by_name) {
-    $user_id = $user_by_name->uid;
-    $user_data['name'] = $name;
-  }
-  
   $node_data = array(
     'status' => 'failed',
     'contact_id' => $user_id,
     'ready_to_submit' => false,
   );
   
-  // Does this Node have an existing Contact?
-  if ($user_id) {
-    // The node has an existing contact
-    // Yes: tell the page we're good to go
-    $node_data['status'] = 'found contact';
-    $node_data['ready_to_submit'] = true;
-  } else {
-    // No: tell the page we need a name and email
+  if (empty($artist) && empty($gen_artist_node)) {
     $node_data['status'] = 'contact needed';
-  }
-      
-  // if there is a name and an email but no existing contact that matches
-  if ($submit != 'false' && $node_data['status'] != 'contact found' && !is_null($name) && !is_null($email)) {
-    // Use the newplay_reference_user_callback logic to find or create a user
-    $user_data = newplay_reference_user_callback($name, $email, $submit, $json = FALSE);
-    $node_data['status'] = 'contact created';
-    $node_data['contact_id'] = $user_data['uid'];
+  } else {
     $node_data['ready_to_submit'] = true;
-    $user_id = $user_data['uid'];
   }
   
 
 	// Create the Generative Artist node if necessary
 	// If $gen_artist_node is empty, then $artist is the title of the gen artist to be created
-	if ($node_data['ready_to_submit'] === true && empty($gen_artist_node) && !empty($user_id)) {
+	if ($node_data['ready_to_submit'] === true && empty($gen_artist_node) && !empty($artist)) {
 		$gen_artist_node = newplay_reference_create_node('artist', $artist, $name);		
 		$artist_nid = $gen_artist_node->nid;
 	}
@@ -308,21 +281,6 @@ function newplay_reference_play_contact_callback($type, $name = NULL, $email = N
 	    
 		}
   }
-
-  // if there is a uid and an existing Node add the user as the contact for the node
-  if (!empty($user_id) && !empty($gen_artist_node) && $node_data['ready_to_submit'] == true && !$user_from_node) {
-    // save the uid to the contact field on the node
-    $gen_artist_node->field_user_contact[0]['uid'] = $user_id;
-    node_submit($gen_artist_node);
-    node_save($gen_artist_node);
-    $message = t('User @name has been added as the contact for @node. If you would like to add more details, you can edit it <a href="@edit-link">here</a>.', array('@name' => $user_data['name'], '@node' => $gen_artist_node->title, '@edit-link' => base_path() . 'node/' . $gen_artist_node->nid . '/edit'));
-    drupal_set_message($message);
-  }
-  
-  // @TODO:
-  // If there is a uid and an existing generative artist add the user to the generative artist
-  // and add the generative artist to the play
-  // something like that?
 
   echo drupal_json($node_data);
     
