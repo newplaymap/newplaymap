@@ -5,20 +5,6 @@
  */
 function newplay_reference_menu() {
   $items = array();
-  $items['newplay_reference/user'] = array(
-    'title' => 'New Play Map Reference User Load and Create',
-    'page callback' => 'newplay_reference_user_callback',
-    'access arguments' => array('create organization content'),
-    'type' => MENU_CALLBACK,
-  );
-    
-  $items['newplay_reference/node'] = array(
-    'title' => 'New Play Map Reference Node Lookup',
-    'page callback' => 'newplay_reference_noderef_contact_callback',
-    'access arguments' => array('create organization content'),
-    'type' => MENU_CALLBACK,
-  );
-
   $items['newplay_reference/play'] = array(
     'title' => 'New Play Map Reference Play Lookup',
     'page callback' => 'newplay_reference_play_contact_callback',
@@ -29,163 +15,6 @@ function newplay_reference_menu() {
   return $items;
 }
 
-
-/**
- * AJAX callback for looking up / creating users in the invite system
- */
-function newplay_reference_user_callback($name = NULL, $email = NULL, $submit = 'false', $json = TRUE) {
-  $user_data = array(
-    'status' => 'failed',
-    'name' => $name,
-    'email' => $email,
-    'uid' => '',
-  );
-    
-  // // Check to see if the user exists
-  if (!is_null($name)) {
-    $user = user_load(array('name' => $name));
-    if ($user) {
-      // If so, return user
-      $user_data['name'] = $user->name;
-      $user_data['email'] = $user->mail;
-      $user_data['status'] = 'found name';
-      $user_data['uid'] = $user->uid;
-    }
-  }
-    
-  // If there is an email provided and we haven't already found a name:
-  if (!is_null($email) && $user_data['status'] != 'found name' && valid_email_address($email)) {
-    // If not check the email to see if there is a match
-    $user = user_load(array('mail' => $email));
-    
-    // If so, set the status and return the user
-    if ($user) {
-      $user_data['status'] = 'found email';
-      $user_data['email'] = $user->mail;
-      $user_data['name'] = $user->name;
-      $user_data['uid'] = $user->uid;
-    } else {
-      // @TODO: Replace this with some sort of $user_data['ready_to_submit'] = true or whatever
-      $user_data['status'] = 'ready to submit';
-    } 
-    
-    
-    if ($submit != 'false') {
-      // If there is no user with that email create a user and return the new user
-      $user_data['uid'] = newplay_reference_create_user($name, $email);
-      if ($user_data['uid']) {
-        $user_data['status'] = 'user created';
-      }
-    }    
-  }
-  
-  if ($json == TRUE) {
-    echo drupal_json($user_data);
-  } else {
-    return $user_data;
-  }
-          
-}
-
-
-
-/**
- * Generic AJAX Callback for the Node Ref fields
- *
- */
-function newplay_reference_noderef_contact_callback($type, $name = NULL, $email = NULL, $node_id, $submit = 'false') {
-  
-  // Clear out the bs
-  $name = ($name == 'undefined') ? NULL : $name;
-  $email = ($email == 'undefined') ? NULL : $email;
-  
-  // Even the $node_id is a name, make sure there isn't a matching node in the system
-  $related_field = ($type == 'artist') ? content_fields('field_artist', 'play') : content_fields('field_related_theater', 'event');
-  $related_potential_references = _nodereference_potential_references($related_field, $node_id, 'equals');
-  // dsm($related_potential_references);
-  
-  if (!is_numeric($node_id) && !empty($related_potential_references) && count($related_potential_references) == 1) {
-    $node_id = key($related_potential_references);
-  }
-  
-  // If this comes back as a node, we know the nid came through or we caught it with the name, otherwise assume it's new
-  $node = node_load($node_id);
-  
-  // Find the user that we're talking about: either the contact field on the node, or looking it up from the name
-  $user_id = NULL;
-  $user_by_name = user_load(array('name' => $name));
-  $user_from_node = $node->field_user_contact[0]['uid'];
-  
-  if ($user_from_node) {
-    $user_id = $user_from_node;
-  } elseif ($user_by_name) {
-    $user_id = $user_by_name->uid;
-    $user_data['name'] = $name;
-  }
-  
-  $node_data = array(
-    'status' => 'failed',
-    'contact_id' => $user_id,
-    'ready_to_submit' => false,
-  );
-  
-  // Does this Node have an existing Contact?
-  if ($user_id) {
-    // The node has an existing contact
-    // Yes: tell the page we're good to go
-    $node_data['status'] = 'found contact';
-    $node_data['ready_to_submit'] = true;
-  } else {
-    // No: tell the page we need a name and email
-    $node_data['status'] = 'contact needed';
-  }
-      
-  // if there is a name and an email but no existing contact that matches
-  if ($submit != 'false' && $node_data['status'] != 'contact found' && !is_null($name) && !is_null($email)) {
-    // Use the newplay_reference_user_callback logic to find or create a user
-    $user_data = newplay_reference_user_callback($name, $email, $submit, $json = FALSE);
-    $node_data['status'] = 'contact created';
-    $node_data['contact_id'] = $user_data['uid'];
-    $node_data['ready_to_submit'] = true;
-    $user_id = $user_data['uid'];
-  }
-  
-  // If the node is ready to submit and we don't already have an node referenced
-  if ($node_data['ready_to_submit'] == true && empty($node) && !empty($user_id)) {  
-    // Make the referenced node
-    $new_node = (object) NULL;
-    $new_node->type = $type;
-    $new_node->title = $node_id;
-    $new_node->status = 1;
-    $new_node->comment = 0;
-    $new_node->promote = 0;
-    $new_node->moderate = 0;
-    $new_node->sticky = 0;
-    // Set author to the Contact
-    $new_node->name = $name;
-    
-    node_save($new_node);
-    $node = $new_node;
-    if (!is_null($node) && $node->nid) {
-      // Use the human readable name of the content type
-      $message = t('@type @name has been created. If you would like to add more details, you can edit it <a href="@edit-link">here</a>.', array('@name' => $node->title, '@type' => node_get_types('name', $type), '@edit-link' => base_path() . 'node/' . $node->nid . '/edit'));
-      drupal_set_message($message);
-    }
-  }
-
-  // if there is a uid and an existing Node add the user as the contact for the node
-  if (!empty($user_id) && !empty($node) && $node_data['ready_to_submit'] == true && !$user_from_node) {
-    // save the uid to the contact field on the node
-    $node->field_user_contact[0]['uid'] = $user_id;
-    node_submit($node);
-    node_save($node);
-    $message = t('User @name has been added as the contact for @node. If you would like to add more details, you can edit it <a href="@edit-link">here</a>.', array('@name' => $user_data['name'], '@node' => $node->title, '@edit-link' => base_path() . 'node/' . $node->nid . '/edit'));
-    drupal_set_message($message);
-  }
-
-  echo drupal_json($node_data);
-    
-}
 
 /**
  * AJAX Callback for the Play field on Events
@@ -312,33 +141,6 @@ function newplay_reference_create_node($type, $title) {
 }
 
 
-
-/**
- * Helper function to create a user and send the invite
- */
-function newplay_reference_create_user($name, $email) {
-  // Create a new user
-  $user = user_save(null, array(
-    'name' => $name,
-    'mail' => $email,
-    'pass' => user_password(),
-    'init' => $email,
-    'status' => 1
-  ));
-  
-  // Notify new user unless the user creation failed
-  if (!is_null($user)) {
-    _user_mail_notify('register_no_approval_required', $user);
-    
-    // @TODO: replace with t() function and proper replacement
-    drupal_set_message('The user ' . $name . ' has been created.');
-    
-  }      
-  
-  return $user->uid;
-}
-
-
 /**
  * Implementation of hook_form_alter.
  */
@@ -358,12 +160,7 @@ function newplay_reference_form_alter(&$form, $form_state, $form_id) {
     
   }
 
-  // @TODO: Test to see if this can be deleted
-	if ($form_id == 'organization_node_form' || $form_id == 'artist_node_form') {
-	  $form['contact_email'] = newplay_reference_contact_email();
-	}
-	
-	// The following code can be used to make the titles on Org and Artist forms
+  // The following code can be used to make the titles on Org and Artist forms
 	// Be autocomplete.
   if ($form_id == 'organization_node_form') {
     $form['title']['#autocomplete_path'] = 'nodereference/autocomplete/field_related_theater';
@@ -393,69 +190,6 @@ function newplay_reference_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'play_node_form') {
     $form['field_artist']['#required'] = TRUE;
 	}
-	
-  // dsm($form);
-}
-
-/**
- * Helper function for creating contact email form api field
- */
-function newplay_reference_contact_email($weight = 1) {
-	return array(
-		'#title' => t('Contact Email'),
-		'#type' => 'textfield',
-		'#weight' => $weight,
-		'#description' => t("It looks like this person doesn't have an account yet. Please provide an email where they can be contacted."),
-		'#element_validate' => array('newplay_reference_email_validate')
-	);
-}
-
-/**
- * Validate Organization Contact email field.
- */
-function newplay_reference_email_validate($element, $form_state) {
-	if ($element['#value'] != '' && !valid_email_address(trim($element['#value']))) {
-	    form_set_error($element['#name'],t('"%mail" is not a valid email address',array('%mail' => $element['#value'])));
-  }
-}
-
-/**
- * Validation function for Related Organization field
- */
-function newplay_reference_org_validate($element, $form_state) {
-	// Display the organization contact field if the organization doesn't exists
-	// or if the organization does exist and it's contact is not set
-	
-	// Find the organization contact if it exists	
-	$contact = NULL;
-	if (isset($form_state['values']['field_related_theater'][0]['nid'])) {
-		$nid = $form_state['values']['field_related_theater'][0]['nid'];
-		if ($node = node_load($nid)) {
-			if ($node->type == 'organization') {
-				$contact = $node->field_user_contact[0]['uid'];
-			}
-		}			
-	}
-	
-	// If the organization or the organization's contact doesn't exist 	
-	if (is_null($element['#value']['nid']) || is_null($contact)) {
-		
-		// Display a field with the name add_org_contact
-		form_set_error('field_related_theater', t('Please provide contact information'));
-	}
-	
-	// If the Organization Contact field is filled out
-	if (!is_null($form_state['values']['add_org_contact'])) {
-		$user = user_load(array('mail' => $form_state['values']['add_org_contact']));
-		
-		// If the user doesn't already exist in the system
-		if(empty($user)) {
-			// Create a new user
-		}
-		
-		// Associate the organization with the user
-		// $node->field_related_teater[0]['uid] = $uid;
-	}
 }
 
 
@@ -480,94 +214,4 @@ function newplay_reference_widget_fallback_alter($element, $field, $items, $delt
     );
   }
     
-}
-
-
-/**
- * Implementation of hook_nodeapi().
- */
-function newplay_reference_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
-  switch ($op) {
-    case 'update':
-      _newplay_reference_identify_contact($node);
-      break;
-  }
-}
-
-/**
- * Helper function to find node references and figure out what the appropriate contact should be
- */
-function _newplay_reference_identify_contact($node) {
-  // Find all the node references
-  foreach ($node as $field => $value) {
-    if (is_array($value) && isset($value[0]['nid'])) {
-      
-      $current_reference_nid = $value[0]['nid'];      
-      
-      // Find out if the referenced node has a contact field, or if it's a generative artist content type
-      $referenced_node = node_load($value[0]['nid']);
-      
-      // If the referenced node is a play and has a generative artist, set the artist as the referenced node 
-      if (isset($referenced_node->field_artist)) {
-        $referenced_node = node_load($referenced_node->field_artist[0]['nid']);
-      }
-      
-      // If the referenced node has a contact field, notify the contact of the referenced node
-      if (isset($referenced_node->field_user_contact)) {
-        _newplay_reference_notify($referenced_node, $current_reference_nid, $node->nid, $field);
-      } 
-    }
-  }
-}
-
-/**
- * @param $referenced_node Node object that has the field_user_contact 
- * 
- * @param $current_reference_nid The nid of the node referenced by the node being edited
- * 
- * @param $current_node_nid The nid of the node being edited
- *
- * @param $field The referenced field name
- *
- * Helper function to notify people when they have been referenced
- */
-function _newplay_reference_notify($referenced_node, $current_reference_nid, $current_node_nid, $field) {
-  // Make sure the node has a contact field
-  if(is_array($referenced_node->field_user_contact) && isset($referenced_node->field_user_contact[0]['uid'])) {
-    $contact = $referenced_node->field_user_contact[0]['uid'];
-    
-    // The contact information is currently null. The user is given an opportunity to fill this in.
-    if(is_null($contact)) {
-      // dsm('Popup');
-      // @TODO: Call _newplay_reference_popup()
-    } 
-    
-    // If the contact information is not null, the contact will be notified that their node was referenced. 
-    // This will happen if the user just filled in the contact information using the popup.
-    if(!is_null($contact)) {
-      
-      // Only notify if the reference has changed
-      
-      // Find the original reference
-      $current_node = node_load($current_node_nid);
-      $previous_revision = next(node_revision_list($current_node));
-      $previous_node = node_load($current_node_nid, $previous_revision->vid);
-      $previous_node_field = $previous_node->$field;
-      
-      if($previous_node_field[0]['nid'] != $current_reference_nid) {
-        // Notify the contact
-        // dsm('Contact '. user_load($contact)->name);
-        // @TODO: Write notify code
-      }
-    }
-  }
-}
-
-
-
-/** 
- * Helper function to display a popup requesting email contact 
- */
-function _newplay_reference_popup() {
-  
 }
