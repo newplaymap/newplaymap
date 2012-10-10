@@ -291,7 +291,14 @@ newPlay.insertContactFields = function(element, type, existingNameField) {
       .prependTo(element.siblings('.contact-wrapper'));
 
     $('#edit-value')
-    .addClass('contact-artist-field');
+    .addClass('contact-artist-field')
+    .blur(function() {
+      if ($(this).val().length > 0) {
+        $(this).removeClass('error');
+      } else {
+        $(this).addClass('error');
+      }
+    });
   }  
   
   /* Email */
