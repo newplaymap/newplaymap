@@ -57,8 +57,7 @@ function orgs_fieldgroup_default_groups() {
       '5' => 'field_location',
       '6' => 'field_org_website',
       '7' => 'field_org_art_leaders',
-      '8' => 'field_user_contact',
-      '9' => 'field_org_season',
+      '8' => 'field_org_season',
     ),
   );
 
