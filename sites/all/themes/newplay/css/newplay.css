@@ -1461,8 +1461,11 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 }
 
 /* Loading Feedback */
-#loading-feedback,
-body.node-type-event.section-node-edit #loading-feedback {
+.loading-feedback,
+body.node-type-event.section-node-edit .loading-feedback,
+body.node-type-organization.section-node-edit .loading-feedback,
+body.node-type-artist.section-node-edit .loading-feedback,
+body.node-type-play.section-node-edit .loading-feedback {
   background: url('../images/throbber.gif') no-repeat center center rgba(0,0,0,0.25);
   z-index: 2000;
   height: 100%;
@@ -1472,20 +1475,19 @@ body.node-type-event.section-node-edit #loading-feedback {
   left: 0;
 }
 
-.loading-feedback #loading-feedback {
-  background-color: #bfbfbf;
-}
-
-.loading-feedback .navbar-fixed-top .navbar-inner {
-  z-index: 2001;
-}
-/* Loading Feedback */
-#loading-feedback {
-  background: url('../images/throbber.gif') no-repeat center center rgba(0,0,0,0.25);
-  z-index: 2000;
+.loading-feedback-underlay {
+  background: url('../images/throbber.gif') no-repeat center center #ffffff;
+  z-index: 1;
   height: 100%;
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
+}
+
+body.node-type-event .navbar-fixed-top .navbar-inner,
+body.node-type-organization .navbar-fixed-top .navbar-inner,
+body.node-type-artist .navbar-fixed-top .navbar-inner,
+body.node-type-play .navbar-fixed-top .navbar-inner {
+  z-index: 2;
 }
