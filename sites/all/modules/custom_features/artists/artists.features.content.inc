@@ -83,156 +83,10 @@ function artists_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Affiliations & Memberships',
-      'weight' => '6',
+      'weight' => '1',
       'description' => 'Enter multiple affiliations as a comma separated list.',
       'type' => 'noderefcreate_autocomplete',
       'module' => 'noderefcreate',
-    ),
-  );
-
-  // Exported field: field_artist_agent
-  $fields['artist-field_artist_agent'] = array(
-    'field_name' => 'field_artist_agent',
-    'type_name' => 'artist',
-    'display_settings' => array(
-      'weight' => '5',
-      'parent' => 'group_artist_detailed',
-      'label' => array(
-        'format' => 'above',
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'nodereference',
-    'required' => '0',
-    'multiple' => '0',
-    'module' => 'nodereference',
-    'active' => '1',
-    'referenceable_types' => array(
-      'agent' => 'agent',
-      'blog_feed' => 0,
-      'blog_post' => 0,
-      'event' => 0,
-      'event_type' => 0,
-      'feed' => 0,
-      'feed_item' => 0,
-      'artist' => 0,
-      'artist_type' => 0,
-      'organization' => 0,
-      'org_type' => 0,
-      'page' => 0,
-      'panel' => 0,
-      'photo' => 0,
-      'photo_feed' => 0,
-      'play' => 0,
-      'story' => 0,
-      'twitter_feed' => 0,
-      'twitter_item' => 0,
-      'video' => 0,
-      'video_feed' => 0,
-    ),
-    'advanced_view' => '--',
-    'advanced_view_args' => '',
-    'widget' => array(
-      'autocomplete_match' => 'contains',
-      'default_value' => array(
-        '0' => array(
-          'nid' => NULL,
-          '_error_element' => 'default_value_widget][field_artist_agent][0][nid][nid',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Representative',
-      'weight' => '5',
-      'description' => 'Name of the person folks should contact if they want to work with this Generative Artist. Could be the Artist, an Agent, Manager, etc.',
-      'type' => 'noderefcreate_autocomplete',
-      'module' => 'noderefcreate',
-    ),
-  );
-
-  // Exported field: field_artist_alt_name
-  $fields['artist-field_artist_alt_name'] = array(
-    'field_name' => 'field_artist_alt_name',
-    'type_name' => 'artist',
-    'display_settings' => array(
-      'weight' => '7',
-      'parent' => 'group_artist_detailed',
-      'label' => array(
-        'format' => 'above',
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'text',
-    'required' => '0',
-    'multiple' => '1',
-    'module' => 'text',
-    'active' => '1',
-    'text_processing' => '0',
-    'max_length' => '',
-    'allowed_values' => '',
-    'allowed_values_php' => '',
-    'widget' => array(
-      'rows' => 5,
-      'size' => '60',
-      'default_value' => array(
-        '0' => array(
-          'value' => '',
-          '_error_element' => 'default_value_widget][field_artist_alt_name][0][value',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Alternate names',
-      'weight' => '7',
-      'description' => 'Pseudonyms or variations of this Generative Artist\'s name.',
-      'type' => 'text_textfield',
-      'module' => 'text',
     ),
   );
 
@@ -287,13 +141,14 @@ function artists_content_default_fields() {
       'default_value' => array(
         '0' => array(
           'value' => '',
+          'format' => '1',
           '_error_element' => 'default_value_widget][field_artist_bio][0][value',
         ),
       ),
       'default_value_php' => NULL,
       'label' => 'Bio',
-      'weight' => 0,
-      'description' => 'Biography or short description of this Generative Artist. Who is this Generative Artist in a nutshell?',
+      'weight' => '-2',
+      'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
     ),
@@ -349,8 +204,8 @@ function artists_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Email',
-      'weight' => '3',
-      'description' => 'Email folks should use to contact this Generative Artist. Could be for an agent or other representative. This will be publicly displayed.',
+      'weight' => 0,
+      'description' => ' <strong>This will be publicly displayed.</strong> Email that should be used to contact this Artist. Could be for an agent or other representative.',
       'type' => 'email_textfield',
       'module' => 'email',
     ),
@@ -419,73 +274,10 @@ function artists_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Facebook',
-      'weight' => '7',
-      'description' => 'Enter URL for this Generative Artist\'s Facebook page. Example: <em>http://facebook.com/yourname.</em>',
+      'weight' => '3',
+      'description' => 'Example: <em>http://facebook.com/yourname.</em>',
       'type' => 'link',
       'module' => 'link',
-    ),
-  );
-
-  // Exported field: field_artist_phone
-  $fields['artist-field_artist_phone'] = array(
-    'field_name' => 'field_artist_phone',
-    'type_name' => 'artist',
-    'display_settings' => array(
-      'weight' => '4',
-      'parent' => 'group_artist_detailed',
-      'label' => array(
-        'format' => 'above',
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'text',
-    'required' => '0',
-    'multiple' => '0',
-    'module' => 'text',
-    'active' => '1',
-    'text_processing' => '0',
-    'max_length' => '',
-    'allowed_values' => '',
-    'allowed_values_php' => '',
-    'widget' => array(
-      'rows' => 5,
-      'size' => '60',
-      'default_value' => array(
-        '0' => array(
-          'value' => '',
-          '_error_element' => 'default_value_widget][field_artist_phone][0][value',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Phone number',
-      'weight' => '4',
-      'description' => 'The phone number folks should use to contact this Generative Artist. Could be for an agent or other representative. This will be publicly displayed if it\'s filled out.',
-      'type' => 'text_textfield',
-      'module' => 'text',
     ),
   );
 
@@ -574,7 +366,7 @@ function artists_content_default_fields() {
       'insert_class' => '',
       'insert_width' => '',
       'label' => 'Photo',
-      'weight' => '-1',
+      'weight' => '-3',
       'description' => '',
       'type' => 'imagefield_widget',
       'module' => 'imagefield',
@@ -644,8 +436,8 @@ function artists_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Twitter',
-      'weight' => '8',
-      'description' => 'Enter URL for this Generative Artist\'s Twitter profile. Example: <em>http://twitter.com/yourname.</em>',
+      'weight' => '4',
+      'description' => 'Example: <em>http://twitter.com/yourname.</em>',
       'type' => 'link',
       'module' => 'link',
     ),
@@ -714,8 +506,8 @@ function artists_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Website',
-      'weight' => '6',
-      'description' => 'Enter URL for this Generative Artist\'s website. Example: <em>http://yourname.com.</em>',
+      'weight' => '2',
+      'description' => 'Example: <em>http://yourname.com.</em>',
       'type' => 'link',
       'module' => 'link',
     ),
@@ -775,8 +567,8 @@ function artists_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Ensemble / Collective',
-      'weight' => '-2',
-      'description' => 'Check this box if this Generative Artist Name is an Ensemble or Collective.',
+      'weight' => '-4',
+      'description' => 'Check this box if this Artist is an Ensemble / Collective.',
       'type' => 'optionwidgets_onoff',
       'module' => 'optionwidgets',
     ),
@@ -866,17 +658,17 @@ function artists_content_default_fields() {
       'display' => array(
         'hide' => array(
           'name' => 'name',
+          'street' => 'street',
           'additional' => 'additional',
+          'city' => 'city',
+          'province' => 'province',
+          'country' => 'country',
           'locpick' => 'locpick',
           'province_name' => 'province_name',
+          'country_name' => 'country_name',
+          'map_link' => 'map_link',
           'coords' => 'coords',
-          'street' => 0,
-          'city' => 0,
-          'province' => 0,
           'postal_code' => 0,
-          'country' => 0,
-          'country_name' => 0,
-          'map_link' => 0,
         ),
       ),
     ),
@@ -901,7 +693,7 @@ function artists_content_default_fields() {
                 ),
                 'street' => array(
                   'default' => '',
-                  'collect' => '1',
+                  'collect' => 1,
                   'weight' => '4',
                 ),
                 'additional' => array(
@@ -911,22 +703,22 @@ function artists_content_default_fields() {
                 ),
                 'city' => array(
                   'default' => '',
-                  'collect' => '1',
+                  'collect' => 1,
                   'weight' => '8',
                 ),
                 'province' => array(
                   'default' => '',
-                  'collect' => '1',
+                  'collect' => 1,
                   'weight' => '10',
                 ),
                 'postal_code' => array(
                   'default' => '',
-                  'collect' => '1',
+                  'collect' => 1,
                   'weight' => '12',
                 ),
                 'country' => array(
                   'default' => 'us',
-                  'collect' => '1',
+                  'collect' => 1,
                   'weight' => '14',
                 ),
                 'locpick' => array(
@@ -949,7 +741,7 @@ function artists_content_default_fields() {
                         ),
                         'street' => array(
                           'default' => '',
-                          'collect' => '1',
+                          'collect' => 1,
                           'weight' => '4',
                         ),
                         'additional' => array(
@@ -959,22 +751,22 @@ function artists_content_default_fields() {
                         ),
                         'city' => array(
                           'default' => '',
-                          'collect' => '1',
+                          'collect' => 1,
                           'weight' => '8',
                         ),
                         'province' => array(
                           'default' => '',
-                          'collect' => '1',
+                          'collect' => 1,
                           'weight' => '10',
                         ),
                         'postal_code' => array(
                           'default' => '',
-                          'collect' => '1',
+                          'collect' => 1,
                           'weight' => '12',
                         ),
                         'country' => array(
                           'default' => 'us',
-                          'collect' => '1',
+                          'collect' => 1,
                           'weight' => '14',
                         ),
                         'locpick' => array(
@@ -997,7 +789,7 @@ function artists_content_default_fields() {
                                 ),
                                 'street' => array(
                                   'default' => '',
-                                  'collect' => '1',
+                                  'collect' => 1,
                                   'weight' => '4',
                                 ),
                                 'additional' => array(
@@ -1007,22 +799,22 @@ function artists_content_default_fields() {
                                 ),
                                 'city' => array(
                                   'default' => '',
-                                  'collect' => '1',
+                                  'collect' => 1,
                                   'weight' => '8',
                                 ),
                                 'province' => array(
                                   'default' => '',
-                                  'collect' => '1',
+                                  'collect' => 1,
                                   'weight' => '10',
                                 ),
                                 'postal_code' => array(
                                   'default' => '',
-                                  'collect' => '1',
+                                  'collect' => 1,
                                   'weight' => '12',
                                 ),
                                 'country' => array(
                                   'default' => 'us',
-                                  'collect' => '1',
+                                  'collect' => 1,
                                   'weight' => '14',
                                 ),
                                 'locpick' => array(
@@ -1074,10 +866,7 @@ function artists_content_default_fields() {
                                           'weight' => '14',
                                         ),
                                         'locpick' => array(
-                                          'default' => array(
-                                            'user_latitude' => '',
-                                            'user_longitude' => '',
-                                          ),
+                                          'default' => FALSE,
                                           'collect' => '0',
                                           'weight' => '20',
                                           'nodiff' => TRUE,
@@ -1089,49 +878,297 @@ function artists_content_default_fields() {
                                           'default' => array(
                                             'form' => array(
                                               'fields' => array(
-                                                'lid' => array(
-                                                  'default' => FALSE,
-                                                ),
                                                 'name' => array(
                                                   'default' => '',
-                                                  'collect' => 1,
-                                                  'weight' => 2,
+                                                  'collect' => '0',
+                                                  'weight' => '2',
                                                 ),
                                                 'street' => array(
                                                   'default' => '',
-                                                  'collect' => 1,
-                                                  'weight' => 4,
+                                                  'collect' => '1',
+                                                  'weight' => '4',
                                                 ),
                                                 'additional' => array(
                                                   'default' => '',
-                                                  'collect' => 1,
-                                                  'weight' => 6,
+                                                  'collect' => '0',
+                                                  'weight' => '6',
                                                 ),
                                                 'city' => array(
                                                   'default' => '',
-                                                  'collect' => 0,
-                                                  'weight' => 8,
+                                                  'collect' => '1',
+                                                  'weight' => '8',
                                                 ),
                                                 'province' => array(
                                                   'default' => '',
-                                                  'collect' => 0,
-                                                  'weight' => 10,
+                                                  'collect' => '1',
+                                                  'weight' => '10',
                                                 ),
                                                 'postal_code' => array(
                                                   'default' => '',
-                                                  'collect' => 0,
-                                                  'weight' => 12,
+                                                  'collect' => '1',
+                                                  'weight' => '12',
                                                 ),
                                                 'country' => array(
                                                   'default' => 'us',
-                                                  'collect' => 1,
-                                                  'weight' => 14,
+                                                  'collect' => '1',
+                                                  'weight' => '14',
                                                 ),
                                                 'locpick' => array(
                                                   'default' => FALSE,
-                                                  'collect' => 1,
-                                                  'weight' => 20,
+                                                  'collect' => '0',
+                                                  'weight' => '20',
                                                   'nodiff' => TRUE,
+                                                ),
+                                                'cck_preview_in_progress' => array(
+                                                  'default' => TRUE,
+                                                ),
+                                                'location_settings' => array(
+                                                  'default' => array(
+                                                    'form' => array(
+                                                      'fields' => array(
+                                                        'name' => array(
+                                                          'default' => '',
+                                                          'collect' => '0',
+                                                          'weight' => '2',
+                                                        ),
+                                                        'street' => array(
+                                                          'default' => '',
+                                                          'collect' => '1',
+                                                          'weight' => '4',
+                                                        ),
+                                                        'additional' => array(
+                                                          'default' => '',
+                                                          'collect' => '0',
+                                                          'weight' => '6',
+                                                        ),
+                                                        'city' => array(
+                                                          'default' => '',
+                                                          'collect' => '1',
+                                                          'weight' => '8',
+                                                        ),
+                                                        'province' => array(
+                                                          'default' => '',
+                                                          'collect' => '1',
+                                                          'weight' => '10',
+                                                        ),
+                                                        'postal_code' => array(
+                                                          'default' => '',
+                                                          'collect' => '1',
+                                                          'weight' => '12',
+                                                        ),
+                                                        'country' => array(
+                                                          'default' => 'us',
+                                                          'collect' => '1',
+                                                          'weight' => '14',
+                                                        ),
+                                                        'locpick' => array(
+                                                          'default' => FALSE,
+                                                          'collect' => '0',
+                                                          'weight' => '20',
+                                                          'nodiff' => TRUE,
+                                                        ),
+                                                        'cck_preview_in_progress' => array(
+                                                          'default' => TRUE,
+                                                        ),
+                                                        'location_settings' => array(
+                                                          'default' => array(
+                                                            'form' => array(
+                                                              'fields' => array(
+                                                                'name' => array(
+                                                                  'default' => '',
+                                                                  'collect' => '0',
+                                                                  'weight' => '2',
+                                                                ),
+                                                                'street' => array(
+                                                                  'default' => '',
+                                                                  'collect' => '1',
+                                                                  'weight' => '4',
+                                                                ),
+                                                                'additional' => array(
+                                                                  'default' => '',
+                                                                  'collect' => '0',
+                                                                  'weight' => '6',
+                                                                ),
+                                                                'city' => array(
+                                                                  'default' => '',
+                                                                  'collect' => '1',
+                                                                  'weight' => '8',
+                                                                ),
+                                                                'province' => array(
+                                                                  'default' => '',
+                                                                  'collect' => '1',
+                                                                  'weight' => '10',
+                                                                ),
+                                                                'postal_code' => array(
+                                                                  'default' => '',
+                                                                  'collect' => '1',
+                                                                  'weight' => '12',
+                                                                ),
+                                                                'country' => array(
+                                                                  'default' => 'us',
+                                                                  'collect' => '1',
+                                                                  'weight' => '14',
+                                                                ),
+                                                                'locpick' => array(
+                                                                  'default' => array(
+                                                                    'user_latitude' => '',
+                                                                    'user_longitude' => '',
+                                                                  ),
+                                                                  'collect' => '0',
+                                                                  'weight' => '20',
+                                                                  'nodiff' => TRUE,
+                                                                ),
+                                                                'cck_preview_in_progress' => array(
+                                                                  'default' => TRUE,
+                                                                ),
+                                                                'location_settings' => array(
+                                                                  'default' => array(
+                                                                    'form' => array(
+                                                                      'fields' => array(
+                                                                        'lid' => array(
+                                                                          'default' => FALSE,
+                                                                        ),
+                                                                        'name' => array(
+                                                                          'default' => '',
+                                                                          'collect' => 1,
+                                                                          'weight' => 2,
+                                                                        ),
+                                                                        'street' => array(
+                                                                          'default' => '',
+                                                                          'collect' => 1,
+                                                                          'weight' => 4,
+                                                                        ),
+                                                                        'additional' => array(
+                                                                          'default' => '',
+                                                                          'collect' => 1,
+                                                                          'weight' => 6,
+                                                                        ),
+                                                                        'city' => array(
+                                                                          'default' => '',
+                                                                          'collect' => 0,
+                                                                          'weight' => 8,
+                                                                        ),
+                                                                        'province' => array(
+                                                                          'default' => '',
+                                                                          'collect' => 0,
+                                                                          'weight' => 10,
+                                                                        ),
+                                                                        'postal_code' => array(
+                                                                          'default' => '',
+                                                                          'collect' => 0,
+                                                                          'weight' => 12,
+                                                                        ),
+                                                                        'country' => array(
+                                                                          'default' => 'us',
+                                                                          'collect' => 1,
+                                                                          'weight' => 14,
+                                                                        ),
+                                                                        'locpick' => array(
+                                                                          'default' => FALSE,
+                                                                          'collect' => 1,
+                                                                          'weight' => 20,
+                                                                          'nodiff' => TRUE,
+                                                                        ),
+                                                                        'latitude' => array(
+                                                                          'default' => 0,
+                                                                        ),
+                                                                        'longitude' => array(
+                                                                          'default' => 0,
+                                                                        ),
+                                                                        'source' => array(
+                                                                          'default' => 0,
+                                                                        ),
+                                                                        'is_primary' => array(
+                                                                          'default' => 0,
+                                                                        ),
+                                                                        'delete_location' => array(
+                                                                          'default' => FALSE,
+                                                                          'nodiff' => TRUE,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                'lid' => array(
+                                                                  'default' => FALSE,
+                                                                ),
+                                                                'latitude' => array(
+                                                                  'default' => 0,
+                                                                ),
+                                                                'longitude' => array(
+                                                                  'default' => 0,
+                                                                ),
+                                                                'source' => array(
+                                                                  'default' => 0,
+                                                                ),
+                                                                'is_primary' => array(
+                                                                  'default' => 0,
+                                                                ),
+                                                                'delete_location' => array(
+                                                                  'default' => FALSE,
+                                                                  'nodiff' => TRUE,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            'display' => array(
+                                                              'hide' => array(
+                                                                'name' => 'name',
+                                                                'additional' => 'additional',
+                                                                'locpick' => 'locpick',
+                                                                'coords' => 'coords',
+                                                                'street' => 0,
+                                                                'city' => 0,
+                                                                'province' => 0,
+                                                                'postal_code' => 0,
+                                                                'country' => 0,
+                                                                'province_name' => 0,
+                                                                'country_name' => 0,
+                                                                'map_link' => 0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        'lid' => array(
+                                                          'default' => FALSE,
+                                                        ),
+                                                        'latitude' => array(
+                                                          'default' => 0,
+                                                        ),
+                                                        'longitude' => array(
+                                                          'default' => 0,
+                                                        ),
+                                                        'source' => array(
+                                                          'default' => 0,
+                                                        ),
+                                                        'is_primary' => array(
+                                                          'default' => 0,
+                                                        ),
+                                                        'delete_location' => array(
+                                                          'default' => FALSE,
+                                                          'nodiff' => TRUE,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    'display' => array(
+                                                      'hide' => array(
+                                                        'name' => 'name',
+                                                        'additional' => 'additional',
+                                                        'locpick' => 'locpick',
+                                                        'province_name' => 'province_name',
+                                                        'country_name' => 'country_name',
+                                                        'coords' => 'coords',
+                                                        'street' => 0,
+                                                        'city' => 0,
+                                                        'province' => 0,
+                                                        'postal_code' => 0,
+                                                        'country' => 0,
+                                                        'map_link' => 0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                'lid' => array(
+                                                  'default' => FALSE,
                                                 ),
                                                 'latitude' => array(
                                                   'default' => 0,
@@ -1149,6 +1186,22 @@ function artists_content_default_fields() {
                                                   'default' => FALSE,
                                                   'nodiff' => TRUE,
                                                 ),
+                                              ),
+                                            ),
+                                            'display' => array(
+                                              'hide' => array(
+                                                'name' => 'name',
+                                                'additional' => 'additional',
+                                                'locpick' => 'locpick',
+                                                'province_name' => 'province_name',
+                                                'country_name' => 'country_name',
+                                                'coords' => 'coords',
+                                                'street' => 0,
+                                                'city' => 0,
+                                                'province' => 0,
+                                                'postal_code' => 0,
+                                                'country' => 0,
+                                                'map_link' => 0,
                                               ),
                                             ),
                                           ),
@@ -1179,13 +1232,13 @@ function artists_content_default_fields() {
                                         'name' => 'name',
                                         'additional' => 'additional',
                                         'locpick' => 'locpick',
+                                        'province_name' => 'province_name',
                                         'coords' => 'coords',
                                         'street' => 0,
                                         'city' => 0,
                                         'province' => 0,
                                         'postal_code' => 0,
                                         'country' => 0,
-                                        'province_name' => 0,
                                         'country_name' => 0,
                                         'map_link' => 0,
                                       ),
@@ -1219,13 +1272,13 @@ function artists_content_default_fields() {
                                 'additional' => 'additional',
                                 'locpick' => 'locpick',
                                 'province_name' => 'province_name',
-                                'country_name' => 'country_name',
                                 'coords' => 'coords',
                                 'street' => 0,
                                 'city' => 0,
                                 'province' => 0,
                                 'postal_code' => 0,
                                 'country' => 0,
+                                'country_name' => 0,
                                 'map_link' => 0,
                               ),
                             ),
@@ -1255,17 +1308,17 @@ function artists_content_default_fields() {
                     'display' => array(
                       'hide' => array(
                         'name' => 'name',
+                        'street' => 'street',
                         'additional' => 'additional',
+                        'city' => 'city',
+                        'province' => 'province',
+                        'country' => 'country',
                         'locpick' => 'locpick',
                         'province_name' => 'province_name',
                         'country_name' => 'country_name',
+                        'map_link' => 'map_link',
                         'coords' => 'coords',
-                        'street' => 0,
-                        'city' => 0,
-                        'province' => 0,
                         'postal_code' => 0,
-                        'country' => 0,
-                        'map_link' => 0,
                       ),
                     ),
                   ),
@@ -1294,17 +1347,17 @@ function artists_content_default_fields() {
             'display' => array(
               'hide' => array(
                 'name' => 'name',
+                'street' => 'street',
                 'additional' => 'additional',
+                'city' => 'city',
+                'province' => 'province',
+                'country' => 'country',
                 'locpick' => 'locpick',
                 'province_name' => 'province_name',
+                'country_name' => 'country_name',
+                'map_link' => 'map_link',
                 'coords' => 'coords',
-                'street' => 0,
-                'city' => 0,
-                'province' => 0,
                 'postal_code' => 0,
-                'country' => 0,
-                'country_name' => 0,
-                'map_link' => 0,
               ),
             ),
           ),
@@ -1312,8 +1365,8 @@ function artists_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Location',
-      'weight' => '1',
-      'description' => 'Where this Generative Artist spends most of their time.  Note that whatever address information is entered will be displayed publicly.  If you don\'t want your full address known, just enter your city, state and/or zip code. ',
+      'weight' => '-1',
+      'description' => '',
       'type' => 'location',
       'module' => 'location_cck',
     ),
@@ -1322,15 +1375,12 @@ function artists_content_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Affiliations & Memberships');
-  t('Alternate names');
   t('Bio');
   t('Email');
   t('Ensemble / Collective');
   t('Facebook');
   t('Location');
-  t('Phone number');
   t('Photo');
-  t('Representative');
   t('Twitter');
   t('Website');
 
