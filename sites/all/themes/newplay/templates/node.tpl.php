@@ -106,4 +106,8 @@
   </div>
 
   <?php print $links; ?>
+  
+  <?php if ($loading): ?>
+    <div id="loading-feedback"></div>
+  <?php endif; ?>
 </div> <!-- /.node -->

@@ -119,7 +119,6 @@ function newplay_preprocess_page(&$vars, $hook) {
   // if (arg(0) == 'user' && is_numeric(arg(1)) && (arg(2) == '' || arg(2) == 'view')) {
   //   $vars['title'] = '';
   // }
-   
 }
 
 /**
@@ -185,8 +184,10 @@ function newplay_preprocess_node(&$vars, $hook) {
     $url = 'node/' . $vars['node']->nid; // regular node_link
     
     $vars['more_link'] = l(t("Read more&nbsp;&raquo;"), $url, $read_more_link_options);
-  
-  
+
+    if ($vars['type'] == 'artist' || $vars['type'] == 'organization' || $vars['type'] == 'event' || $vars['type'] == 'play') {
+      $vars['loading'] = TRUE;
+    }
   // EXAMPLES OF COMMON FIELDS
     // To-do: These should all be modified so that they each allow for multiple values in the field.
   

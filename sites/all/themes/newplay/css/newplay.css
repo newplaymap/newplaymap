@@ -1461,6 +1461,25 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 }
 
 /* Loading Feedback */
+#loading-feedback,
+body.node-type-event.section-node-edit #loading-feedback {
+  background: url('../images/throbber.gif') no-repeat center center rgba(0,0,0,0.25);
+  z-index: 2000;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.loading-feedback #loading-feedback {
+  background-color: #bfbfbf;
+}
+
+.loading-feedback .navbar-fixed-top .navbar-inner {
+  z-index: 2001;
+}
+/* Loading Feedback */
 #loading-feedback {
   background: url('../images/throbber.gif') no-repeat center center rgba(0,0,0,0.25);
   z-index: 2000;
