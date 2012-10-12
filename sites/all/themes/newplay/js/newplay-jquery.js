@@ -1,196 +1,12 @@
 var newPlay = newPlay || {};
 
-/*
- * Contact user invite system
- */
-newPlay.validateContact = function(name, email, submit) {
-  newPlay.validateContact.data = {};
-  var name = name || 'undefined';
-  var email = email || 'undefined';
-  var submit = submit || false;
-
-  $.ajax({
-    url: Drupal.settings.basePath + 'newplay_reference/user/' + name + '/' + email + '/' + submit,
-    dataType: 'json',
-    async: false,
-    success: function(data) {
-      // do stuff with the data
-      newPlay.validateContact.data = data;
-      // console.log(newPlay.validateContact.data);
-      
-      // Most of the scenarios should not have an error so lets remove it 
-      // first then add it in when necessary
-      $('#edit-contact-email-wrapper').children('input').removeClass('error');
-      
-      if (newPlay.validateContact.data.status == 'failed') {
-        $('#edit-contact-email-wrapper').insertAfter('#edit-field-user-contact-0-uid-uid-wrapper').slideDown().find('#edit-contact-email').addClass('error');
-        newPlay.errorScroll();
-      } else if (newPlay.validateContact.data.status == 'found email') {
-        // If a user was found using the email, set the name on the form
-        $('#edit-field-user-contact-0-uid-uid').val(newPlay.validateContact.data.name);
-      } else if (newPlay.validateContact.data.status == 'found name') {
-        // Do stuff to the email field if the name is found
-      } else if (newPlay.validateContact.data.status == 'user created') {
-        $('#edit-field-user-contact-0-uid-uid').val(newPlay.validateContact.data.name);
-      }
-      
-      // If we're validating on submit, and everything goes ok, then submit
-      if (submit == true && newPlay.validateContact.data.name != 'failed') {
-        // $('#node-form').submit();
-      }
-    }
-  });
-}
-
-// @TODO: merge with newPlay.validateContact function above
-newPlay.validateContactCustomFields = function(element, name, email, submit) {
-  newPlay.validateContact.data = {};
-  
-  var name = name || 'undefined';
-  var email = email || 'undefined';
-  var submit = submit || false;
-  
-  // never create anything
-  var submit = false;
-
-  $.ajax({
-    url: Drupal.settings.basePath + 'newplay_reference/user/' + name + '/' + email + '/' + submit,
-    dataType: 'json',
-    async: false,
-    success: function(data) {
-      // do stuff with the data
-      newPlay.validateContact.data = data;
-      // console.log(newPlay.validateContact.data);
-      
-      // Most of the scenarios should not have an error so lets remove it 
-      // first then add it in when necessary
-      $(element).find('input').removeClass('error');
-      
-      if (newPlay.validateContact.data.status == 'failed') {
-        $(element)
-          .find('.contact-email-wrapper')
-          .slideDown()
-          .find('.contact-email-field')
-          .addClass('error');
-        newPlay.errorScroll();
-      } else if (newPlay.validateContact.data.status == 'found email') {
-        // If a user was found using the email, set the name on the form
-        $(element)
-          .find('.contact-name-field')
-          .val(newPlay.validateContact.data.name);
-      } else if (newPlay.validateContact.data.status == 'found name') {
-        // Do stuff to the email field if the name is found
-        
-      } else if (newPlay.validateContact.data.status == 'user created') {
-        $(element)
-          .find('.contact-name-field')
-          .val(newPlay.validateContact.data.name);
-      } 
-      
-      // If we're validating on submit, and everything goes ok, then submit
-      if (submit == true && newPlay.validateContact.data.name != 'failed') {
-        // $('#node-form').submit();
-      }
-    }
-  });
-}
-
-
-// I think this could be used for any node reference field 
-newPlay.validateContactPlay = function(type, element, name, email, nodeRef, submit) {
-  var nodeId = nodeRef.replace(/.*:/, '').replace(']', '');
-  
-  var name = name || 'undefined';
-  var email = email || 'undefined';
-  var submit = submit || false;
-  
-  $.ajax({
-    // url: Drupal.settings.basePath + 'newplay_reference/artist/' + name + '/' + email + '/' + nodeId + '/' + submit,
-    url: Drupal.settings.basePath + 'newplay_reference/node/' + type + '/' + name + '/' + email + '/' + nodeId + '/' + submit,
-    dataType: 'json',
-    async: false,
-    success: function(data) {
-      // do stuff with the data
-      newPlay.validateContact.data = data;
-      // console.log(newPlay.validateContact.data);
-      
-      if (newPlay.validateContact.data.status == 'contact needed') {        
-        
-        if ($(element).hasClass('contact-info-processed')) {
-          // The form is there but there is no info
-          // Set error message
-          // console.log($(element).find('.contact-artist-wrapper .contact-artist-field'));
-          $(element)
-            .find('.contact-artist-wrapper .contact-artist-field')
-            .removeClass('error')
-            .end()
-						.find('.contact-name-wrapper')
-						.slideDown()
-						.find('.contact-name-field')
-						.addClass('error');
-						
-					newPlay.errorScroll();
-					
-        } else {
-          $(element).addClass('contact-info-processed');
-          // newPlay.insertContactFields(element);
-          newPlay.insertContactFields($(element).children('#edit-field-artist-nid-nid'), 'organization');
-        }        
-      } else {
-        // console.log($(element));
-        $(element).find('.contact-name-field').removeClass('error');
-        $(element).find('.contact-artist-field').removeClass('error');
-      }
-    }
-  });
-}
-
-
-/**
- * Function to validate and submit Org field on the event form
- * 
- * @TODO: Merge with newPlay.validateContactPlay()
- */
-newPlay.validateContactOrg = function(element, name, email, nodeRef, submit) {
-  var nodeId = nodeRef.replace(/.*:/, '').replace(']', '');
-  
-  var name = name || 'undefined';
-  var email = email || 'undefined';
-  var submit = submit || false;
-  
-  $.ajax({
-    url: Drupal.settings.basePath + 'newplay_reference/node/' + 'organization' + '/' + name + '/' + email + '/' + nodeId + '/' + submit,
-    dataType: 'json',
-    async: false,
-    success: function(data) {
-      // do stuff with the data
-      newPlay.validateContact.data = data;
-      // console.log(newPlay.validateContact.data);
-      
-      if (newPlay.validateContact.data.status == 'contact needed') {        
-        
-        if ($(element).hasClass('contact-info-processed')) {
-          // Set error somewhere? I think this should happen
-          // The form is there but there is no info
-        } else {
-          $(element).addClass('contact-info-processed');
-          newPlay.test = element;
-          // @TODO: test code
-          newPlay.insertContactFields($(element).children('#edit-field-related-theater-nid-nid'), 'organization');
-        }        
-      }
-    }
-  });
-}
-
-
 /**
  * Function to validate Play field on the event form
  * 
  * Copy of newPlay.validateContactOrg()
  * @TODO: Merge with newPlay.validateContactPlay()
  */
-newPlay.validateContactPlayEvent = function(element, name, email, nodeRef, submit) {
+newPlay.validateContactPlayEvent = function(element, nodeRef, submit) {
   var nodeId = nodeRef.replace(/.*:/, '').replace(']', '') || 'undefined';
   
   
@@ -198,17 +14,18 @@ newPlay.validateContactPlayEvent = function(element, name, email, nodeRef, submi
   var email = email || 'undefined';
   var submit = submit || false;
   var artist = artist || 'undefined';
-  
+
   $.ajax({
-    url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + name + '/' + email + '/' + nodeId + '/' + artist + '/' + submit,
+    url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + nodeId + '/' + artist + '/' + submit,
     dataType: 'json',
     async: false,
+    beforeSend: newPlay.loadingFeedback,
     success: function(data) {
       // do stuff with the data
-      newPlay.validateContact.data = data;
-      // console.log(newPlay.validateContact.data);
+      newPlay.validateContactPlayEvent.data = data;
+      // console.log(newPlay.validateContactPlayEvent.data);
       
-      if (newPlay.validateContact.data.status == 'contact needed') {        
+      if (newPlay.validateContactPlayEvent.data.status == 'contact needed') {        
         
         if ($(element).hasClass('contact-info-processed')) {
           // Set error somewhere? I think this should happen
@@ -222,6 +39,8 @@ newPlay.validateContactPlayEvent = function(element, name, email, nodeRef, submi
           newPlay.insertContactFields($(element).children('#edit-field-related-play-nid-nid'), 'artist');
         }        
       }
+      
+      newPlay.loadingCompleteFeedback();
     }
   });
 }
@@ -236,55 +55,7 @@ newPlay.insertContactFields = function(element, type, existingNameField) {
   // Parent element for all contact fields
   $('<div></div>').addClass('contact-wrapper').appendTo($(element).parent());
   
-  /* Name */
-  // Get ready to be able to pass it an existing field instead of creating new ones
-  var contactNameWrapper = '';
-  var contactNameField = '';
-  
-  // Values for different fields depending on whether it's an org or an artist
-  var fieldText = {
-    organization: {
-      nameLabel: "Organization's Content Administrator Name",
-      nameHelp: "Please provide the name of the lead organization's content administrator who is most likely to take the lead in updating and contributing information.",
-      emailHelp: "Please provide the email for the lead organization's contact person."
-    },
-    artist: {
-      nameLabel: "Artist's Content Administrator",
-      nameHelp: "Please provide the name of the artist's content administrator (this could be the same as the artist) who is most likely to take the lead in updating and contributing information about this artist.",
-      emailHelp: "Please provide the email for the above contact person."
-    }
-  };
-  
-  if (existingNameField) {
-    contactNameWrapper = $(existingNameField).parent();
-    contactNameField = existingNameField;
-  } else {
-    contactNameWrapper = $('<div></div>')
-      .addClass('contact-name-wrapper')
-      .hide()
-      .appendTo(element.siblings('.contact-wrapper'));
-    $('<label></label>').attr('for', 'contact-name-field').html(fieldText[type]['nameLabel']).appendTo(contactNameWrapper);
-    contactNameField = $('<input type="text"></input>').attr({
-      'name': 'contact-name-field',
-      'class': 'form-text text contact-name-field'
-    });
-  }
-    
-  contactNameField.blur(function() {
-    if (contactNameField.val().length > 0) {
-      newPlay.validateContactCustomFields(element.parent(), $(element).siblings('.contact-wrapper').find('.contact-name-field').val(), $(element).siblings('.contact-wrapper').find('.contact-email-field').val(), false);
-    }
-  })
-  .appendTo(contactNameWrapper);
-  
-  var contactNameDescription = $('<div></div>')
-    .addClass('description')
-    .html(fieldText[type]['nameHelp'])
-    .appendTo(contactNameWrapper);
-  
-  
   /* Generative artist field for plays */
-  if (type == 'artist') {
     contactArtistWrapper = $('#edit-value-wrapper')
       .hide()
       .addClass('contact-artist-wrapper')
@@ -292,50 +63,17 @@ newPlay.insertContactFields = function(element, type, existingNameField) {
 
     $('#edit-value')
     .addClass('contact-artist-field')
-    .blur(function() {
+    .keyup(function() {
       if ($(this).val().length > 0) {
-        newPlay.validateContactPlay('artist', element.parent(), $('.contact-name-field').val(), $('.contact-email-field').val(), $(this).val(), false);
+        $(this).removeClass('error');
+      } else {
+        $(this).addClass('error');
       }
     });
-  }  
   
-  /* Email */
-  var contactEmailWrapper = $('<div></div>')
-    .addClass('contact-email-wrapper')
-    .hide()
-    .appendTo(element.siblings('.contact-wrapper'));
-
-  $('<label></label>').attr('for', 'contact-email-field').html('Content Administrator Email').appendTo(contactEmailWrapper);
-  
-  
-  $('<input type="text"></input>').attr({
-    'name': 'contact-email-field',
-    'class': 'form-text text contact-email-field'
-  })
-  .blur(function() {
-    newPlay.validateContactCustomFields(element.parent(), $('.contact-name-field').val(), $('.contact-email-field').val(), false);
-  })
-  .appendTo(contactEmailWrapper);
-  
-  var contactEmailDescription = $('<div></div>')
-    .addClass('description')
-    .html(fieldText[type]['emailHelp'])
-    .appendTo(contactEmailWrapper);
-  
-  if (type == 'artist') {
-    $(contactArtistWrapper).children('.contact-artist-field').addClass('error');
-    $(contactArtistWrapper).slideDown();
-    newPlay.errorScroll();
-  } else {
-    $(contactNameWrapper).children('.contact-name-field').addClass('error');
-    $(contactNameWrapper).slideDown();  
-    newPlay.errorScroll();
-  }
-  
-    // The email return handling could be taken care of by returnSubmit()
-    // by commenting the next line out
-    newPlay.enableReturnKey($(contactEmailWrapper).children('.contact-email-field'));
-    newPlay.enableReturnKey($(contactNameWrapper).children('.contact-name-field'));
+  $(contactArtistWrapper).children('.contact-artist-field').addClass('error');
+  $(contactArtistWrapper).slideDown();
+  newPlay.errorScroll();
 }
 
 
@@ -864,57 +602,15 @@ $(document).ready(function() {
   // Allow rel=external to avoid non-semantic target values
   $('[rel=external]').attr('target', '_blank');
   
-/*   width = $(window).width() - 200; */
     width = 300;
    /**
     * Make a close box for the overlay filter
     */
     
    var filtersContent = $('#block-views--exp-organizations-panel_pane_1 .content');
-   /*
-$('<a></a>').attr({
-     'title': 'close',
-     'href': '#'
-   }).html('Close')
-     .addClass('newplay-close-box')
-     .click(function() {
-       $('#filter_button').trigger('click');
-     })
-     .appendTo(filtersContent);
-*/
-    
-/*
-    $(filtersContent).find('.views-exposed-widgets .views-exposed-widget:last').prependTo($(filtersContent).find('.views-exposed-widgets')).attr('id', 'filter-submit');
-   
-*/ 
-/*    newPlay.formatLinksBubble($('#block-views--exp-organizations-panel_pane_1'), 'filter_button', width); */
    
    newPlay.formatLinksBubble($('#block-invite-0'), 'invite_button');
     
-  
-  /*
-   * Dialog for first time logins
-   * Drupal.settings.newplay.firstLogin == true used to come out of the module but
-   * was unreliable
-   * @TODO: delete this if nothing else is broken
-   */
-  // if (($('body.logged-in').length > 0) && (!$.cookie('new-user')) && ($('body.front').length > 0)) {
-  //   $('#block-block-4 .content').dialog({ 
-  //     modal: true,
-  //     title: $('#block-block-4').find('h2'),
-  //     width: 400,
-  //     resizable: false,
-  //     draggable: false,
-  //     close: function(event, ui) {
-  //       $('#feeds-wrapper .item-list ul').cycle('resume');
-  //     }
-  //     
-  //   });
-  //   $.cookie('new-user', false, {expires: 365, domain: 'newplaymap.quilted.coop', path: '/'});
-  // } else {
-  //   $('#feeds-wrapper .item-list ul').cycle('resume');
-  // }
-  
   
   /*
    * Dialog prompt to add feeds
@@ -985,15 +681,6 @@ $('<a></a>').attr({
    * Universal Add Button
    */
   newPlay.formatLinksBubble($('#block-add_button-0'), 'add_button');
-    
-
-	/*
-	 * Display of Contact info field on forms
-	 */
-	if ($('#edit-field-related-theater-nid-nid').hasClass('error')) {
-		$('#edit-field-related-theater-nid-nid').removeClass('error');
-		$('#edit-add-org-contact-wrapper').show().find('#edit-add-org-contact').addClass('error');
-	} 
   
   
   /*
@@ -1042,83 +729,6 @@ $('<a></a>').attr({
       newPlay.autocompleteEditSuggestions();
       
       $('#node-form').validate();
-      
-      $('#edit-field-user-contact-0-uid-uid').blur(function() {
-        if ($(this).val().length > 0) {
-          newPlay.validateContact($(this).val(), $('#edit-contact-email').val(), false);
-        }
-      });
-      
-      newPlay.enableReturnKey($('#edit-field-user-contact-0-uid-uid'));
-      newPlay.enableReturnKey($('#edit-contact-email'));
-      
-      $('#edit-contact-email').blur(function() {
-        if ($(this).val().length > 0) {
-         newPlay.validateContact($('#edit-field-user-contact-0-uid-uid').val(), $(this).val(), false);
-        }
-      });
-
-      $('#node-form').submit(function(form) {
-        // Disable to submit button to prevent dupes
-        $('#node-form').find('#edit-submit').attr({
-          'disabled': 'disabled',
-          'value': 'Processing...'
-          });
-        
-        
-        var submit = false;
-        
-        // If the form is valid, doing our server validation and create the user
-        // Otherwise just do the normal validation without creating the user
-        var valid = ($('#node-form').valid()) ? true : false;
-        
-        // @TODO: The following ajax call is similar to the newPlay.validateContact() function
-        // theoriteically it could be refactored to use the newPlay.validateContact function
-        // if that functioned returned the submit = true / false
-        // and it was set to use async: false
-        
-        // newPlay.validateContact($('#edit-field-user-contact-0-uid-uid').val(), $('#edit-contact-email').val(), valid);
-        var name = $('#edit-field-user-contact-0-uid-uid').val();
-        var email = $('#edit-contact-email').val();
-        
-        // If there is nothing entered in the contact field, submit the form
-        // Contact isn't a required field
-        if (name == '') {
-          return true;
-        }
-        
-        var name = name || 'undefined';
-        var email = email || 'undefined';
-        var submit = submit || false;
-        
-        $.ajax({
-          url: Drupal.settings.basePath + 'newplay_reference/user/' + name + '/' + email + '/' + valid,
-          dataType: 'json',
-          async: false,
-          beforeSend: function() {
-            $('#edit-submit').attr({
-              'disabled': 'disabled',
-              'value': 'Processing...'
-              });
-          },
-          success: function(data) {
-            newPlay.validateContact.data = data;
-            // do stuff with the data
-            if (newPlay.validateContact.data.status == 'failed') {
-              submit = false;
-              $('#edit-contact-email').addClass('error');
-              $('#node-form').find('#edit-submit').removeAttr('disabled').attr('value', 'Submit');
-            } else {
-              submit = true;
-            }
-          },
-        });
-        
-        // Scroll to the first error on the page
-        newPlay.errorScroll();
-        
-        return submit;
-      });
     }
     
     
@@ -1127,54 +737,6 @@ $('<a></a>').attr({
      */
     if (newPlay.formId == 'play') {
       $('#node-form').validate();
-      
-      // @TODO: Refactor to merge with line 412 above (the org and artist version of this same function)
-
-      $('#edit-field-artist-nid-nid').blur(function() {
-        if ($(this).val().length > 0) {
-          // $(this).parent() is edit-field-artist-nid-nid-wrapper
-          newPlay.validateContactPlay('artist', $(this).parent(), $(this).siblings('.contact-wrapper').find('.contact-name-field').val(), $(this).siblings('.contact-wrapper').find('.contact-email-field').val(), $(this).val(), false);
-        }
-      });
-
-      $('#node-form').submit(function() {
-        // Disable to submit button to prevent dupes
-        $('#node-form').find('#edit-submit').attr({
-          'disabled': 'disabled',
-          'value': 'Processing...'
-          });
-        
-        var submit = false;
-
-        // If the form is valid, doing our server validation and create the user
-        // Otherwise just do the normal validation without creating the user
-        var valid = ($('#node-form').valid()) ? true : false;
-
-        var name = $('#edit-field-artist-nid-nid').siblings('.contact-wrapper').find('.contact-name-field').val();
-
-        var email = $('#edit-field-artist-nid-nid').siblings('.contact-wrapper').find('.contact-email-field').val() || 'undefined';
-
-        var nodeId = $('#edit-field-artist-nid-nid').val().replace(/.*nid:/, '').replace(']', '');
-      
-        $.ajax({
-          url: Drupal.settings.basePath + 'newplay_reference/node/' + 'artist' + '/' + name + '/' + email + '/' + nodeId + '/' + valid,
-          dataType: 'json',
-          async: false,
-          success: function(data) {
-            newPlay.validateContact.data = data;
-            // do stuff with the data
-            if (newPlay.validateContact.data.ready_to_submit == true) {
-              submit = true;
-            } else {
-              submit = false;
-              $('#node-form').find('#edit-submit').removeAttr('disabled').attr('value', 'Submit');
-            }
-          }
-        });
-        
-        return submit;        
-      });
-
     }
     
     
@@ -1182,83 +744,36 @@ $('<a></a>').attr({
      * Event page
      */
     if (newPlay.formId == 'event') {
-      // @TODO: Refactor to merge with similar code for the other pages
-
-      $('#edit-field-related-theater-nid-nid').blur(function() {
-        // Only try to validate when there is text in the field
-        if ($(this).val().length > 0) {
-          newPlay.validateContactOrg($(this).parent(), $(this).siblings('.contact-wrapper').find('.contact-name-field').val(), $(this).siblings('.contact-wrapper').find('.contact-email-field').val(), $(this).val(), false);
-        }
-      });
-      
-      // There is a problem with hitting return and the validation plugin
-      // snagging focus before submit gets called
-      // This should probably be done some other way but I couldn't
-      // get a key listening setup working
-      $('#edit-field-related-theater-nid-nid').focus(function() {
-        $('#edit-field-related-play-nid-nid-wrapper input:visible:last').trigger('blur');
-      });
-      
       newPlay.enableReturnKey($('#edit-field-related-play-nid-nid'));
-      newPlay.enableReturnKey($('#edit-value'));
-      
+      newPlay.enableReturnKey($('.contact-artist-field'));
       newPlay.enableReturnKey($('#edit-field-related-theater-nid-nid'));
-      
-      
+    
       $('#edit-field-related-play-nid-nid').blur(function() {
         if ($(this).val().length > 0) {
-          newPlay.validateContactPlayEvent($(this).parent(), $(this).siblings('.contact-wrapper').find('.contact-name-field').val(), $(this).siblings('.contact-wrapper').find('.contact-email-field').val(), $(this).val(), false);
+          newPlay.validateContactPlayEvent($(this).parent(), $(this).val(), false);
         }
       });
-      
-
 
       $('#node-form').submit(function() {
         // Disable to submit button to prevent dupes
-        $('#node-form').find('#edit-submit').attr({
-          'disabled': 'disabled',
-          'value': 'Processing...'
-          });
+        newPlay.loadingFeedback();
         
         var submit = false;
-        var orgDefault = ($('#edit-field-related-theater-nid-nid').length > 0) ? false : true;
         var playDefault = ($('#edit-field-related-play-nid-nid').length > 0) ? false : true;
         
-        newPlay.orgSubmit = newPlay.orgSubmit || orgDefault;
         newPlay.playSubmit = newPlay.playSubmit || playDefault;
                 
         newPlay.validatePlayContact = newPlay.validatePlayContact || {};
-        newPlay.validateOrgContact = newPlay.validateOrgContact || {};
         
-        // To prevent multiple submits
-        if (newPlay.orgSubmit === true && newPlay.playSubmit === true) {
-          return false;
-        }
-
         // Custom validation function
         // It sets the errors and returns true if valid
         var valid = newPlay.formValidation($('#node-form'));
         
-        if ($('#edit-field-related-theater-nid-nid').length > 0) {
-          var orgName = $('#edit-field-related-theater-nid-nid').siblings('.contact-wrapper').find('.contact-name-field').val();
-
-          var orgEmail = $('#edit-field-related-theater-nid-nid').siblings('.contact-wrapper').find('.contact-email-field').val() || 'undefined';
-
-          var orgNodeId = $('#edit-field-related-theater-nid-nid').val().replace(/.*nid:/, '').replace(']', '');
-          $.ajax({
-            url: Drupal.settings.basePath + 'newplay_reference/node/' + 'organization' + '/' + orgName + '/' + orgEmail + '/' + orgNodeId + '/' + valid,
-            dataType: 'json',
-            async: false,
-            success: function(data) {
-              newPlay.validateOrgContact.data = data;
-              // do stuff with the data
-              if (newPlay.validateOrgContact.data.ready_to_submit === true) {
-                newPlay.orgSubmit = true;
-              } else {
-                newPlay.orgSubmit = false;
-              }
-            }
-          });
+        // To prevent multiple submits
+        if (newPlay.playSubmit === true && valid == false) {
+          newPlay.formValidation($('#node-form'));
+          newPlay.loadingCompleteFeedback();
+          return false;
         }
         
         if ($('#edit-field-related-play-nid-nid').length > 0) {
@@ -1271,7 +786,7 @@ $('<a></a>').attr({
           var artist = $('#edit-value').val().replace(/.*nid:/, '').replace(']', '') || 'undefined';
 
           $.ajax({
-            url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + playContactName + '/' + playEmail + '/' + playNodeId + '/' + artist + '/' + valid,
+            url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + playNodeId + '/' + artist + '/' + valid,
             dataType: 'json',
             async: false,
             success: function(data) {
@@ -1282,33 +797,19 @@ $('<a></a>').attr({
               } else {
                 newPlay.playSubmit = false;
               }
+              newPlay.loadingCompleteFeedback();
             }
           });
         }
-        
-        
-        // console.log('after ajax - newPlay.orgSubmit: ' + newPlay.orgSubmit);
-        // console.log('after ajax - newPlay.playSubmit: ' + newPlay.playSubmit);
-        if (newPlay.orgSubmit === true && newPlay.playSubmit === true) {
-          // console.log('true');
+
+        if (newPlay.playSubmit === true && valid == true) {
           return true;
         } else {
-          // console.log('false');
-          // Revalidate Org field
-          var orgField = $('#edit-field-related-theater-nid-nid');
-          // Only try to validate when there is text in the field
-          if ($(orgField).val().length > 0) {
-            newPlay.validateContactOrg($(orgField).parent(), $(orgField).siblings('.contact-wrapper').find('.contact-name-field').val(), $(orgField).siblings('.contact-wrapper').find('.contact-email-field').val(), $(orgField).val(), false);
-          }
-
-          // @TODO: Revalidate Play field also.
-
-          $('#node-form').find('#edit-submit').removeAttr('disabled').attr('value', 'Submit');
+          newPlay.loadingCompleteFeedback();
           return false;
         }
         // return submit;
-      });  
-      
+      });
     }
     
     
@@ -1631,4 +1132,26 @@ newPlay.redirectToMapCountdown = function(count, path) {
 
 newPlay.redirectToMap = function(path) {
   window.location = path;
+}
+
+/*
+ * Function to give users feedback that filter results are loading
+ */
+newPlay.loadingFeedback = function() {
+  if ($('#loading-feedback').length > 0) {
+    $('#loading-feedback').show()
+  } 
+  else {
+    $('<div></div>')
+      .attr('id', 'loading-feedback')
+      .appendTo('body');
+  }
+}
+
+/*
+ * Function to give users feedback that filter results are done loading
+ */
+newPlay.loadingCompleteFeedback = function() {
+  // Hide overlay
+  $('#loading-feedback').hide()
 }

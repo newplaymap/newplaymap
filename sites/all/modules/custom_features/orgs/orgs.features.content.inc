@@ -1181,81 +1181,9 @@ Other',
     ),
   );
 
-  // Exported field: field_user_contact
-  $fields['organization-field_user_contact'] = array(
-    'field_name' => 'field_user_contact',
-    'type_name' => 'organization',
-    'display_settings' => array(
-      'weight' => '6',
-      'parent' => 'group_org_info',
-      'label' => array(
-        'format' => 'above',
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'userreference',
-    'required' => '0',
-    'multiple' => '0',
-    'module' => 'userreference',
-    'active' => '1',
-    'referenceable_roles' => array(
-      '2' => 2,
-      '6' => 0,
-      '5' => 0,
-      '4' => 0,
-      '7' => 0,
-      '3' => 0,
-    ),
-    'referenceable_status' => '',
-    'advanced_view' => '--',
-    'advanced_view_args' => '',
-    'widget' => array(
-      'autocomplete_match' => 'contains',
-      'size' => '60',
-      'reverse_link' => 0,
-      'default_value' => array(
-        '0' => array(
-          'uid' => NULL,
-          '_error_element' => 'default_value_widget][field_user_contact][0][uid][uid',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Content Administrator',
-      'weight' => '6',
-      'description' => 'Please provide the name of the person (this could be you) who is most likely to take the lead in updating and contributing information about this organization and its related play events and artists.  If this person does not already have an account on the New Play Map, you will be asked to provide an email address so we may let that person know that he/she has been added as a "Content Administrator". ',
-      'type' => 'userreference_autocomplete',
-      'module' => 'userreference',
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Associated Events');
-  t('Content Administrator');
   t('Ensemble / Collective');
   t('Founding date');
   t('How many new play development activities do you produce on average per year (i.e. readings, workshops, etc.)?');
