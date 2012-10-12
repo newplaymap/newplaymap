@@ -51,14 +51,13 @@ function newplay_reference_play_contact_callback($type, $play, $artist, $submit 
     
 	if (is_numeric($play)) {
 	  $play_nid = $play;
-	} elseif (!empty($play_potential_references) && count($play_potential_references) == 1) {
+	} elseif (!empty($play_potential_references)) {
     $play_nid = key($play_potential_references);
 	} else {
 	  $play_nid = NULL;
 	}
 	
   $play_node = node_load($play_nid);
-  // dsm($play_node);
   
 	$artist = check_plain($artist);
 	
