@@ -1459,3 +1459,14 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   padding-top: 5px;
   text-transform: uppercase;
 }
+
+/* Loading Feedback */
+#loading-feedback {
+  background: url('../images/throbber.gif') no-repeat center center rgba(0,0,0,0.25);
+  z-index: 2000;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

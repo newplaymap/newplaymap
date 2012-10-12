@@ -1319,83 +1319,11 @@ function artists_content_default_fields() {
     ),
   );
 
-  // Exported field: field_user_contact
-  $fields['artist-field_user_contact'] = array(
-    'field_name' => 'field_user_contact',
-    'type_name' => 'artist',
-    'display_settings' => array(
-      'weight' => '2',
-      'parent' => 'group_artist_info',
-      'label' => array(
-        'format' => 'above',
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'userreference',
-    'required' => '0',
-    'multiple' => '0',
-    'module' => 'userreference',
-    'active' => '1',
-    'referenceable_roles' => array(
-      '2' => 2,
-      '6' => 0,
-      '5' => 0,
-      '4' => 0,
-      '7' => 0,
-      '3' => 0,
-    ),
-    'referenceable_status' => '',
-    'advanced_view' => '--',
-    'advanced_view_args' => '',
-    'widget' => array(
-      'autocomplete_match' => 'contains',
-      'size' => '60',
-      'reverse_link' => 0,
-      'default_value' => array(
-        '0' => array(
-          'uid' => NULL,
-          '_error_element' => 'default_value_widget][field_user_contact][0][uid][uid',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Content Administrator',
-      'weight' => '2',
-      'description' => 'Please provide the name of the person (this could be you) who is most likely to take the lead in updating and contributing information about this generative artist (or ensemble/collective) and their related play events and organizations. If this person does not already have an account on the New Play Map, you will be asked to provide an email address so we may let that person know that he/she has been added as a "Content Administrator". ',
-      'type' => 'userreference_autocomplete',
-      'module' => 'userreference',
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Affiliations & Memberships');
   t('Alternate names');
   t('Bio');
-  t('Content Administrator');
   t('Email');
   t('Ensemble / Collective');
   t('Facebook');

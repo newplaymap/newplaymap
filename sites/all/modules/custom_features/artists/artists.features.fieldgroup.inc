@@ -153,7 +153,6 @@ function artists_fieldgroup_default_groups() {
       '1' => 'field_artist_photo',
       '2' => 'field_artist_bio',
       '3' => 'field_location',
-      '4' => 'field_user_contact',
     ),
   );
 
