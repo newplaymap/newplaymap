@@ -1,3 +1,33 @@
 <?php
 
 include_once('general.features.inc');
+
+/** 
+ * Implementation of hook_menu().
+ */
+function general_menu() {
+  $items = array();
+  $items['welcome-links'] = array(
+    'title' => 'Welcome links',
+    'page callback' => 'general_welcome_links_data',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  
+  return $items;
+}
+
+function general_welcome_links_data() {
+  global $user;
+  $welcome_text = '';
+  if($user->uid != 0){
+    $welcome_text .=  '<span class="welcome">' . t('Welcome') . ', ' . $user->name . '!</span>';
+    $welcome_text .=  '<span class="my-account">' . l(t("My Account"), "user") . '</span>';
+    $welcome_text .=  '<span class="logout">' . l(t("Sign out"), "logout"). '</span>';
+  }else{
+    $welcome_text .=  '<span class="welcome">' . t('Welcome') . '!</span>';
+    $welcome_text .=  '<span class="login">' . l(t("Sign in"), "user") . " or " . l(t("Create Account"), "user/register") . '</span>';
+  }
+
+  echo $welcome_text;
+}
