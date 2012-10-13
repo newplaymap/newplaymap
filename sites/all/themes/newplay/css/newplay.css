@@ -234,12 +234,13 @@ a:active {
     padding-bottom: 80px;
   }
   
-  body.not-front #page-wrapper {
+  #page-wrapper {
     width: 640px;
   }
   
   #content,
-  body.no-sidebars #content {
+  body.no-sidebars #content,
+  body.sidebar-second #content {
     width: 560px; /* Override Zen */
     background: #fff;
     padding: 40px;
