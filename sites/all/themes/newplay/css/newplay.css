@@ -264,6 +264,12 @@ a:active {
   }
 
 
+/* Typography */
+
+#content .node .content {
+  line-height: 1.6em;
+}
+
 
 /* Utilities */
 
