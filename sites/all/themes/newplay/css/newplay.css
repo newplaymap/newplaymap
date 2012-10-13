@@ -1646,6 +1646,23 @@ body.node-type-play.section-node-edit .loading-feedback {
   left: 0;
 }
 
+.loading-feedback-underlay {
+  background: url('../images/throbber.gif') no-repeat center center #ffffff;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+body.node-type-event .navbar-fixed-top .navbar-inner,
+body.node-type-organization .navbar-fixed-top .navbar-inner,
+body.node-type-artist .navbar-fixed-top .navbar-inner,
+body.node-type-play .navbar-fixed-top .navbar-inner {
+  z-index: 2;
+}
+
 /* Forms */
 
 form .node-form fieldset {
@@ -1720,19 +1737,4 @@ form .node-form > input.form-submit:active {
   background-color: #000000;
   margin-left: 2px;
   box-shadow: none;
-}.loading-feedback-underlay {
-  background: url('../images/throbber.gif') no-repeat center center #ffffff;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-body.node-type-event .navbar-fixed-top .navbar-inner,
-body.node-type-organization .navbar-fixed-top .navbar-inner,
-body.node-type-artist .navbar-fixed-top .navbar-inner,
-body.node-type-play .navbar-fixed-top .navbar-inner {
-  z-index: 2;
 }
