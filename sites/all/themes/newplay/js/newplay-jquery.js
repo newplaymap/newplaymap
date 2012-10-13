@@ -803,6 +803,7 @@ $(document).ready(function() {
         }
 
         if (newPlay.playSubmit === true && valid == true) {
+          newPlay.loadingFeedback();
           return true;
         } else {
           newPlay.loadingCompleteFeedback();
@@ -1138,12 +1139,12 @@ newPlay.redirectToMap = function(path) {
  * Function to give users feedback that filter results are loading
  */
 newPlay.loadingFeedback = function() {
-  if ($('#loading-feedback').length > 0) {
-    $('#loading-feedback').show()
+  if ($('.loading-feedback').length > 0) {
+    $('.loading-feedback').show()
   } 
   else {
     $('<div></div>')
-      .attr('id', 'loading-feedback')
+      .addClass('loading-feedback')
       .appendTo('body');
   }
 }
@@ -1153,5 +1154,5 @@ newPlay.loadingFeedback = function() {
  */
 newPlay.loadingCompleteFeedback = function() {
   // Hide overlay
-  $('#loading-feedback').hide()
+  $('.loading-feedback').hide()
 }
