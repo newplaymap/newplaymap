@@ -1509,7 +1509,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #header-buttons {
       margin: auto;
     }
-
+    
       #header-buttons li {
         background-color: #FFFFFF;
         color: #BF202E;
@@ -1625,7 +1625,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
           #header-buttons a#reset-button:active span { 
             background-position: 0 -97px;
           }
-
 
   #header-register a {
     color: #FFFFFF;
