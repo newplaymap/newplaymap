@@ -1553,6 +1553,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
         #header-buttons a#explore-filters-button:hover,
         #header-buttons a#reset-button:hover {
           color: #000;
+          text-decoration: none;
         }
         
         #header-buttons a#add_button:active,
