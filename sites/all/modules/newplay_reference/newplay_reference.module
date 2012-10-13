@@ -25,7 +25,7 @@ function newplay_reference_menu() {
  *   If the play doesn't yet exist, this will be the play's name.
  */
 function newplay_reference_play_contact_callback($type, $play, $artist, $submit = 'false') {
-  
+
   // What does this need to do?
     // If the play doesn't exist show a generative artist field (maybe this could happen in the autocomplete similar to the location)
     

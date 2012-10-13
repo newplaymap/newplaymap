@@ -7,13 +7,10 @@ var newPlay = newPlay || {};
  * @TODO: Merge with newPlay.validateContactPlay()
  */
 newPlay.validateContactPlayEvent = function(element, nodeRef, submit) {
-  var nodeId = nodeRef.replace(/.*:/, '').replace(']', '') || 'undefined';
-  
-  
-  var name = name || 'undefined';
-  var email = email || 'undefined';
+  var nodeId = encodeURIComponent(nodeRef.replace(/.*:/, '').replace(']', '')) || 'undefined';
+
   var submit = submit || false;
-  var artist = artist || 'undefined';
+  var artist = encodeURIComponent(artist) || 'undefined';
 
   $.ajax({
     url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + nodeId + '/' + artist + '/' + submit,
@@ -736,13 +733,9 @@ $(document).ready(function() {
         }
         
         if ($('#edit-field-related-play-nid-nid').length > 0) {
-          var playContactName = $('#edit-field-related-play-nid-nid').siblings('.contact-wrapper').find('.contact-name-field').val() || 'undefined';
+          var playNodeId = encodeURIComponent($('#edit-field-related-play-nid-nid').val().replace(/.*nid:/, '').replace(']', ''));
 
-          var playEmail = $('#edit-field-related-play-nid-nid').siblings('.contact-wrapper').find('.contact-email-field').val() || 'undefined';
-
-          var playNodeId = $('#edit-field-related-play-nid-nid').val().replace(/.*nid:/, '').replace(']', '');
-
-          var artist = $('#edit-value').val().replace(/.*nid:/, '').replace(']', '') || 'undefined';
+          var artist = encodeURIComponent($('#edit-value').val().replace(/.*nid:/, '').replace(']', '')) || 'undefined';
 
           $.ajax({
             url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + playNodeId + '/' + artist + '/' + valid,
