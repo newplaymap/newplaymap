@@ -90,16 +90,16 @@
   
   #header-blocks a#add_button span { 
     padding-left: 20px;
-    background-image: url(../images/header-icon-add.png);
+    background-image: url(../../../../../../images/header-icon-add.png);
   }
   
   #header-blocks a#invite_button span {
-    background-image: url(../images/header-icon-invite.png);
+    background-image: url(../../../../../../images/header-icon-invite.png);
   }
   
   #header-blocks a#explore-filters-button span {
     padding-left: 26px;
-    background-image: url(../images/header-icon-explore.png);
+    background-image: url(../../../../../../images/header-icon-explore.png);
   }
   
     
@@ -108,6 +108,18 @@
     ul#add-button-list {
     margin: 0;
     padding: 0;
+    }
+    
+    ul#add-button-list a {
+      color: #BF202E;
+    }
+    
+    ul#add-button-list a:hover {
+      color: #830B1B;
+    }
+
+    ul#add-button-list a:active {
+      color: #000000;
     }
     
     ul#add-button-list,
@@ -1363,6 +1375,10 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   line-height: 18px;
 }
 
+.navbar .nav > li > a {
+  display: block;
+}
+
 .navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
   border-radius: 0 0 0 0;
   padding-left: 0;
@@ -1399,66 +1415,206 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   padding-right: 20px;
 }
 
-#header, .navbar-inner {
-  color: #FFFFFF;
-}
+/* Basic button style */
 
+/* core stuff here */
+
+/* Header styles */
+/* Header buttons */
+/* Additional default button style in Misc styles */
 #header-bar {
   padding: 5px;
 }
 
-#header-links {
-  float: left;
-  font-size: 0.8em;
-  width: 390px;
-}
+  #header-links {
+    font-size: 0.86em;
+    width: 390px;
+    float: left;
+  }
+  
+  #header-links .nav {
+    width: 75%;
+    margin: 0; /* override bootstrap */
+    padding-top: 3px;
+  }
 
-#header-links a {
-  color: #FFFFFF;
-  padding: 0 5px;
-  text-decoration: underline;
-}
+    #header-links a {
+      text-decoration: underline;
+      color: #FFFFFF;
+      padding: 0 5px;
+    }
+  
+      #header-links a:hover {
+        color: #000000;
+      }
+    
+      .navbar .nav .active > a,
+      .navbar .nav .active > a:hover {
+        background-color: transparent;
+      }
+    
+      .navbar .nav > li > a {
+        text-shadow: none; /* override bootstrap */
+      }
+      
+      .navbar-inner {
+        filter: none; /* override bootstrap IE9 */
+      }
+          
+    #header-links .brand {
+      margin-left: 0; /* override bootstrap.css */
+      text-transform: uppercase;
+      font-size: 1.23em; /* 16px */
+      font-family: 'Avenir', Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      padding-top: 2px;
+    }
+    
+      #header-links a.brand {
+        text-decoration: none;
+      }
+    
+    #header-links .map-logo {
+      background: url(../../../../../../images/map-white-on-red.png) no-repeat;
+      display: block;
+      width: 79px;
+      height: 50px;
+      float: left;
+      text-indent: -500px;
+      padding: 0;
+      background-position: -5px -5px;
+    }
+  #header-buttons-wrapper {
+    width: 35%;
+    float: left;
+    margin-top: 6px;
+  }
+  
+    #header-buttons {
+      margin: auto;
+    }
 
-#header-links a:hover {
-  color: #000000;
-}
+      #header-buttons li {
+        background-color: #FFFFFF;
+        color: #BF202E;
+        border-radius: 8px;
+        margin-right: 10px;
+        box-shadow: 1px 1px 2px 0px #660000;
+      }
+      
+      #header-buttons li:hover {
+        background-color: #F6F0E6;
+        box-shadow: 1px 1px 2px 0px #000000;
+      }
+      
+      #header-buttons li:active {
+        background-color: #000;
+        margin-left: 2px;
+        margin-right: 8px;
+        box-shadow: none;
+      }
 
-.navbar .nav .active > a, .navbar .nav .active > a:hover {
-  background-color: transparent;
-}
+        #header-buttons > li > a {
+          text-shadow: none;
+        }
 
-#header-links .map-logo {
-  background: url("../../../../../../images/map-white-on-red.png") no-repeat scroll -5px -5px transparent;
-  display: block;
-  float: left;
-  height: 50px;
-  padding: 0;
-  text-indent: -500px;
-  width: 79px;
-}
+        #header-buttons a#add_button,
+        #header-buttons a#filter_button,
+        #header-buttons a#invite_button,
+        #header-buttons a#explore-filters-button,
+        #header-buttons a#reset-button {
+          padding: 6px 14px;
+          cursor: pointer;
+          color: #BF202E;
+          font-family: 'Avenir', Helvetica, Arial, sans-serif;
+          font-weight: bold;
+        }
+        
+        #header-buttons a#add_button:hover,
+        #header-buttons a#filter_button:hover,
+        #header-buttons a#invite_button:hover,
+        #header-buttons a#explore-filters-button:hover,
+        #header-buttons a#reset-button:hover {
+          color: #000;
+        }
+        
+        #header-buttons a#add_button:active,
+        #header-buttons a#filter_button:active,
+        #header-buttons a#invite_button:active,
+        #header-buttons a#explore-filters-button:active,
+        #header-buttons a#reset-button:active {
+          color: #fff;
+        }
 
-#header-links a.brand {
-  text-decoration: none;
-}
+        #header-buttons a#add_button span,
+        #header-buttons a#invite_button span,
+        #header-buttons a#explore-filters-button span,
+        #header-buttons a#reset-button span {
+          padding-left: 24px;
+          background-position: 0 0;
+          background-repeat: no-repeat;
+        }
 
-.navbar .brand {
-  color: #FFFFFF;
-  display: block;
-  float: left;
-  font-size: 20px;
-  font-weight: 200;
-  line-height: 1;
-  margin-left: -20px;
-  padding: 8px 20px 12px;
-}
+        #header-buttons a#add_button span { 
+          padding-left: 20px;
+          background-image: url(../../../../../../images/header-icon-add.png);
+          background-position: 0 4px;
+        }
+  
+          #header-buttons a#add_button:hover span { 
+            background-position: 0 -46px;
+          }
+          
+          #header-buttons a#add_button:active span { 
+            background-position: 0 -96px;
+          }
 
-#header-links .brand {
-  font-family: 'Avenir LT W01 85 Heavy';
-  font-size: 1.23em;
-  margin-left: 0;
-  padding-top: 5px;
-  text-transform: uppercase;
-}
+        #header-buttons a#invite_button span {
+          background-image: url(../../../../../../images/header-icon-invite.png);
+          background-position: 0 3px;
+        }
+        
+          #header-buttons a#invite_button:hover span {
+            background-position: 0 -47px;
+          }
+          
+          #header-buttons a#invite_button:active span {
+            background-position: 0 -97px;
+          }
+
+        #header-buttons a#explore-filters-button span {
+          padding-left: 26px;
+          background-image: url(../../../../../../images/header-icon-explore.png);
+          background-position: 0 1px;
+        }
+  
+          #header-buttons a#explore-filters-button:hover span {
+            background-position: 0 -49px;
+          }
+          
+          #header-buttons a#explore-filters-button:active span {
+            background-position: 0 -99px;
+          }
+          
+        #header-buttons a#reset-button span { 
+          padding-left: 20px;
+          background-image: url(../../../../../../images/header-icon-reset.png);
+          background-position: 0 3px;
+        }
+  
+          #header-buttons a#reset-button:hover span { 
+            background-position: 0 -47px;
+          }
+          
+          #header-buttons a#reset-button:active span { 
+            background-position: 0 -97px;
+          }
+
+
+  #header-register a {
+    color: #FFFFFF;
+    text-decoration: underline;
+  }
 
 /* Loading Feedback */
 .loading-feedback,

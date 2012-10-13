@@ -217,7 +217,8 @@ newPlay.formatLinksBubble = function(element, newId, width) {
        background: '#FFFFFF',
        border: {
          width: 7,
-         color: '#666666'
+         color: '#EFEFEF',
+         radius: 12
        },
        tip: {
          corner: 'topMiddle',

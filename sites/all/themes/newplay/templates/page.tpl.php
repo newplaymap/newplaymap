@@ -127,9 +127,41 @@ $domain = (isset($_SERVER['HTTP_HOST'])) ? 'http://' . preg_replace('`^www.`', '
             <a class="map-logo reset-map" href="<?php print str_replace('participate/', '', base_path()); ?>">Home</a>
             <a class="brand reset-map" href="<?php print str_replace('participate/', '', base_path()); ?>">New Play Map</a>
             <ul class="nav">
-              <li class="active"><a href="<?php print str_replace('participate/', '', base_path()); ?>" class="reset-map">Home</a></li>
-              <li><a href="<?php print base_path(); ?>about">About the map</a></li>
+              <li><a href="<?php print base_path(); ?>about">About</a></li>
+              <li><a href="<?php print str_replace('participate/', '', base_path()); ?>#/tour">Tour</a></li>
               <li><a href="<?php print base_path(); ?>contact">Help</a></li>
+            </ul>
+          </div>
+          <div id="header-buttons-wrapper">
+            <ul id="header-buttons" class="nav">
+              <li>
+                <a title="Reset zoom, close Search, and start fresh." class="reset-map" href="<?php print str_replace('participate/', '', base_path()); ?>" id="reset-button" name="reset-button"><span>Start Over</span></a>
+              </li>
+              <li>
+                <div class="block block-add_button region-odd odd region-count-1 count-1 with-block-editing" id="block-add_button-0">
+                  <div class="content">
+                    <div class="item-list">
+                      <h3>
+                        <span>Add to the Map</span>
+                      </h3>
+                      <ul id="add-button-list">
+                        <li class="first">
+                          <a href="<?php print base_path(); ?>node/add/organization" class="add-button-option" id="add-button-org" name="add-button-org">Add Organization</a>
+                        </li>
+                        <li>
+                          <a href="<?php print base_path(); ?>node/add/event" class="add-button-option" id="add-button-event" name="add-button-event">Add Play Event</a>
+                        </li>
+                        <li class="last">
+                          <a href="<?php print base_path(); ?>node/add/artist" class="add-button-option" id="add-button-artist" name="add-button-artist">Add Artist Profile</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a title="Search for Organizations, Plays, and Artists" href="<?php print str_replace('participate/', '', base_path()); ?>#/explore" id="explore-filters-button" name="explore-filters-button"><span>Search</span></a>
+              </li>
             </ul>
           </div>
           <?php if ($top_right_links): ?>
