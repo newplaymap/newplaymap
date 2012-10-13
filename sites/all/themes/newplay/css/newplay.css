@@ -4,7 +4,8 @@
   font-size: 16px;
   line-height: 21px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  color: #231f20;
+  color: #000000;
+  background: #E6DAC8;
   }
   
   /* override html-reset.css:53 */
@@ -221,7 +222,21 @@
   
   #page {
     width: 100%;
-    padding-top: 75px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  body.not-front #page-wrapper {
+    width: 640px;
+  }
+  
+  #content,
+  body.no-sidebars #content {
+    width: 560px; /* Override Zen */
+    background: #fff;
+    padding: 40px;
+    box-shadow: 2px 2px 3px 0px #000;
+    margin-bottom: 80px;
   }
   
   #main-wrapper {
