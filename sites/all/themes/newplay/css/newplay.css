@@ -1721,7 +1721,9 @@ form .node-form > input.form-submit:active {
   background-color: #000000;
   margin-left: 2px;
   box-shadow: none;
-}.loading-feedback-underlay {
+}
+
+.loading-feedback-underlay {
   background: url('../images/throbber.gif') no-repeat center center #ffffff;
   z-index: 1;
   height: 100%;
