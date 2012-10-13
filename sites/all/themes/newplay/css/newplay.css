@@ -18,9 +18,17 @@
   font-weight: bold;
   }
 
-  a {
-  color: #6f84c2;
-  }
+a {
+  color: #BF202E;
+}
+
+a:hover {
+  color: #830B1B;
+}
+
+a:active {
+  color: #000000;
+}
 
 /* Header */
 
