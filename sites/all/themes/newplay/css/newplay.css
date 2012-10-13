@@ -40,10 +40,6 @@
   padding: 0;
   }
 
-  html.cufon-active #name-and-slogan {
-    font-size: 28px;
-  }
-
 /* Header Add Buttons */
   
   /* Hide when javascript is available */
