@@ -3,13 +3,18 @@
   body {
   font-size: 16px;
   line-height: 21px;
-  font-family: Candara, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   color: #231f20;
   }
   
   /* override html-reset.css:53 */
   body, caption, th, td, input, textarea, select, option, legend, fieldset {
-  font-family: Candara, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+  
+  h1, h2, h3, h4 {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-weight: bold;
   }
 
   a {
@@ -299,7 +304,7 @@
   border-radius: 5px;
   -moz-border-radius: 5px;
   border: 0;
-  font-family: Candara, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   background: #6f84c2 url(../images/button-sprite.png) 0 0 no-repeat;
   }
   
@@ -1318,7 +1323,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 
 .navbar {
   overflow: visible;
-  font-family: 'Avenir LT W01 55 Roman',Helvetica,Arial,sans-serif;
   font-size: 16px;
   line-height: 21px;
 }
@@ -1453,7 +1457,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 }
 
 #header-links .brand {
-  font-family: 'Avenir LT W01 85 Heavy';
   font-size: 1.23em;
   margin-left: 0;
   padding-top: 5px;
