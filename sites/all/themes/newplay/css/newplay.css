@@ -1702,8 +1702,20 @@ form .node-form > input.form-submit {
   box-shadow: 1px 1px 2px 0px #000000;
   border: 0;
   margin: 20px 0 0 0;
+  cursor: pointer;
 }
-.loading-feedback-underlay {
+
+form .node-form > input[type="submit"]:hover,
+form .node-form > input.form-submit:hover {
+  background-color: #830B1B;
+}
+
+form .node-form > input[type="submit"]:active,
+form .node-form > input.form-submit:active {
+  background-color: #000000;
+  margin-left: 2px;
+  box-shadow: none;
+}.loading-feedback-underlay {
   background: url('../images/throbber.gif') no-repeat center center #ffffff;
   z-index: 1;
   height: 100%;
