@@ -326,11 +326,11 @@ function artists_strongarm() {
   $strongarm->name = 'content_extra_weights_artist';
   $strongarm->value = array(
     'title' => '-5',
-    'revision_information' => '9',
-    'author' => '11',
-    'options' => '12',
-    'menu' => '8',
-    'path' => '10',
+    'revision_information' => '6',
+    'author' => '8',
+    'options' => '9',
+    'menu' => '5',
+    'path' => '7',
   );
 
   $export['content_extra_weights_artist'] = $strongarm;
