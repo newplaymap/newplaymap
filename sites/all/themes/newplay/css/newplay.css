@@ -34,17 +34,12 @@
   
   #name-and-slogan #site-name {
   font-size: 24px;
-  font-weight: normal;
   font-style: normal;
   text-transform: normal;
   margin: 0;
   padding: 0;
   }
 
-  #name-and-slogan #site-name strong {
-  font-weight: normal; /* override strong tag that gets injected */
-  }
-  
   html.cufon-active #name-and-slogan {
     font-size: 28px;
   }
