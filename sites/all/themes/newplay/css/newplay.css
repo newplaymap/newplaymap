@@ -1739,3 +1739,79 @@ body.node-type-artist .navbar-fixed-top .navbar-inner,
 body.node-type-play .navbar-fixed-top .navbar-inner {
   z-index: 2;
 }
+
+/* Forms */
+
+form .node-form fieldset {
+  border: none; /* override forms.css */
+  padding: .125em 0 0 0; /* override forms.css */
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+
+form .node-form > .standard > .form-item,
+form .node-form > .standard > div > .form-item {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+
+form .node-form fieldset legend,
+form .node-form label,
+form .node-form th {
+  font-weight: bold;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: .25em;
+  font-size: 1.25em;
+}
+
+form .node-form label.option {
+  font-size: 1em;
+}
+
+form .node-form fieldset legend:after {
+  content: ":";
+}
+
+form .node-form fieldset legend.collapse-processed:after {
+  content: none;
+}
+
+form .node-form fieldset .form-item label {
+  font-weight: normal;
+  font-size: 1em;
+  margin-top: 0;
+}
+
+form .node-form .form-item .filefield-element {
+  margin-top: .25em;
+  margin-bottom: 0;
+}
+
+form .node-form > input[type="submit"],
+form .node-form > input.form-submit {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  background-color: #BF202E;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 8px 16px;
+  box-shadow: 1px 1px 2px 0px #000000;
+  border: 0;
+  margin: 20px 0 0 0;
+  cursor: pointer;
+}
+
+form .node-form > input[type="submit"]:hover,
+form .node-form > input.form-submit:hover {
+  background-color: #830B1B;
+}
+
+form .node-form > input[type="submit"]:active,
+form .node-form > input.form-submit:active {
+  background-color: #000000;
+  margin-left: 2px;
+  box-shadow: none;
+}
