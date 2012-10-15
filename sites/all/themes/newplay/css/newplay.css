@@ -1477,13 +1477,12 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       }
           
     #header-links .brand {
-      color: #FFFFFF;
-      display: block;
-      float: left;
-      font-size: 20px;
-      line-height: 1;
-      margin-left: -20px;
-      padding: 8px 20px 12px;
+      margin-left: 0; /* override bootstrap.css */
+      text-transform: uppercase;
+      font-size: 1.23em; /* 16px */
+      font-family: 'Avenir', Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      padding-top: 2px;
     }
     
       #header-links a.brand {
