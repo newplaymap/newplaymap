@@ -22,11 +22,11 @@ function general_welcome_links_data() {
   $welcome_text = '';
   if($user->uid != 0){
     $welcome_text .=  '<span class="welcome">' . t('Welcome') . ', ' . $user->name . '!</span>';
-    $welcome_text .=  '<span class="my-account">' . l(t("My Account"), "user") . '</span>';
-    $welcome_text .=  '<span class="logout">' . l(t("Sign out"), "logout"). '</span>';
+    $welcome_text .=  '<span class="my-account"><a href="participate/user">My Account</a></span>';
+    $welcome_text .=  '<span class="logout"><a href="participate/logout">Sign out</a></span>';
   }else{
     $welcome_text .=  '<span class="welcome">' . t('Welcome') . '!</span>';
-    $welcome_text .=  '<span class="login">' . l(t("Sign in"), "user") . " or " . l(t("Create Account"), "user/register") . '</span>';
+    $welcome_text .=  '<span class="login"><a href="participate/user">Sign in</a> or <a href="participate/user/register">Register</a></span>';
   }
 
   echo $welcome_text;

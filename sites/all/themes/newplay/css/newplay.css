@@ -3,18 +3,32 @@
   body {
   font-size: 16px;
   line-height: 21px;
-  font-family: Candara, Arial, sans-serif;
-  color: #231f20;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  color: #000000;
+  background: #E6DAC8;
   }
   
   /* override html-reset.css:53 */
   body, caption, th, td, input, textarea, select, option, legend, fieldset {
-  font-family: Candara, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+  
+  h1, h2, h3, h4 {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-weight: bold;
   }
 
-  a {
-  color: #6f84c2;
-  }
+a {
+  color: #BF202E;
+}
+
+a:hover {
+  color: #830B1B;
+}
+
+a:active {
+  color: #000000;
+}
 
 /* Header */
 
@@ -29,19 +43,10 @@
   
   #name-and-slogan #site-name {
   font-size: 24px;
-  font-weight: normal;
   font-style: normal;
   text-transform: normal;
   margin: 0;
   padding: 0;
-  }
-
-  #name-and-slogan #site-name strong {
-  font-weight: normal; /* override strong tag that gets injected */
-  }
-  
-  html.cufon-active #name-and-slogan {
-    font-size: 28px;
   }
 
 /* Header Add Buttons */
@@ -237,7 +242,22 @@
   
   #page {
     width: 100%;
-    padding-top: 75px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  #page-wrapper {
+    width: 640px;
+  }
+  
+  #content,
+  body.no-sidebars #content,
+  body.sidebar-second #content {
+    width: 560px; /* Override Zen */
+    background: #fff;
+    padding: 40px;
+    box-shadow: 2px 2px 3px 0px #000;
+    margin-bottom: 80px;
   }
   
   #main-wrapper {
@@ -255,6 +275,12 @@
   width: 100%;
   }
 
+
+/* Typography */
+
+#content .node .content {
+  line-height: 1.6em;
+}
 
 
 /* Utilities */
@@ -311,7 +337,7 @@
   border-radius: 5px;
   -moz-border-radius: 5px;
   border: 0;
-  font-family: Candara, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   background: #6f84c2 url(../images/button-sprite.png) 0 0 no-repeat;
   }
   
@@ -413,16 +439,6 @@
 }
 
 /* Home */
-  
-  /* Content Header */
-  .front #content {
-  width: 66%;
-  }
-  
-  .front #content .messages {
-  margin-left: 55px;
-  }
-  
   
   
   /* Messages close box */
@@ -1330,7 +1346,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 
 .navbar {
   overflow: visible;
-  font-family: 'Avenir LT W01 55 Roman',Helvetica,Arial,sans-serif;
   font-size: 16px;
   line-height: 21px;
 }
@@ -1484,6 +1499,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       padding: 0;
       background-position: -5px -5px;
     }
+
   #header-buttons-wrapper {
     width: 40%;
     float: left;
@@ -1493,7 +1509,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     #header-buttons {
       margin: auto;
     }
-
+    
       #header-buttons li {
         background-color: #FFFFFF;
         color: #BF202E;
@@ -1536,6 +1552,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
         #header-buttons a#explore-filters-button:hover,
         #header-buttons a#reset-button:hover {
           color: #000;
+          text-decoration: none;
         }
         
         #header-buttons a#add_button:active,
@@ -1610,7 +1627,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
             background-position: 0 -97px;
           }
 
-
   #header-register a {
     color: #FFFFFF;
     text-decoration: underline;
@@ -1631,6 +1647,82 @@ body.node-type-play.section-node-edit .loading-feedback {
   left: 0;
 }
 
+/* Forms */
+
+form .node-form fieldset {
+  border: none; /* override forms.css */
+  padding: .125em 0 0 0; /* override forms.css */
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+
+form .node-form > .standard > .form-item,
+form .node-form > .standard > div > .form-item {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+
+form .node-form fieldset legend,
+form .node-form label,
+form .node-form th {
+  font-weight: bold;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: .25em;
+  font-size: 1.25em;
+}
+
+form .node-form label.option {
+  font-size: 1em;
+}
+
+form .node-form fieldset legend:after {
+  content: ":";
+}
+
+form .node-form fieldset legend.collapse-processed:after {
+  content: none;
+}
+
+form .node-form fieldset .form-item label {
+  font-weight: normal;
+  font-size: 1em;
+  margin-top: 0;
+}
+
+form .node-form .form-item .filefield-element {
+  margin-top: .25em;
+  margin-bottom: 0;
+}
+
+form .node-form > input[type="submit"],
+form .node-form > input.form-submit {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  background-color: #BF202E;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 8px 16px;
+  box-shadow: 1px 1px 2px 0px #000000;
+  border: 0;
+  margin: 20px 0 0 0;
+  cursor: pointer;
+}
+
+form .node-form > input[type="submit"]:hover,
+form .node-form > input.form-submit:hover {
+  background-color: #830B1B;
+}
+
+form .node-form > input[type="submit"]:active,
+form .node-form > input.form-submit:active {
+  background-color: #000000;
+  margin-left: 2px;
+  box-shadow: none;
+}
+
 .loading-feedback-underlay {
   background: url('../images/throbber.gif') no-repeat center center #ffffff;
   z-index: 1;
@@ -1646,4 +1738,80 @@ body.node-type-organization .navbar-fixed-top .navbar-inner,
 body.node-type-artist .navbar-fixed-top .navbar-inner,
 body.node-type-play .navbar-fixed-top .navbar-inner {
   z-index: 2;
+}
+
+/* Forms */
+
+form .node-form fieldset {
+  border: none; /* override forms.css */
+  padding: .125em 0 0 0; /* override forms.css */
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+
+form .node-form > .standard > .form-item,
+form .node-form > .standard > div > .form-item {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+
+form .node-form fieldset legend,
+form .node-form label,
+form .node-form th {
+  font-weight: bold;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: .25em;
+  font-size: 1.25em;
+}
+
+form .node-form label.option {
+  font-size: 1em;
+}
+
+form .node-form fieldset legend:after {
+  content: ":";
+}
+
+form .node-form fieldset legend.collapse-processed:after {
+  content: none;
+}
+
+form .node-form fieldset .form-item label {
+  font-weight: normal;
+  font-size: 1em;
+  margin-top: 0;
+}
+
+form .node-form .form-item .filefield-element {
+  margin-top: .25em;
+  margin-bottom: 0;
+}
+
+form .node-form > input[type="submit"],
+form .node-form > input.form-submit {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  background-color: #BF202E;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 8px 16px;
+  box-shadow: 1px 1px 2px 0px #000000;
+  border: 0;
+  margin: 20px 0 0 0;
+  cursor: pointer;
+}
+
+form .node-form > input[type="submit"]:hover,
+form .node-form > input.form-submit:hover {
+  background-color: #830B1B;
+}
+
+form .node-form > input[type="submit"]:active,
+form .node-form > input.form-submit:active {
+  background-color: #000000;
+  margin-left: 2px;
+  box-shadow: none;
 }
