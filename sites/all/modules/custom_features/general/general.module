@@ -31,3 +31,17 @@ function general_welcome_links_data() {
 
   echo $welcome_text;
 }
+
+/**
+ * Implementation of hook_user()
+ */
+function general_user($op, &$edit, &$account, $category = NULL) {
+  switch ($op) {
+    case 'login':
+      drupal_goto('http://' . $_SERVER['HTTP_HOST'] . str_replace('/participate/', '', base_path()));
+    break;
+    case 'logout':
+      drupal_goto('http://' . $_SERVER['HTTP_HOST'] . str_replace('/participate/', '', base_path()));
+    break;
+  }
+}
