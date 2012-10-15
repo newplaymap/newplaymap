@@ -78,40 +78,6 @@ newPlay.insertContactFields = function(element, type, existingNameField) {
 
 
 /*
- * "Other" field show/hide toggle
- */
-newPlay.initOtherField = function(checkboxWrapper, otherField) {
-  var checkbox = checkboxWrapper.find('input[type=checkbox]');
-  otherField = otherField.remove().insertAfter(checkboxWrapper.parent().parent().parent().find('.form-checkboxes'));
-
-  otherField
-    .addClass('hilight') // from betterselect
-    .css('margin-top', 0);
-
-  checkboxWrapper.parent()
-    .parent()
-    .css('margin-bottom', 0)
-    .parent()
-    .css('margin-bottom', 0); 
-
-  // If it's already checked on load show it
-  var visibility = function() {
-    if (checkbox.attr('checked') == true) {
-      otherField.show();
-    } else {
-      otherField.hide();
-    }
-  }
-
-  visibility();
-
-  // If you check it show
-  checkbox.change(function() {
-    visibility(); 
-  });
-}
-
-/*
  * Helper functions for overriding autocomplete
  */
 // Set up general bucket for autocomplete functions and variables
@@ -217,7 +183,7 @@ newPlay.formatLinksBubble = function(element, newId, width) {
        background: '#FFFFFF',
        border: {
          width: 7,
-         color: '#EFEFEF',
+         color: '#FFFFFF',
          radius: 12
        },
        tip: {
@@ -629,16 +595,8 @@ $(document).ready(function() {
     });
     $.cookie('feed-prompt', true, {expires: 365, domain: 'newplaymap.org', path: '/'});
   }
-  
-  
-  /*
-   * Organization form cleanup
-   */
-  // Set up "Other" fields
-  // newPlay.initOtherField(checkboxWrapper, otherField)
-  newPlay.initOtherField($('#edit-taxonomy-7-271-wrapper'), $('#edit-taxonomy-tags-8-wrapper'));
-  newPlay.initOtherField($('#edit-taxonomy-3-280-wrapper'), $('#edit-taxonomy-tags-9-wrapper'));
-  
+
+
   /*
    *
    */

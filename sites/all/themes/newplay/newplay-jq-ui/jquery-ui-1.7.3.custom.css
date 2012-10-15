@@ -48,9 +48,9 @@
 ----------------------------------*/
 .ui-widget { }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {  font-size: 1em; }
-.ui-widget-content { border: 1px solid #aaaaaa; background: transparent; color: #FFFFFF; }
+.ui-widget-content { border: 1px solid #aaaaaa; background: transparent; }
 .ui-widget-content a { }
-.ui-widget-header { border: 1px solid #aaaaaa; background: #6f84c2; color: #222222; font-weight: bold; }
+.ui-widget-header { border: none; background: #E6DAC8; color: #222222; font-weight: bold; }
 .ui-widget-header a { color: #222222; }
 
 /* Interaction states

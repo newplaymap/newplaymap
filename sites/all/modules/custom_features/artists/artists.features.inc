@@ -30,11 +30,11 @@ function artists_node_info() {
       'help' => '',
     ),
     'artist' => array(
-      'name' => t('Generative Artist'),
+      'name' => t('Artist'),
       'module' => 'features',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Generative Artist name (playwright\'s name or name of ensemble / collective)'),
+      'title_label' => t('Name (playwright\'s name or name of ensemble / collective)'),
       'has_body' => '0',
       'body_label' => '',
       'min_word_count' => '0',
@@ -52,7 +52,7 @@ function artists_node_info() {
       'help' => '',
     ),
     'artist_type' => array(
-      'name' => t('Generative Artist Type'),
+      'name' => t('Artist Type'),
       'module' => 'features',
       'description' => '',
       'has_title' => '1',

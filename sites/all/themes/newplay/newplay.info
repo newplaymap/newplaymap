@@ -76,9 +76,6 @@
   scripts[] = js/jquery.validate.js
   scripts[] = js/jquery.scrollTo-1.4.2-min.js
   scripts[] = js/newplay-jquery.js
-  scripts[] = js/cufon-yui.js
-  scripts[] = js/Feltpen_500.font.js
-  scripts[] = js/newplay-cufon.js
 
 ; The regions defined in Zen's default page.tpl.php file.  The name in
 ; brackets is the name of the variable in the page.tpl.php file, (e.g.
