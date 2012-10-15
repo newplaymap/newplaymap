@@ -466,12 +466,11 @@ function npm_datasource_views_default_views() {
     ),
   ));
   $handler->override_option('sorts', array(
-    'created' => array(
-      'order' => 'DESC',
-      'granularity' => 'second',
-      'id' => 'created',
+    'title' => array(
+      'order' => 'ASC',
+      'id' => 'title',
       'table' => 'node',
-      'field' => 'created',
+      'field' => 'title',
       'relationship' => 'none',
     ),
   ));
