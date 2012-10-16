@@ -78,7 +78,7 @@ function npm_datasource_admin_update_mongo_process(&$context) {
     // dsm($node->title);
 
     // Store some result for post-processing in the finished callback.
-    // $context['results'][] = check_plain($node->title);
+    $context['results'][] = check_plain($node->title);
 
     // Update our progress information.
     $context['sandbox']['progress']++;
@@ -93,6 +93,7 @@ function npm_datasource_admin_update_mongo_process(&$context) {
   }
 }
 
+// @TODO: Refactor this with npm_datasource_admin_update_mongo above
 function npm_datasource_admin_update_mongo_other($form, &$form_state) {
   $batch = array(
     'operations' => array(
@@ -120,6 +121,9 @@ function npm_datasource_admin_update_mongo_process_other(&$context) {
     $context['sandbox']['max'] = db_result(db_query("SELECT COUNT(DISTINCT nid) FROM {node} WHERE type = 'artist' OR type = 'organization' OR type = 'play'"));
   }
 
+  // @TODO: Performance ideas
+  // -- Increase limit.
+  // -- Don't do a node_load, instead adjust the query to return nid, title, and type.
   $limit = 1;
   $result = db_query_range("SELECT nid FROM {node} WHERE nid > %d AND (type = 'artist' OR type = 'organization' OR type = 'play') ORDER BY nid ASC", $context['sandbox']['current_node'], 0, $limit);
 
@@ -141,7 +145,7 @@ function npm_datasource_admin_update_mongo_process_other(&$context) {
     }
 
     // Store some result for post-processing in the finished callback.
-    // $context['results'][] = check_plain($node->title);
+    $context['results'][] = check_plain($node->title) . ' (' . $node->type . ')';
 
     // Update our progress information.
     $context['sandbox']['progress']++;
