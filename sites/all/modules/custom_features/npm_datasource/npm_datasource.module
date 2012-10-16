@@ -18,17 +18,22 @@ function npm_datasource_menu() {
 }
 
 function npm_datasource_admin_update_mongo_form() {
-  $form['update_mongo'] = array(
+  $form['update_mongo_events'] = array(
     '#type' => 'submit',
-    '#value' => t('Update Mongo'),
+    '#value' => t('Update Events in Mongo'),
     '#submit' => array('npm_datasource_admin_update_mongo'),
   );
+  
+  $form['update_mongo_other'] = array(
+    '#type' => 'submit',
+    '#value' => t('Update Everything else in Mongo'),
+    '#submit' => array('npm_datasource_admin_update_mongo_other'),
+  );
 
-  return system_settings_form($form);
+  return $form;
 }
 
 function npm_datasource_admin_update_mongo($form, &$form_state) {
-  dsm('npm_datasource_admin_update_mongo');
   $batch = array(
     'operations' => array(
       array('npm_datasource_admin_update_mongo_process', array())
@@ -36,7 +41,7 @@ function npm_datasource_admin_update_mongo($form, &$form_state) {
     'finished' => 'npm_datasource_admin_update_mongo_finished',
     'title' => t('Update New Play Map Mongo Database'),
     'init_message' => t('Starting database update.'),
-    'progress_message' => t('Processed @current out of @total.'),
+    'progress_message' => '',
     'error_message' => t('Mongo Update has encountered an error.'),
   );
   batch_set($batch);
@@ -46,45 +51,26 @@ function npm_datasource_admin_update_mongo_process(&$context) {
   include_once('../api/loaddata_functions.inc');
   include_once('../../authentication/newplaymap_authentication.php');
   connectMongo(false);
+  global $m;
+  global $mongo_database;
 
   if (!isset($context['sandbox']['progress'])) {
-    // Build list of nids
-    // Put events first
-    $events = array();
-    $events_query = db_query('SELECT nid, type FROM {node} WHERE type = "event"');
-    while ($row = db_fetch_array($events_query)) {
-      $events[] = $row;
-    }
-    
-    $other_content = array();
-    $other_content_query = db_query("SELECT nid, type FROM {node} WHERE type = 'artist' OR type = 'organization' OR type = 'play'");
-    while ($row = db_fetch_array($other_content_query)) {
-      $other_content[] = $row;
-    }
-
-    $all_content = array_merge($events, $other_content);
-
     $context['sandbox']['progress'] = 0;
     $context['sandbox']['current_node'] = 0;
-    $context['sandbox']['max'] = count($all_content);
+    $context['sandbox']['max'] = db_result(db_query('SELECT COUNT(DISTINCT nid) FROM {node} WHERE type = "event"'));
   }
 
-  $i = 0;
-  foreach ($all_content as $content) {
+  $limit = 1;
+  $result = db_query_range("SELECT nid FROM {node} WHERE nid > %d AND type = 'event' ORDER BY nid ASC", $context['sandbox']['current_node'], 0, $limit);
+
+  while ($row = db_fetch_array($result)) {
     $domain = $_SERVER['HTTP_HOST'];
     $drupal_base_path = base_path();
-    switch ($content['type']) {
+    $node = node_load($row['nid'], NULL, TRUE);
+
+    switch ($node->type) {
       case 'event':
-        loadEvents($m, $mongo_database, $domain, $drupal_base_path, $content['nid']);
-      break;
-      case 'organization':
-        loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $content['nid']);
-      break;
-      case 'artist':
-        loadArtists($m, $mongo_database, $domain, $drupal_base_path, $content['nid']);
-      break;
-      case 'play':
-        loadPlays($m, $mongo_database, $domain, $drupal_base_path, $content['nid']);
+        loadEvents($m, $mongo_database, $domain, $drupal_base_path, $node->nid);
       break;
     }
     // Here we actually perform our processing on the current node.
@@ -92,16 +78,77 @@ function npm_datasource_admin_update_mongo_process(&$context) {
     // dsm($node->title);
 
     // Store some result for post-processing in the finished callback.
-    $context['results'][] = $content['nid'];
+    // $context['results'][] = check_plain($node->title);
 
     // Update our progress information.
     $context['sandbox']['progress']++;
-    $context['sandbox']['current_node'] = $i;
-    $i++;
-    $context['message'] = t('Now processing: %type', array('%type' => $content['type']));
+    $context['sandbox']['current_node'] = $node->nid;
+    $context['message'] = t('Now processing %node', array('%node' => $node->title));
   }
-  dsm('sandbox progress: ' . $context['sandbox']['progress']);
-  dsm('sandbox max: ' . $context['sandbox']['max']);
+
+  // Inform the batch engine that we are not finished,
+  // and provide an estimation of the completion level we reached.
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }
+}
+
+function npm_datasource_admin_update_mongo_other($form, &$form_state) {
+  $batch = array(
+    'operations' => array(
+      array('npm_datasource_admin_update_mongo_process_other', array())
+      ),
+    'finished' => 'npm_datasource_admin_update_mongo_finished',
+    'title' => t('Update New Play Map Mongo Database'),
+    'init_message' => t('Starting database update.'),
+    'progress_message' => '',
+    'error_message' => t('Mongo Update has encountered an error.'),
+  );
+  batch_set($batch);
+}
+
+function npm_datasource_admin_update_mongo_process_other(&$context) {
+  include_once('../api/loaddata_functions.inc');
+  include_once('../../authentication/newplaymap_authentication.php');
+  connectMongo(false);
+  global $m;
+  global $mongo_database;
+
+  if (!isset($context['sandbox']['progress'])) {
+    $context['sandbox']['progress'] = 0;
+    $context['sandbox']['current_node'] = 0;
+    $context['sandbox']['max'] = db_result(db_query("SELECT COUNT(DISTINCT nid) FROM {node} WHERE type = 'artist' OR type = 'organization' OR type = 'play'"));
+  }
+
+  $limit = 1;
+  $result = db_query_range("SELECT nid FROM {node} WHERE nid > %d AND (type = 'artist' OR type = 'organization' OR type = 'play') ORDER BY nid ASC", $context['sandbox']['current_node'], 0, $limit);
+
+  while ($row = db_fetch_array($result)) {
+    $domain = $_SERVER['HTTP_HOST'];
+    $drupal_base_path = base_path();
+    $node = node_load($row['nid'], NULL, TRUE);
+
+    switch ($node->type) {
+      case 'organization':
+        loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $node->nid);
+      break;
+      case 'artist':
+        loadArtists($m, $mongo_database, $domain, $drupal_base_path, $node->nid);
+      break;
+      case 'play':
+        loadPlays($m, $mongo_database, $domain, $drupal_base_path, $node->nid);
+      break;
+    }
+
+    // Store some result for post-processing in the finished callback.
+    // $context['results'][] = check_plain($node->title);
+
+    // Update our progress information.
+    $context['sandbox']['progress']++;
+    $context['sandbox']['current_node'] = $node->nid;
+    $context['message'] = t('Now processing %type: %node', array('%node' => $node->title, '%type' => $node->type));
+  }
+
   // Inform the batch engine that we are not finished,
   // and provide an estimation of the completion level we reached.
   if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
