@@ -61,16 +61,16 @@ function npm_datasource_admin_update_mongo_process(&$context) {
   }
 
   $limit = 1;
-  $result = db_query_range("SELECT nid FROM {node} WHERE nid > %d AND type = 'event' ORDER BY nid ASC", $context['sandbox']['current_node'], 0, $limit);
+  $result = db_query_range("SELECT nid, type, title FROM {node} WHERE nid > %d AND type = 'event' ORDER BY nid ASC", $context['sandbox']['current_node'], 0, $limit);
 
   while ($row = db_fetch_array($result)) {
     $domain = $_SERVER['HTTP_HOST'];
     $drupal_base_path = base_path();
-    $node = node_load($row['nid'], NULL, TRUE);
+    // $node = node_load($row['nid'], NULL, TRUE);
 
-    switch ($node->type) {
+    switch ($row['type']) {
       case 'event':
-        loadEvents($m, $mongo_database, $domain, $drupal_base_path, $node->nid);
+        loadEvents($m, $mongo_database, $domain, $drupal_base_path, $row['nid']);
       break;
     }
     // Here we actually perform our processing on the current node.
@@ -78,12 +78,12 @@ function npm_datasource_admin_update_mongo_process(&$context) {
     // dsm($node->title);
 
     // Store some result for post-processing in the finished callback.
-    $context['results'][] = check_plain($node->title);
+    $context['results'][] = check_plain($row['title']);
 
     // Update our progress information.
     $context['sandbox']['progress']++;
-    $context['sandbox']['current_node'] = $node->nid;
-    $context['message'] = t('Now processing %node', array('%node' => $node->title));
+    $context['sandbox']['current_node'] = $row['nid'];
+    $context['message'] = t('Now processing %node', array('%node' => $row['title']));
   }
 
   // Inform the batch engine that we are not finished,
@@ -121,36 +121,33 @@ function npm_datasource_admin_update_mongo_process_other(&$context) {
     $context['sandbox']['max'] = db_result(db_query("SELECT COUNT(DISTINCT nid) FROM {node} WHERE type = 'artist' OR type = 'organization' OR type = 'play'"));
   }
 
-  // @TODO: Performance ideas
-  // -- Increase limit.
-  // -- Don't do a node_load, instead adjust the query to return nid, title, and type.
   $limit = 1;
-  $result = db_query_range("SELECT nid FROM {node} WHERE nid > %d AND (type = 'artist' OR type = 'organization' OR type = 'play') ORDER BY nid ASC", $context['sandbox']['current_node'], 0, $limit);
+  $result = db_query_range("SELECT nid, title, type FROM {node} WHERE nid > %d AND (type = 'artist' OR type = 'organization' OR type = 'play') ORDER BY nid ASC", $context['sandbox']['current_node'], 0, $limit);
 
   while ($row = db_fetch_array($result)) {
     $domain = $_SERVER['HTTP_HOST'];
     $drupal_base_path = base_path();
-    $node = node_load($row['nid'], NULL, TRUE);
+    // $node = node_load($row['nid'], NULL, TRUE);
 
-    switch ($node->type) {
+    switch ($row['type']) {
       case 'organization':
-        loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $node->nid);
+        loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $row['nid']);
       break;
       case 'artist':
-        loadArtists($m, $mongo_database, $domain, $drupal_base_path, $node->nid);
+        loadArtists($m, $mongo_database, $domain, $drupal_base_path, $row['nid']);
       break;
       case 'play':
-        loadPlays($m, $mongo_database, $domain, $drupal_base_path, $node->nid);
+        loadPlays($m, $mongo_database, $domain, $drupal_base_path, $row['nid']);
       break;
     }
 
     // Store some result for post-processing in the finished callback.
-    $context['results'][] = check_plain($node->title) . ' (' . $node->type . ')';
+    $context['results'][] = check_plain($row['title']) . ' (' . $row['type'] . ')';
 
     // Update our progress information.
     $context['sandbox']['progress']++;
-    $context['sandbox']['current_node'] = $node->nid;
-    $context['message'] = t('Now processing %type: %node', array('%node' => $node->title, '%type' => $node->type));
+    $context['sandbox']['current_node'] = $row['nid'];
+    $context['message'] = t('Now processing %type: %node', array('%node' => $row['title'], '%type' => $row['type']));
   }
 
   // Inform the batch engine that we are not finished,
