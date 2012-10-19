@@ -26,6 +26,7 @@ function npm_datasource_admin_update_mongo_form() {
       'organization' => 'Organizations (and Events)',
       'play' => 'Plays (and Events)',
     ),
+    '#required' => TRUE,
   );
   
   $form['update_mongo'] = array(
@@ -51,13 +52,27 @@ function npm_datasource_admin_update_mongo($form, &$form_state) {
     !empty($form['mongo_types']['#post']['mongo_types']['organization']) ||
     !empty($form['mongo_types']['#post']['mongo_types']['play'])
   ) ? 'event' : '';
+
+  $selected_options = $form['mongo_types']['#post']['mongo_types'];
+  $opertations = array();
+
+  // Always add the events call
+  $operations[] = array('npm_datasource_admin_update_mongo_process', array($event));
+
+  // If events was also checked, remove it from the list
+  if ($selected_options['event']) {
+    array_shift($selected_options);
+  }
+
+  // Add the other types that were checked to the list
+  if (!empty($selected_options)) {
+    foreach ($selected_options as $type) {
+      $operations[] = array('npm_datasource_admin_update_mongo_process', array($type));
+    }
+  }
+
   $batch = array(
-    'operations' => array(
-      array('npm_datasource_admin_update_mongo_process', array($event)),
-      array('npm_datasource_admin_update_mongo_process', array($form['mongo_types']['#post']['mongo_types']['artist'])),
-      array('npm_datasource_admin_update_mongo_process', array($form['mongo_types']['#post']['mongo_types']['organization'])),
-      array('npm_datasource_admin_update_mongo_process', array($form['mongo_types']['#post']['mongo_types']['play'])),
-      ),
+    'operations' => $operations,
     'finished' => 'npm_datasource_admin_update_mongo_finished',
     'title' => t('Update New Play Map Mongo Database'),
     'init_message' => t('Starting database update.'),
