@@ -256,6 +256,9 @@ function npm_datasource_delete_mongo_action(&$object, $context = array()) {
 }
 
 function npm_datasource_delete_mongo(&$object, $context) {
+  dsm($object);
+  dsm($context);
+
   include_once('../api/loaddata_functions.inc');
   include_once('../../authentication/newplaymap_authentication.php');
   connectMongo(false);
@@ -267,8 +270,9 @@ function npm_datasource_delete_mongo(&$object, $context) {
     case 'nodeapi':
       switch ($object->type) {
         case 'artist':
+          // @TODO: What should we do about plays that list this artist?
           // Delete the artist record
-          // deleteArtists($m, $mongo_database, $id);
+          deleteArtists($m, $mongo_database, $id);
           
           // @TODO: Figure out what other content to update
         break;
@@ -279,14 +283,19 @@ function npm_datasource_delete_mongo(&$object, $context) {
           // @TODO: Figure out what other content to update
         break;
         case 'organization':
+          // @TODO: Get the plays that list this org as related
+          // @TODO: Get the artists that list this org as related
+
           // Delete the organization record
-          // deleteOrganizations($m, $mongo_database, $id);
-          
+          deleteOrganizations($m, $mongo_database, $id);
+
+          // @TODO: UPDATE the related orgs
+          // @TODO: UPDATE the related artists
           // @TODO: Figure out what other content to update
         break;
         case 'play':
           // Delete the play record
-          // deletePlays($m, $mongo_database, $id);
+          deletePlays($m, $mongo_database, $id);
           
           // @TODO: Figure out what other content to update
         break;
@@ -298,5 +307,6 @@ function npm_datasource_delete_mongo(&$object, $context) {
       $path_to_map = str_replace("/participate/", "", $drupal_base_path);
       drupal_goto('http://' . $domain . $path_to_map);
     break;
-  } 
+  }
+
 }
