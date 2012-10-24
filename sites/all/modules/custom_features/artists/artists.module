@@ -9,8 +9,10 @@ include_once('artists.features.inc');
 function artists_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'artist_node_form') {
     $form['field_location'][0]['#location_settings']['form']['fields']['street']['collect'] = '0';
-    $form['field_location'][0]['#location_settings']['form']['fields']['city']['collect'] = '0';
-    $form['field_location'][0]['#location_settings']['form']['fields']['province']['collect'] = '0';
+    $form['field_location'][0]['#location_settings']['form']['fields']['city']['collect'] = '1';
+    $form['field_location'][0]['#location_settings']['form']['fields']['province']['collect'] = '1';
+    $form['field_location'][0]['#location_settings']['form']['fields']['postal_code']['collect'] = '1';
+    $form['field_location'][0]['#location_settings']['form']['fields']['country']['collect'] = '1';
   }
   
 }
