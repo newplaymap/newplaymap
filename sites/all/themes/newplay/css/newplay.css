@@ -1815,3 +1815,16 @@ form .node-form > input.form-submit:active {
   margin-left: 2px;
   box-shadow: none;
 }
+
+#autocomplete ul li {
+  padding: 8px;
+}
+
+#autocomplete ul li div.field-content {
+  display: inline;
+}
+
+#autocomplete ul li span.views-field-field-artist-nid div.field-content {
+  font-style: italic;
+  font-size: 0.9em;
+}
