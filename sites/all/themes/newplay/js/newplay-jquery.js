@@ -7,10 +7,10 @@ var newPlay = newPlay || {};
  * @TODO: Merge with newPlay.validateContactPlay()
  */
 newPlay.validateContactPlayEvent = function(element, nodeRef, submit) {
-  var nodeId = encodeURIComponent(nodeRef.replace(/.*:/, '').replace(']', '')) || 'undefined';
+  var nodeId = encodeURIComponent(nodeRef.replace(/.*:/, '').replace(']', '')).replace('%26', '%2526') || 'undefined';
 
   var submit = submit || false;
-  var artist = encodeURIComponent(artist) || 'undefined';
+  var artist = encodeURIComponent(artist).replace('%26', '%2526') || 'undefined';
 
   $.ajax({
     url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + nodeId + '/' + artist + '/' + submit,
@@ -733,9 +733,8 @@ $(document).ready(function() {
         }
         
         if ($('#edit-field-related-play-nid-nid').length > 0) {
-          var playNodeId = encodeURIComponent($('#edit-field-related-play-nid-nid').val().replace(/.*nid:/, '').replace(']', ''));
-
-          var artist = encodeURIComponent($('#edit-value').val().replace(/.*nid:/, '').replace(']', '')) || 'undefined';
+          var playNodeId = encodeURIComponent($('#edit-field-related-play-nid-nid').val().replace(/.*nid:/, '').replace(']', '')).replace('%26', '%2526');
+          var artist = encodeURIComponent($('#edit-value').val().replace(/.*nid:/, '').replace(']', '')).replace('%26', '%2526') || 'undefined';
 
           $.ajax({
             url: Drupal.settings.basePath + 'newplay_reference/play/' + 'play' + '/' + playNodeId + '/' + artist + '/' + valid,

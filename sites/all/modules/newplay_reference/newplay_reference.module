@@ -41,6 +41,7 @@ function newplay_reference_play_contact_callback($type, $play, $artist, $submit 
   $artist = ($artist == 'undefined') ? NULL : $artist;
 
 	$play = html_entity_decode($play, ENT_QUOTES);
+
 	// @TODO: If it's not numberic, it could be because the user typed the entire title of the play without selecting the autocomplete.
 	// It should also check for matches here
   // $play_nid = is_numeric($play) ? $play : NULL;
@@ -79,7 +80,7 @@ function newplay_reference_play_contact_callback($type, $play, $artist, $submit 
     'contact_id' => $user_id,
     'ready_to_submit' => false,
   );
-  
+
   if (empty($artist) && empty($gen_artist_node)) {
     $node_data['status'] = 'contact needed';
   } else {
@@ -109,7 +110,6 @@ function newplay_reference_play_contact_callback($type, $play, $artist, $submit 
   }
 
   echo drupal_json($node_data);
-    
 }
 
 /**
