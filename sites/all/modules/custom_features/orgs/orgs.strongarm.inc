@@ -186,12 +186,12 @@ function orgs_strongarm() {
   $strongarm->name = 'content_extra_weights_organization';
   $strongarm->value = array(
     'title' => '-5',
-    'revision_information' => '9',
-    'author' => '11',
-    'options' => '12',
-    'menu' => '8',
-    'taxonomy' => '6',
-    'path' => '10',
+    'revision_information' => '8',
+    'author' => '10',
+    'options' => '11',
+    'menu' => '7',
+    'taxonomy' => '5',
+    'path' => '9',
   );
 
   $export['content_extra_weights_organization'] = $strongarm;

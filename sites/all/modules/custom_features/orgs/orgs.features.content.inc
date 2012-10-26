@@ -517,65 +517,6 @@ function orgs_content_default_fields() {
     ),
   );
 
-  // Exported field: field_org_art_leaders
-  $fields['organization-field_org_art_leaders'] = array(
-    'field_name' => 'field_org_art_leaders',
-    'type_name' => 'organization',
-    'display_settings' => array(
-      'weight' => '5',
-      'parent' => 'group_org_info',
-      'label' => array(
-        'format' => 'above',
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'text',
-    'required' => '1',
-    'multiple' => '1',
-    'module' => 'text',
-    'active' => '1',
-    'text_processing' => '0',
-    'max_length' => '',
-    'allowed_values' => '',
-    'allowed_values_php' => '',
-    'widget' => array(
-      'rows' => 5,
-      'size' => '60',
-      'default_value' => array(
-        '0' => array(
-          'value' => '',
-          '_error_element' => 'default_value_widget][field_org_art_leaders][0][value',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Leadership',
-      'weight' => '3',
-      'description' => 'Example: <em>Jane Tulaine, Artistic Director</em>',
-      'type' => 'text_textfield',
-      'module' => 'text',
-    ),
-  );
-
   // Exported field: field_org_description
   $fields['organization-field_org_description'] = array(
     'field_name' => 'field_org_description',
@@ -704,7 +645,7 @@ function orgs_content_default_fields() {
     'referrer_order' => 'TITLE_ASC',
     'widget' => array(
       'label' => 'Associated Events',
-      'weight' => '7',
+      'weight' => '6',
       'description' => '',
       'type' => 'nodereferrer_list',
       'module' => 'nodereferrer',
@@ -1029,7 +970,6 @@ function orgs_content_default_fields() {
   t('Associated Events');
   t('Ensemble / Collective');
   t('Founding date');
-  t('Leadership');
   t('Location');
   t('Logo');
   t('Mission statement');
