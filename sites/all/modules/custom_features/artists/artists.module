@@ -8,6 +8,10 @@ include_once('artists.features.inc');
  */
 function artists_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'artist_node_form') {
+    // Hide the artist membership field (leave it for admins so we don't forget it's there)
+    $form['field_artist_affiliations']['#access'] = user_access('administer nodes');
+
+    // Change required settings on location fields
     $form['field_location'][0]['#location_settings']['form']['fields']['street']['collect'] = '0';
     $form['field_location'][0]['#location_settings']['form']['fields']['city']['collect'] = '1';
     $form['field_location'][0]['#location_settings']['form']['fields']['province']['collect'] = '1';
