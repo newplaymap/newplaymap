@@ -291,12 +291,11 @@ function plays_and_events_strongarm() {
   $strongarm->name = 'content_extra_weights_play';
   $strongarm->value = array(
     'title' => '-5',
-    'revision_information' => '0',
-    'author' => '3',
-    'options' => '4',
-    'comment_settings' => '2',
-    'menu' => '-1',
-    'path' => '1',
+    'revision_information' => '2',
+    'author' => '4',
+    'options' => '5',
+    'menu' => '1',
+    'path' => '3',
   );
 
   $export['content_extra_weights_play'] = $strongarm;

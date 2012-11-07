@@ -14,3 +14,14 @@ function plays_and_events_ctools_plugin_directory($module, $plugin) {
     return "plugins/$plugin";
   }
 }
+
+/**
+ * Implementation of hook_form_alter()
+ */
+function plays_and_events_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'event_node_form') {
+    // Hide the artist membership field (leave it for admins so we don't forget it's there)
+    $form['field_event_desc']['#access'] = user_access('administer nodes');
+  }
+  
+}
