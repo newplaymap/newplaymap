@@ -50,6 +50,7 @@ function feed_system_content_default_fields() {
       'artist' => 'artist',
       'agent' => 0,
       'artist_memberships' => 0,
+      'artist_type' => 0,
       'blog_feed' => 0,
       'blog_post' => 0,
       'delete_request' => 0,
@@ -57,7 +58,6 @@ function feed_system_content_default_fields() {
       'event_type' => 0,
       'feed' => 0,
       'feed_item' => 0,
-      'artist_type' => 0,
       'organization' => 0,
       'org_type' => 0,
       'page' => 0,
@@ -71,7 +71,7 @@ function feed_system_content_default_fields() {
       'video' => 0,
       'video_feed' => 0,
     ),
-    'advanced_view' => 'artist_list',
+    'advanced_view' => '--',
     'advanced_view_args' => '',
     'widget' => array(
       'node_link' => array(
@@ -330,6 +330,7 @@ function feed_system_content_default_fields() {
       'artist' => 'artist',
       'agent' => 0,
       'artist_memberships' => 0,
+      'artist_type' => 0,
       'blog_feed' => 0,
       'blog_post' => 0,
       'delete_request' => 0,
@@ -337,7 +338,6 @@ function feed_system_content_default_fields() {
       'event_type' => 0,
       'feed' => 0,
       'feed_item' => 0,
-      'artist_type' => 0,
       'organization' => 0,
       'org_type' => 0,
       'page' => 0,
@@ -351,7 +351,7 @@ function feed_system_content_default_fields() {
       'video' => 0,
       'video_feed' => 0,
     ),
-    'advanced_view' => 'artist_list',
+    'advanced_view' => '--',
     'advanced_view_args' => '',
     'widget' => array(
       'node_link' => array(
@@ -852,6 +852,7 @@ function feed_system_content_default_fields() {
       'artist' => 'artist',
       'agent' => 0,
       'artist_memberships' => 0,
+      'artist_type' => 0,
       'blog_feed' => 0,
       'blog_post' => 0,
       'delete_request' => 0,
@@ -859,7 +860,6 @@ function feed_system_content_default_fields() {
       'event_type' => 0,
       'feed' => 0,
       'feed_item' => 0,
-      'artist_type' => 0,
       'organization' => 0,
       'org_type' => 0,
       'page' => 0,
@@ -873,7 +873,7 @@ function feed_system_content_default_fields() {
       'video' => 0,
       'video_feed' => 0,
     ),
-    'advanced_view' => 'artist_list',
+    'advanced_view' => '--',
     'advanced_view_args' => '',
     'widget' => array(
       'node_link' => array(
@@ -1265,6 +1265,7 @@ function feed_system_content_default_fields() {
       'artist' => 'artist',
       'agent' => 0,
       'artist_memberships' => 0,
+      'artist_type' => 0,
       'blog_feed' => 0,
       'blog_post' => 0,
       'delete_request' => 0,
@@ -1272,7 +1273,6 @@ function feed_system_content_default_fields() {
       'event_type' => 0,
       'feed' => 0,
       'feed_item' => 0,
-      'artist_type' => 0,
       'organization' => 0,
       'org_type' => 0,
       'page' => 0,
@@ -1286,7 +1286,7 @@ function feed_system_content_default_fields() {
       'video' => 0,
       'video_feed' => 0,
     ),
-    'advanced_view' => 'artist_list',
+    'advanced_view' => '--',
     'advanced_view_args' => '',
     'widget' => array(
       'node_link' => array(
@@ -1543,6 +1543,7 @@ function feed_system_content_default_fields() {
       'artist' => 'artist',
       'agent' => 0,
       'artist_memberships' => 0,
+      'artist_type' => 0,
       'blog_feed' => 0,
       'blog_post' => 0,
       'delete_request' => 0,
@@ -1550,7 +1551,6 @@ function feed_system_content_default_fields() {
       'event_type' => 0,
       'feed' => 0,
       'feed_item' => 0,
-      'artist_type' => 0,
       'organization' => 0,
       'org_type' => 0,
       'page' => 0,
@@ -1564,7 +1564,7 @@ function feed_system_content_default_fields() {
       'video' => 0,
       'video_feed' => 0,
     ),
-    'advanced_view' => 'artist_list',
+    'advanced_view' => '--',
     'advanced_view_args' => '',
     'widget' => array(
       'node_link' => array(
@@ -1823,6 +1823,7 @@ function feed_system_content_default_fields() {
       'artist' => 'artist',
       'agent' => 0,
       'artist_memberships' => 0,
+      'artist_type' => 0,
       'blog_feed' => 0,
       'blog_post' => 0,
       'delete_request' => 0,
@@ -1830,7 +1831,6 @@ function feed_system_content_default_fields() {
       'event_type' => 0,
       'feed' => 0,
       'feed_item' => 0,
-      'artist_type' => 0,
       'organization' => 0,
       'org_type' => 0,
       'page' => 0,
@@ -1844,7 +1844,7 @@ function feed_system_content_default_fields() {
       'video' => 0,
       'video_feed' => 0,
     ),
-    'advanced_view' => 'artist_list',
+    'advanced_view' => '--',
     'advanced_view_args' => '',
     'widget' => array(
       'node_link' => array(
@@ -2285,6 +2285,7 @@ function feed_system_content_default_fields() {
       'artist' => 'artist',
       'agent' => 0,
       'artist_memberships' => 0,
+      'artist_type' => 0,
       'blog_feed' => 0,
       'blog_post' => 0,
       'delete_request' => 0,
@@ -2292,7 +2293,6 @@ function feed_system_content_default_fields() {
       'event_type' => 0,
       'feed' => 0,
       'feed_item' => 0,
-      'artist_type' => 0,
       'organization' => 0,
       'org_type' => 0,
       'page' => 0,
@@ -2306,7 +2306,7 @@ function feed_system_content_default_fields() {
       'video' => 0,
       'video_feed' => 0,
     ),
-    'advanced_view' => 'artist_list',
+    'advanced_view' => '--',
     'advanced_view_args' => '',
     'widget' => array(
       'node_link' => array(
@@ -2773,6 +2773,7 @@ function feed_system_content_default_fields() {
       'artist' => 'artist',
       'agent' => 0,
       'artist_memberships' => 0,
+      'artist_type' => 0,
       'blog_feed' => 0,
       'blog_post' => 0,
       'delete_request' => 0,
@@ -2780,7 +2781,6 @@ function feed_system_content_default_fields() {
       'event_type' => 0,
       'feed' => 0,
       'feed_item' => 0,
-      'artist_type' => 0,
       'organization' => 0,
       'org_type' => 0,
       'page' => 0,
@@ -2794,7 +2794,7 @@ function feed_system_content_default_fields() {
       'video' => 0,
       'video_feed' => 0,
     ),
-    'advanced_view' => 'artist_list',
+    'advanced_view' => '--',
     'advanced_view_args' => '',
     'widget' => array(
       'node_link' => array(

@@ -990,6 +990,7 @@ function plays_and_events_content_default_fields() {
       'artist' => 'artist',
       'agent' => 0,
       'artist_memberships' => 0,
+      'artist_type' => 0,
       'blog_feed' => 0,
       'blog_post' => 0,
       'delete_request' => 0,
@@ -997,7 +998,6 @@ function plays_and_events_content_default_fields() {
       'event_type' => 0,
       'feed' => 0,
       'feed_item' => 0,
-      'artist_type' => 0,
       'organization' => 0,
       'org_type' => 0,
       'page' => 0,
@@ -1011,7 +1011,7 @@ function plays_and_events_content_default_fields() {
       'video' => 0,
       'video_feed' => 0,
     ),
-    'advanced_view' => 'artist_list',
+    'advanced_view' => '--',
     'advanced_view_args' => '',
     'widget' => array(
       'autocomplete_match' => 'contains',
@@ -1037,68 +1037,6 @@ function plays_and_events_content_default_fields() {
       'description' => 'Playwright or Ensemble / Collective name.',
       'type' => 'nodereference_url',
       'module' => 'nodereference_url',
-    ),
-  );
-
-  // Exported field: field_play_alt_titles
-  $fields['play-field_play_alt_titles'] = array(
-    'field_name' => 'field_play_alt_titles',
-    'type_name' => 'play',
-    'display_settings' => array(
-      'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'text',
-    'required' => '0',
-    'multiple' => '1',
-    'module' => 'text',
-    'active' => '1',
-    'text_processing' => '0',
-    'max_length' => '',
-    'allowed_values' => '',
-    'allowed_values_php' => '',
-    'widget' => array(
-      'rows' => 5,
-      'size' => '60',
-      'default_value' => array(
-        '0' => array(
-          'value' => '',
-          '_error_element' => 'default_value_widget][field_play_alt_titles][0][value',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Alternate titles',
-      'weight' => '-2',
-      'description' => 'If this play has had other titles, enter them here.',
-      'type' => 'text_textfield',
-      'module' => 'text',
     ),
   );
 
@@ -1174,7 +1112,7 @@ function plays_and_events_content_default_fields() {
     'referrer_order' => 'TITLE_ASC',
     'widget' => array(
       'label' => 'Related Events',
-      'weight' => '-2',
+      'weight' => 0,
       'description' => '',
       'type' => 'nodereferrer_list',
       'module' => 'nodereferrer',
@@ -1245,7 +1183,6 @@ function plays_and_events_content_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Alternate titles');
   t('Date');
   t('Event description');
   t('Event type');
