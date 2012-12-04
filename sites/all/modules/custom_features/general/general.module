@@ -14,6 +14,13 @@ function general_menu() {
     'type' => MENU_CALLBACK,
   );
   
+  $items['monitor'] = array(
+    'title' => 'Monitor Page',
+    'page callback' => 'general_monitor',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  
   return $items;
 }
 
@@ -30,6 +37,10 @@ function general_welcome_links_data() {
   }
 
   echo $welcome_text;
+}
+
+function general_monitor() {
+  echo 'success';
 }
 
 /**
