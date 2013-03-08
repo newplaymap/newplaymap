@@ -635,7 +635,7 @@ function artists_content_default_fields() {
             'weight' => '8',
           ),
           'province' => array(
-            'collect' => '2',
+            'collect' => '1',
             'default' => '',
             'weight' => '10',
           ),

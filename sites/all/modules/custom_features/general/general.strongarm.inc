@@ -738,7 +738,7 @@ The New Play Map is a cooperative knowledge and information management project o
 
 A request to reset the password for your account has been made at !site.
 
-You may now log in to !uri_brief by clicking on this link or copying and pasting it in your browser:
+You may now log in by clicking on this link or copying and pasting it in your browser:
 
 !login_url
 
