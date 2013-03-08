@@ -40,7 +40,8 @@ function newplay_reference_play_contact_callback($type, $play, $artist, $submit 
   // Clear out the bs
   $artist = ($artist == 'undefined') ? NULL : $artist;
 
-	$play = html_entity_decode($play, ENT_QUOTES);
+  // Decode string from ajax call. Custom encoding of '/' as '__' in newplay-jquery.js
+	$play = str_replace('__', '/', html_entity_decode($play, ENT_QUOTES));
 
 	// @TODO: If it's not numberic, it could be because the user typed the entire title of the play without selecting the autocomplete.
 	// It should also check for matches here
@@ -60,7 +61,8 @@ function newplay_reference_play_contact_callback($type, $play, $artist, $submit 
 	
   $play_node = node_load($play_nid);
 
-	$artist = html_entity_decode($artist, ENT_QUOTES);
+  // Decode string from ajax call. Custom encoding of '/' as '__' in newplay-jquery.js
+	$artist = str_replace('__', '/', html_entity_decode($artist, ENT_QUOTES));
 	
   $artist_field = content_fields('field_artist', 'play');
   $artist_potential_references = _nodereference_potential_references($artist_field, $artist, 'equals');
