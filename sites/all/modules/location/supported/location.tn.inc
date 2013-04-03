@@ -1,5 +1,4 @@
 <?php
-// $Id: location.tn.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Tunisia
 
@@ -28,4 +27,16 @@ function location_province_list_tn() {
     'TO' => "Tozeur",
     'TU' => "Tunis",
     'ZA' => "Zaghouan");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_tn() {
+  return array(
+    'minlng' => 7.521,
+    'minlat' => 30.1174,
+    'maxlng' => 11.59235,
+    'maxlat' => 37.291,
+  );
 }

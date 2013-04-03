@@ -1,5 +1,4 @@
 <?php
-// $Id: location.bg.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Bulgaria
 
@@ -32,4 +31,16 @@ function location_province_list_bg() {
     '26' => "Khaskovo",
     '27' => "Shumen",
     '28' => "Yambol");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_bg() {
+  return array(
+    'minlng' => 22.34235,
+    'minlat' => 41.2841,
+    'maxlng' => 28.559,
+    'maxlat' => 44.237,
+  );
 }

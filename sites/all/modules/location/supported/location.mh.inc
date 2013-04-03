@@ -1,10 +1,10 @@
 <?php
-// $Id: location.mh.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Marshall Islands
 
 function location_province_list_mh() {
-  return array('ALG' => "Ailinginae",
+  return array(
+    'ALG' => "Ailinginae",
     'ALL' => "Ailinglaplap",
     'ALK' => "Ailuk",
     'ARN' => "Arno",
@@ -36,5 +36,20 @@ function location_province_list_mh() {
     'UJL' => "Ujelang",
     'UTK' => "Utirik",
     'WTH' => "Wotho",
-    'WTJ' => "Wotje");
+    'WTJ' => "Wotje",
+  );
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_mh() {
+  // NaturalEarth 10m Admin 0 - Countries (v1.3.0)
+  // EPSG:900913
+  return array(
+    'minlng' => 165.282448,
+    'minlat' => 4.57359792,
+    'maxlng' => 172.029943,
+    'maxlat' => 14.6102204,
+  );
 }

@@ -1,4 +1,3 @@
-$Id: INSTALL.txt,v 1.11 2008/12/10 18:16:42 bdragon Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -60,3 +59,15 @@ INSTALLATION
 
      cd sites/SITENAME/modules/location
      mysql -u username -p database-name < database/zipcodes.us.mysql
+     
+KNOWN ISSUES
+------------
+
+1. Node locations and CCK locations cannot safely be used on the same content types.
+   You can use both on one site but they must be used on different content types.
+   To turn node locations off for a particular content type edit the content type
+   and set the max number of locations to zero.
+   The problem is that node locations can interfere with the saving of cck locations
+   and you can end up losing your cck locations.
+   For more information see this issue - http://drupal.org/node/906968.
+

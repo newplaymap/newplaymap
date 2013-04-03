@@ -1,5 +1,4 @@
 <?php
-// $Id: location.vn.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Vietnam
 
@@ -36,4 +35,16 @@ function location_province_list_vn() {
     'HC' => "Ho Chin Minh",
     'HU' => "Hau Giang",
     'HY' => "Hung Yen");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_vn() {
+  return array(
+    'minlng' => 102.2111,
+    'minlat' => 8.589833,
+    'maxlng' => 109.412,
+    'maxlat' => 23.4265,
+  );
 }

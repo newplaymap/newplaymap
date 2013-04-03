@@ -1,5 +1,4 @@
 <?php
-// $Id: location_handler_argument_location_proximity.inc,v 1.1.2.1 2010/07/04 10:34:04 rooby Exp $
 
 /**
  * @file
@@ -33,7 +32,7 @@ class location_handler_argument_location_proximity extends views_handler_argumen
         'latlon' => t('Decimal Latitude and Longitude coordinates, comma delimited'),
       ),
       '#default_value' => $this->options['type'],
-      '#description' => t('Type of center point.') . '<br />' . t('Postal code argument format: country_postcode_distance or postcode_distance') . '<br />' . t('Lat/Lon argument format: lat,lon_distance'),
+      '#description' => t('Type of center point.') . '<br />' . t('Postal code argument format: country_postcode_distance or postcode_distance') . '<br />' . t('Lat/Lon argument format: lat,lon_distance') . '<br />' . t('where distance is either a number or a comma delimited pair of decimal degrees'),
     );
 
     // Units used.
@@ -139,7 +138,7 @@ class location_handler_argument_location_proximity extends views_handler_argumen
       if (!empty($this->value['search_distance'])) {
         // Hmm, distance set but unable to resolve coordinates.
         // Force nothing to match.
-        $this->query->add_where($this->options['group'], "1 = 0");
+        $this->query->add_where(0, "1 = 0");
       }
       return;
     }
@@ -178,11 +177,11 @@ class location_handler_argument_location_proximity extends views_handler_argumen
     else {
       $where = "$this->table_alias.latitude > %f AND $this->table_alias.latitude < %f AND $this->table_alias.longitude > %f AND $this->table_alias.longitude < %f";
     }
-    $this->query->add_where($this->options['group'], $where, $latrange[0], $latrange[1], $lonrange[0], $lonrange[1]);
+    $this->query->add_where(0, $where, $latrange[0], $latrange[1], $lonrange[0], $lonrange[1]);
 
     if ($this->options['search_method'] == 'dist') {
       // Add radius check.
-      $this->query->add_where($this->options['group'], earth_distance_sql($lon, $lat, $this->table_alias) . ' < %f', $distance_meters);
+      $this->query->add_where(0, earth_distance_sql($lon, $lat, $this->table_alias) . ' < %f', $distance_meters);
     }
   }
 }

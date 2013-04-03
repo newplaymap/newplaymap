@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ir.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Iran, Islamic Republic Of
 
@@ -34,4 +33,16 @@ function location_province_list_ir() {
     'NKH' => "North Khorasan",
     'RKH' => "Razavi Khorasan",
     'SKH' => "South Khorasan");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ir() {
+  return array(
+    'minlng' => 44.01905,
+    'minlat' => 25.120267,
+    'maxlng' => 63.3325,
+    'maxlat' => 39.825267,
+  );
 }

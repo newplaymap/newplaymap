@@ -1,5 +1,4 @@
 <?php
-// $Id: location.zm.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Zambia
 
@@ -13,4 +12,16 @@ function location_province_list_zm() {
     'NW' => "North-Western Province",
     'SO' => "Southern Province",
     'WE' => "Western Province");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_zm() {
+  return array(
+    'minlng' => 21.92875,
+    'minlat' => -18.0931,
+    'maxlng' => 33.53855,
+    'maxlat' => -8.221467,
+  );
 }

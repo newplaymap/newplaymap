@@ -1,10 +1,10 @@
 <?php
-// $Id: location.uk.inc,v 1.7 2008/03/08 18:55:18 bdragon Exp $
 
 // Great Britain
 
 function location_province_list_uk() {
-  return array('GSY' => "Guernsey",
+  return array(
+    'GSY' => "Guernsey",
     'JSY' => "Jersey",
     'BDG' => "Barking and Dagenham",
     'BNE' => "Barnet",
@@ -235,7 +235,8 @@ function location_province_list_uk() {
     'SWA' => "Swansea",
     'TOF' => "Torfaen",
     'VGL' => "Vale of Glamorgan",
-    'WRX' => "Wrexham");
+    'WRX' => "Wrexham",
+  );
 }
 
 function location_map_link_uk_providers() {
@@ -267,4 +268,19 @@ function location_map_link_uk_google($location = array()) {
   else {
     return NULL;
   }
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_uk() {
+  // NaturalEarth 10m Admin 0 - Countries (v1.3.0)
+  // EPSG:900913
+  // From ISO code GB.
+  return array(
+    'minlng' => -13.691355,
+    'minlat' => 49.9096161,
+    'maxlng' => 1.77170536,
+    'maxlat' => 60.8475532,
+  );
 }

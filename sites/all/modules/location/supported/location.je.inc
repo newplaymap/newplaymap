@@ -20,3 +20,15 @@ function location_province_list_je() {
     'TR' => 'Trinity',
   );
 }
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_je() {
+  return array(
+    'minlng' => -2.40735,
+    'minlat' => 49.181767,
+    'maxlng' => -2.15155,
+    'maxlat' => 49.2844,
+  );
+}

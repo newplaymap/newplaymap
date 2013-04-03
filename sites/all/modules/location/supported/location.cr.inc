@@ -1,5 +1,4 @@
 <?php
-// $Id: location.cr.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Costa Rica
 
@@ -11,4 +10,16 @@ function location_province_list_cr() {
     'LI' => "Limon",
     'PU' => "Puntarenas",
     'SJ' => "San Jose");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_cr() {
+  return array(
+    'minlng' => -87.01515,
+    'minlat' => 5.4829,
+    'maxlng' => -82.6145,
+    'maxlat' => 11.217367,
+  );
 }

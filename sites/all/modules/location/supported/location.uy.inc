@@ -1,5 +1,4 @@
 <?php
-// $Id: location.uy.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Uruguay
 
@@ -22,4 +21,16 @@ function location_province_list_uy() {
     'SO' => "Soriano",
     'SJ' => "San Jose",
     'TT' => "Treinta y Tres");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_uy() {
+  return array(
+    'minlng' => -58.39985,
+    'minlat' => -34.9494,
+    'maxlng' => -53.1923,
+    'maxlat' => -30.1059,
+  );
 }

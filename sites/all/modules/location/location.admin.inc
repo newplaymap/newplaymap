@@ -1,5 +1,4 @@
 <?php
-// $Id: location.admin.inc,v 1.17.2.6 2010/05/27 14:48:13 rooby Exp $
 
 /**
  * @file
@@ -289,7 +288,7 @@ function location_geocoding_options_form_submit($form, &$form_state) {
   variable_set('location_general_geocoders_in_use', $general_geocoders_in_use);
 }
 
-function theme_location_map_link_options(&$form) {
+function theme_location_map_link_options($form) {
   $header = array(array('align' => 'center', 'data' => '<center>'. t('Country') .'</center>'), array('align' => 'center', 'data' => '<center>'. t('Options') .'</center>'));
   $rows = array();
   foreach (element_children($form['countries']) as $country_iso) {
@@ -310,7 +309,7 @@ function theme_location_map_link_options(&$form) {
   return $output;
 }
 
-function theme_location_geocoding_options(&$form) {
+function theme_location_geocoding_options($form) {
   $output = drupal_render($form['location_geocode_google_minimum_accuracy']);
   $header = array(
     array('align' => 'center', 'data' => '<center>'. t('Country') .'</center>'),

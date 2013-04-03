@@ -1,5 +1,4 @@
 <?php
-// $Id: location.mn.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Mongolia
 
@@ -26,4 +25,16 @@ function location_province_list_mn() {
     '069' => "Bayanhongor",
     '071' => "Bayan-Olgiy",
     '073' => "Arhangay");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_mn() {
+  return array(
+    'minlng' => 87.6924,
+    'minlat' => 41.553167,
+    'maxlng' => 119.899,
+    'maxlat' => 52.096,
+  );
 }

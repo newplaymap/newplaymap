@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ug.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Uganda
 
@@ -60,4 +59,16 @@ function location_province_list_ug() {
     'MBR' => "Mbarara",
     'NTU' => "Ntungamo",
     'RUK' => "Rukungiri");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ug() {
+  return array(
+    'minlng' => 29.5619,
+    'minlat' => -1.501367,
+    'maxlng' => 35.02905,
+    'maxlat' => 4.201733,
+  );
 }

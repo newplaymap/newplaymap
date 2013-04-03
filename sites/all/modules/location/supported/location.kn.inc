@@ -1,5 +1,4 @@
 <?php
-// $Id: location.kn.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Saint Kitts and Nevis
 
@@ -18,4 +17,16 @@ function location_province_list_kn() {
     'STL' => "Saint Thomas Lowland",
     'STM' => "Saint Thomas Middle Island",
     'TPP' => "Trinity Palmetto Point");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_kn() {
+  return array(
+    'minlng' => -62.92925,
+    'minlat' => 17.095533,
+    'maxlng' => -62.5697,
+    'maxlat' => 17.3875,
+  );
 }

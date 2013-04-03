@@ -1,5 +1,4 @@
 <?php
-// $Id: location.td.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Chad
 
@@ -18,4 +17,16 @@ function location_province_list_td() {
     'OU' => "Ouaddai",
     'SA' => "Salamat",
     'TA' => "Tandjile");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_td() {
+  return array(
+    'minlng' => 13.5963,
+    'minlat' => 7.523867,
+    'maxlng' => 24.08065,
+    'maxlat' => 23.507333,
+  );
 }

@@ -26,3 +26,15 @@ function location_province_list_se() {
     'VB' => "Västerbotten",
     'NO' => "Norrbotten");
 }
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_se() {
+  return array(
+    'minlng' => 11.06005,
+    'minlat' => 55.385433,
+    'maxlng' => 23.989,
+    'maxlat' => 69.126433,
+  );
+}

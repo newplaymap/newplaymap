@@ -1,5 +1,4 @@
 <?php
-// $Id: location.pw.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Palau
 
@@ -20,4 +19,16 @@ function location_province_list_pw() {
     'NW' => "Ngiwal",
     'PE' => "Peleliu",
     'SO' => "Sonsorol");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_pw() {
+  return array(
+    'minlng' => 134.1386,
+    'minlat' => 6.798967,
+    'maxlng' => 134.8889,
+    'maxlat' => 7.697967,
+  );
 }

@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ng.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Nigeria
 
@@ -41,4 +40,16 @@ function location_province_list_ng() {
     'TA' => "Taraba",
     'YO' => "Yobe",
     'ZA' => "Zamfara");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ng() {
+  return array(
+    'minlng' => 2.64745,
+    'minlat' => 4.226367,
+    'maxlng' => 14.7131,
+    'maxlat' => 13.807067,
+  );
 }

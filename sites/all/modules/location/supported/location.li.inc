@@ -1,5 +1,4 @@
 <?php
-// $Id: location.li.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Liechtenstein
 
@@ -15,4 +14,16 @@ function location_province_list_li() {
     'G' => "Gamprin",
     'L' => "Schellenberg",
     'P' => "Planken");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_li() {
+  return array(
+    'minlng' => 9.417494,
+    'minlat' => 46.997118,
+    'maxlng' => 9.61825,
+    'maxlat' => 47.206967,
+  );
 }

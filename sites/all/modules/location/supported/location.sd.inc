@@ -1,5 +1,4 @@
 <?php
-// $Id: location.sd.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Sudan
 
@@ -30,4 +29,16 @@ function location_province_list_sd() {
     'SIS' => "Sharq al Istiwa'iyah",
     'SNR' => "Sinnar",
     'WRB' => "Warab");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_sd() {
+  return array(
+    'minlng' => 21.8241,
+    'minlat' => 3.426933,
+    'maxlng' => 38.9644,
+    'maxlat' => 22.009756,
+  );
 }

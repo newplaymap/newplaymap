@@ -1,5 +1,4 @@
 <?php
-// $Id: location.py.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Paraguay
 
@@ -22,4 +21,16 @@ function location_province_list_py() {
     'PA' => "Paraguari",
     'PH' => "Presidente Hayes",
     'SP' => "San Pedro");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_py() {
+  return array(
+    'minlng' => -62.7526,
+    'minlat' => -27.5863,
+    'maxlng' => -54.24475,
+    'maxlat' => -19.248333,
+  );
 }

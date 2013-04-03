@@ -1,5 +1,4 @@
 <?php
-// $Id: location.co.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Colombia
 
@@ -37,4 +36,16 @@ function location_province_list_co() {
     'VAU' => "Vaupes",
     'VIC' => "Vichada",
     'BDC' => "Bogota D.C.");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_co() {
+  return array(
+    'minlng' => -81.8458,
+    'minlat' => -4.0608,
+    'maxlng' => -66.8912,
+    'maxlat' => 15.886067,
+  );
 }

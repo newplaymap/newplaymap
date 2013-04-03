@@ -1,5 +1,4 @@
 <?php
-// $Id: location_views_handler_filter_proximity.inc,v 1.3.2.3 2010/07/04 14:10:07 rooby Exp $
 
 /**
  * General proximity filter for location latitude/longitude.
@@ -150,11 +149,10 @@ class location_views_handler_filter_proximity extends views_handler_filter {
     $form['value']['php_code'] = array(
       '#type' => 'textarea',
       '#title' => t('PHP code for latitude, longitude'),
-      '#default_value' => $this->options['php_code'],
+      '#default_value' => $this->value['php_code'],
       '#process' => array('views_process_dependency'),
       '#dependency' => array('edit-options-origin' => array('php')),
       '#description' => t("Enter PHP code that returns a latitude/longitude.  Do not use &lt;?php ?&gt;. You must return only an array with float values set for the 'latitude' and 'longitude' keys."),
-      '#default_value' => $this->value['php_code'],
       '#weight' => 5,
     );
 
@@ -214,6 +212,14 @@ class location_views_handler_filter_proximity extends views_handler_filter {
     parent::exposed_form($form, $form_state);
     $key = $this->options['expose']['identifier'];
     $origin = $this->options['origin'];
+
+    // Strip dependencies off on exposed form.
+    foreach (element_children($form[$key]) as $el) {
+      if (!empty($form[$key][$el]['#dependency'])) {
+        $form[$key][$el]['#dependency'] = array();
+      }
+    }
+
     if ($origin == 'latlon_gmap' && module_exists('gmap')) {
       // Bad things happen if we try to show a gmap in the views live preview.
       if ($form_state['post']['live_preview']) {
@@ -288,14 +294,9 @@ class location_views_handler_filter_proximity extends views_handler_filter {
     $options = array_merge($this->options, $this->options['value'], $this->value);
     $coordinates = location_views_proximity_get_reference_location($this->view, $options);
 
-    // Coordinates available?
-    if (empty($coordinates)) {
-      // Distance set?
-      if (!empty($this->value['search_distance'])) {
-        // Hmm, distance set but unable to resolve coordinates.
-        // Force nothing to match.
-        $this->query->add_where($this->options['group'], "1=0");
-      }
+    // If we don't have any coordinates or distance, there's nothing to filter
+    // by, so don't modify the query at all.
+    if (empty($coordinates) || empty($this->value['search_distance'])) {
       return;
     }
 

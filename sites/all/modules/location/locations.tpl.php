@@ -1,9 +1,8 @@
-<?php if (count($locations)) {?>
-<h3 class="location-locations-header"><?php echo count($locations) > 1 ? t('Locations') : t('Location');?></h3>
-<div class="location-locations-wrapper">
-<?php
-  foreach ($locations as $location) {
-    echo $location;
-  }
-  echo '</div>';
-} ?>
+<?php if (!empty($locations)): ?>
+  <h3 class="location-locations-header"><?php print format_plural(count($locations), 'Location', 'Locations'); ?></h3>
+  <div class="location-locations-wrapper">
+    <?php foreach ($locations as $location): ?>
+      <?php print $location; ?>
+    <?php endforeach; ?>
+  </div>
+<?php endif; ?>

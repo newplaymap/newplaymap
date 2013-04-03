@@ -1,5 +1,4 @@
 <?php
-// $Id: location.cl.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Chile
 
@@ -17,4 +16,16 @@ function location_province_list_cl() {
     'RM' => "Region Metropolitana (RM)",
     'TA' => "Tarapaca (I)",
     'VS' => "Valparaiso (V)");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_cl() {
+  return array(
+    'minlng' => -89.1566,
+    'minlat' => -56.3359,
+    'maxlng' => -66.53165,
+    'maxlat' => -17.5216,
+  );
 }

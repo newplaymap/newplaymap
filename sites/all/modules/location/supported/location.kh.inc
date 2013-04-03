@@ -1,5 +1,4 @@
 <?php
-// $Id: location.kh.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Cambodia
 
@@ -29,4 +28,16 @@ function location_province_list_kh() {
     'ST' => "Stung Treng",
     'SR' => "Svay Rieng",
     'TK' => "Takeo");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_kh() {
+  return array(
+    'minlng' => 102.2838,
+    'minlat' => 10.4398,
+    'maxlng' => 107.52335,
+    'maxlat' => 14.561533,
+  );
 }

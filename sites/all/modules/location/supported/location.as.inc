@@ -1,5 +1,4 @@
 <?php
-// $Id: location.as.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // American Samoa
 
@@ -9,4 +8,16 @@ function location_province_list_as() {
     'R' => "Rose Island",
     'S' => "Swains Island",
     'W' => "Western");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_as() {
+  return array(
+    'minlng' => -170.9021,
+    'minlat' => -14.541433,
+    'maxlng' => -168.23395,
+    'maxlat' => -14.183633,
+  );
 }

@@ -1,10 +1,9 @@
 <?php
-// $Id: location_handler_filter_location_country.inc,v 1.3 2008/12/02 22:50:21 bdragon Exp $
 
 /**
  * Filter on country.
  */
-class location_handler_filter_location_country extends views_handler_filter {
+class location_handler_filter_location_country extends views_handler_filter_in_operator {
 
   function option_definition() {
     $options = parent::option_definition();
@@ -20,15 +19,60 @@ class location_handler_filter_location_country extends views_handler_filter {
 //    return (!empty($this->options['exposed']) ? t('exposed') : $options[$this->operator]);
   }
 
+  function get_value_options() {
+    if (isset($this->value_options)) {
+      return;
+    }
+
+    $this->value_options = location_get_iso3166_list();
+  }
+
   /**
-   * Provide a simple textfield for equality
+   * Provide widgets for filtering by country.
    */
   function value_form(&$form, &$form_state) {
-    $options = location_get_iso3166_list();
+    $this->get_value_options();
+    $options = $this->value_options;
+    $default_value = (array) $this->value;
+
+    if (!empty($form_state['exposed'])) {
+      $identifier = $this->options['expose']['identifier'];
+
+      if (empty($this->options['expose']['use_operator']) || empty($this->options['expose']['operator'])) {
+        // exposed and locked.
+        $which = in_array($this->operator, $this->operator_values(1)) ? 'value' : 'none';
+      }
+      else {
+        $source = 'edit-' . form_clean_id($this->options['expose']['operator']);
+      }
+
+      if (!empty($this->options['expose']['reduce'])) {
+        $options = $this->reduce_value_options();
+
+        if (empty($this->options['expose']['single']) && !empty($this->options['expose']['optional'])) {
+          $default_value = array();
+        }
+      }
+
+      if (!empty($this->options['expose']['single'])) {
+        if (!empty($this->options['expose']['optional']) && (empty($default_value) || !empty($this->options['expose']['reduce']))) {
+          $default_value = 'All';
+        }
+        else if (empty($default_value)) {
+          $keys = array_keys($options);
+          $default_value = array_shift($keys);
+        }
+        else {
+          $copy = $default_value;
+          $default_value = array_shift($copy);
+        }
+      }
+    }
+
     $form['value'] = array(
       '#type' => 'select',
       '#title' => t('Country'),
-      '#default_value' => $this->value,
+      '#default_value' => $default_value,
       '#options' => $options,
       // Used by province autocompletion js.
       '#attributes' => array('class' => 'location_auto_country'),

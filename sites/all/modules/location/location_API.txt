@@ -1,4 +1,3 @@
-$Id: location_API.txt,v 1.10 2008/07/24 15:44:37 bdragon Exp $
 
 This file describes the public API for the CivicSpace location system as defined by
  in the library implemented by "location.inc" and its supporting files.

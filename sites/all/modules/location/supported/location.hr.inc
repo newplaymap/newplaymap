@@ -1,5 +1,4 @@
 <?php
-// $Id: location.hr.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Croatia
 
@@ -25,4 +24,16 @@ function location_province_list_hr() {
     '19' => "Dubrovnik-Neretva county",
     '20' => "Medjimurje county",
     '21' => "Zagreb (city)");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_hr() {
+  return array(
+    'minlng' => 13.50481,
+    'minlat' => 42.4555,
+    'maxlng' => 19.2728,
+    'maxlat' => 46.583016,
+  );
 }

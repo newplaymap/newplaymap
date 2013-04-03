@@ -1,5 +1,4 @@
 <?php
-// $Id: location.jo.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Jordan
 
@@ -16,4 +15,16 @@ function location_province_list_jo() {
     'JA' => "Jarash",
     'MN' => "Ma'an",
     'MD' => "Madaba");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_jo() {
+  return array(
+    'minlng' => 34.8481,
+    'minlat' => 29.204733,
+    'maxlng' => 39.74045,
+    'maxlat' => 33.319433,
+  );
 }

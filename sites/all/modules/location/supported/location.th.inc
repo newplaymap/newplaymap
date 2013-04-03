@@ -1,5 +1,4 @@
 <?php
-// $Id: location.th.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Thailand
 
@@ -81,4 +80,16 @@ function location_province_list_th() {
     '95' => "Yala",
     '96' => "Narathiwat",
     'S' => "Pattaya");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_th() {
+  return array(
+    'minlng' => 97.3234,
+    'minlat' => 5.697633,
+    'maxlng' => 105.57965,
+    'maxlat' => 20.5392,
+  );
 }

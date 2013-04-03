@@ -1,5 +1,4 @@
 <?php
-// $Id: location.dj.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Djibouti
 
@@ -9,4 +8,16 @@ function location_province_list_dj() {
     'J' => "Djibouti",
     'O' => "Obock",
     'T' => "Tadjoura");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_dj() {
+  return array(
+    'minlng' => 41.7834,
+    'minlat' => 10.874833,
+    'maxlng' => 43.4419,
+    'maxlat' => 12.718233,
+  );
 }

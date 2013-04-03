@@ -1,5 +1,4 @@
 <?php
-// $Id: location.lt.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Lithuania
 
@@ -14,4 +13,16 @@ function location_province_list_lt() {
     'TE' => "Telsiai",
     'UT' => "Utena",
     'VI' => "Vilnius");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_lt() {
+  return array(
+    'minlng' => 20.76725,
+    'minlat' => 53.949833,
+    'maxlng' => 26.86295,
+    'maxlat' => 56.478033,
+  );
 }

@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ch.inc,v 1.6.4.1 2009/06/29 14:44:02 bdragon Exp $
 
 // Switzerland
 
@@ -99,4 +98,16 @@ function _location_driving_directions_link_ch_search($location_a, $location_b) {
     }
   }
   return 'http://route.search.ch/?route=' . urlencode(implode(' ', $query_params_a) . ' to ' .implode(' ', $query_params_b));
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ch() {
+  return array(
+    'minlng' => 5.8814,
+    'minlat' => 45.7606,
+    'maxlng' => 10.58005,
+    'maxlat' => 47.693367,
+  );
 }

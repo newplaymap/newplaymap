@@ -1,5 +1,4 @@
 <?php
-// $Id: location.jp.inc,v 1.6.4.1 2009/02/04 20:04:10 bdragon Exp $
 
 // Japan
 
@@ -51,4 +50,16 @@ function location_province_list_jp() {
     '45' => "Miyazaki",
     '46' => "Kagosima (Kagoshima)",
     '47' => "Okinawa");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_jp() {
+  return array(
+    'minlng' => 122.8517,
+    'minlat' => 20.468967,
+    'maxlng' => 146.13545,
+    'maxlat' => 45.546567,
+  );
 }

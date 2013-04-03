@@ -1,5 +1,4 @@
 <?php
-// $Id: location.np.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Nepal
 
@@ -18,4 +17,16 @@ function location_province_list_np() {
     'RA' => "Rapti",
     'SA' => "Sagarmatha",
     'SE' => "Seti");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_np() {
+  return array(
+    'minlng' => 80.0464,
+    'minlat' => 26.411167,
+    'maxlng' => 88.1283,
+    'maxlat' => 30.364033,
+  );
 }

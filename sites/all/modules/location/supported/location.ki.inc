@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ki.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Kiribati
 
@@ -25,4 +24,16 @@ function location_province_list_ki() {
     'TM' => "Tamana",
     'TW' => "Tarawa",
     'TE' => "Teraina");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ki() {
+  return array(
+    'minlng' => -175.8883,
+    'minlat' => -11.523967,
+    'maxlng' => 176.69935,
+    'maxlat' => 4.8706,
+  );
 }

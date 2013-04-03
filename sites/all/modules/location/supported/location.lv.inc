@@ -1,5 +1,4 @@
 <?php
-// $Id: location.lv.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Latvia
 
@@ -37,4 +36,16 @@ function location_province_list_lv() {
     'RZK' => "Rezekne",
     'RGA' => "Riga",
     'VSL' => "Ventspils");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_lv() {
+  return array(
+    'minlng' => 20.8848,
+    'minlat' => 55.723733,
+    'maxlng' => 28.1695,
+    'maxlat' => 58.147367,
+  );
 }

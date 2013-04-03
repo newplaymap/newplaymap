@@ -1,5 +1,4 @@
 <?php
-// $Id: location.install,v 1.41.2.2 2010/07/04 14:10:07 rooby Exp $
 
 /**
  * @file
@@ -1130,40 +1129,42 @@ function location_update_6309() {
   $ret = array();
   $updated_views = array();
 
-  $views = views_get_all_views();
-  foreach ($views as $view) {
-    $modified = FALSE;
-    // For each view check all filters of all displays for the distance field filter.
-    foreach ($view->display as $did => $display) {
-      if (isset($display->display_options['filters']) && !empty($display->display_options['filters'])) {
-        foreach ($display->display_options['filters'] as $fid => $filter) {
-          if ($filter['table'] == 'location' && $filter['field'] == 'distance') {
-            // Set the origin (new option) from the type (old option).
-            $origin = '';
-            switch ($filter['type']) {
-              case 'latlon':
-                $origin = 'static';
-                break;
-              case 'postal':
-              case 'postal_default':
-              case 'latlon_gmap':
-                $origin = $filter['type'];
-                break;
-            }
-            if ($origin) {
-              $view->display[$did]->display_options['filters'][$fid]['origin'] = $origin;
-              unset($view->display[$did]->display_options['filters'][$fid]['type']);
-              $modified = TRUE;
+  if (module_exists('views')) {
+    $views = views_get_all_views();
+    foreach ($views as $view) {
+      $modified = FALSE;
+      // For each view check all filters of all displays for the distance field filter.
+      foreach ($view->display as $did => $display) {
+        if (isset($display->display_options['filters']) && !empty($display->display_options['filters'])) {
+          foreach ($display->display_options['filters'] as $fid => $filter) {
+            if ($filter['table'] == 'location' && $filter['field'] == 'distance') {
+              // Set the origin (new option) from the type (old option).
+              $origin = '';
+              switch ($filter['type']) {
+                case 'latlon':
+                  $origin = 'static';
+                  break;
+                case 'postal':
+                case 'postal_default':
+                case 'latlon_gmap':
+                  $origin = $filter['type'];
+                  break;
+              }
+              if ($origin) {
+                $view->display[$did]->display_options['filters'][$fid]['origin'] = $origin;
+                unset($view->display[$did]->display_options['filters'][$fid]['type']);
+                $modified = TRUE;
+              }
             }
           }
         }
       }
-    }
-    // Save the view if we changed any options on any diplays.
-    // Views caches are cleared during save so we don't have to do it.
-    if ($modified) {
-      $updated_views[] = $view->name;
-      $view->save();
+      // Save the view if we changed any options on any diplays.
+      // Views caches are cleared during save so we don't have to do it.
+      if ($modified) {
+        $updated_views[] = $view->name;
+        $view->save();
+      }
     }
   }
 

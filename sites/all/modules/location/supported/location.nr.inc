@@ -1,5 +1,4 @@
 <?php
-// $Id: location.nr.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Nauru
 
@@ -18,4 +17,16 @@ function location_province_list_nr() {
     'NI' => "Nibok",
     'UA' => "Uaboe",
     'YA' => "Yaren");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_nr() {
+  return array(
+    'minlng' => 167.0567,
+    'minlat' => -0.589533,
+    'maxlng' => 167.11675,
+    'maxlat' => -0.5351,
+  );
 }

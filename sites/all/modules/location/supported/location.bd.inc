@@ -1,5 +1,4 @@
 <?php
-// $Id: location.bd.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Bangladesh
 
@@ -10,4 +9,16 @@ function location_province_list_bd() {
     'KHU' => "Khulna",
     'RAJ' => "Rajshahi",
     'SYL' => "Sylhet");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_bd() {
+  return array(
+    'minlng' => 87.8338,
+    'minlat' => 20.794167,
+    'maxlng' => 92.67495,
+    'maxlat' => 26.491433,
+  );
 }

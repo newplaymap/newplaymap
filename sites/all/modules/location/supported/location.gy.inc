@@ -1,5 +1,4 @@
 <?php
-// $Id: location.gy.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Guyana
 
@@ -14,4 +13,16 @@ function location_province_list_gy() {
     'PI' => "Potaro-Siparuni",
     'UD' => "Upper Demerara-Berbice",
     'UT' => "Upper Takutu-Upper Essequibo");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_gy() {
+  return array(
+    'minlng' => -61.3364,
+    'minlat' => 1.278567,
+    'maxlng' => -56.5865,
+    'maxlat' => 8.373633,
+  );
 }

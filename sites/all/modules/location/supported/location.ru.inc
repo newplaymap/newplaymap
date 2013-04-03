@@ -1,10 +1,10 @@
 <?php
-// $Id: location.ru.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Russian Federation
 
 function location_province_list_ru() {
-  return array('AD' => "Adygeya",
+  return array(
+    'AD' => "Adygeya",
     'BA' => "Bashkortostan",
     'BU' => "Buryatia",
     'AL' => "Altai Republic",
@@ -92,5 +92,22 @@ function location_province_list_ru() {
     'KHM' => "Khantia-Mansia",
     'CHU' => "Chukotka",
     'EVE' => "Evenkia",
-    'YAN' => "Yamalia");
+    'YAN' => "Yamalia",
+  );
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ru() {
+  // NaturalEarth 10m Admin 0 - Countries (v1.3.0)
+  // EPSG:900913
+  // The downside to bounding boxes is that crossing the antimeridian causes
+  // serious issues. See http://purl.oclc.org/coordinates/a2.htm for discussion.
+  return array(
+    'minlng' => -179.99900,
+    'minlat' => 41.1926805,
+    'maxlng' => 180.000000,
+    'maxlat' => 81.8583637,
+  );
 }

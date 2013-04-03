@@ -1,5 +1,4 @@
 <?php
-// $Id: location.bh.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Bahrain
 
@@ -9,4 +8,16 @@ function location_province_list_bh() {
     'MUH' => "Muharraq",
     'NOR' => "Northern",
     'SOU' => "Southern");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_bh() {
+  return array(
+    'minlng' => 50.402,
+    'minlat' => 25.862667,
+    'maxlng' => 50.66065,
+    'maxlat' => 26.339733,
+  );
 }

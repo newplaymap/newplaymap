@@ -1,5 +1,4 @@
 <?php
-// $Id: location.inc,v 1.95.2.9 2010/07/04 14:10:07 rooby Exp $
 
 /**
  * @defgroup Location Location: An API for working with locations.
@@ -314,6 +313,39 @@ function location_latlon_rough_default($location = array()) {
   }
   else {
     return NULL;
+  }
+}
+
+/**
+ * Get an appropriate bounding box for showing an entire country on a map.
+ * Target is a bounding box large enough to show the country in both spherical
+ * mercator and mercator projections.
+ * @param $location
+ *   Either a location array or a country code.
+ *
+ * @return
+ *   An array with 'minlng', 'minlat', 'maxlng', and 'maxlat' elements.
+ */
+function location_country_bounds($location = array()) {
+  if (!is_array($location)) {
+    $location = array('country' => $location);
+  }
+  if (!empty($location['country'])) {
+    location_load_country($location['country']);
+  }
+
+  $country_bounds_function = 'location_bounds_' . $location['country'];
+
+  if (function_exists($country_bounds_function)) {
+    return $country_bounds_function();
+  }
+  else {
+    return array(
+      'minlng' => -180.0,
+      'minlat' => -90.0,
+      'maxlng' => 180.0,
+      'maxlat' => 90.0,
+    );
   }
 }
 
@@ -840,7 +872,7 @@ function location_get_iso3166_list($upper = FALSE) {
     'th' => t('Thailand'),
     'tj' => t('Tajikistan'),
     'tk' => t('Tokelau'),
-    'tl' => t('East Timor'),
+    'tl' => t('Timor-Leste'),
     'tm' => t('Turkmenistan'),
     'tn' => t('Tunisia'),
     'to' => t('Tonga'),
