@@ -15,46 +15,6 @@ function feed_system_user_default_permissions() {
     ),
   );
 
-  // Exported permission: clear blog_feed_v2 feeds
-  $permissions['clear blog_feed_v2 feeds'] = array(
-    'name' => 'clear blog_feed_v2 feeds',
-    'roles' => array(
-      '0' => 'website developer',
-    ),
-  );
-
-  // Exported permission: clear feed feeds
-  $permissions['clear feed feeds'] = array(
-    'name' => 'clear feed feeds',
-    'roles' => array(
-      '0' => 'website developer',
-    ),
-  );
-
-  // Exported permission: clear photo_feed feeds
-  $permissions['clear photo_feed feeds'] = array(
-    'name' => 'clear photo_feed feeds',
-    'roles' => array(
-      '0' => 'website developer',
-    ),
-  );
-
-  // Exported permission: clear twitter_feed feeds
-  $permissions['clear twitter_feed feeds'] = array(
-    'name' => 'clear twitter_feed feeds',
-    'roles' => array(
-      '0' => 'website developer',
-    ),
-  );
-
-  // Exported permission: clear video_feed feeds
-  $permissions['clear video_feed feeds'] = array(
-    'name' => 'clear video_feed feeds',
-    'roles' => array(
-      '0' => 'website developer',
-    ),
-  );
-
   // Exported permission: create blog_feed content
   $permissions['create blog_feed content'] = array(
     'name' => 'create blog_feed content',
@@ -340,46 +300,6 @@ function feed_system_user_default_permissions() {
     'name' => 'edit own video_feed content',
     'roles' => array(
       '0' => 'authenticated user',
-    ),
-  );
-
-  // Exported permission: import blog_feed_v2 feeds
-  $permissions['import blog_feed_v2 feeds'] = array(
-    'name' => 'import blog_feed_v2 feeds',
-    'roles' => array(
-      '0' => 'website developer',
-    ),
-  );
-
-  // Exported permission: import feed feeds
-  $permissions['import feed feeds'] = array(
-    'name' => 'import feed feeds',
-    'roles' => array(
-      '0' => 'website developer',
-    ),
-  );
-
-  // Exported permission: import photo_feed feeds
-  $permissions['import photo_feed feeds'] = array(
-    'name' => 'import photo_feed feeds',
-    'roles' => array(
-      '0' => 'website developer',
-    ),
-  );
-
-  // Exported permission: import twitter_feed feeds
-  $permissions['import twitter_feed feeds'] = array(
-    'name' => 'import twitter_feed feeds',
-    'roles' => array(
-      '0' => 'website developer',
-    ),
-  );
-
-  // Exported permission: import video_feed feeds
-  $permissions['import video_feed feeds'] = array(
-    'name' => 'import video_feed feeds',
-    'roles' => array(
-      '0' => 'website developer',
     ),
   );
 

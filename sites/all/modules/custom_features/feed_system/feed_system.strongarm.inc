@@ -721,13 +721,14 @@ function feed_system_strongarm() {
   $strongarm->name = 'default_feeds_importer';
   $strongarm->value = array(
     'blog_feed' => TRUE,
-    'twitter_feed' => FALSE,
-    'video_feed' => FALSE,
-    'photo_feed' => FALSE,
-    'feed' => FALSE,
+    'blog_feed_v2' => TRUE,
+    'photo_feed' => TRUE,
+    'twitter_feed' => TRUE,
+    'video_feed' => TRUE,
     'node' => TRUE,
-    'opml' => TRUE,
     'user' => TRUE,
+    'feed' => TRUE,
+    'opml' => TRUE,
   );
 
   $export['default_feeds_importer'] = $strongarm;
