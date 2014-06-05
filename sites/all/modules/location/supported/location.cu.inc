@@ -1,5 +1,4 @@
 <?php
-// $Id: location.cu.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Cuba
 
@@ -19,4 +18,16 @@ function location_province_list_cu() {
     'HOL' => "Holguin",
     'SCU' => "Santiago de Cuba",
     'GUA' => "Guantanamo");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_cu() {
+  return array(
+    'minlng' => -84.88225,
+    'minlat' => 19.796767,
+    'maxlng' => -74.10875,
+    'maxlat' => 23.263867,
+  );
 }

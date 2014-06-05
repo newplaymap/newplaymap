@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ro.inc,v 1.6.4.1 2010/04/06 05:01:15 ankur Exp $
 
 // Romania
 
@@ -47,4 +46,16 @@ function location_province_list_ro() {
     'VS' => 'Vaslui',
     'VL' => 'Vâlcea',
     'VN' => 'Vrancea');
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ro() {
+  return array(
+    'minlng' => 20.2073,
+    'minlat' => 43.7213,
+    'maxlng' => 30.20235,
+    'maxlat' => 48.21,
+  );
 }

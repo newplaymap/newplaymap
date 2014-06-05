@@ -1,5 +1,4 @@
 <?php
-// $Id: location_views_handler_field_latitude.inc,v 1.1 2008/09/10 22:01:05 bdragon Exp $
 
 /**
  * @file

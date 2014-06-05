@@ -1,5 +1,4 @@
 <?php
-// $Id: location.af.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Afghanistan
 
@@ -36,4 +35,16 @@ function location_province_list_af() {
     'TAK' => "Takhar province",
     'WAR' => "Wardak province",
     'ZAB' => "Zabol province");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_af() {
+  return array(
+    'minlng' => 60.5054,
+    'minlat' => 29.612733,
+    'maxlng' => 74.93195,
+    'maxlat' => 38.538967,
+  );
 }

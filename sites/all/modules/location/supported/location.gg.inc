@@ -24,3 +24,15 @@ function location_province_list_gg() {
     'VA' => 'Vale',
   );
 }
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_gg() {
+  return array(
+    'minlng' => -2.77195,
+    'minlat' => 49.381867,
+    'maxlng' => -2.3856,
+    'maxlat' => 49.4828,
+  );
+}

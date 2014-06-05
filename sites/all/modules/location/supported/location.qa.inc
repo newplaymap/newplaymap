@@ -1,5 +1,4 @@
 <?php
-// $Id: location.qa.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Qatar
 
@@ -14,4 +13,16 @@ function location_province_list_qa() {
     'MS' => "Madinat ash Shamal",
     'UD' => "Umm Sa'id",
     'UL' => "Umm Salal");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_qa() {
+  return array(
+    'minlng' => 50.70915,
+    'minlat' => 24.6815,
+    'maxlng' => 51.74715,
+    'maxlat' => 26.170267,
+  );
 }

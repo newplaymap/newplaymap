@@ -1,5 +1,4 @@
 <?php
-// $Id: location_cck.module,v 1.5.2.19 2010/03/25 07:00:07 ankur Exp $
 
 /**
  * @file
@@ -117,7 +116,7 @@ function location_cck_field_settings($op, $field) {
       $data = content_views_field_views_data($field);
       $data[$table][$field_alias]['relationship'] = array(
         'base' => 'location',
-        'field' => 'lid',
+        'field' => $field_alias,
         'handler' => 'views_handler_relationship',
         'label' => t('Location'), // @@@ Some sort of better name?
       );
@@ -150,6 +149,19 @@ function location_cck_field($op, &$node, $field, &$items, $teaser, $page) {
         $locations[] = location_load_location($item['lid']);
       }
       return array($field['field_name'] => $locations);
+
+    case 'sanitize':
+      // Get the location information for the lid if it hasn't already been
+      // loaded (in the hook_field() load $op using location_load_location()).
+      // This is necessary for Views and any other modules that use the
+      // content_format() function to render CCK fields because content_format()
+      // doesn't call the "load" $op.
+      foreach ($items as $delta => $item) {
+        if (!isset($item['latitude'])) {
+          $items[$delta] = array_merge($items[$delta], location_load_location($item['lid']));
+        }
+      }
+      break;
 
     case 'delete':
       // Use the CCK storage to figure out the vids that need to be deleted,

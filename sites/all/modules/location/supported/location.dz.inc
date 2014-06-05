@@ -1,5 +1,4 @@
 <?php
-// $Id: location.dz.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Algeria
 
@@ -52,4 +51,16 @@ function location_province_list_dz() {
     'TIS' => "Tissemsilt",
     'TOU' => "Tizi Ouzou",
     'TLE' => "Tlemcen");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_dz() {
+  return array(
+    'minlng' => -8.69675,
+    'minlat' => 18.852433,
+    'maxlng' => 11.96305,
+    'maxlat' => 37.025967,
+  );
 }

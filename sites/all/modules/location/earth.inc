@@ -1,5 +1,4 @@
 <?php
-// $Id: earth.inc,v 1.10.4.1 2010/07/04 13:12:11 rooby Exp $
 
 /**
  * License clarification:

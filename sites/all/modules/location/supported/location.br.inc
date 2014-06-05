@@ -1,5 +1,4 @@
 <?php
-// $Id: location.br.inc,v 1.6.4.2 2010/04/11 22:34:21 ankur Exp $
 
 // This file contributed by Avi Alkalay <avi unix sh> to the
 // Location Drupal module, based on other files on same folder.
@@ -94,3 +93,15 @@ function location_map_link_br_google($location = array()) {
 
 
 
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_br() {
+  return array(
+    'minlng' => -73.97965,
+    'minlat' => -33.8089,
+    'maxlng' => -28.8133,
+    'maxlat' => 5.259233,
+  );
+}

@@ -1,5 +1,4 @@
 <?php
-// $Id: location.il.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Israel
 
@@ -10,4 +9,16 @@ function location_province_list_il() {
     'N' => "Northern",
     'S' => "Southern",
     'T' => "Tel Aviv");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_il() {
+  return array(
+    'minlng' => 34.177243,
+    'minlat' => 29.519233,
+    'maxlng' => 35.8844,
+    'maxlat' => 33.314233,
+  );
 }

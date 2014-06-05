@@ -1,5 +1,4 @@
 <?php
-// $Id: location.jm.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Jamaica
 
@@ -18,4 +17,16 @@ function location_province_list_jm() {
     'THO' => "Saint Thomas Parish",
     'TRL' => "Trelawny Parish",
     'WML' => "Westmoreland Parish");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_jm() {
+  return array(
+    'minlng' => -78.4033,
+    'minlat' => 16.911867,
+    'maxlng' => -75.9029,
+    'maxlat' => 18.462967,
+  );
 }

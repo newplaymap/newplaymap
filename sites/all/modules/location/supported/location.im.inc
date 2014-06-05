@@ -14,3 +14,15 @@ function location_province_list_im() {
     'RU' => 'Rushen',
   );
 }
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_im() {
+  return array(
+    'minlng' => -4.874,
+    'minlat' => 54.0471,
+    'maxlng' => -4.38405,
+    'maxlat' => 54.424067,
+  );
+}

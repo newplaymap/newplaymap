@@ -1,5 +1,4 @@
 <?php
-// $Id: location.id.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Indonesia
 
@@ -34,4 +33,16 @@ function location_province_list_id() {
     'JK' => "Jakarta Raya",
     'AC' => "Aceh",
     'YO' => "Yogyakarta");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_id() {
+  return array(
+    'minlng' => 95.1087,
+    'minlat' => -10.878967,
+    'maxlng' => 141.0309,
+    'maxlat' => 5.978267,
+  );
 }

@@ -1,5 +1,4 @@
 <?php
-// $Id: location.lu.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Luxembourg
 
@@ -16,4 +15,16 @@ function location_province_list_lu() {
     'LC' => "Capellen",
     'LE' => "Esch-sur-Alzette",
     'LM' => "Mersch");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_lu() {
+  return array(
+    'minlng' => 5.69075,
+    'minlat' => 49.470867,
+    'maxlng' => 6.43925,
+    'maxlat' => 50.182633,
+  );
 }

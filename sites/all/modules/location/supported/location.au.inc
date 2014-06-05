@@ -1,5 +1,4 @@
 <?php
-// $Id: location.au.inc,v 1.9.2.1 2010/05/27 12:16:14 rooby Exp $
 
 // Australia
 
@@ -220,9 +219,6 @@ function location_map_link_au_default_providers() {
 function location_geocode_au_providers() {
   return array(
     'yahoo' => array('name' => 'Yahoo! Maps Web Services', 'url' => 'http://developer.yahoo.com/maps/rest/V1/geocode.html', 'tos' => 'http://developer.yahoo.com/maps/mapsTerms.html'),
-
-    'google' => array('name' => 'Google Maps API', 'url' => 'http://www.google.com/apis/maps/', 'tos' => 'http://www.google.com/apis/maps/terms.html')
-
   );
 }
 
@@ -284,58 +280,6 @@ function location_geocode_au_yahoo($location = array()) {
       }
     }
   }
-}
-
-function location_geocode_au_google($location = array()) {
-  $service_url = 'http://maps.google.com/maps/geo?output=xml&key='. variable_get('location_geocode_au_google_apikey', '') .'&q=';
-
-  $address = location_address2singleline($location);
-
-  $http_reply = drupal_http_request($service_url . urlencode($address));
-
-  $status_code_match = array();
-  preg_match('/<code>(.*)<\/code>/', $http_reply->data, $status_code_match);
-  $status_code = $status_code_match[1];
-  if ($status_code != 200) {
-    return NULL;
-  }
-
-  $accuracy_code_match = array();
-  preg_match('/Accuracy="([0-9])"/', $http_reply->data, $accuracy_code_match);
-  $accuracy_code = $accuracy_code_match[1];
-  if ($accuracy_code != 8 && $accuracy_code != 7) {
-    return NULL;
-  }
-
-  $latlon_match = array();
-  preg_match('/<coordinates>(.*)<\/coordinates>/', $http_reply->data, $latlon_match);
-
-  $latlon_exploded = explode(',', $latlon_match[1]);
-
-  return array('lat' => $latlon_exploded[1], 'lon' => $latlon_exploded[0]);
-}
-
-function location_geocode_au_google_settings() {
-  $form = array();
-
-  $form['location_geocode_au_google_apikey'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Google Maps API Key'),
-    '#size' => 64,
-    '#maxlength' => 128,
-    '#default_value' => variable_get('location_geocode_au_google_apikey', ''),
-    '#description' => t('In order to use the Google Maps API geocoding web-service, you will need a Google Maps API Key.  You can obtain one at the !sign_up_link for the !google_maps_api.', array('!sign_up_link' => '<a href="http://www.google.com/apis/maps/signup.html">sign-up page</a>', '!google_maps_api' => '<a href="http://www.google.com/apis/maps/">Google Maps API</a>'))
-  );
-
-  $form['location_geocode_au_google_accuracy_code'] = array(
-    '#type' => 'select',
-    '#title' => t('Google Maps Geocoding Accuracy for %country', array('%country' => $country ) ),
-    '#default_value' => variable_get('location_geocode_au_google_accuracy_code', variable_get('location_geocode_google_minimum_accuracy', '3')),
-    '#options' => location_google_geocode_accuracy_codes(),
-    '#description' => t('The minimum required accuracy for the geolocation data to be saved.'),
-  );
-
-  return $form;
 }
 
 /**
@@ -547,5 +491,17 @@ function location_province_list_numeric_au() {
     '006' => "Western Australia",
     '007' => "Australian Capital Territory",
     '008' => "Northern Territory",
+  );
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_au() {
+  return array(
+    'minlng' => 72.57625,
+    'minlat' => -53.259967,
+    'maxlng' => 159.4839,
+    'maxlat' => -10.078033,
   );
 }

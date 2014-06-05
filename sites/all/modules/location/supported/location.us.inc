@@ -1,5 +1,4 @@
 <?php
-// $Id: location.us.inc,v 1.23.2.1 2009/02/04 23:16:17 bdragon Exp $
 
 /**
  * Returns a lat/lon pair of the approximate center of the given postal code in the given country
@@ -604,4 +603,16 @@ function location_province_list_numeric_us() {
                '058' => 'Puerto Rico',
                '059' => 'Virgin Islands'
               );
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_us() {
+  return array(
+    'minlng' => -179.22745,
+    'minlat' => -56.5109,
+    'maxlng' => 158.80735,
+    'maxlat' => 71.399467,
+  );
 }

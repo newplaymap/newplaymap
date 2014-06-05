@@ -128,7 +128,7 @@ function orgs_content_default_fields() {
             'weight' => '8',
           ),
           'province' => array(
-            'collect' => '2',
+            'collect' => '1',
             'default' => '',
             'weight' => '10',
           ),
@@ -234,7 +234,7 @@ function orgs_content_default_fields() {
                         ),
                         'street' => array(
                           'default' => '',
-                          'collect' => '1',
+                          'collect' => 1,
                           'weight' => '4',
                         ),
                         'additional' => array(
@@ -244,22 +244,22 @@ function orgs_content_default_fields() {
                         ),
                         'city' => array(
                           'default' => '',
-                          'collect' => '1',
+                          'collect' => 1,
                           'weight' => '8',
                         ),
                         'province' => array(
                           'default' => '',
-                          'collect' => '1',
+                          'collect' => 1,
                           'weight' => '10',
                         ),
                         'postal_code' => array(
                           'default' => '',
-                          'collect' => '1',
+                          'collect' => 1,
                           'weight' => '12',
                         ),
                         'country' => array(
                           'default' => 'us',
-                          'collect' => '1',
+                          'collect' => 1,
                           'weight' => '14',
                         ),
                         'locpick' => array(
@@ -311,10 +311,7 @@ function orgs_content_default_fields() {
                                   'weight' => '14',
                                 ),
                                 'locpick' => array(
-                                  'default' => array(
-                                    'user_latitude' => '',
-                                    'user_longitude' => '',
-                                  ),
+                                  'default' => FALSE,
                                   'collect' => '0',
                                   'weight' => '20',
                                   'nodiff' => TRUE,
@@ -326,49 +323,123 @@ function orgs_content_default_fields() {
                                   'default' => array(
                                     'form' => array(
                                       'fields' => array(
-                                        'lid' => array(
-                                          'default' => FALSE,
-                                        ),
                                         'name' => array(
                                           'default' => '',
-                                          'collect' => 1,
-                                          'weight' => 2,
+                                          'collect' => '0',
+                                          'weight' => '2',
                                         ),
                                         'street' => array(
                                           'default' => '',
-                                          'collect' => 1,
-                                          'weight' => 4,
+                                          'collect' => '1',
+                                          'weight' => '4',
                                         ),
                                         'additional' => array(
                                           'default' => '',
-                                          'collect' => 1,
-                                          'weight' => 6,
+                                          'collect' => '0',
+                                          'weight' => '6',
                                         ),
                                         'city' => array(
                                           'default' => '',
-                                          'collect' => 0,
-                                          'weight' => 8,
+                                          'collect' => '1',
+                                          'weight' => '8',
                                         ),
                                         'province' => array(
                                           'default' => '',
-                                          'collect' => 0,
-                                          'weight' => 10,
+                                          'collect' => '1',
+                                          'weight' => '10',
                                         ),
                                         'postal_code' => array(
                                           'default' => '',
-                                          'collect' => 0,
-                                          'weight' => 12,
+                                          'collect' => '1',
+                                          'weight' => '12',
                                         ),
                                         'country' => array(
                                           'default' => 'us',
-                                          'collect' => 1,
-                                          'weight' => 14,
+                                          'collect' => '1',
+                                          'weight' => '14',
                                         ),
                                         'locpick' => array(
-                                          'default' => FALSE,
-                                          'collect' => 1,
-                                          'weight' => 20,
+                                          'default' => array(
+                                            'user_latitude' => '',
+                                            'user_longitude' => '',
+                                          ),
+                                          'collect' => '0',
+                                          'weight' => '20',
                                           'nodiff' => TRUE,
+                                        ),
+                                        'cck_preview_in_progress' => array(
+                                          'default' => TRUE,
+                                        ),
+                                        'location_settings' => array(
+                                          'default' => array(
+                                            'form' => array(
+                                              'fields' => array(
+                                                'lid' => array(
+                                                  'default' => FALSE,
+                                                ),
+                                                'name' => array(
+                                                  'default' => '',
+                                                  'collect' => 1,
+                                                  'weight' => 2,
+                                                ),
+                                                'street' => array(
+                                                  'default' => '',
+                                                  'collect' => 1,
+                                                  'weight' => 4,
+                                                ),
+                                                'additional' => array(
+                                                  'default' => '',
+                                                  'collect' => 1,
+                                                  'weight' => 6,
+                                                ),
+                                                'city' => array(
+                                                  'default' => '',
+                                                  'collect' => 0,
+                                                  'weight' => 8,
+                                                ),
+                                                'province' => array(
+                                                  'default' => '',
+                                                  'collect' => 0,
+                                                  'weight' => 10,
+                                                ),
+                                                'postal_code' => array(
+                                                  'default' => '',
+                                                  'collect' => 0,
+                                                  'weight' => 12,
+                                                ),
+                                                'country' => array(
+                                                  'default' => 'us',
+                                                  'collect' => 1,
+                                                  'weight' => 14,
+                                                ),
+                                                'locpick' => array(
+                                                  'default' => FALSE,
+                                                  'collect' => 1,
+                                                  'weight' => 20,
+                                                  'nodiff' => TRUE,
+                                                ),
+                                                'latitude' => array(
+                                                  'default' => 0,
+                                                ),
+                                                'longitude' => array(
+                                                  'default' => 0,
+                                                ),
+                                                'source' => array(
+                                                  'default' => 0,
+                                                ),
+                                                'is_primary' => array(
+                                                  'default' => 0,
+                                                ),
+                                                'delete_location' => array(
+                                                  'default' => FALSE,
+                                                  'nodiff' => TRUE,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        'lid' => array(
+                                          'default' => FALSE,
                                         ),
                                         'latitude' => array(
                                           'default' => 0,
@@ -386,6 +457,22 @@ function orgs_content_default_fields() {
                                           'default' => FALSE,
                                           'nodiff' => TRUE,
                                         ),
+                                      ),
+                                    ),
+                                    'display' => array(
+                                      'hide' => array(
+                                        'name' => 'name',
+                                        'additional' => 'additional',
+                                        'locpick' => 'locpick',
+                                        'coords' => 'coords',
+                                        'street' => 0,
+                                        'city' => 0,
+                                        'province' => 0,
+                                        'postal_code' => 0,
+                                        'country' => 0,
+                                        'province_name' => 0,
+                                        'country_name' => 0,
+                                        'map_link' => 0,
                                       ),
                                     ),
                                   ),
@@ -416,14 +503,14 @@ function orgs_content_default_fields() {
                                 'name' => 'name',
                                 'additional' => 'additional',
                                 'locpick' => 'locpick',
+                                'province_name' => 'province_name',
+                                'country_name' => 'country_name',
                                 'coords' => 'coords',
                                 'street' => 0,
                                 'city' => 0,
                                 'province' => 0,
                                 'postal_code' => 0,
                                 'country' => 0,
-                                'province_name' => 0,
-                                'country_name' => 0,
                                 'map_link' => 0,
                               ),
                             ),
@@ -456,13 +543,13 @@ function orgs_content_default_fields() {
                         'additional' => 'additional',
                         'locpick' => 'locpick',
                         'province_name' => 'province_name',
-                        'country_name' => 'country_name',
                         'coords' => 'coords',
                         'street' => 0,
                         'city' => 0,
                         'province' => 0,
                         'postal_code' => 0,
                         'country' => 0,
+                        'country_name' => 0,
                         'map_link' => 0,
                       ),
                     ),

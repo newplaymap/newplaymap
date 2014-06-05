@@ -1,5 +1,4 @@
 <?php
-// $Id: location.lc.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Saint Lucia
 
@@ -15,4 +14,16 @@ function location_province_list_lc() {
     'PR' => "Praslin",
     'SO' => "Soufriere",
     'VF' => "Vieux-Fort");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_lc() {
+  return array(
+    'minlng' => -61.1531,
+    'minlat' => 13.692333,
+    'maxlng' => -60.8714,
+    'maxlat' => 14.0824,
+  );
 }

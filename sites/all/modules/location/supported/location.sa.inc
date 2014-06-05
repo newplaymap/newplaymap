@@ -1,5 +1,4 @@
 <?php
-// $Id: location.sa.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Saudia Arabia
 
@@ -17,4 +16,16 @@ function location_province_list_sa() {
     'ML' => "Makkah",
     'NR' => "Najran",
     'TB' => "Tabuk");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_sa() {
+  return array(
+    'minlng' => 34.5647,
+    'minlat' => 15.518117,
+    'maxlng' => 55.028463,
+    'maxlat' => 32.275,
+  );
 }

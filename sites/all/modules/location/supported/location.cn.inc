@@ -1,5 +1,4 @@
 <?php
-// $Id: location.cn.inc,v 1.6.4.1 2009/06/29 14:25:49 bdragon Exp $
 
 // China
 
@@ -39,7 +38,17 @@ function location_province_list_cn() {
     '91' => "Xianggang",
     '92' => "Aomen",
     '97' => "Chongqing",
-    '98' => "Gaoxiong",
-    '99' => "Taibei",
+  );
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_cn() {
+  return array(
+    'minlng' => 73.5403,
+    'minlat' => 16.0968,
+    'maxlng' => 134.7658,
+    'maxlat' => 53.608867,
   );
 }

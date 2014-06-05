@@ -1,5 +1,4 @@
 <?php
-// $Id: location.bf.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Burkina Faso
 
@@ -49,4 +48,16 @@ function location_province_list_bf() {
     'ZIR' => "Ziro",
     'ZOD' => "Zondoma",
     'ZOW' => "Zoundweogo");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_bf() {
+  return array(
+    'minlng' => -5.5285,
+    'minlat' => 9.4826,
+    'maxlng' => 2.2205,
+    'maxlat' => 15.1109,
+  );
 }

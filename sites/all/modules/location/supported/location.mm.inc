@@ -1,5 +1,4 @@
 <?php
-// $Id: location.mm.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Myanmar
 
@@ -18,4 +17,16 @@ function location_province_list_mm() {
     'MN' => "Mon State",
     'RK' => "Rakhine State",
     'SH' => "Shan State");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_mm() {
+  return array(
+    'minlng' => 92.1068,
+    'minlat' => 9.755067,
+    'maxlng' => 101.048,
+    'maxlat' => 28.184067,
+  );
 }

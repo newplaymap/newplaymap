@@ -1,8 +1,19 @@
 <?php
-// $Id: location.nu.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Niue
 
 function location_province_list_nu() {
   return array();
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_nu() {
+  return array(
+    'minlng' => -169.92405,
+    'minlat' => -19.139433,
+    'maxlng' => -169.63905,
+    'maxlat' => -18.9068,
+  );
 }

@@ -1,5 +1,4 @@
 <?php
-// $Id: location_taxonomy.module,v 1.1.2.2 2009/06/29 14:34:54 bdragon Exp $
 
 /**
  * @file
@@ -104,4 +103,13 @@ function location_taxonomy_locationapi(&$obj, $op, $a3 = NULL, $a4 = NULL, $a5 =
         }
       }
   }
+}
+
+/**
+ * Implementation of hook_views_api().
+ */
+function location_taxonomy_views_api() {
+  return array(
+    'api' => 2,
+  );
 }

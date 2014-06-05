@@ -1,5 +1,4 @@
 <?php
-// $Id: location.et.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Ethiopia
 
@@ -15,4 +14,16 @@ function location_province_list_et() {
     'TG' => "Tigray",
     'AA' => "Addis Ababa",
     'DD' => "Dire Dawa");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_et() {
+  return array(
+    'minlng' => 33.0563,
+    'minlat' => 3.550567,
+    'maxlng' => 47.97805,
+    'maxlat' => 19.896167,
+  );
 }

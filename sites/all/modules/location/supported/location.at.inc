@@ -1,5 +1,4 @@
 <?php
-// $Id: location.at.inc,v 1.6.4.1 2009/07/08 21:00:28 bdragon Exp $
 
 // Austria
 
@@ -14,5 +13,17 @@ function location_province_list_at() {
     'TIR' => "Tirol",
     'VOR' => "Vorarlberg",
     'WIE' => "Wien",
+  );
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_at() {
+  return array(
+    'minlng' => 9.47885,
+    'minlat' => 46.427367,
+    'maxlng' => 17.15825,
+    'maxlat' => 49.010433,
   );
 }

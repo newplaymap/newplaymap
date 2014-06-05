@@ -1,5 +1,4 @@
 <?php
-// $Id: location.dm.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Dominica
 
@@ -14,4 +13,16 @@ function location_province_list_dm() {
     'PAT' => "Saint Patrick Parish",
     'PAU' => "Saint Paul Parish",
     'PET' => "Saint Peter Parish");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_dm() {
+  return array(
+    'minlng' => -61.5093,
+    'minlat' => 15.237433,
+    'maxlng' => -61.20985,
+    'maxlat' => 15.627967,
+  );
 }

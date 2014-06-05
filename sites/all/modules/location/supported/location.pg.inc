@@ -1,5 +1,4 @@
 <?php
-// $Id: location.pg.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Papua New Guinea
 
@@ -24,4 +23,16 @@ function location_province_list_pg() {
     'WE' => "Western",
     'WH' => "Western Highlands",
     'WB' => "West New Britain");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_pg() {
+  return array(
+    'minlng' => 140.8018,
+    'minlat' => -11.691233,
+    'maxlng' => 159.50015,
+    'maxlat' => -0.784233,
+  );
 }

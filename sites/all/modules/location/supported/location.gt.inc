@@ -1,5 +1,4 @@
 <?php
-// $Id: location.gt.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Guatemala
 
@@ -26,4 +25,16 @@ function location_province_list_gt() {
     'SU' => "Suchitepequez",
     'TO' => "Totonicapan",
     'ZA' => "Zacapa");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_gt() {
+  return array(
+    'minlng' => -92.28845,
+    'minlat' => 13.7392,
+    'maxlng' => -88.23725,
+    'maxlat' => 17.783133,
+  );
 }

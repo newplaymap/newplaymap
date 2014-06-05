@@ -1,5 +1,4 @@
 <?php
-// $Id: location.views_default.inc,v 1.5.2.1 2010/05/13 11:04:43 rooby Exp $
 
 /**
  * @file

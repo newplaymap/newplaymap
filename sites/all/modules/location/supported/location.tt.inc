@@ -1,5 +1,4 @@
 <?php
-// $Id: location.tt.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Trinidad and Tobago
 
@@ -19,4 +18,16 @@ function location_province_list_tt() {
     'PF' => "Point Fortin",
     'CH' => "Chaguanas",
     'TO' => "Tobago");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_tt() {
+  return array(
+    'minlng' => -61.93015,
+    'minlat' => 10.0588,
+    'maxlng' => -60.5064,
+    'maxlat' => 11.2911,
+  );
 }

@@ -1,5 +1,4 @@
 <?php
-// $Id: location.dk.inc,v 1.6.4.1 2010/03/28 22:59:03 ankur Exp $
 
 // Denmark
 
@@ -104,10 +103,12 @@ function location_map_link_dk_providers() {
     'findvej' => array(
       'name' => 'findvej.dk',
       'url' => 'http://findvej.dk',
+      'tos' => 'http://www.google.com/intl/da_ALL/help/terms_maps.html',
     ),
     'rejseplanen' => array(
       'name' => 'Rejseplanen',
       'url' => 'http://www.rejseplanen.dk/',
+      'tos' => 'http://info.rejseplanen.dk/om_rejseplanen', // As close as I could find.
     ),
   );
 }
@@ -127,3 +128,15 @@ function location_map_link_dk_default_providers() {
   return array('findvej', 'rejseplanen');
 }
 
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_dk() {
+  return array(
+    'minlng' => 8.00875,
+    'minlat' => 54.590067,
+    'maxlng' => 15.15975,
+    'maxlat' => 57.805567,
+  );
+}

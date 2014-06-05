@@ -1,5 +1,4 @@
 <?php
-// $Id: location.na.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Namibia
 
@@ -17,4 +16,16 @@ function location_province_list_na() {
     'ON' => "Oshana",
     'OO' => "Oshikoto",
     'OJ' => "Otjozondjupa");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_na() {
+  return array(
+    'minlng' => 11.72,
+    'minlat' => -28.881233,
+    'maxlng' => 25.23535,
+    'maxlat' => -16.866767,
+  );
 }

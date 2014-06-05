@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ke.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Kenya
 
@@ -12,4 +11,16 @@ function location_province_list_ke() {
     'NY' => "Nyanza",
     'RV' => "Rift Valley",
     'WE' => "Western");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ke() {
+  return array(
+    'minlng' => 33.7914,
+    'minlat' => -4.729033,
+    'maxlng' => 42.20675,
+    'maxlat' => 4.542067,
+  );
 }

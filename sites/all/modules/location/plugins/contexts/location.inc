@@ -1,5 +1,4 @@
 <?php
-// $Id: location.inc,v 1.1 2010/05/19 18:28:09 dww Exp $
 
 /**
  * @file

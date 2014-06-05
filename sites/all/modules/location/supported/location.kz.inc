@@ -1,5 +1,4 @@
 <?php
-// $Id: location.kz.inc,v 1.6.4.1 2009/02/04 20:04:10 bdragon Exp $
 
 // Kazakhstan
 
@@ -20,4 +19,16 @@ function location_province_list_kz() {
     'VOS' => "Shyghys Qazaqstan",
     'SEV' => "Soltustik Qazaqstan",
     'ZHA' => "Zhambyl");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_kz() {
+  return array(
+    'minlng' => 46.4657,
+    'minlat' => 40.6715,
+    'maxlng' => 87.40955,
+    'maxlat' => 55.4617,
+  );
 }

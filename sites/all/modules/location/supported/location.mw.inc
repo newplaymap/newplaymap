@@ -1,5 +1,4 @@
 <?php
-// $Id: location.mw.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Malawi
 
@@ -31,4 +30,16 @@ function location_province_list_mw() {
     'SLM' => "Salima",
     'THY' => "Thyolo",
     'ZBA' => "Zomba");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_mw() {
+  return array(
+    'minlng' => 32.7198,
+    'minlat' => -17.0924,
+    'maxlng' => 35.93715,
+    'maxlat' => -9.500267,
+  );
 }

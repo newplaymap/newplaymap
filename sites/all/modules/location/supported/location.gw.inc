@@ -1,5 +1,4 @@
 <?php
-// $Id: location.gw.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Guinea-Bissau
 
@@ -13,4 +12,16 @@ function location_province_list_gw() {
     'OI' => "Oio Region",
     'QU' => "Quinara Region",
     'TO' => "Tombali Region");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_gw() {
+  return array(
+    'minlng' => -16.92935,
+    'minlat' => 10.839167,
+    'maxlng' => -13.6464,
+    'maxlat' => 12.672033,
+  );
 }

@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ao.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Angola
 
@@ -22,4 +21,16 @@ function location_province_list_ao() {
     'NAM' => "Namibe",
     'UIG' => "Uige",
     'ZAI' => "Zaire");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ao() {
+  return array(
+    'minlng' => 11.57905,
+    'minlat' => -18.112767,
+    'maxlng' => 24.1105,
+    'maxlat' => -4.424667,
+  );
 }

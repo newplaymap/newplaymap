@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ck.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Cook Islands
 
@@ -19,4 +18,16 @@ function location_province_list_ck() {
     'MU' => "Mauke",
     'RR' => "Rarotonga",
     'MG' => "Mangaia");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ck() {
+  return array(
+    'minlng' => -165.7749,
+    'minlat' => -11.650367,
+    'maxlng' => -165.37025,
+    'maxlat' => -10.815933,
+  );
 }

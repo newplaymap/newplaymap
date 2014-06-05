@@ -1,5 +1,4 @@
 <?php
-// $Id: location.tz.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Tanzania, United Republic of
 
@@ -30,4 +29,16 @@ function location_province_list_tz() {
     'ZC' => "Zanzibar Central/South",
     'ZN' => "Zanzibar North",
     'ZU' => "Zanzibar Urban/West");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_tz() {
+  return array(
+    'minlng' => 29.29035,
+    'minlat' => -11.737133,
+    'maxlng' => 40.4958,
+    'maxlat' => -1.0601,
+  );
 }

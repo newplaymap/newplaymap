@@ -1,5 +1,4 @@
 <?php
-// $Id: location.do.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Dominican Republic
 
@@ -36,4 +35,16 @@ function location_province_list_do() {
     'ST' => "Santiago Rodriguez",
     'SD' => "Santo Domingo",
     'VA' => "Valverde");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_do() {
+  return array(
+    'minlng' => -71.90115,
+    'minlat' => 17.506667,
+    'maxlng' => -68.2548,
+    'maxlat' => 19.880967,
+  );
 }

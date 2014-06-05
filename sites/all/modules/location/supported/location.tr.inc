@@ -1,5 +1,4 @@
 <?php
-// $Id: location.tr.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Turkey
 
@@ -85,4 +84,16 @@ function location_province_list_tr() {
     'YAL' => "Yalova",
     'YOZ' => "Yozgat",
     'ZON' => "Zonguldak");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_tr() {
+  return array(
+    'minlng' => 25.7317,
+    'minlat' => 35.939633,
+    'maxlng' => 44.7416,
+    'maxlat' => 42.214367,
+  );
 }

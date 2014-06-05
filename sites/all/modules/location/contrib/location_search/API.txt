@@ -1,10 +1,8 @@
-$Id: API.txt,v 1.1 2008/07/24 15:44:38 bdragon Exp $
 
 Note: This is currently broken and outdated.
 The location search api is not ready for location 3.
 
 
-$Id: API.txt,v 1.1 2008/07/24 15:44:38 bdragon Exp $
 
 This file describes the public API for the CivicSpace location system as defined by
  in the library implemented by "location.inc" and its supporting files.

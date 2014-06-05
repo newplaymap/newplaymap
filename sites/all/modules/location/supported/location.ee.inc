@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ee.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Estonia
 
@@ -19,4 +18,16 @@ function location_province_list_ee() {
     '82' => "Valga County",
     '84' => "Viljandi County",
     '86' => "V�ru County");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ee() {
+  return array(
+    'minlng' => 21.75065,
+    'minlat' => 57.6099,
+    'maxlng' => 28.1741,
+    'maxlat' => 59.6835,
+  );
 }

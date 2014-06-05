@@ -1,5 +1,4 @@
 <?php
-// $Id: location.ca.inc,v 1.11 2008/03/08 22:25:39 bdragon Exp $
 
 function location_province_list_ca() {
   return array(
@@ -330,7 +329,7 @@ function location_geocode_ca_geocoder_settings() {
     '#size' => 64,
     '#maxlength' => 128,
     '#default_value' => variable_get('location_geocode_ca_geocoder_apikey', ''),
-    '#description' => t('In order to use the Geocoder.ca API geocoding web-service, you for a commercial entity or without attribution you will need a Geocoder API Key.  You can obtain one at the !sign_up_link for the !geocoder_api.', array('!sign_up_link' => '<a href="http://geocoder.ca/?register=1">sign-up page</a>', '!geocoder_api' => '<a href="http://geocoder.ca/?premium_api=1">Geocoder API</a>'))
+    '#description' => t('In order to use the Geocoder.ca API geocoding web-service, if you are a commercial entity or wish to use the service without attribution, you will need a Geocoder API Key.  You can obtain one at the !sign_up_link for the !geocoder_api.', array('!sign_up_link' => '<a href="http://geocoder.ca/?register=1">sign-up page</a>', '!geocoder_api' => '<a href="http://geocoder.ca/?premium_api=1">Geocoder API</a>'))
   );
 
   return $form;
@@ -386,4 +385,18 @@ function location_geocode_ca_geocoder($location = array()) {
       return NULL;
     }
   }
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_ca() {
+  // NaturalEarth 10m Admin 0 - Countries (v1.3.0)
+  // EPSG:900913
+  return array(
+    'minlng' => -141.00554,
+    'minlat' => 41.6690855,
+    'maxlng' => -52.615930,
+    'maxlat' => 83.1161164,
+  );
 }

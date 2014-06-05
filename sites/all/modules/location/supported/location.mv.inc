@@ -1,5 +1,4 @@
 <?php
-// $Id: location.mv.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Maldives
 
@@ -24,4 +23,16 @@ function location_province_list_mv() {
     'HAD' => "Huvadhu Atoll Dhekunu",
     'FMU' => "Fua Mulaku",
     'ADD' => "Addu");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_mv() {
+  return array(
+    'minlng' => 72.5723,
+    'minlat' => -0.739367,
+    'maxlng' => 73.6987,
+    'maxlat' => 7.194,
+  );
 }

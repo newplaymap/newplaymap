@@ -1,5 +1,4 @@
 <?php
-// $Id: location.it.inc,v 1.7 2008/02/04 02:05:32 bdragon Exp $
 
 // Italy
 
@@ -115,5 +114,17 @@ function location_province_list_it() {
     'VV' => "Vibo Valentia",
     'VI' => "Vicenza",
     'VT' => "Viterbo",
+  );
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_it() {
+  return array(
+    'minlng' => 6.52765,
+    'minlat' => 35.532933,
+    'maxlng' => 18.47165,
+    'maxlat' => 47.059967,
   );
 }

@@ -1,5 +1,4 @@
 <?php
-// $Id: location.cv.inc,v 1.6 2008/01/24 09:00:02 bdragon Exp $
 
 // Cape Verde
 
@@ -21,4 +20,16 @@ function location_province_list_cv() {
     'SN' => "Sao Nicolau",
     'SV' => "Sao Vicente",
     'TA' => "Tarrafal");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_cv() {
+  return array(
+    'minlng' => -25.45625,
+    'minlat' => 14.702533,
+    'maxlng' => -22.55505,
+    'maxlat' => 17.15,
+  );
 }

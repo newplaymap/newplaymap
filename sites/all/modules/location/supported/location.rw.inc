@@ -1,5 +1,4 @@
 <?php
-// $Id: location.rw.inc,v 1.6 2008/01/24 09:00:03 bdragon Exp $
 
 // Rwanda
 
@@ -16,4 +15,16 @@ function location_province_list_rw() {
     'KV' => "Kigali-ville",
     'RU' => "Ruhengeri",
     'UM' => "Umutara");
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_rw() {
+  return array(
+    'minlng' => 28.8737,
+    'minlat' => -2.890967,
+    'maxlng' => 30.87085,
+    'maxlat' => -1.116267,
+  );
 }
