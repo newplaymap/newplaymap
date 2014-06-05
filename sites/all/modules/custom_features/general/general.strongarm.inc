@@ -738,7 +738,7 @@ The New Play Map is a cooperative knowledge and information management project o
 
 A request to reset the password for your account has been made at !site.
 
-You may now log in to !uri_brief by clicking on this link or copying and pasting it in your browser:
+You may now log in by clicking on this link or copying and pasting it in your browser:
 
 !login_url
 
@@ -790,10 +790,13 @@ After logging in, you will be redirected to !edit_uri so you can change your pas
   $strongarm->name = 'user_mail_register_no_approval_required_body';
   $strongarm->value = 'Dear !username,
 
-Welcome to the New Play Map!  You\'re about to create a map of what our New Works Sector looks like. You\'ll be able to get yourself visible on the Map and help get other people and organizations visible on the Map. You can collaboratively edit and contribute any knowledge that you may have (and not just about your own stuff).  Feel free to add content about any organization, generative artist (i.e. playwright), and play event in the New Works Sector -- because we all have a collective stake in what you can share.  
+Welcome to the open-source, peer-produced New Play Map!  You\'re about to shape the narrative of theater in the US. You\'ll be able to get yourself visible on the Map and help get other people and organizations visible on the Map. 
 
-While you\'re busy creating the Map, be sure to give the community your feedback at http://newplaymap.org/feedback 
-Contribute your ideas for future features of the website, comment on what other people are imagining the future can be, report any technical bugs on the website, write about how the Map is impacting you.   
+You can collaboratively edit and contribute any knowledge that you may have (and not just about your own stuff). Feel free to add content—past, present, future—about any organization, generative artist (i.e. playwright), and play event in the new works theater field.
+
+While you\'re busy creating the Map, be sure to give us feedback and share your work via Twitter and Facebook. Use the hashtag #newplay in Twitter.
+
+Contribute your ideas for future features of the website, comment on what other people are imagining the future can be, report any technical bugs on the website, write about how the Map is impacting you. http://newplaymap.org/participate/contact
 
 You may now log in to !login_uri using the following username and password:
 
@@ -808,7 +811,7 @@ This is a one-time login, so it can be used only once.
 
 After logging in, go to !edit_uri so you can change your password.
 
---  !site team';
+— !site team at HowlRound.com';
 
   $export['user_mail_register_no_approval_required_body'] = $strongarm;
   $strongarm = new stdClass;
