@@ -72,7 +72,7 @@ function general_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_default_challenge';
-  $strongarm->value = 'captcha/Math';
+  $strongarm->value = 'recaptcha/reCAPTCHA';
 
   $export['captcha_default_challenge'] = $strongarm;
   $strongarm = new stdClass;
