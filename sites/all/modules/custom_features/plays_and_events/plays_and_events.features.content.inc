@@ -68,7 +68,7 @@ function plays_and_events_content_default_fields() {
       'input_format_custom' => '',
       'increment' => '30',
       'text_parts' => array(),
-      'year_range' => '-10:+1',
+      'year_range' => '-15:+5',
       'label_position' => 'above',
       'label' => 'Date',
       'weight' => 0,
