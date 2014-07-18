@@ -7,12 +7,12 @@
   color: #000000;
   background: #E6DAC8;
   }
-  
+
   /* override html-reset.css:53 */
   body, caption, th, td, input, textarea, select, option, legend, fieldset {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   }
-  
+
   h1, h2, h3, h4 {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -40,7 +40,7 @@ a:active {
   bottom: 28px;
   left: 0;
   }
-  
+
   #name-and-slogan #site-name {
   font-size: 24px;
   font-style: normal;
@@ -50,16 +50,16 @@ a:active {
   }
 
 /* Header Add Buttons */
-  
+
   /* Hide when javascript is available */
   .js #block-add_button-0 {
   display: none;
   }
-  
+
   .js #block-views--exp-organizations-panel_pane_1 {
   display: none;
   }
-  
+
   .js #block-invite-0 {
   display: none;
   }
@@ -71,8 +71,8 @@ a:active {
   margin-left: 25%;
   text-align: center;
   margin-top: 18px;
-  }  
-  
+  }
+
   /* Header buttons */
   /* Additional default button style in Misc styles */
   #header-blocks a#add_button,
@@ -84,7 +84,7 @@ a:active {
     margin: 0 4px;
     cursor: pointer;
   }
-  
+
   #header-blocks a#add_button span,
   #header-blocks a#invite_button span,
   #header-blocks a#explore-filters-button span {
@@ -92,33 +92,33 @@ a:active {
     background-position: 0 50%;
     background-repeat: no-repeat;
   }
-  
-  #header-blocks a#add_button span { 
+
+  #header-blocks a#add_button span {
     padding-left: 20px;
     background-image: url(../../../../../../images/header-icon-add.png);
   }
-  
+
   #header-blocks a#invite_button span {
     background-image: url(../../../../../../images/header-icon-invite.png);
   }
-  
+
   #header-blocks a#explore-filters-button span {
     padding-left: 26px;
     background-image: url(../../../../../../images/header-icon-explore.png);
   }
-  
-    
+
+
     /* Universal Add Button List */
-    
+
     ul#add-button-list {
     margin: 0;
     padding: 0;
     }
-    
+
     ul#add-button-list a {
       color: #BF202E;
     }
-    
+
     ul#add-button-list a:hover {
       color: #830B1B;
     }
@@ -126,22 +126,22 @@ a:active {
     ul#add-button-list a:active {
       color: #000000;
     }
-    
+
     ul#add-button-list,
     ul#add-button-list li {
     list-style: none;
     }
-    
+
     ul#add-button-list li {
     margin: 0;
     padding: 7px 13px;
     border-bottom: 1px dashed #CCCCCC;
     }
-    
+
     ul#add-button-list li.last {
     border-bottom: 0;
     }
-    
+
 /* Embed Badge */
 
   #embed-badge-block {
@@ -154,12 +154,12 @@ a:active {
   .js #share-link-block form {
   display: none;
   }
-  
+
   /* Nicer styling for the form elements */
   #embed-badge-show {
   font-size: 0.8em;
   }
-  
+
   .js #embed-badge-block form input,
   .js #share-link-block form input {
   width: 100%;
@@ -169,20 +169,20 @@ a:active {
   .js #edit-contact-email-wrapper {
   display: none;
   }
-  
+
   table#invites {
   width: 100%;
   }
-  
+
   form#invite-form {
   padding: 7px 13px;
   }
-  
+
   form#invite-form .form-item .description {
   font-size: 12px;
   line-height: 16px;
   }
-    
+
 /* Related Events */
 
   .views-field-field-partner-org-nid {
@@ -194,12 +194,12 @@ a:active {
   #skip-to-nav {
   float: left;
   }
-  
+
   #skip-to-nav a:link,
   #skip-to-nav a:visited {
   color: black; /* whatever color the background is */
   }
-  
+
   #skip-to-nav a:active,
   #skip-to-nav a:focus {
   color: white; /* contrasting color to background */
@@ -211,17 +211,17 @@ a:active {
   #edit-title {
   font-size: 2em;
   }
-  
+
   a,
   a:link {
   text-decoration: none;
   }
-  
+
   a:hover,
   a:active {
   text-decoration: underline;
   }
-  
+
 
 /* Layout */
 
@@ -230,7 +230,7 @@ a:active {
   .with-navbar #sidebar-secondary {
   margin-top: 1.5em;
   }
-  
+
   #header {
   height: 60px;
   position: absolute;
@@ -239,17 +239,17 @@ a:active {
   right: 28px;
   background: url(../images/header-bg.png) 78% 0 no-repeat;
   }
-  
+
   #page {
     width: 100%;
     padding-top: 80px;
     padding-bottom: 80px;
   }
-  
+
   #page-wrapper {
     width: 640px;
   }
-  
+
   #content,
   body.no-sidebars #content,
   body.sidebar-second #content {
@@ -259,18 +259,18 @@ a:active {
     box-shadow: 2px 2px 3px 0px #000;
     margin-bottom: 80px;
   }
-  
+
   #main-wrapper {
   position: static; /* Override Zen so that absolute #navigation works */
   }
-  
+
   .not-front #footer {
   display: none;
   }
 
-  
+
   /* Full width front page */
-  
+
   .front.no-sidebars #page-wrapper {
   width: 100%;
   }
@@ -303,19 +303,19 @@ a:active {
   background-color: #DAEBCF;
   border-color: #C6D9B7;
   }
-  
+
   /* Nicer style on the node edit / add forms */
   input#edit-title {
   width: 100%;
   }
-  
+
   /* New throbber on title autocomplete fields */
   /* Overrides system.css */
   html.js input#edit-title.form-autocomplete {
   background-image: url(../images/spinner-32x32-on-white.gif);
   background-position: 100% -100px;
   }
-  
+
   html.js input#edit-title.form-autocomplete.throbbing {
     background-position: 99% 2px;
   }
@@ -340,7 +340,7 @@ a:active {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   background: #6f84c2 url(../images/button-sprite.png) 0 0 no-repeat;
   }
-  
+
     /* Button :hover state */
     .edit-button:hover,
     #header-blocks a#add_button:hover,
@@ -355,7 +355,7 @@ a:active {
     background-position: -217px 0;
     text-decoration: none;
     }
-    
+
     /* Button :active state */
     .edit-button:active,
     #header-blocks a#add_button:active,
@@ -381,24 +381,24 @@ a:active {
   border-radius: 3px;
   -moz-border-radius: 3px;
   }
-  
+
   /* Edit custom title autocomplete */
-  
+
   /* Make the autocomplete references inline */
   .js #edit-title-custom-autocomplete .reference-autocomplete {
   display: inline;
   }
-  
+
   .js #edit-title-custom-autocomplete ul {
   padding-left: 0; /* override html-reset.css */
   }
-  
+
   /* Don't need bullets when we got buttons */
   .js #edit-title-custom-autocomplete ul,
   .js #edit-title-custom-autocomplete ul li {
   list-style: none;
   }
-  
+
   /* Put in some padding to give this list some breathing room */
   .js #edit-title-custom-autocomplete ul li {
     margin-bottom: 7px;
@@ -439,15 +439,15 @@ a:active {
 }
 
 /* Home */
-  
-  
+
+
   /* Messages close box */
-  
+
   .js .messages {
   position: relative;
   padding-right: 25px; /* override messages.css */
   }
-  
+
   .js a.newplay-close-box {
   position: absolute;
   top: 5px;
@@ -458,24 +458,24 @@ a:active {
   background: url(../images/ui/close-red.png) top center no-repeat;
   text-indent: -10000em;
   }
-  
+
   /* Active state */
   .js a.newplay-close-box:active {
     background-image: url(../images/ui/close-red-active.png);
   }
-  
+
   /* Credit */
-  
+
   .js .olControlAttribution,
   .js .front #footer-message {
   font-size: 12px;
   color: #666;
   }
-  
+
   .js .olControlScaleLine {
   bottom: 28px;
   }
-  
+
   .js .front #footer {
   position: absolute;
   bottom: 5px;
@@ -489,11 +489,11 @@ a:active {
 /* Module fixes */
 
   /* Admin Menu */
-  
+
   body.admin-menu {
-  background-position: 17% 21px; 
+  background-position: 17% 21px;
   }
-  
+
   body.admin-menu #header {
   height: 60px;
   position: absolute;
@@ -505,29 +505,29 @@ a:active {
   body.admin-menu #navigation {
   top: 54px;
   }
-  
+
   /* @TODO: find the module where this layout code should go and put this there */
   .js body.admin-menu.front .openlayers_map_fullscreen {
   top: 81px;
   }
-  
+
   /* @TODO: find the module where this layout code should go and put this there */
   .js body .openlayers_map_fullscreen {
   border-top: 1px solid #DFE2F5;
   }
-  
-    
 
-  
+
+
+
   .js body.admin-menu.front #panel-default-overlay,
   .js body.admin-menu.front .popup-container {
   top: 81px;
   }
 
-  
-  
+
+
   /* Views */
-  
+
   div.view div.views-admin-links ul.links li,
   .admin-links ul.links li,
   div.panel-pane div.admin-links li {
@@ -535,15 +535,15 @@ a:active {
     margin: 0;
     padding: 0;
   }
-  
+
   div.view div.views-admin-links ul.links {
     margin: 0;
   }
-  
+
   div.view {
     position: relative;
   }
-  
+
   div.view div.views-admin-links,
   .admin-links {
     margin-top: 0;
@@ -551,16 +551,16 @@ a:active {
     right: 0;
     text-align: right;
   }
-  
+
   div.view div.views-admin-links ul.links li a {
     padding: 5px;
   }
-  
+
   .admin-links ul.links li a,
-  div.view div.admin-links-hover a, 
+  div.view div.admin-links-hover a,
   div.view div.admin-links:hover a,
   .views-admin-links ul.links li a,
-  div.view div.views-admin-links-hover a, 
+  div.view div.views-admin-links-hover a,
   div.view div.views-admin-links:hover a,
   div.panel-pane div.admin-links li a {
     color: white;
@@ -569,85 +569,85 @@ a:active {
 /* Overlay */
 
   /* General styles */
-  
+
   .js .overlay {
   height: auto !important;
   }
-  
+
   .panel-overlay {
   overflow: hidden;
   }
-  
+
   .panel-overlay.clear-block::after {
   display: none;
   }
-  
+
   .panel-overlay .panel-col-top,
-  .panel-overlay .panel-col-bottom { 
-  width: 100%; 
+  .panel-overlay .panel-col-bottom {
+  width: 100%;
   clear: both;
   }
 
   .panel-overlay .panel-col-top .inside {
   }
-  
+
   /* @TODO: figure out if this does anything anymore */
-  .panel-overlay .panel-col-first { 
-  float: left; 
+  .panel-overlay .panel-col-first {
+  float: left;
   width: 25%;
   }
 
   /* @TODO: figure out if this does anything anymore */
-  .panel-overlay .panel-col .inside { 
+  .panel-overlay .panel-col .inside {
   margin: 0 .5em 1em .5em;
   }
 
   /* @TODO: figure out if this does anything anymore */
-  .panel-overlay .panel-col { 
-  float: left; 
-  width: 25%; 
+  .panel-overlay .panel-col {
+  float: left;
+  width: 25%;
   }
 
-  .panel-overlay .panel-col .inside { 
+  .panel-overlay .panel-col .inside {
   margin: 0 .5em 1em .5em;
   }
-  
+
   /* @TODO: figure out if this does anything anymore */
-  .panel-overlay .panel-col-last { 
-  float: left; 
-  width: 45%; 
+  .panel-overlay .panel-col-last {
+  float: left;
+  width: 45%;
   }
-  
+
   /* @TODO: figure out if this does anything anymore */
-  .panel-overlay .panel-col-last .inside { 
+  .panel-overlay .panel-col-last .inside {
   margin: 0 0 1em .5em;
   }
-  
+
   .panel-overlay .panel-separator {
   margin: 0 0 1em 0;
   }
-  
+
   /* Make Organization info labels more discernable */
   .panel-overlay .view-organization-info label {
   font-weight: bold;
   }
-  
+
   /* Display buttons as blocks */
   .popup-container .overlay .pane-edit-link ul li a,
   .popup-container .overlay .pane-event ul li a,
   .popup-container .overlay #feed_button {
   display: block;
   }
-  
+
   /* Main area */
-  
-  
+
+
   /* Content Sections */
   .js .panel-overlay .additional-info {
   display: none; /* prevent flash on page load */
   clear: both; /* make sure it clears any evil floats */
   }
-  
+
   .panel-overlay .additional-info h2.additional-info-title {
   font-size: 1.3em;
   font-weight: bold;
@@ -655,29 +655,29 @@ a:active {
   background-image: none;
   color: #FFFFFF;
   }
-  
+
   .js .panel-overlay .additional-info .ui-icon {
   float: left;
   }
-  
+
   .js .panel-overlay .additional-info {
-  
+
   }
-  
+
   .js .panel-overlay .additional-info .ui-accordion-header {
     cursor: pointer;
   }
 
   /* Feeds */
-  
+
   .js .panel-overlay #pane-feeds-video.pane-feeds-panel-pane {
   height: 320px;
   }
-  
+
   .js .panel-overlay #pane-feeds-photo.pane-feeds-panel-pane {
   height: 320px;
   }
-  
+
   .js .panel-overlay #pane-feeds-blog-twitter.pane-feeds-panel-pane {
   height: 150px;
   }
@@ -690,14 +690,14 @@ a:active {
   font-size: 13px;
   padding: 7px 0 0 0;
   }
-  
+
   /* Loading image */
   .loading-wrapper {
   padding: 30px;
   text-align: center;
   }
-  
-  
+
+
 /* Links in Overlays & Bubble */
 
 .js #panel-default-overlay a,
@@ -719,7 +719,7 @@ a:active {
   font-weight: bold;
   line-height: 1.2em;
   }
-  
+
   /* date styled to fade backward a bit */
   .js .popup-container-bubble .date-display-start,
   .js .popup-container-bubble .date-display-separator,
@@ -729,7 +729,7 @@ a:active {
   font-size: 10px;
   letter-spacing: 0.1em;
   color: #999999;
-  }  
+  }
 
 
 /* Results */
@@ -763,7 +763,7 @@ a:active {
 .js #panel-default-overlay ul.overlay-filter-headers li {
   list-style: none;
   padding-bottom: 5px;
-  cursor: pointer; 
+  cursor: pointer;
   font-size: 18px;
 }
 
@@ -776,13 +776,13 @@ a:active {
   background-repeat: no-repeat; /* apply to all buttons */
   text-decoration: none;
 }
-  
+
   /* hover state */
   .js #panel-default-overlay ul.overlay-filter-headers li a:hover {
   background-color: #393E56;
   color: #FFFFFF;
   }
-  
+
   /* selected state */
   .js #panel-default-overlay ul.overlay-filter-headers li.active a,
   .js #panel-default-overlay ul.overlay-filter-headers li.active a:hover,
@@ -790,7 +790,7 @@ a:active {
   background-color: #6f84c2;
   color: #FFFFFF;
   }
-  
+
 
   /* events icon */
   .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-events-title a {
@@ -801,25 +801,25 @@ a:active {
   .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-organizations-title a {
   background-image: url(../images/explore-icon-org.png);
   }
-  
+
   /* artists icon */
   .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-artists-title a {
   background-image: url(../images/explore-icon-artist.png);
   }
-  
+
   /* play icon */
   .js #panel-default-overlay ul.overlay-filter-headers li#filter-results-plays-title a {
   background-image: url(../images/explore-icon-play.png);
   }
-  
-  
+
+
   /* Show Today: General Listings */
-  
+
   /* RSS feed icon */
   .js #panel-default-overlay .feed-icon {
     float: right;
   }
-  
+
   /* padding on all "today" listings */
   .js #panel-default-overlay .today-listing .item-list ul li,
   .js #panel-default-overlay .filter-results-listing .item-list ul li {
@@ -827,7 +827,7 @@ a:active {
     overflow: auto;
     width: inherit;
   }
-  
+
    /* more prominent title */
   .js #panel-default-overlay #today-events .views-field-field-related-play-nid .field-content,
   .js #panel-default-overlay #filter-results-events .views-field-field-related-play-nid .field-content,
@@ -837,7 +837,7 @@ a:active {
     font-weight: bold;
     overflow: hidden;
   }
-  
+
   /* position avatar */
   .js #panel-default-overlay #today-organizations .views-field-field-org-logo-fid,
   .js #panel-default-overlay #filter-results-organizations .views-field-field-org-logo-fid,
@@ -847,20 +847,20 @@ a:active {
     margin-left: -45px;
     padding-top: 3px;
   }
-  
+
   /* hide listings by default */
   .js #panel-default-overlay .filter-results-listing {
     display: none;
   }
-  
+
   /* Show Today: Events Listing */
-  
+
     /* inject icon to the left of event listing */
     .js #panel-default-overlay #today-events .item-list ul li,
     .js #panel-default-overlay #filter-results-events .item-list ul li {
     background: transparent url(../images/icon-listing-event.png) 10px 5px no-repeat;
     }
-    
+
     /* byline and artist name on same line */
     .js #panel-default-overlay #today-events .views-field-field-artist-nid label,
     .js #panel-default-overlay #filter-results-events .views-field-field-artist-nid label,
@@ -870,7 +870,7 @@ a:active {
     .js #panel-default-overlay #filter-results-plays .views-field-field-artist-nid .field-content {
     display: inline;
     }
-    
+
     /* City and state on the same line */
     .js #panel-default-overlay #today-events .views-field-city,
     .js #panel-default-overlay #today-events .views-field-province,
@@ -878,7 +878,7 @@ a:active {
     .js #panel-default-overlay #filter-results-events .views-field-province {
     display: inline;
     }
-   
+
     /* Date styled to fade backward a bit */
     .js #panel-default-overlay #today-events .views-field-field-event-date-value .field-content,
     .js #panel-default-overlay #filter-results-events .views-field-field-event-date-value .field-content {
@@ -887,9 +887,9 @@ a:active {
     letter-spacing: 0.1em;
     color: #999999;
     }
-    
+
   /* Show Today: Org listings */
-  
+
     /* org type label on the same line as list */
     .js #panel-default-overlay #today-organizations .views-field-field-org-type-nid div.field-content,
     .js #panel-default-overlay #filter-results-organizations .views-field-field-org-type-nid div.field-content {
@@ -897,15 +897,15 @@ a:active {
     }
 
   /* Show Today: Play listings */
-    
+
     /* inject icon to the left of play listing */
     .js #panel-default-overlay #today-plays .item-list ul li,
     .js #panel-default-overlay #filter-results-plays .item-list ul li {
     background: transparent url(../images/icon-listing-play.png) 10px 2px no-repeat;
     }
-    
-  
-  
+
+
+
 
 /* Open Layers */
 /* @TODO: Review this entire block and integrate with Overlay section above */
@@ -952,7 +952,7 @@ a:active {
   margin: 1em 0 0 0;
   }
 
-/* (temporary fix) 
+/* (temporary fix)
  .additional-info in the map has an opaque background
  because the accordion doesn't increase .node-content height
  with transparency, the two competing backgrounds look funny
@@ -975,7 +975,7 @@ a:active {
   right: 0;
   margin: 10px 5px 0 0;
   }
-  
+
 .openlayers-views-map #popup .olPopupCloseBox:active {
   background: url("../openlayers/img/close-active.png") no-repeat;
   }
@@ -1001,15 +1001,15 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 .popup-container .overlay .inside {
   padding: 8px 10px 10px 10px;
   }
-  
+
   /* Overlay Title */
-  
+
   /* remove bottom padding and margin on overlay title inside div */
   .popup-container .overlay .panel-overlay-title .inside {
     padding-bottom: 0px;
     margin-bottom: 0px;
   }
-  
+
   .popup-container .overlay .pane-node-title {
     font-size: 21px;
     color: #FFFFFF;
@@ -1017,7 +1017,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     padding-bottom: 7px;
     padding-right: 85px; /* make room for Edit link */
   }
-  
+
   /* Overlay: Avatars */
   .popup-container .overlay .pane-field-org-logo,
   .popup-container .overlay .pane-field-artist-photo {
@@ -1025,11 +1025,11 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     padding-top: 14px;
     padding-right: 14px;
   }
-  
+
   /* Overlay: Location */
   .popup-container .overlay .pane-field-location {
   }
-  
+
   /* Edit link */
   .popup-container .overlay .pane-edit-link {
   position: absolute;
@@ -1051,49 +1051,49 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     float: left;
     width: 66%;
   }
-  
-  
+
+
   .popup-container .overlay  .panel-overlay-links {
     float: left;
     width: 32%;
     clear: none;
   }
-  
+
   /* Links section */
-  
+
   .popup-container .overlay .panel-overlay-links .panel-region-separator {
     padding-bottom: 6px;
   }
-  
+
   .popup-container .overlay .panel-overlay-links .pane-facebook-like a {
     display: block;
-    background: url(../images/facebook-like.png) top left no-repeat;  
+    background: url(../images/facebook-like.png) top left no-repeat;
     width: 55px;
     height: 20px;
     text-indent: -10000em;
   }
-  
+
   .popup-container .overlay .panel-overlay-links a#share-link-show {
     display: block;
     background: url(../images/icon-link.png) 0 0 no-repeat;
     padding-left: 20px;
     padding-top: 1px;
   }
-  
+
   .popup-container .overlay .pane-event,
   .popup-container .overlay #feed_button {
     font-size: 13px;
   }
-  
+
   .popup-container .overlay .pane-event {
   }
-  
+
   .popup-container .overlay .pane-event ul li a,
   .popup-container .overlay #feed_button {
     padding: 4px 0;
     text-align: center;
   }
-  
+
   .popup-container .overlay #feed_button {
   }
 
@@ -1118,7 +1118,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   cursor: pointer;
   right: 400px;
   top: 75px;
-  bottom: 15px;  
+  bottom: 15px;
   width: auto;
   display: block;
   border-top-left-radius: 7px;
@@ -1134,7 +1134,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   body.admin-menu #explore-filters-tab a {
   top: 96px;
   }
-  
+
   #explore-filters-tab .label {
   font-size: 11px;
   }
@@ -1147,7 +1147,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   background: rgba(50, 50, 50, .95);
   top: 75px;
   bottom: 15px;
-  right: 400px;  
+  right: 400px;
   width: 350px;
   overflow-y: auto;
   border-top-left-radius: 7px;
@@ -1157,7 +1157,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   body.admin-menu #explore-filters {
   top: 96px;
   }
-  
+
   #explore-filters h2.overlay-title {
   padding: 5px 10px 5px 10px;
   margin-bottom: 0;
@@ -1174,48 +1174,48 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   right: 0;
   margin: 7px 0 0 0;
 }
-  
+
 
   #explore-filters form {
   overflow-y: hidden;
   overflow-x: hidden;
   margin-right: 13px;
   }
-  
+
   #explore-filters form .auto-populate {
   display: none;
   }
-  
+
   #explore-filters form .views-exposed-widgets {
     padding-top: 8px;
   }
-  
+
   #explore-filters form .views-exposed-widget {
     width: 92%;
     clear: both;
     padding: 0 13px 3px 13px;
     overflow: hidden; /* clearfix */
   }
-  
+
   #explore-filters form .views-exposed-widget:last-child {
     border-bottom: none;
   }
-  
+
   #explore-filters form .views-exposed-widget label {
     font-size: 13px;
   }
-  
+
   #explore-filters form .views-exposed-widget label,
   #explore-filters form .views-exposed-widget label+.views-widget {
     display: block;
     float: left;
     width: 50%;
   }
-  
+
   #explore-filters form .views-exposed-widget .views-widget .form-item select {
     width: 100%;
   }
-  
+
   /* override forms.css:21 */
   #explore-filters form .views-exposed-widget .form-item #edit-date-min-wrapper label,
   #explore-filters form .views-exposed-widget .form-item #edit-date-max-wrapper label {
@@ -1226,35 +1226,35 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     width: 100%;
     padding: 0;
   }
-  
+
   #explore-filters form .views-exposed-widget .form-item #edit-date-min-wrapper .description,
   #explore-filters form .views-exposed-widget .form-item #edit-date-max-wrapper .description {
     white-space: nowrap;
   }
-  
+
   #explore-filters form .views-exposed-widget .form-item .date-clear-block {
     clear: none;
     float: left;
     width: 33%;
   }
-  
+
   #explore-filters form .views-exposed-widget .form-item .date-clear-block input {
     width: 60%;
   }
-  
+
   /* Position the apply filters area */
 
   #explore-filters form .views-exposed-widget:last-child {
     padding-top: 8px;
   }
 
-  
+
   .js #explore-filters form input#edit-submit-organizations {
     margin-top: 0;
     font-size: 14px;
     font-weight: bold;
   }
-  
+
   #explore-filters form #filter_reset {
   font-size: 13px;
   margin-left: 10px;
@@ -1262,11 +1262,11 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   }
 
 /* Explore: Section titles */
-  
+
   #explore-filters form .views-exposed-widget label[for="edit-state"] {
   color: #FFFFFF;
   }
-  
+
   #explore-filters form .views-exposed-widget label[for="edit-play"],
   #explore-filters form .views-exposed-widget label[for="edit-theater"],
   #explore-filters form .views-exposed-widget label[for="edit-artist"] {
@@ -1279,25 +1279,25 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   width: 100%;
   color: #FFFFFF;
   }
-  
+
   #explore-filters form .views-exposed-widget label[for="edit-play"]+.views-widget,
   #explore-filters form .views-exposed-widget label[for="edit-theater"]+.views-widget,
   #explore-filters form .views-exposed-widget label[for="edit-artist"]+.views-widget {
   width: 100%;
   }
-  
+
   #explore-filters form .views-exposed-widget label[for="edit-theater"] {
   background-image: url(../images/explore-icon-org.png);
   }
-  
+
   #explore-filters form .views-exposed-widget label[for="edit-play"] {
   background-image: url(../images/explore-icon-event.png);
   }
-  
+
   #explore-filters form .views-exposed-widget label[for="edit-artist"] {
   background-image: url(../images/explore-icon-artist.png);
   }
-  
+
 
 /* Explore: State */
 
@@ -1313,7 +1313,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   font-weight: normal;
 }
 
-  
+
   /* layout with label on the left for pulldowns */
   #explore-filters form .views-exposed-widget label[for="edit-budget"],
   #explore-filters form .views-exposed-widget label[for="edit-budget"]+.views-widget,
@@ -1325,7 +1325,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
   float: left;
   width: 50%;
   }
-  
+
 /* Explore: Artists */
 
   #explore-filters form .views-exposed-widget label[for="edit-ensemble"] {
@@ -1426,7 +1426,6 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 }
 
 .container-fluid {
-  padding-left: 20px;
   padding-right: 20px;
 }
 
@@ -1443,10 +1442,10 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
 
   #header-links {
     font-size: 0.86em;
-    width: 390px;
+    width: 425px;
     float: left;
   }
-  
+
   #header-links .nav {
     width: 75%;
     margin: 0; /* override bootstrap */
@@ -1458,24 +1457,24 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       color: #FFFFFF;
       padding: 0 5px;
     }
-  
+
       #header-links a:hover {
         color: #000000;
       }
-    
+
       .navbar .nav .active > a,
       .navbar .nav .active > a:hover {
         background-color: transparent;
       }
-    
+
       .navbar .nav > li > a {
         text-shadow: none; /* override bootstrap */
       }
-      
+
       .navbar-inner {
         filter: none; /* override bootstrap IE9 */
       }
-          
+
     #header-links .brand {
       margin-left: 0; /* override bootstrap.css */
       text-transform: uppercase;
@@ -1484,15 +1483,15 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
       font-weight: bold;
       padding-top: 2px;
     }
-    
+
       #header-links a.brand {
         text-decoration: none;
       }
-    
+
     #header-links .map-logo {
       background: url(../../../../../../images/map-white-on-red.png) no-repeat;
       display: block;
-      width: 79px;
+      width: 104px;
       height: 50px;
       float: left;
       text-indent: -500px;
@@ -1505,11 +1504,11 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
     float: left;
     margin-top: 6px;
   }
-  
+
     #header-buttons {
       margin: auto;
     }
-    
+
       #header-buttons li {
         background-color: #FFFFFF;
         color: #BF202E;
@@ -1517,12 +1516,12 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
         margin-right: 10px;
         box-shadow: 1px 1px 2px 0px #660000;
       }
-      
+
       #header-buttons li:hover {
         background-color: #F6F0E6;
         box-shadow: 1px 1px 2px 0px #000000;
       }
-      
+
       #header-buttons li:active {
         background-color: #000;
         margin-left: 2px;
@@ -1545,7 +1544,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
           font-family: 'Avenir', Helvetica, Arial, sans-serif;
           font-weight: bold;
         }
-        
+
         #header-buttons a#add_button:hover,
         #header-buttons a#filter_button:hover,
         #header-buttons a#invite_button:hover,
@@ -1554,7 +1553,7 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
           color: #000;
           text-decoration: none;
         }
-        
+
         #header-buttons a#add_button:active,
         #header-buttons a#filter_button:active,
         #header-buttons a#invite_button:active,
@@ -1572,17 +1571,17 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
           background-repeat: no-repeat;
         }
 
-        #header-buttons a#add_button span { 
+        #header-buttons a#add_button span {
           padding-left: 20px;
           background-image: url(../../../../../../images/header-icon-add.png);
           background-position: 0 4px;
         }
-  
-          #header-buttons a#add_button:hover span { 
+
+          #header-buttons a#add_button:hover span {
             background-position: 0 -46px;
           }
-          
-          #header-buttons a#add_button:active span { 
+
+          #header-buttons a#add_button:active span {
             background-position: 0 -96px;
           }
 
@@ -1590,11 +1589,11 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
           background-image: url(../../../../../../images/header-icon-invite.png);
           background-position: 0 3px;
         }
-        
+
           #header-buttons a#invite_button:hover span {
             background-position: 0 -47px;
           }
-          
+
           #header-buttons a#invite_button:active span {
             background-position: 0 -97px;
           }
@@ -1604,26 +1603,26 @@ div#content-area > div.panel-1col-with-feeds > div#feeds-wrapper {
           background-image: url(../../../../../../images/header-icon-explore.png);
           background-position: 0 1px;
         }
-  
+
           #header-buttons a#explore-filters-button:hover span {
             background-position: 0 -49px;
           }
-          
+
           #header-buttons a#explore-filters-button:active span {
             background-position: 0 -99px;
           }
-          
-        #header-buttons a#reset-button span { 
+
+        #header-buttons a#reset-button span {
           padding-left: 20px;
           background-image: url(../../../../../../images/header-icon-reset.png);
           background-position: 0 3px;
         }
-  
-          #header-buttons a#reset-button:hover span { 
+
+          #header-buttons a#reset-button:hover span {
             background-position: 0 -47px;
           }
-          
-          #header-buttons a#reset-button:active span { 
+
+          #header-buttons a#reset-button:active span {
             background-position: 0 -97px;
           }
 
