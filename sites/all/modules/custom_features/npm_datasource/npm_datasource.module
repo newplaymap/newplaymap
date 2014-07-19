@@ -13,7 +13,7 @@ function npm_datasource_menu() {
     'page arguments'    => array('npm_datasource_admin_update_mongo_form'),
     'title'             => 'Update Mongo',
   );
-  
+
   return $items;
 }
 
@@ -28,13 +28,13 @@ function npm_datasource_admin_update_mongo_form() {
     ),
     '#required' => TRUE,
   );
-  
+
   $form['update_mongo'] = array(
     '#type' => 'submit',
     '#value' => t('Update'),
     '#submit' => array('npm_datasource_admin_update_mongo'),
   );
-  
+
   // $form['update_mongo_other'] = array(
   //   '#type' => 'submit',
   //   '#value' => t('Update Everything else in Mongo'),
@@ -183,68 +183,50 @@ function npm_datasource_update_mongo_action(&$object, $context = array()) {
 }
 
 function npm_datasource_update_mongo(&$object, $context) {
-  // dsm($object);
-  // dsm($context);
-  
   include_once('../api/loaddata_functions.inc');
   include_once('../../authentication/newplaymap_authentication.php');
   connectMongo(false);
-  
+
   $domain = $_SERVER['HTTP_HOST'];
   $drupal_base_path = base_path();
   $id = $object->nid;
-  
-  switch ($context['hook']) {
-    // Update a specific piece of content
-    case 'nodeapi':
-      switch ($object->type) {
-        case 'artist':
-          loadArtists($m, $mongo_database, $domain, $drupal_base_path, $id);
-        break;
-        case 'event':
-          // Update this event
-          loadEvents($m, $mongo_database, $domain, $drupal_base_path, $id);
 
-          // Update the play in case a play was created using the add event form
-          loadPlays($m, $mongo_database, $domain, $drupal_base_path, $object->field_related_play[0]['nid']);
+  if (isset($object->type)) {
+    switch ($object->type) {
+      case 'artist':
+        loadArtists($m, $mongo_database, $domain, $drupal_base_path, $id);
+      break;
+      case 'event':
+        // Update this event
+        loadEvents($m, $mongo_database, $domain, $drupal_base_path, $id);
 
-          // Update the organization in case a play was created using the add event form
-          // Update the partner organizations to help with related lists
-          $all_organization_nids = $object->field_related_theater[0]['nid'];
-          foreach ($object->field_partner_org as $partner_organization) {
-            if (!empty($partner_organization['nid'])) {
-              $all_organization_nids .= '+' . $partner_organization['nid'];
-            }
+        // Update the play in case a play was created using the add event form
+        loadPlays($m, $mongo_database, $domain, $drupal_base_path, $object->field_related_play[0]['nid']);
+
+        // Update the organization in case a play was created using the add event form
+        // Update the partner organizations to help with related lists
+        $all_organization_nids = $object->field_related_theater[0]['nid'];
+        foreach ($object->field_partner_org as $partner_organization) {
+          if (!empty($partner_organization['nid'])) {
+            $all_organization_nids .= '+' . $partner_organization['nid'];
           }
-          loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $all_organization_nids);
+        }
+        loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $all_organization_nids);
 
-          // Add related artist from play
-          $play = node_load($object->field_related_play[0]['nid']);
-          loadArtists($m, $mongo_database, $domain, $drupal_base_path, $play->field_artist[0]['nid']);
-        break;
-        case 'organization':
-          loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $id);
-        break;
-        case 'play':
-          loadPlays($m, $mongo_database, $domain, $drupal_base_path, $id);
-          // Load all events for this play also
-          loadEvents($m, $mongo_database, $domain, $drupal_base_path, 'all/' . $id);
-        break;
-      }
-    break;
-    // Update everything on cron
-    case 'cron':
-      global $m;
-      global $mongo_database;
-
-      // Events needs to run first because Artists uses it for related organization info
-      loadEvents($m, $mongo_database, $domain, $drupal_base_path, FALSE, TRUE);
-
-      loadArtists($m, $mongo_database, $domain, $drupal_base_path, FALSE, TRUE);
-      loadPlays($m, $mongo_database, $domain, $drupal_base_path, FALSE, TRUE);
-      loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, FALSE, TRUE);
-    break;
-  } 
+        // Add related artist from play
+        $play = node_load($object->field_related_play[0]['nid']);
+        loadArtists($m, $mongo_database, $domain, $drupal_base_path, $play->field_artist[0]['nid']);
+      break;
+      case 'organization':
+        loadOrganizations($m, $mongo_database, $domain, $drupal_base_path, $id);
+      break;
+      case 'play':
+        loadPlays($m, $mongo_database, $domain, $drupal_base_path, $id);
+        // Load all events for this play also
+        loadEvents($m, $mongo_database, $domain, $drupal_base_path, 'all/' . $id);
+      break;
+    }
+  }
 }
 
 /**
@@ -259,9 +241,9 @@ function npm_datasource_delete_mongo(&$object, $context) {
   include_once('../api/loaddata_functions.inc');
   include_once('../../authentication/newplaymap_authentication.php');
   connectMongo(false);
-  
+
   $id = $object->nid;
-  
+
   switch ($context['hook']) {
     // Update a specific piece of content
     case 'nodeapi':
@@ -269,25 +251,25 @@ function npm_datasource_delete_mongo(&$object, $context) {
         case 'artist':
           // Delete the artist record
           // deleteArtists($m, $mongo_database, $id);
-          
+
           // @TODO: Figure out what other content to update
         break;
         case 'event':
           // Delete the event record
           deleteEvents($m, $mongo_database, $id);
-          
+
           // @TODO: Figure out what other content to update
         break;
         case 'organization':
           // Delete the organization record
           // deleteOrganizations($m, $mongo_database, $id);
-          
+
           // @TODO: Figure out what other content to update
         break;
         case 'play':
           // Delete the play record
           // deletePlays($m, $mongo_database, $id);
-          
+
           // @TODO: Figure out what other content to update
         break;
       }
@@ -298,5 +280,5 @@ function npm_datasource_delete_mongo(&$object, $context) {
       $path_to_map = str_replace("/participate/", "", $drupal_base_path);
       drupal_goto('http://' . $domain . $path_to_map);
     break;
-  } 
+  }
 }
